@@ -7,15 +7,24 @@ git clone git@github.com:Darklg/InteStarter.git
 mv InteStarter inte
 cd inte/
 
+# On recupere html5shim
+cd js/
+curl -O http://html5shim.googlecode.com/svn/trunk/html5.js
+cd ..
+if test -f js/html5.js; then
+    echo '<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->' >> inc/tpl/header/head.php
+fi
+
 # On recupere selectivzr
 mkdir selectivizr
 cd selectivizr
 curl -O http://selectivizr.com/downloads/selectivizr-1.0.2.zip
 unzip selectivizr-1.0.2.zip
 cd ..
-mv selectivizr/selectivizr-min.js js/selectivizr-min.js
-echo '
-<!--[if lt IE 9]><script src="js/selectivizr-min.js"></script><![endif]-->' >> inc/tpl/header/head.php
+if test -f selectivizr/selectivizr-min.js; then
+    mv selectivizr/selectivizr-min.js js/selectivizr-min.js
+    echo '<!--[if lt IE 9]><script src="js/selectivizr-min.js"></script><![endif]-->' >> inc/tpl/header/head.php
+fi
 rm -rf selectivizr/
 
 # On y clone CSSNormalize
