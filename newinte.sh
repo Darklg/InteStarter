@@ -2,7 +2,7 @@
 
 # On clone le repository
 echo '# RECUPERATION DE INTESTARTER'
-git clone git@github.com:Darklg/InteStarter.git
+git clone git://github.com/Darklg/InteStarter.git
 
 # On renomme le dossier créé et on s'y déplace
 mv InteStarter inte
@@ -54,7 +54,7 @@ rm -rf selectivizr/
 
 # On y clone CSSNormalize
 echo '# RECUPERATION DE CSSNORMALIZE'
-git clone git@github.com:Darklg/CSSNormalize.git
+git clone git://github.com/Darklg/CSSNormalize.git
 
 # On installe les feuilles de style
 cp CSSNormalize/css/reset.css css/reset.css
