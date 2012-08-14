@@ -7,6 +7,17 @@ git clone git@github.com:Darklg/InteStarter.git
 mv InteStarter inte
 cd inte/
 
+# On recupere selectivzr
+mkdir selectivizr
+cd selectivizr
+curl -O http://selectivizr.com/downloads/selectivizr-1.0.2.zip
+unzip selectivizr-1.0.2.zip
+cd ..
+mv selectivizr/selectivizr-min.js js/selectivizr-min.js
+echo '
+<!--[if lt IE 9]><script src="js/selectivizr-min.js"></script><![endif]-->' >> inc/tpl/header/head.php
+rm -rf selectivizr/
+
 # On y clone CSSNormalize
 git clone git@github.com:Darklg/CSSNormalize.git
 
