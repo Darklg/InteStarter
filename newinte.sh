@@ -1,13 +1,37 @@
 #!/bin/bash
 
 # On clone le repository
+echo '# RECUPERATION DE INTESTARTER'
 git clone git@github.com:Darklg/InteStarter.git
 
 # On renomme le dossier créé et on s'y déplace
 mv InteStarter inte
 cd inte/
 
+# On essaie de télécharger une librairie JS
+cd js/
+read -p "# - Utiliser Mootools ou jQuery (m/j)?" choice
+case "$choice" in 
+    m|M )
+        echo '# GO MOOTOOLS'
+        curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js
+        if test -f mootools-yui-compressed.js; then
+            echo '<script src="js/mootools-yui-compressed.js"></script>' >> ../inc/tpl/header/head.php
+        fi
+    ;;
+    j|J ) 
+        echo '# OK POUR JQUERY'
+        curl -O http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js
+        if test -f jquery.min.js; then
+            echo '<script src="js/jquery.min.js"></script>' >> ../inc/tpl/header/head.php
+        fi
+    ;;
+    * ) echo "# OK, PAS DE LIBRAIRIE JS";;
+esac
+cd ..
+
 # On recupere html5shim
+echo '# RECUPERATION DE HTML5SHIM'
 cd js/
 curl -O http://html5shim.googlecode.com/svn/trunk/html5.js
 cd ..
@@ -15,7 +39,8 @@ if test -f js/html5.js; then
     echo '<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->' >> inc/tpl/header/head.php
 fi
 
-# On recupere selectivzr
+# On recupere selectivizr
+echo '# RECUPERATION DE SELECTIVIZR'
 mkdir selectivizr
 cd selectivizr
 curl -O http://selectivizr.com/downloads/selectivizr-1.0.2.zip
@@ -28,6 +53,7 @@ fi
 rm -rf selectivizr/
 
 # On y clone CSSNormalize
+echo '# RECUPERATION DE CSSNORMALIZE'
 git clone git@github.com:Darklg/CSSNormalize.git
 
 # On installe les feuilles de style
@@ -42,6 +68,7 @@ echo "
 @import 'normalize-common.css';
 @import 'normalize-base.css';" >> css/zz-all.css
 
+echo '# MENAGE'
 # On supprime CSSNormalize
 rm -rf CSSNormalize
 
@@ -49,3 +76,5 @@ rm -rf CSSNormalize
 rm -rf .git
 rm README.md
 rm newinte.sh
+
+echo '# LETS WORK, BABY !'
