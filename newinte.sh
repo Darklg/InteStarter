@@ -21,7 +21,7 @@ case "$choice" in
     ;;
     j|J ) 
         echo '# OK POUR JQUERY'
-        curl -O http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js
+        curl -O http://code.jquery.com/jquery.min.js
         if test -f jquery.min.js; then
             echo '<script src="js/jquery.min.js"></script>' >> ../inc/tpl/header/head.php
         fi
