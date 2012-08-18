@@ -5,7 +5,7 @@ echo '# RECUPERATION DE INTESTARTER'
 git clone git://github.com/Darklg/InteStarter.git
 
 
-read -p "# - Utiliser un sous-dossier (y/n) ?" use_subfolder
+read -p "# - Utiliser un sous-dossier (y/n) ? " use_subfolder
 case "$use_subfolder" in 
     y|Y|O|o )
         # On renomme le dossier créé et on s'y déplace
@@ -26,13 +26,13 @@ echo "define('PROJECT_NAME','"${project_name/\'/’}"');" >> inc/config.php
 
 # On essaie de télécharger une librairie JS
 cd js/
-read -p "# - Utiliser Mootools ou jQuery (m/j)? " choice
+read -p "# - Utiliser Mootools ou jQuery (m/j) ? " choice
 case "$choice" in 
     m|M )
         echo '# GO MOOTOOLS'
         curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js;
         if test -f mootools-yui-compressed.js; then
-            echo '<script src="js/mootools-yui-compressed.js"></script>' >> ../inc/tpl/header/head.php;
+            echo '<script src="js/mootools-yui-compressed.js"></script><script src="js/events.js"></script>' >> ../inc/tpl/header/head.php;
             echo "window.addEvent('domready',function(){});" > events.js;
         fi
     ;;
@@ -40,11 +40,15 @@ case "$choice" in
         echo '# OK POUR JQUERY'
         curl -O http://code.jquery.com/jquery.min.js;
         if test -f jquery.min.js; then
-            echo '<script src="js/jquery.min.js"></script>' >> ../inc/tpl/header/head.php;
+            echo '<script src="js/jquery.min.js"></script><script src="js/events.js"></script>' >> ../inc/tpl/header/head.php;
             echo "jQuery(document).ready(function($) {});" > events.js;
         fi
     ;;
-    * ) echo "# OK, PAS DE LIBRAIRIE JS";;
+    * )
+        echo "# OK, PAS DE LIBRAIRIE JS";
+        echo '<script src="js/events.js"></script>' >> ../inc/tpl/header/head.php;
+        echo "(function(){})();" > events.js;
+    ;;
 esac
 cd ..
 
