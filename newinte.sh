@@ -20,6 +20,10 @@ case "$use_subfolder" in
 esac
 
 
+# On recupere le nom du projet
+read -p "# - Comment s'appelle ce projet ? " project_name
+echo "define('PROJECT_NAME','"${project_name/\'/’}"');" >> inc/config.php
+
 # On essaie de télécharger une librairie JS
 cd js/
 read -p "# - Utiliser Mootools ou jQuery (m/j)? " choice

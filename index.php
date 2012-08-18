@@ -1,5 +1,5 @@
 <?php
-include dirname(__FILE__).'/inc/config.php';
+include dirname(__FILE__).'/inc/control.php';
 include dirname(__FILE__).'/inc/tpl/header.php';
 ?>
 <div id="main-container">
