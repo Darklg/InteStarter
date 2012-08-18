@@ -4,9 +4,21 @@
 echo '# RECUPERATION DE INTESTARTER'
 git clone git://github.com/Darklg/InteStarter.git
 
-# On renomme le dossier créé et on s'y déplace
-mv InteStarter inte
-cd inte/
+
+read -p "# - Utiliser un sous-dossier (y/n) ?" use_subfolder
+case "$use_subfolder" in 
+    y|Y|O|o )
+        # On renomme le dossier créé et on s'y déplace
+        mv InteStarter inte
+        cd inte/
+    ;;
+    * )
+        # On récupère le contenu du dossier cré
+        mv InteStarter/* .
+        rm -rf InteStarter/
+    ;;
+esac
+
 
 # On essaie de télécharger une librairie JS
 cd js/
