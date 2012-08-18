@@ -14,16 +14,18 @@ read -p "# - Utiliser Mootools ou jQuery (m/j)? " choice
 case "$choice" in 
     m|M )
         echo '# GO MOOTOOLS'
-        curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js
+        curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js;
         if test -f mootools-yui-compressed.js; then
-            echo '<script src="js/mootools-yui-compressed.js"></script>' >> ../inc/tpl/header/head.php
+            echo '<script src="js/mootools-yui-compressed.js"></script>' >> ../inc/tpl/header/head.php;
+            echo "window.addEvent('domready',function(){});" > events.js;
         fi
     ;;
     j|J ) 
         echo '# OK POUR JQUERY'
-        curl -O http://code.jquery.com/jquery.min.js
+        curl -O http://code.jquery.com/jquery.min.js;
         if test -f jquery.min.js; then
-            echo '<script src="js/jquery.min.js"></script>' >> ../inc/tpl/header/head.php
+            echo '<script src="js/jquery.min.js"></script>' >> ../inc/tpl/header/head.php;
+            echo "jQuery(document).ready(function($) {});" > events.js;
         fi
     ;;
     * ) echo "# OK, PAS DE LIBRAIRIE JS";;
