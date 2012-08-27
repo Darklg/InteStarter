@@ -34,7 +34,7 @@ fi
 
 # On essaie de télécharger une librairie JS
 cd js/
-read -p "# - Utiliser Mootools ou jQuery (m/j) ? " choice
+read -p "# - Utiliser Mootools, jQuery, ou aucune librairie (m/j/n) ? " choice
 case "$choice" in 
     m|M )
         echo '# GO MOOTOOLS'
@@ -98,20 +98,24 @@ echo "
 @import 'normalize-common.css';
 @import 'normalize-base.css';" >> css/zz-all.css
 
-# Installation de feuilles CSS au choix
-css_sheets="forms buttons grid tables messages code gallery push modeles layouts tabs"
-for i in $css_sheets
-do
-    read -p "# - Installer le module CSS "$i" (y/n)? " choice
-    case "$choice" in 
-        y|O )
-            echo '# Installation de '$i
-            cp CSSNormalize/css/normalize-$i.css css/normalize-$i.css
-            echo "@import 'normalize-"$i".css';" >> css/zz-all.css
-        ;;
-        * );;
-    esac
-done
+
+read -p "# - Utiliser des modules CSSNormalize (y/n) ? " use_cssnormalize
+if [[ $use_cssnormalize == 'y' ]]; then
+    # Installation de feuilles CSS au choix
+    css_sheets="forms buttons grid tables messages code gallery push modeles layouts tabs"
+    for i in $css_sheets
+    do
+        read -p "# --- Installer le module CSS "$i" (y/n)? " choice
+        case "$choice" in 
+            y|O )
+                echo '# Installation de '$i
+                cp CSSNormalize/css/normalize-$i.css css/normalize-$i.css
+                echo "@import 'normalize-"$i".css';" >> css/zz-all.css
+            ;;
+            * );;
+        esac
+    done
+fi
 
 echo '# MENAGE'
 # On supprime CSSNormalize
