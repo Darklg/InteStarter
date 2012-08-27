@@ -19,10 +19,14 @@ case "$use_subfolder" in
     ;;
 esac
 
-
 # On recupere le nom du projet
 read -p "# - Comment s'appelle ce projet ? " project_name
 echo "define('PROJECT_NAME','"${project_name/\'/’}"');" >> inc/config.php
+
+# On cree le répertoire contenant le JS
+if ! [ -d js/ ]; then
+  mkdir js/
+fi
 
 # On essaie de télécharger une librairie JS
 cd js/
