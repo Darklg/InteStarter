@@ -23,6 +23,10 @@ esac
 read -p "# - Comment s'appelle ce projet ? " project_name
 echo "define('PROJECT_NAME','"${project_name/\'/’}"');" >> inc/config.php
 
+# On recupere le nom du projet
+read -p "# - Quel est la description rapide du projet ? " project_description
+echo "define('PROJECT_DESCRIPTION','"${project_description/\'/’}"');" >> inc/config.php
+
 # On cree le répertoire contenant le JS
 if ! [ -d js/ ]; then
   mkdir js/
