@@ -52,7 +52,7 @@ case "$choice" in
         echo '# GO MOOTOOLS'
         curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js;
         if test -f mootools-yui-compressed.js; then
-            echo '<script src="js/mootools-yui-compressed.js"></script><script src="js/events.js"></script>' >> ../inc/tpl/header/head.php;
+            echo '<script src="assets/js/mootools-yui-compressed.js"></script><script src="assets/js/events.js"></script>' >> ../../inc/tpl/header/head.php;
             echo "window.addEvent('domready',function(){});" > events.js;
         fi
     ;;
@@ -60,13 +60,13 @@ case "$choice" in
         echo '# OK POUR JQUERY'
         curl -O http://code.jquery.com/jquery.min.js;
         if test -f jquery.min.js; then
-            echo '<script src="js/jquery.min.js"></script><script src="js/events.js"></script>' >> ../inc/tpl/header/head.php;
+            echo '<script src="assets/js/jquery.min.js"></script><script src="assets/js/events.js"></script>' >> ../../inc/tpl/header/head.php;
             echo "jQuery(document).ready(function($) {});" > events.js;
         fi
     ;;
     * )
         echo "# OK, PAS DE LIBRAIRIE JS";
-        echo '<script src="js/events.js"></script>' >> ../inc/tpl/header/head.php;
+        echo '<script src="assets/js/events.js"></script>' >> ../../inc/tpl/header/head.php;
         echo "(function(){})();" > events.js;
     ;;
 esac
@@ -78,7 +78,7 @@ cd js/
 curl -O http://html5shim.googlecode.com/svn/trunk/html5.js
 cd ..
 if test -f js/html5.js; then
-    echo '<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->' >> inc/tpl/header/head.php
+    echo '<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->' >> ../inc/tpl/header/head.php
 fi
 
 # On recupere selectivizr
@@ -90,7 +90,7 @@ unzip selectivizr-1.0.2.zip
 cd ..
 if test -f selectivizr/selectivizr-min.js; then
     mv selectivizr/selectivizr-min.js js/selectivizr-min.js
-    echo '<!--[if lt IE 9]><script src="assets/js/selectivizr-min.js"></script><![endif]-->' >> inc/tpl/header/head.php
+    echo '<!--[if lt IE 9]><script src="assets/js/selectivizr-min.js"></script><![endif]-->' >> ../inc/tpl/header/head.php
 fi
 rm -rf selectivizr/
 
