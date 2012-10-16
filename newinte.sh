@@ -39,6 +39,11 @@ if ! [ -d images/ ]; then
   mkdir images/
 fi
 
+# On cree le répertoire contenant les fonts
+if ! [ -d fonts/ ]; then
+  mkdir fonts/
+fi
+
 # On cree le répertoire contenant le JS
 if ! [ -d js/ ]; then
   mkdir js/
