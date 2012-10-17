@@ -119,7 +119,7 @@ echo "
 read -p "# - Utiliser des modules CSSNormalize (y/n) ? " use_cssnormalize
 if [[ $use_cssnormalize == 'y' ]]; then
     # Installation de feuilles CSS au choix
-    css_sheets="forms buttons grid tables messages code gallery push modeles layouts tabs"
+    css_sheets="forms buttons grid tables messages push modeles layouts tabs"
     for i in $css_sheets
     do
         read -p "# --- Installer le module CSS "$i" (y/n)? " choice
