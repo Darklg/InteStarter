@@ -134,6 +134,12 @@ if [[ $use_cssnormalize == 'y' ]]; then
     done
 fi
 
+# On supprime CSSNormalize
+rm -rf CSSNormalize
+
+# On revient à la racine
+cd ..
+
 echo '# CUSTOM';
 
 # Configuration du viewport
@@ -145,12 +151,6 @@ if [[ $content_width != '' ]]; then
 fi
 
 echo '# MENAGE'
-
-# On supprime CSSNormalize
-rm -rf CSSNormalize
-
-# On revient à la racine
-cd ..
 
 # Suppression des fichiers inutiles & de développement
 rm -rf .git
