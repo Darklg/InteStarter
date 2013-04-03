@@ -99,43 +99,41 @@ if test -f selectivizr/selectivizr-min.js; then
 fi
 rm -rf selectivizr/
 
-# On y clone CSSNormalize
-echo '# RECUPERATION DE CSSNORMALIZE'
-git clone git://github.com/Darklg/CSSNormalize.git
+# On y clone CSSCommon
+echo '# RECUPERATION DE CSSCOMMON'
+git clone git://github.com/Darklg/CSSCommon.git
 
 # On installe les feuilles de style
-cp CSSNormalize/css/reset.css css/reset.css
-cp CSSNormalize/css/normalize.css css/normalize.css
-cp CSSNormalize/css/normalize-common.css css/normalize-common.css
-cp CSSNormalize/css/normalize-base.css css/normalize-base.css
+cp CSSCommon/css/cssc-default.css css/cssc-default.css
+cp CSSCommon/css/cssc-common.css css/cssc-common.css
+cp CSSCommon/css/cssc-base.css css/cssc-base.css
 
 echo "
-@import 'reset.css';
-@import 'normalize.css';
-@import 'normalize-common.css';
-@import 'normalize-base.css';" >> css/zz-all.css
+@import 'cssc-default.css';
+@import 'cssc-common.css';
+@import 'cssc-base.css';" >> css/zz-all.css
 
 
-read -p "# - Utiliser des modules CSSNormalize (y/n) ? " use_cssnormalize
-if [[ $use_cssnormalize == 'y' ]]; then
+read -p "# - Utiliser des modules CSSCommon (y/n) ? " use_csscommon
+if [[ $use_csscommon == 'y' ]]; then
     # Installation de feuilles CSS au choix
-    css_sheets="forms buttons grid tables messages push modeles layouts tabs"
+    css_sheets="buttons forms tables grid messages push modeles layouts tabs"
     for i in $css_sheets
     do
         read -p "# --- Installer le module CSS "$i" (y/n)? " choice
         case "$choice" in
             y|O )
                 echo '# Installation de '$i
-                cp CSSNormalize/css/normalize-$i.css css/normalize-$i.css
-                echo "@import 'normalize-"$i".css';" >> css/zz-all.css
+                cp CSSCommon/css/cssc-$i.css css/cssc-$i.css
+                echo "@import 'cssc-"$i".css';" >> css/zz-all.css
             ;;
             * );;
         esac
     done
 fi
 
-# On supprime CSSNormalize
-rm -rf CSSNormalize
+# On supprime CSSCommon
+rm -rf CSSCommon
 
 # On revient à la racine
 cd ..
