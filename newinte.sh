@@ -23,7 +23,11 @@ esac
 read -p "# - Comment s'appelle ce projet ? " project_name
 echo "define('PROJECT_NAME','"${project_name/\'/’}"');" >> inc/config.php
 
-# On recupere le nom du projet
+# On recupere l'URL du projet
+read -p "# - Quelle est l'URL du projet ? " project_url
+echo "define('PROJECT_URL','"${project_url/\'/’}"');" >> inc/config.php
+
+# On recupere la description du projet
 read -p "# - Quel est la description rapide du projet ? " project_description
 echo "define('PROJECT_DESCRIPTION','"${project_description/\'/’}"');" >> inc/config.php
 
