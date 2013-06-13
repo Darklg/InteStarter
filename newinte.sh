@@ -13,7 +13,7 @@ case "$use_subfolder" in
         cd inte/
     ;;
     * )
-        # On récupère le contenu du dossier cré
+        # On récupère le contenu du dossier créé
         mv InteStarter/* .
         rm -rf InteStarter/
     ;;
