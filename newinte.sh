@@ -143,12 +143,24 @@ cd ..
 echo '# CUSTOM';
 
 # Configuration du viewport
-read -p "# - Quelle est la largeur du contenu ? " content_width
-if [[ $content_width != '' ]]; then
-    content_width_wide=$(( $content_width+40 ));
-    echo 'Viewport utilisé : '$content_width_wide;
-    sed -i '' 's/width=980/width='$content_width_wide'/' inc/tpl/header/head.php
-fi
+
+read -p "# - Est-ce un site responsive (y/n) ? " is_responsive
+case "$is_responsive" in
+    y|Y|O|o )
+        sed -i '' 's/width=980/width=device-width/' inc/tpl/header/head.php
+        sed -i '' 's/<body>/<body class="cssc-is-responsive">/' inc/tpl/header.php
+    ;;
+    * )
+        read -p "# - Quelle est la largeur du contenu ? " content_width
+        if [[ $content_width != '' ]]; then
+            content_width_wide=$(( $content_width+40 ));
+            echo 'Viewport utilisé : '$content_width_wide;
+            sed -i '' 's/width=980/width='$content_width_wide'/' inc/tpl/header/head.php
+        fi
+    ;;
+esac
+
+
 
 echo '# MENAGE'
 
