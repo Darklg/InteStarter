@@ -110,16 +110,18 @@ git clone git://github.com/Darklg/CSSCommon.git
 # On installe les feuilles de style
 cp CSSCommon/css/cssc-default.css css/cssc-default.css
 cp CSSCommon/css/cssc-common.css css/cssc-common.css
+cp CSSCommon/css/cssc-content.css css/cssc-content.css
 
 echo "
 @import 'cssc-default.css';
-@import 'cssc-common.css';" >> css/zz-all.css
+@import 'cssc-common.css';
+@import 'cssc-content.css';" >> css/zz-all.css
 
 
 read -p "# - Utiliser des modules CSSCommon (y/n) ? " use_csscommon
 if [[ $use_csscommon == 'y' ]]; then
     # Installation de feuilles CSS au choix
-    css_sheets="buttons forms tables grid messages push modeles layouts tabs images print"
+    css_sheets="buttons forms tables grid push navigation layouts tabs images print"
     for i in $css_sheets
     do
         read -p "# --- Installer le module CSS "$i" (y/n)? " choice
