@@ -121,7 +121,7 @@ echo "
 read -p "# - Utiliser des modules CSSCommon (y/n) ? " use_csscommon
 if [[ $use_csscommon == 'y' ]]; then
     # Installation de feuilles CSS au choix
-    css_sheets="buttons forms tables grid push navigation layouts tabs images print"
+    css_sheets="buttons forms tables grid push navigation layouts tabs images print effects"
     for i in $css_sheets
     do
         read -p "# --- Installer le module CSS "$i" (y/n)? " choice
