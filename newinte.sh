@@ -38,6 +38,11 @@ fi
 
 cd assets/
 
+# On cree le répertoire contenant le CSS
+if ! [ -d css/ ]; then
+  mkdir css/
+fi
+
 # On cree le répertoire contenant les images
 if ! [ -d images/ ]; then
   mkdir images/
@@ -53,8 +58,46 @@ if ! [ -d js/ ]; then
   mkdir js/
 fi
 
-# On essaie de télécharger une librairie JS
+# On y clone CSSCommon
+echo '# RECUPERATION DE CSSCOMMON'
+git clone git://github.com/Darklg/CSSCommon.git
+
+# On installe les feuilles de style
+cp CSSCommon/css/cssc-default.css css/cssc-default.css
+cp CSSCommon/css/cssc-common.css css/cssc-common.css
+cp CSSCommon/css/cssc-content.css css/cssc-content.css
+
+echo '<link rel="stylesheet" type="text/css" href="cssc-default.css" />
+<link rel="stylesheet" type="text/css" href="cssc-common.css" />
+<link rel="stylesheet" type="text/css" href="cssc-content.css" />
+' >> ../inc/tpl/header/head.php;
+
+
+read -p "# - Utiliser des modules CSSCommon (y/n) ? " use_csscommon
+if [[ $use_csscommon == 'y' ]]; then
+    # Installation de feuilles CSS au choix
+    css_sheets="buttons forms tables grid push navigation layouts tabs images print effects"
+    for i in $css_sheets
+    do
+        read -p "# --- Installer le module CSS "$i" (y/n)? " choice
+        case "$choice" in
+            y|O )
+                echo '# Installation de '$i
+                cp CSSCommon/css/cssc-$i.css css/cssc-$i.css
+                echo '<link rel="stylesheet" type="text/css" href="cssc-'$i'.css" />' >> ../inc/tpl/header/head.php;
+            ;;
+            * );;
+        esac
+    done
+fi
+
+# On supprime CSSCommon
+rm -rf CSSCommon
+
+# On ajoute les fichiers JS essentiels
 cd js/
+
+# On propose de télécharger une librairie JS
 read -p "# - Utiliser Mootools, jQuery, ou aucune librairie (m/j/n) ? " choice
 case "$choice" in
     m|M )
@@ -79,11 +122,9 @@ case "$choice" in
         echo "(function(){})();" > events.js;
     ;;
 esac
-cd ..
 
 # On recupere html5shim
 echo '# RECUPERATION DE HTML5SHIM'
-cd js/
 curl -O http://html5shim.googlecode.com/svn/trunk/html5.js
 cd ..
 if test -f js/html5.js; then
@@ -103,49 +144,10 @@ if test -f selectivizr/selectivizr-min.js; then
 fi
 rm -rf selectivizr/
 
-# On y clone CSSCommon
-echo '# RECUPERATION DE CSSCOMMON'
-git clone git://github.com/Darklg/CSSCommon.git
-
-# On installe les feuilles de style
-cp CSSCommon/css/cssc-default.css css/cssc-default.css
-cp CSSCommon/css/cssc-common.css css/cssc-common.css
-cp CSSCommon/css/cssc-content.css css/cssc-content.css
-
-echo "
-@import 'cssc-default.css';
-@import 'cssc-common.css';
-@import 'cssc-content.css';" >> css/zz-all.css
-
-
-read -p "# - Utiliser des modules CSSCommon (y/n) ? " use_csscommon
-if [[ $use_csscommon == 'y' ]]; then
-    # Installation de feuilles CSS au choix
-    css_sheets="buttons forms tables grid push navigation layouts tabs images print effects"
-    for i in $css_sheets
-    do
-        read -p "# --- Installer le module CSS "$i" (y/n)? " choice
-        case "$choice" in
-            y|O )
-                echo '# Installation de '$i
-                cp CSSCommon/css/cssc-$i.css css/cssc-$i.css
-                echo "@import 'cssc-"$i".css';" >> css/zz-all.css
-            ;;
-            * );;
-        esac
-    done
-fi
-
-# On supprime CSSCommon
-rm -rf CSSCommon
-
-# On revient à la racine
+echo '# CUSTOM';
 cd ..
 
-echo '# CUSTOM';
-
 # Configuration du viewport
-
 read -p "# - Est-ce un site responsive (y/n) ? " is_responsive
 case "$is_responsive" in
     y|Y|O|o )
@@ -163,12 +165,11 @@ case "$is_responsive" in
 esac
 
 
-
-echo '# MENAGE'
-
 # Suppression des fichiers inutiles & de développement
+echo '# MENAGE'
 rm -rf .git
 rm README.md
 rm newinte.sh
+rm deploy.sh
 
 echo '# LETS WORK, BABY !'
