@@ -2,7 +2,7 @@
 include dirname(__FILE__).'/inc/control.php';
 include dirname(__FILE__).'/inc/tpl/header.php';
 ?>
-<div id="main-container" class="centered-container">
+<div id="main-container" class="centered-container main-container">
     <div>
         <h2><?php echo PROJECT_DESCRIPTION; ?></h2>
 

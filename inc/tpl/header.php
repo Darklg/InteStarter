@@ -7,6 +7,6 @@
 <?php include dirname(__FILE__).'/header/head.php'; ?>
 </head>
 <body>
-    <header id="header" class="centered-container">
+    <header id="header" class="centered-container main-header">
         <h1><a href="<?php echo PROJECT_URL; ?>"><?php echo PROJECT_NAME; ?></a></h1>
     </header>
