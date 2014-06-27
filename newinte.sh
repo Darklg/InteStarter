@@ -93,19 +93,72 @@ echo '## GESTION DU CSS';
 
 cd assets/
 
+# Configuration du viewport
+read -p "- Doit-on utiliser Sass (y/n) ? " use_sass
+
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
 git clone git://github.com/Darklg/CSSCommon.git
 
 # On installe les feuilles de style
-cp CSSCommon/css/cssc-default.css css/cssc-default.css
-cp CSSCommon/css/cssc-common.css css/cssc-common.css
-cp CSSCommon/css/cssc-content.css css/cssc-content.css
+if [[ $use_sass == 'y' ]]; then
 
-echo '<link rel="stylesheet" type="text/css" href="assets/css/cssc-default.css" />
-<link rel="stylesheet" type="text/css" href="assets/css/cssc-common.css" />
-<link rel="stylesheet" type="text/css" href="assets/css/cssc-content.css" />
+    # On cree les répertoires contenant le Scss
+    if ! [ -d scss/ ]; then
+      echo '- Creation de scss/';
+      mkdir scss/
+    fi
+    if ! [ -d scss/csscommon/ ]; then
+      echo '- Creation de scss/csscommon/';
+      mkdir scss/csscommon/
+    fi
+
+    # On cree le fichier de config compass
+    touch $MAINDIR"config.rb";
+    echo 'http_path = "/"
+css_dir = "assets/css"
+sass_dir = "assets/scss"
+images_dir = "assets/images"
+javascripts_dir = "assets/js"
+output_style = :compressed
+relative_assets = true
+line_comments = false
+preferred_syntax = :scss' > $MAINDIR"config.rb";
+
+    # On initialise le fichier principal
+    touch $MAINDIR"assets/scss/main.scss";
+
+    echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
 ' >> $MAINDIR"inc/tpl/header/head.php";
+
+    cp CSSCommon/css/cssc-default.css scss/csscommon/_cssc-default.scss
+    cp CSSCommon/css/cssc-common.css scss/csscommon/_cssc-common.scss
+    cp CSSCommon/css/cssc-content.css scss/csscommon/_cssc-content.scss
+
+    echo '@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  CSSCommon
+---------------------------------------------------------- */
+
+@import "csscommon/_cssc-default.scss";
+@import "csscommon/_cssc-common.scss";
+@import "csscommon/_cssc-content.scss";
+' >> $MAINDIR"assets/scss/main.scss";
+
+
+else
+    cp CSSCommon/css/cssc-default.css css/cssc-default.css
+    cp CSSCommon/css/cssc-common.css css/cssc-common.css
+    cp CSSCommon/css/cssc-content.css css/cssc-content.css
+
+    echo '<link rel="stylesheet" type="text/css" href="assets/css/cssc-default.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/cssc-common.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/cssc-content.css" />
+    ' >> $MAINDIR"inc/tpl/header/head.php";
+
+fi
+
 
 # Installation de modules CSS au choix
 read -p "- Utiliser des modules CSSCommon (y/n) ? " use_csscommon
@@ -117,8 +170,14 @@ if [[ $use_csscommon == 'y' ]]; then
         case "$choice" in
             y|O )
                 echo '-- Installation de '$i;
-                cp CSSCommon/css/cssc-$i.css css/cssc-$i.css
-                echo '<link rel="stylesheet" type="text/css" href="assets/css/cssc-'$i'.css" />' >> $MAINDIR"inc/tpl/header/head.php";
+
+                if [[ $use_sass == 'y' ]]; then
+                    cp CSSCommon/css/cssc-$i.css scss/csscommon/_cssc-$i.scss
+                    echo '@import "csscommon/_cssc-'$i'.scss";' >> $MAINDIR"assets/scss/main.scss";
+                else
+                    cp CSSCommon/css/cssc-$i.css css/cssc-$i.css
+                    echo '<link rel="stylesheet" type="text/css" href="assets/css/cssc-'$i'.css" />' >> $MAINDIR"inc/tpl/header/head.php";
+                fi
             ;;
             * );;
         esac
