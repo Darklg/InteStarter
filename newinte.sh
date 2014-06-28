@@ -112,6 +112,10 @@ if [[ $use_sass == 'y' ]]; then
       echo '- Creation de scss/csscommon/';
       mkdir scss/csscommon/
     fi
+    if ! [ -d scss/utilities/ ]; then
+      echo '- Creation de scss/utilities/';
+      mkdir scss/utilities/
+    fi
 
     # On cree le fichier de config compass
     touch $MAINDIR"config.rb";
@@ -135,7 +139,16 @@ preferred_syntax = :scss' > $MAINDIR"config.rb";
     cp CSSCommon/css/cssc-common.css scss/csscommon/_cssc-common.scss
     cp CSSCommon/css/cssc-content.css scss/csscommon/_cssc-content.scss
 
+    cp -R CSSCommon/scss/utilities/ scss/utilities/
+
     echo '@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Utilities
+---------------------------------------------------------- */
+
+@import "utilities/_plugins.scss";
+@import "utilities/_retina-sprites.scss";
 
 /* ----------------------------------------------------------
   CSSCommon
@@ -145,7 +158,6 @@ preferred_syntax = :scss' > $MAINDIR"config.rb";
 @import "csscommon/_cssc-common.scss";
 @import "csscommon/_cssc-content.scss";
 ' >> $MAINDIR"assets/scss/main.scss";
-
 
 else
     cp CSSCommon/css/cssc-default.css css/cssc-default.css
