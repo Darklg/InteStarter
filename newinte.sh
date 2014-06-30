@@ -55,35 +55,17 @@ fi
 
 cd assets/
 
-# On cree le répertoire contenant le CSS
-if ! [ -d css/ ]; then
-  echo '- Creation de css/';
-  mkdir css/
-fi
+# On cree les répertoires principaux
+main_folders="css/ images/ fonts/ js/ js/ie/";
+for i in $main_folders
+do
+    if ! [ -d $i ]; then
+      echo '- Creation de '$i;
+      mkdir $MAINDIR'assets/'$i;
+    fi
+done;
 
-# On cree le répertoire contenant les images
-if ! [ -d images/ ]; then
-  echo '- Creation de images/';
-  mkdir images/
-fi
-
-# On cree le répertoire contenant les fonts
-if ! [ -d fonts/ ]; then
-  echo '- Creation de fonts/';
-  mkdir fonts/
-fi
-
-# On cree le répertoire contenant le JS
-if ! [ -d js/ ]; then
-  echo '- Creation de js/';
-  mkdir js/
-fi
-if ! [ -d js/ie/ ]; then
-  echo '- Creation de js/ie/';
-  mkdir js/ie/
-fi
-
-cd ..
+cd $MAINDIR;
 
 #################################################################
 ## GESTION DU CSS
@@ -104,18 +86,14 @@ git clone git://github.com/Darklg/CSSCommon.git
 if [[ $use_sass == 'y' ]]; then
 
     # On cree les répertoires contenant le Scss
-    if ! [ -d scss/ ]; then
-      echo '- Creation de scss/';
-      mkdir scss/
-    fi
-    if ! [ -d scss/csscommon/ ]; then
-      echo '- Creation de scss/csscommon/';
-      mkdir scss/csscommon/
-    fi
-    if ! [ -d scss/utilities/ ]; then
-      echo '- Creation de scss/utilities/';
-      mkdir scss/utilities/
-    fi
+    sass_folders="scss/ scss/csscommon/ scss/utilities/ images/main-sprite/ images/main-sprite_2x/";
+    for i in $sass_folders
+    do
+        if ! [ -d $i ]; then
+          echo '- Creation de '$i;
+          mkdir $MAINDIR'assets/'$i;
+        fi
+    done;
 
     # On cree le fichier de config compass
     touch $MAINDIR"config.rb";
