@@ -248,6 +248,33 @@ esac
 cd $MAINDIR;
 
 #################################################################
+## Utiliser Grunt
+#################################################################
+
+# Demande de confirmation
+read -p "- Utiliser Grunt (y/n) ? " use_grunt
+if [[ $use_grunt == 'y' ]]; then
+    # Create package.json
+    echo '{"name": "'$project_id'","version": "0.0.0","description": ""}' > $MAINDIR"package.json";
+    # Install Grunt & default modules
+    npm install --save-dev grunt-shell;
+
+    # Create Grunt File
+    echo "module.exports = function(grunt) {
+    // Load modules
+    grunt.loadNpmTasks('grunt-shell');
+
+    // Project configuration.
+    grunt.initConfig({});
+
+    // Load tasks
+    grunt.registerTask('default', []);
+};" > $MAINDIR"Gruntfile.js";
+fi;
+
+cd $MAINDIR;
+
+#################################################################
 ## COMPATIBILITE IE
 #################################################################
 
