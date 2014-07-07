@@ -29,7 +29,10 @@ case "$use_subfolder" in
 esac
 
 # On recupere le nom du projet
-read -p "- Comment s'appelle ce projet ? " project_name
+read -p "- Comment s'appelle ce projet ? (Front-End) " project_name
+if [[ $project_name == '' ]]; then
+    project_name='Front-End';
+fi;
 echo "define('PROJECT_NAME','"${project_name/\'/’}"');" >> $MAINDIR"inc/config.php";
 
 # On recupere l'URL du projet
