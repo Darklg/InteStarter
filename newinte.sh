@@ -2,7 +2,7 @@
 
 # On clone le repository
 echo '# - RECUPERATION DE INTESTARTER'
-git clone git://github.com/Darklg/InteStarter.git
+git clone https://github.com/Darklg/InteStarter.git
 
 #################################################################
 ## CONFIGURATION INITIALE
@@ -90,7 +90,7 @@ read -p "- Doit-on utiliser Compass (y/n) ? " use_compass
 
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
-git clone git://github.com/Darklg/CSSCommon.git
+git clone https://github.com/Darklg/CSSCommon.git
 
 # On installe les feuilles de style
 if [[ $use_compass == 'y' ]]; then
