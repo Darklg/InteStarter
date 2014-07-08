@@ -143,8 +143,8 @@ $color-main: #000;
 /* Directories
 -------------------------- */
 
-$sprites: sprite-map("main-sprite/*.png");       /* :) */
-$sprites2x: sprite-map("main-sprite_2x/*.png");  /* :) */
+// $sprites: sprite-map("main-sprite/*.png");       /* :) */
+// $sprites2x: sprite-map("main-sprite_2x/*.png");  /* :) */
 
 /* ----------------------------------------------------------
   Utilities
@@ -203,6 +203,11 @@ fi
 rm -rf CSSCommon
 
 cd $MAINDIR;
+
+# Generate file
+if [[ $use_compass == 'y' ]]; then
+    compass compile;
+fi;
 
 #################################################################
 ## GESTION DU JS
