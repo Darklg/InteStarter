@@ -86,18 +86,18 @@ echo '## GESTION DU CSS';
 cd assets/
 
 # Configuration du viewport
-read -p "- Doit-on utiliser Sass (y/n) ? " use_sass
+read -p "- Doit-on utiliser Compass (y/n) ? " use_compass
 
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
 git clone git://github.com/Darklg/CSSCommon.git
 
 # On installe les feuilles de style
-if [[ $use_sass == 'y' ]]; then
+if [[ $use_compass == 'y' ]]; then
 
     # On cree les répertoires contenant le Scss
-    sass_folders="scss/ scss/csscommon/ scss/utilities/ images/main-sprite/ images/main-sprite_2x/";
-    for i in $sass_folders
+    compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/"$project_id"/ images/main-sprite/ images/main-sprite_2x/";
+    for i in $compass_folders
     do
         if ! [ -d $i ]; then
           echo '- Creation de '$i;
@@ -186,7 +186,7 @@ if [[ $use_csscommon == 'y' ]]; then
             y|O )
                 echo '-- Installation de '$i;
 
-                if [[ $use_sass == 'y' ]]; then
+                if [[ $use_compass == 'y' ]]; then
                     cp CSSCommon/css/cssc-$i.css scss/csscommon/_cssc-$i.scss
                     echo '@import "csscommon/_cssc-'$i'.scss";' >> $MAINDIR"assets/scss/main.scss";
                 else
