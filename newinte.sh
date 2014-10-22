@@ -346,11 +346,30 @@ case "$is_responsive" in
     ;;
     * )
         read -p "- Quelle est la largeur du contenu sans marges (Default:980) ? " content_width
-        if [[ $content_width != '' ]]; then
-            content_width_wide=$(( $content_width+40 ));
-            echo 'Viewport utilisé : '$content_width_wide;
-            sed -i '' 's/width=980/width='$content_width_wide'/' $MAINDIR"inc/tpl/header/head.php";
+        if [[ $content_width == '' ]]; then
+            content_width=980
         fi
+        content_width_wide=$(( $content_width+40 ));
+        echo 'Viewport utilisé : '$content_width_wide;
+        sed -i '' 's/width=980/width='$content_width_wide'/' $MAINDIR"inc/tpl/header/head.php";
+        # Project file
+        if [[ $use_compass == 'y' ]]; then
+        echo '@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Layout
+---------------------------------------------------------- */
+
+.centered-container {
+    min-width: '$content_width_wide'px;
+}
+
+.centered-container > * {
+    max-width: '$content_width'px;
+}
+' >> $MAINDIR"assets/scss/"$project_id"/_base.scss";
+        fi
+
     ;;
 esac
 
