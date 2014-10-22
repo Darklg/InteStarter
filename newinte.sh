@@ -128,6 +128,7 @@ preferred_syntax = :scss' > $MAINDIR"config.rb";
     cp CSSCommon/css/cssc-default.css scss/csscommon/_cssc-default.scss
     cp CSSCommon/css/cssc-common.css scss/csscommon/_cssc-common.scss
     cp CSSCommon/css/cssc-content.css scss/csscommon/_cssc-content.scss
+    cp CSSCommon/css/cssc-layouts.css scss/csscommon/_cssc-layouts.scss
 
     cp -R CSSCommon/scss/utilities/ scss/utilities/
 
@@ -162,16 +163,19 @@ $color-main: #000;
 @import "csscommon/_cssc-default.scss";
 @import "csscommon/_cssc-common.scss";
 @import "csscommon/_cssc-content.scss";
+@import "csscommon/_cssc-layouts.scss";
 ' >> $MAINDIR"assets/scss/main.scss";
 
 else
     cp CSSCommon/css/cssc-default.css css/cssc-default.css
     cp CSSCommon/css/cssc-common.css css/cssc-common.css
     cp CSSCommon/css/cssc-content.css css/cssc-content.css
+    cp CSSCommon/css/cssc-layouts.css css/cssc-layouts.css
 
     echo '<link rel="stylesheet" type="text/css" href="assets/css/cssc-default.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/cssc-common.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/cssc-content.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/cssc-layouts.css" />
     ' >> $MAINDIR"inc/tpl/header/head.php";
 
 fi
@@ -180,7 +184,7 @@ fi
 # Installation de modules CSS au choix
 read -p "- Utiliser des modules CSSCommon (y/n) ? " use_csscommon
 if [[ $use_csscommon == 'y' ]]; then
-    css_sheets="buttons forms tables grid push navigation layouts tabs images print effects"
+    css_sheets="buttons forms tables grid push navigation tabs images print effects"
     for i in $css_sheets
     do
         read -p "-- Installer le module CSS "$i" (y/n)? " choice
