@@ -96,7 +96,7 @@ git clone https://github.com/Darklg/CSSCommon.git
 if [[ $use_compass == 'y' ]]; then
 
     # On cree les répertoires contenant le Scss
-    compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/"$project_id"/ images/main-sprite/ images/main-sprite_2x/";
+    compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/"$project_id"/ images/css-sprite/ images/css-sprite-2x/";
     for i in $compass_folders
     do
         if ! [ -d $i ]; then
@@ -107,7 +107,8 @@ if [[ $use_compass == 'y' ]]; then
 
     # On cree le fichier de config compass
     touch $MAINDIR"config.rb";
-    echo 'http_path = "/"
+    echo 'require File.join(File.dirname(__FILE__), "/assets/scss/utilities/list-files.rb")
+http_path = "/"
 css_dir = "assets/css"
 sass_dir = "assets/scss"
 images_dir = "assets/images"
@@ -143,8 +144,8 @@ $color-main: #000;
 /* Directories
 -------------------------- */
 
-// $sprites: sprite-map("main-sprite/*.png");       /* :) */
-// $sprites2x: sprite-map("main-sprite_2x/*.png");  /* :) */
+// $sprites: sprite-map("css-sprite/*.png");       /* :) */
+// $sprites2x: sprite-map("css-sprite-2x/*.png");  /* :) */
 
 /* ----------------------------------------------------------
   Utilities
