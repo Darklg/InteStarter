@@ -120,6 +120,7 @@ preferred_syntax = :scss' > $MAINDIR"config.rb";
 
     # On initialise le fichier principal
     touch $MAINDIR"assets/scss/main.scss";
+    touch $MAINDIR"assets/scss/"$project_id"/_base.scss";
 
     echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
 ' >> $MAINDIR"inc/tpl/header/head.php";
@@ -199,6 +200,17 @@ if [[ $use_csscommon == 'y' ]]; then
         esac
     done
 fi
+
+# Project file
+if [[ $use_compass == 'y' ]]; then
+echo '/* ----------------------------------------------------------
+  '$project_name'
+---------------------------------------------------------- */
+
+@import "'$project_id'/_base.scss";
+' >> $MAINDIR"assets/scss/main.scss";
+fi
+
 
 # On supprime CSSCommon
 rm -rf CSSCommon
