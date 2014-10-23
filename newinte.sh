@@ -120,6 +120,7 @@ preferred_syntax = :scss' > $MAINDIR"config.rb";
 
     # On initialise le fichier principal
     touch $MAINDIR"assets/scss/main.scss";
+    touch $MAINDIR"assets/scss/"$project_id"/_fonts.scss";
     touch $MAINDIR"assets/scss/"$project_id"/_base.scss";
 
     echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
@@ -211,6 +212,7 @@ echo '/* ----------------------------------------------------------
   '$project_name'
 ---------------------------------------------------------- */
 
+@import "'$project_id'/_fonts.scss";
 @import "'$project_id'/_base.scss";
 ' >> $MAINDIR"assets/scss/main.scss";
 fi
