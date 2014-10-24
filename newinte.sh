@@ -155,7 +155,7 @@ $color-main: #000;
 ---------------------------------------------------------- */
 
 @import "utilities/_plugins.scss";
-@import "utilities/_retina-sprites.scss";
+// @import "utilities/_retina-sprites.scss";
 
 /* ----------------------------------------------------------
   CSSCommon
