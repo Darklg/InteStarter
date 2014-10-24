@@ -147,8 +147,8 @@ $color-main: #000;
 /* Directories
 -------------------------- */
 
-// $sprites: sprite-map("main-sprite/*.png", $spacing: 10px);       /* :) */
-// $sprites2x: sprite-map("main-sprite_2x/*.png", $spacing: 10px);  /* :) */
+// $sprites: sprite-map("css-sprite/*.png", $spacing: 10px);       /* :) */
+// $sprites2x: sprite-map("css-sprite-2x/*.png", $spacing: 10px);  /* :) */
 
 /* ----------------------------------------------------------
   Utilities
