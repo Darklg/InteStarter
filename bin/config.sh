@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 #################################################################
 ## CONFIGURATION INITIALE
 #################################################################
@@ -17,8 +17,8 @@ case "$use_subfolder" in
     ;;
     * )
         # On récupère le contenu du dossier créé
-        mv InteStarter/* .
-        rm -rf InteStarter/
+        mv $MAINDIR"InteStarter/*" .
+        rm -rf $MAINDIR"InteStarter/"
     ;;
 esac
 
@@ -44,3 +44,4 @@ echo "define('PROJECT_URL','"${project_url/\'/’}"');" >> $MAINDIR"inc/config.p
 read -p "- Quel est la description rapide du projet ? " project_description
 echo "define('PROJECT_DESCRIPTION','"${project_description/\'/’}"');" >> $MAINDIR"inc/config.php";
 
+cd $MAINDIR;

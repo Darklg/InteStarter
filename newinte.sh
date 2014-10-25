@@ -2,39 +2,19 @@
 
 # On clone le repository
 echo '# - RECUPERATION DE INTESTARTER'
-# git clone https://github.com/Darklg/InteStarter.git
+git clone https://github.com/Darklg/InteStarter.git
 
+# Set main directory
 MAINDIR=${PWD}"/";
 
-chmod -R 777 bin/
-
-. bin/config.sh
-
 #################################################################
-## CREATION DES DOSSIERS
+## Basic steps
 #################################################################
 
-echo '## CREATION DES DOSSIERS';
+chmod -R 777 $MAINDIR"InteStarter/bin/"
 
-# On cree le repertoire des assets
-if ! [ -d assets/ ]; then
-  echo '- Creation de assets/';
-  mkdir assets/
-fi
-
-cd assets/
-
-# On cree les répertoires principaux
-main_folders="css/ images/ fonts/ js/ js/ie/";
-for i in $main_folders
-do
-    if ! [ -d $i ]; then
-      echo '- Creation de '$i;
-      mkdir $MAINDIR'assets/'$i;
-    fi
-done;
-
-cd $MAINDIR;
+. $MAINDIR"InteStarter/bin/config.sh"
+. $MAINDIR"bin/folders.sh"
 
 #################################################################
 ## GESTION DU CSS
@@ -291,6 +271,7 @@ cd $MAINDIR;
 # Suppression des fichiers inutiles & de développement
 rm -rf .git
 rm -rf files
+rm -rf bin
 rm README.md
 rm newinte.sh
 rm deploy.sh
