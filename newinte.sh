@@ -7,6 +7,9 @@ git clone https://github.com/Darklg/InteStarter.git
 # Set main directory
 MAINDIR=${PWD}"/";
 
+# Avoid .git conflict
+rm -rf $MAINDIR"InteStarter/.git/";
+
 #################################################################
 ## Basic steps
 #################################################################
@@ -30,7 +33,6 @@ echo '## MENAGE';
 cd $MAINDIR;
 
 # Suppression des fichiers inutiles & de développement
-rm -rf .git
 rm -rf files
 rm -rf bin
 rm README.md
