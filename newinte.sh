@@ -106,17 +106,7 @@ if [[ $use_compass == 'y' ]]; then
     done;
 
     # On cree le fichier de config compass
-    touch $MAINDIR"config.rb";
-    echo 'require File.join(File.dirname(__FILE__), "/assets/scss/utilities/list-files.rb")
-http_path = "/"
-css_dir = "assets/css"
-sass_dir = "assets/scss"
-images_dir = "assets/images"
-javascripts_dir = "assets/js"
-output_style = :compressed
-relative_assets = true
-line_comments = false
-preferred_syntax = :scss' > $MAINDIR"config.rb";
+    mv $MAINDIR"files/config.rb" $MAINDIR"config.rb";
 
     # On initialise le fichier principal
     touch $MAINDIR"assets/scss/main.scss";
@@ -133,39 +123,7 @@ preferred_syntax = :scss' > $MAINDIR"config.rb";
 
     cp -R CSSCommon/scss/utilities/ scss/utilities/
 
-    echo '@charset "UTF-8";
-
-/* ----------------------------------------------------------
-  Config
----------------------------------------------------------- */
-
-/* Vars
--------------------------- */
-
-$color-main: #000;
-
-/* Directories
--------------------------- */
-
-// $sprites: sprite-map("css-sprite/*.png", $spacing: 10px);       /* :) */
-// $sprites2x: sprite-map("css-sprite-2x/*.png", $spacing: 10px);  /* :) */
-
-/* ----------------------------------------------------------
-  Utilities
----------------------------------------------------------- */
-
-@import "utilities/_plugins.scss";
-// @import "utilities/_retina-sprites.scss";
-
-/* ----------------------------------------------------------
-  CSSCommon
----------------------------------------------------------- */
-
-@import "csscommon/_cssc-default.scss";
-@import "csscommon/_cssc-common.scss";
-@import "csscommon/_cssc-content.scss";
-@import "csscommon/_cssc-layouts.scss";
-' >> $MAINDIR"assets/scss/main.scss";
+    mv $MAINDIR"files/main.scss" $MAINDIR"assets/scss/main.scss";
 
 else
     cp CSSCommon/css/cssc-default.css css/cssc-default.css
@@ -286,19 +244,7 @@ if [[ $use_grunt == 'y' ]]; then
     npm install --save-dev grunt-shell;
 
     # Create Grunt File
-    echo "module.exports = function(grunt) {
-    // Load modules
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-
-    // Project configuration.
-    grunt.initConfig({
-        clean: ['**/.DS_Store', '**/thumbs.db']
-    });
-
-    // Load tasks
-    grunt.registerTask('default', []);
-};" > $MAINDIR"Gruntfile.js";
+    mv $MAINDIR"files/Gruntfile.js" $MAINDIR"Gruntfile.js";
 fi;
 
 cd $MAINDIR;
@@ -385,6 +331,7 @@ cd $MAINDIR;
 
 # Suppression des fichiers inutiles & de développement
 rm -rf .git
+rm -rf files
 rm README.md
 rm newinte.sh
 rm deploy.sh
