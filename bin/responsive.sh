@@ -25,6 +25,12 @@ case "$is_responsive" in
         if [[ $use_compass == 'y' ]]; then
         echo '@charset "UTF-8";
 
+body {
+    width: '$content_width_wide'px;
+    font: 13px/1.2 $font-main;
+    color: $color-main;
+}
+
 /* ----------------------------------------------------------
   Layout
 ---------------------------------------------------------- */
