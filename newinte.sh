@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Test commands
+main_commands="npm grunt git";
+for i in $main_commands
+do
+    command -v $i >/dev/null 2>&1 || { echo >&2 "Vous avez besoin du programme \""$i"\" pour continuer."; exit 1; }
+done;
+
 # On clone le repository
 echo '# - RECUPERATION DE INTESTARTER'
 git clone https://github.com/Darklg/InteStarter.git
