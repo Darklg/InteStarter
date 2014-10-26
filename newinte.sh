@@ -13,6 +13,12 @@ git clone https://github.com/Darklg/InteStarter.git
 
 # Set main directory
 MAINDIR=${PWD}"/";
+DIRECTORY=$MAINDIR"InteStarter/";
+
+if [ ! -d "$DIRECTORY" ]; then
+    echo 'Le clonage a échoué';
+    exit 1;
+fi
 
 # Avoid .git conflict
 rm -rf $MAINDIR"InteStarter/.git/";
