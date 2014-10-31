@@ -17,7 +17,7 @@ case "$use_subfolder" in
     ;;
     * )
         # On récupère le contenu du dossier créé
-        mv "InteStarter/*" .
+        mv InteStarter/* .
         rm -rf "InteStarter/";
     ;;
 esac
