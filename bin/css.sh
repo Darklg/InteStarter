@@ -6,10 +6,7 @@
 
 echo '## GESTION DU CSS';
 
-cd assets/
-
-# Configuration du viewport
-read -p "- Doit-on utiliser Compass (y/n) ? " use_compass
+cd "assets/";
 
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
@@ -64,7 +61,6 @@ fi
 
 
 # Installation de modules CSS au choix
-read -p "- Utiliser des modules CSSCommon (y/n) ? " use_csscommon
 if [[ $use_csscommon == 'y' ]]; then
     css_sheets="buttons forms tables grid push navigation tabs images print effects"
     for i in $css_sheets

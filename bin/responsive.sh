@@ -7,7 +7,6 @@
 echo '## VIEWPORT & RESPONSIVE';
 
 # Configuration du viewport
-read -p "- Est-ce un site responsive (y/n) ? " is_responsive
 case "$is_responsive" in
     y|Y|O|o )
         sed -i '' 's/width=980/width=device-width/' $MAINDIR"inc/tpl/header/head.php";

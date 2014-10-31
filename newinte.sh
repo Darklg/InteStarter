@@ -48,6 +48,7 @@ cd "$MAINDIR";
 # Suppression des fichiers inutiles & de développement
 rm -rf files
 rm -rf bin
+rm -rf .sass-cache
 rm README.md
 rm newinte.sh
 rm deploy.sh

@@ -10,8 +10,7 @@ echo '## GESTION DU JS';
 cd assets/js/
 
 # On propose de télécharger une librairie JS
-read -p "- Utiliser Mootools, jQuery, ou aucune librairie (m/j/n) ? " choice
-case "$choice" in
+case "${chosen_jslib}" in
     m|M )
         echo '- Installation de MooTools';
         mkdir jquery;
