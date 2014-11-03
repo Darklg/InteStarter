@@ -7,6 +7,8 @@ do
     command -v "$i" >/dev/null 2>&1 || { echo >&2 "Vous avez besoin du programme \"${i}\" pour continuer."; exit 1; }
 done;
 
+EXECDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+
 # On clone le repository
 echo '# - RECUPERATION DE INTESTARTER'
 git clone https://github.com/Darklg/InteStarter.git
@@ -27,15 +29,13 @@ rm -rf "${MAINDIR}InteStarter/.git/";
 ## Basic steps
 #################################################################
 
-chmod -R 777 "${MAINDIR}InteStarter/bin/"
-
-. "${MAINDIR}InteStarter/bin/config.sh"
-. "${MAINDIR}bin/folders.sh"
-. "${MAINDIR}bin/css.sh"
-. "${MAINDIR}bin/js.sh"
-. "${MAINDIR}bin/grunt.sh"
-. "${MAINDIR}bin/ie.sh"
-. "${MAINDIR}bin/responsive.sh"
+. "${EXECDIR}/bin/config.sh";
+. "${EXECDIR}/bin/folders.sh";
+. "${EXECDIR}/bin/css.sh";
+. "${EXECDIR}/bin/js.sh";
+. "${EXECDIR}/bin/grunt.sh";
+. "${EXECDIR}/bin/ie.sh";
+. "${EXECDIR}/bin/responsive.sh";
 
 #################################################################
 ## MENAGE
