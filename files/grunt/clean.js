@@ -1,0 +1,1 @@
+module.exports = ['**/.DS_Store', '**/thumbs.db'];
