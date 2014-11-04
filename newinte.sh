@@ -43,7 +43,7 @@ rm -rf "${MAINDIR}InteStarter/.git/";
 
 echo '## MENAGE';
 
-cd "$MAINDIR";
+cd "${MAINDIR}";
 
 # Suppression des fichiers inutiles & de développement
 rm -rf files
