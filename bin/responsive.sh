@@ -13,7 +13,6 @@ case "${is_responsive}" in
         sed -i '' 's/<body>/<body class="cssc-is-responsive">/' "${MAINDIR}inc/tpl/header.php";
     ;;
     * )
-        read -p "- Quelle est la largeur du contenu sans marges (Default:980) ? " content_width
         if [[ $content_width == '' ]]; then
             content_width=980
         fi

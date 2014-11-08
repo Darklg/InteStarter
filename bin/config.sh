@@ -58,5 +58,13 @@ read -p "- Utiliser Mootools, jQuery, ou aucune librairie (m/j/n) ? " chosen_jsl
 
 # Responsive
 read -p "- Est-ce un site responsive (y/n) ? " is_responsive
+case "${is_responsive}" in
+    y|Y|O|o )
+    ;;
+    * )
+        read -p "- Quelle est la largeur du contenu sans marges (Default:980) ? " content_width
+    ;;
+esac
 
 cd "${MAINDIR}";
+
