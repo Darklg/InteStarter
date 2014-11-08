@@ -68,3 +68,10 @@ esac
 
 cd "${MAINDIR}";
 
+#################################################################
+## Basic values
+#################################################################
+
+compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/";
+csscommon_default_modules="default common content buttons forms layouts";
+csscommon_additional_modules="tables grid push navigation tabs images print effects";
