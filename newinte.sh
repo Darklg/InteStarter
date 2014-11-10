@@ -22,6 +22,11 @@ if [ ! -d "$DIRECTORY" ]; then
     exit 1;
 fi
 
+# Use cloned files if launch from URL
+if [ ! -f "${EXECDIR}/bin/config.sh" ]; then
+    EXECDIR="${DIRECTORY}";
+fi
+
 # Avoid .git conflict
 rm -rf "${MAINDIR}InteStarter/.git/";
 
