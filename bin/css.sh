@@ -79,6 +79,15 @@ if [[ $use_csscommon == 'y' ]]; then
     done
 fi
 
+# Img sprite
+if [[ $use_compass_imgsprite == 'y' ]];then
+    # Copy images
+    mv "${MAINDIR}files/icon-letter.png" "${MAINDIR}assets/images/css-sprite/icon-letter.png";
+    mv "${MAINDIR}files/icon-letter-big.png" "${MAINDIR}assets/images/css-sprite-2x/icon-letter.png";
+    # Update scss
+    sed -i '' 's/\/\/\ imgsprite\ //g' "${MAINDIR}assets/scss/main.scss";
+fi;
+
 if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "

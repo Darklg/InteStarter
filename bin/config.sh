@@ -46,6 +46,10 @@ echo "define('PROJECT_DESCRIPTION','${project_description/\'/’}');" >> "${MAIN
 
 # Utilisation de Compass
 read -p "- Utiliser Compass (y/n) ? " use_compass
+use_compass_imgsprite='';
+if [[ $use_compass == 'y' ]]; then
+    read -p "-- Compass : Utiliser des sprites image (y/n) ? " use_compass_imgsprite
+fi;
 
 # Modules supplementaires CSSCommon
 read -p "- Utiliser des modules supplementaires CSSCommon (y/n) ? " use_csscommon
@@ -58,6 +62,7 @@ read -p "- Utiliser Mootools, jQuery, ou aucune librairie (m/j/n) ? " chosen_jsl
 
 # Responsive
 read -p "- Est-ce un site responsive (y/n) ? " is_responsive
+content_width='';
 case "${is_responsive}" in
     y|Y|O|o )
     ;;
