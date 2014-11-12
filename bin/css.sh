@@ -33,8 +33,9 @@ if [[ $use_compass == 'y' ]]; then
     touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_base.scss";
 
-    echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css" />' >> "${MAINDIR}inc/tpl/header/head.php";
-
+    if [[ $use_onlyassets != 'y' ]]; then
+        echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css" />' >> "${MAINDIR}inc/tpl/header/head.php";
+    fi;
     for i in $csscommon_default_modules
     do
         cp "CSSCommon/css/cssc-${i}.css" "scss/csscommon/_cssc-${i}.scss";
@@ -52,7 +53,9 @@ else
     for i in $csscommon_default_modules
     do
         cp "CSSCommon/css/cssc-${i}.css" "css/cssc-${i}.css";
-        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/cssc-${i}.css\" />" >> "${MAINDIR}inc/tpl/header/head.php";
+        if [[ $use_onlyassets != 'y' ]]; then
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/cssc-${i}.css\" />" >> "${MAINDIR}inc/tpl/header/head.php";
+        fi;
     done;
 
 fi
@@ -71,7 +74,9 @@ if [[ $use_csscommon == 'y' ]]; then
                     echo "@import \"csscommon/_cssc-${i}.scss\";"; >> "${MAINDIR}assets/scss/main.scss";
                 else
                     cp "CSSCommon/css/cssc-${i}.css" "css/cssc-${i}.css";
-                    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/cssc-${i}.css\" />" >> "${MAINDIR}inc/tpl/header/head.php";
+                    if [[ $use_onlyassets != 'y' ]]; then
+                        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/cssc-${i}.css\" />" >> "${MAINDIR}inc/tpl/header/head.php";
+                    fi;
                 fi
             ;;
             * );;
@@ -96,7 +101,7 @@ echo "
 ---------------------------------------------------------- */
 
 @import \"${project_id}/_fonts.scss\";
-@import \"${project_id}'/_base.scss\";
+@import \"${project_id}/_base.scss\";
 " >> "${MAINDIR}assets/scss/main.scss";
 
 # Forms file

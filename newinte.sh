@@ -58,4 +58,10 @@ rm README.md
 rm newinte.sh
 rm deploy.sh
 
+# Suppression des fichiers non assets
+if [[ $use_onlyassets == 'y' ]]; then
+    rm -rf inc/
+    rm -rf index.php
+fi;
+
 echo '## FINI !'

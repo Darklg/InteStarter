@@ -18,7 +18,9 @@ case "${chosen_jslib}" in
         mkdir classes;
         curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js;
         if test -f mootools-yui-compressed.js; then
-            echo '<script src="assets/js/mootools/mootools-yui-compressed.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+            if [[ $use_onlyassets != 'y' ]]; then
+                echo '<script src="assets/js/mootools/mootools-yui-compressed.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+            fi;
             echo "window.addEvent('domready',function(){});" > "${MAINDIR}assets/js/events.js";
         fi
     ;;
@@ -29,13 +31,17 @@ case "${chosen_jslib}" in
         mkdir plugins;
         curl -O http://code.jquery.com/jquery.min.js;
         if test -f jquery.min.js; then
-            echo '<script src="assets/js/jquery/jquery.min.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+            if [[ $use_onlyassets != 'y' ]]; then
+                echo '<script src="assets/js/jquery/jquery.min.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+            fi;
             echo "jQuery(document).ready(function($) {});" > "${MAINDIR}assets/js/events.js";
         fi
     ;;
     * )
         echo '- Aucune librairie utilisée.';
-        echo '<script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+        if [[ $use_onlyassets != 'y' ]]; then
+            echo '<script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+        fi;
         echo "(function(){})();" > "${MAINDIR}assets/js/events.js";
     ;;
 esac
