@@ -85,9 +85,17 @@ define('PROJECT_DESCRIPTION','${project_description/\'/’}');
 " >> "${MAINDIR}inc/config.php";
 fi;
 
-#################################################################
+###################################
+## Styleguide classes
+###################################
+
+if [[ $use_onlyassets != 'y' ]]; then
+    sed -i '' "s/--default/--${project_id}/" "${MAINDIR}index.php";
+fi;
+
+###################################
 ## Basic values
-#################################################################
+###################################
 
 compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/";
 csscommon_default_modules="default common content buttons forms layouts";
