@@ -10,22 +10,8 @@ echo '## GESTION DU JS';
 cd assets/js/
 
 # On propose de télécharger une librairie JS
-case "${chosen_jslib}" in
-    m|M )
-        echo '- Installation de MooTools';
-        mkdir mootools;
-        cd mootools;
-        mkdir classes;
-        curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js;
-        if test -f mootools-yui-compressed.js; then
-            if [[ $use_onlyassets != 'y' ]]; then
-                echo '<script src="assets/js/mootools/mootools-yui-compressed.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
-            fi;
-            echo "window.addEvent('domready',function(){});" > "${MAINDIR}assets/js/events.js";
-        fi
-        cd "${MAINDIR}";
-    ;;
-    j|J )
+case "${use_jquery}" in
+    j|J|o|O|Y|y )
         echo '- Installation de jQuery';
         mkdir jquery;
         cd jquery;

@@ -57,7 +57,7 @@ read -p "- Utiliser des modules supplementaires CSSCommon (y/n) ? " use_csscommo
 read -p "- Utiliser Grunt (y/n) ? " use_grunt
 
 # Bibliothèque JS
-read -p "- Utiliser Mootools, jQuery, ou aucune librairie (m/j/n) ? " chosen_jslib
+read -p "- Utiliser jQuery (y/n) ? " use_jquery
 
 # Responsive
 read -p "- Est-ce un site responsive (y/n) ? " is_responsive
