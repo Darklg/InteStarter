@@ -13,8 +13,8 @@ cd assets/js/
 case "${chosen_jslib}" in
     m|M )
         echo '- Installation de MooTools';
-        mkdir jquery;
-        cd jquery;
+        mkdir mootools;
+        cd mootools;
         mkdir classes;
         curl -O http://ajax.googleapis.com/ajax/libs/mootools/1.4/mootools-yui-compressed.js;
         if test -f mootools-yui-compressed.js; then
@@ -23,6 +23,7 @@ case "${chosen_jslib}" in
             fi;
             echo "window.addEvent('domready',function(){});" > "${MAINDIR}assets/js/events.js";
         fi
+        cd "${MAINDIR}";
     ;;
     j|J )
         echo '- Installation de jQuery';
@@ -36,6 +37,7 @@ case "${chosen_jslib}" in
             fi;
             echo "jQuery(document).ready(function($) {});" > "${MAINDIR}assets/js/events.js";
         fi
+        cd "${MAINDIR}";
     ;;
     * )
         echo '- Aucune librairie utilisée.';
