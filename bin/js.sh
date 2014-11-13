@@ -34,4 +34,36 @@ case "${use_jquery}" in
     ;;
 esac
 
-cd "${MAINDIR}";
+###################################
+## Use JSUtilities
+###################################
+
+if [[ $add_jsutilities_plugins == 'y' ]]; then
+    # Clone repository
+    git clone https://github.com/Darklg/JavaScriptUtilities.git
+
+    # Install default plugins
+    case "${use_jquery}" in
+        j|J|o|O|Y|y )
+            echo '- Installation de plugins jQuery';
+            for i in $jquery_plugins
+            do
+                cp -r "${directory_jsu}${jquery_path}${i}/" "${MAINDIR}${jquery_path}${i}/";
+                echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${MAINDIR}inc/tpl/header/head.php";
+                css_file="assets/css/${i}.css";
+                if [[ $use_compass == 'y' ]]; then
+                    cat ${directory_jsu}${css_file} >> "${MAINDIR}assets/scss/utilities/_plugins.scss";
+                else
+                    cp "${directory_jsu}${css_file}" "${MAINDIR}${css_file}";
+                    if [[ $use_onlyassets != 'y' ]]; then
+                        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"${css_file}\" />" >> "${MAINDIR}inc/tpl/header/head.php";
+                    fi;
+                fi;
+            done;
+        ;;
+    esac
+
+    # Delete folder
+    rm -rf "${MAINDIR}JavaScriptUtilities";
+fi;
+

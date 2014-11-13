@@ -46,6 +46,11 @@ rm -rf "${MAINDIR}InteStarter/.git/";
 ## MENAGE
 #################################################################
 
+# Generate file
+if [[ $use_compass == 'y' ]]; then
+    compass compile;
+fi;
+
 echo '## MENAGE';
 
 cd "${MAINDIR}";

@@ -125,13 +125,7 @@ echo "@charset \"UTF-8\";
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi
 
-
 # On supprime CSSCommon
 rm -rf CSSCommon
 
 cd "${MAINDIR}";
-
-# Generate file
-if [[ $use_compass == 'y' ]]; then
-    compass compile;
-fi;

@@ -59,6 +59,9 @@ read -p "- Utiliser Grunt (y/n) ? " use_grunt
 # Bibliothèque JS
 read -p "- Utiliser jQuery (y/n) ? " use_jquery
 
+# Plugins JS
+read -p "- Utiliser des plugins JSUtilities ? " add_jsutilities_plugins
+
 # Responsive
 read -p "- Est-ce un site responsive (y/n) ? " is_responsive
 content_width='';
@@ -97,6 +100,12 @@ fi;
 ## Basic values
 ###################################
 
+# CSS / COMPASS
 compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/";
 csscommon_default_modules="default common content buttons forms layouts";
 csscommon_additional_modules="tables grid push navigation tabs images print effects";
+
+# JS / JSU
+directory_jsu="${MAINDIR}JavaScriptUtilities/";
+jquery_plugins="fake-select fake-inputbox";
+jquery_path="assets/js/jquery/plugins/";
