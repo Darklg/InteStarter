@@ -31,7 +31,7 @@ if [[ $use_grunt != 'n' ]]; then
         mv "${MAINDIR}files/grunt/svgmin.js" "${MAINDIR}grunt/svgmin.js";
         mv "${MAINDIR}files/grunt/webfont.js" "${MAINDIR}grunt/webfont.js";
 
-        sed -i '' "s/PROJECTID/${project_id}/g" "${MAINDIR}assets/scss/main.scss";
+        sed -i '' "s/PROJECTID/${project_id}/g" "${MAINDIR}grunt/webfont.js";
 
         # Add build command
         echo "
