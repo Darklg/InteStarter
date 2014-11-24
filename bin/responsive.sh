@@ -28,7 +28,7 @@ case "${is_responsive}" in
         echo '@charset "UTF-8";
 
 body {
-    width: '$content_width_wide'px;
+    min-width: '$content_width_wide'px;
     font: 13px/1.2 $font-main;
     color: $color-main;
 }
