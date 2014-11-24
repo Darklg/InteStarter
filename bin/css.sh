@@ -15,6 +15,7 @@ git clone https://github.com/Darklg/CSSCommon.git
 # On installe les feuilles de style
 if [[ $use_compass == 'y' ]]; then
 
+
     # On cree les répertoires contenant le Scss
     for i in $compass_folders
     do
@@ -28,7 +29,7 @@ if [[ $use_compass == 'y' ]]; then
     mv "${MAINDIR}files/config.rb" "${MAINDIR}config.rb";
 
     # On initialise le fichier principal
-    touch "${MAINDIR}assets/scss/main.scss";
+    mv "${MAINDIR}files/main.scss" "${MAINDIR}assets/scss/main.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_fonts.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_base.scss";
@@ -45,9 +46,6 @@ if [[ $use_compass == 'y' ]]; then
     cp -R CSSCommon/scss/utilities/ scss/utilities/
 
     sed -i '' 's/images\/css-sprite/assets\/images\/css-sprite/' scss/utilities/_retina-sprites.scss
-
-
-    mv "${MAINDIR}files/main.scss" "${MAINDIR}assets/scss/main.scss";
 
 else
 
