@@ -106,6 +106,7 @@ fi;
 # Font icon
 if [[ $use_compass_fonticon == 'y' ]];then
     mv "${MAINDIR}files/icn-heart.svg" "${MAINDIR}assets/icons/original/icn-heart.svg";
+    touch "${MAINDIR}assets/scss/${project_id}/_icons.scss";
     echo "@import \"${project_id}/_icons.scss\";" >> "${MAINDIR}assets/scss/main.scss";
     # Update Scss
     sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
