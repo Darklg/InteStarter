@@ -102,8 +102,8 @@ fi;
 
 # CSS / COMPASS
 compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/";
-csscommon_default_modules="default common content buttons forms layouts";
-csscommon_additional_modules="tables grid push navigation tabs images print effects";
+csscommon_default_modules="default common content buttons forms grid layouts";
+csscommon_additional_modules="tables push navigation tabs images print effects";
 
 # JS / JSU
 directory_jsu="${MAINDIR}JavaScriptUtilities/";
