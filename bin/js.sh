@@ -7,7 +7,7 @@
 echo '## GESTION DU JS';
 
 # On ajoute les fichiers JS essentiels
-cd assets/js/
+cd "${MAINDIR}assets/js/";
 
 # On propose de télécharger une librairie JS
 case "${use_jquery}" in
