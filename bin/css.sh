@@ -100,8 +100,20 @@ echo "
 /* ----------------------------------------------------------
   ${project_name}
 ---------------------------------------------------------- */
+" >> "${MAINDIR}assets/scss/main.scss";
+fi;
 
-@import \"${project_id}/_fonts.scss\";
+# Font icon
+if [[ $use_compass_fonticon == 'y' ]];then
+    mv "${MAINDIR}files/icn-heart.svg" "${MAINDIR}assets/icons/original/icn-heart.svg";
+    echo "@import \"${project_id}/_icons.scss\";" >> "${MAINDIR}assets/scss/main.scss";
+    # Update Scss
+    sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
+fi;
+
+if [[ $use_compass == 'y' ]]; then
+# Project file
+echo "@import \"${project_id}/_fonts.scss\";
 @import \"${project_id}/_base.scss\";
 " >> "${MAINDIR}assets/scss/main.scss";
 

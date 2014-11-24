@@ -51,6 +51,7 @@ read -p "- Utiliser Compass (y/n) ? " use_compass
 use_compass_imgsprite='';
 if [[ $use_compass == 'y' ]]; then
     read -p "-- Compass : Utiliser des sprites image (y/n) ? " use_compass_imgsprite
+    read -p "-- Compass : Utiliser une font-icon (y/n) ? " use_compass_fonticon
 fi;
 
 # Modules supplementaires CSSCommon
@@ -104,7 +105,7 @@ fi;
 ###################################
 
 # CSS / COMPASS
-compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/";
+compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/ icons/ icons/original/";
 csscommon_default_modules="default common content buttons forms grid layouts";
 csscommon_additional_modules="tables push navigation tabs images print effects";
 

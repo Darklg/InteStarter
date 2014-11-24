@@ -13,9 +13,35 @@ if [[ $use_grunt != 'n' ]]; then
     npm install --save-dev load-grunt-config;
     npm install --save-dev grunt-contrib-clean;
 
-    # Create Grunt File
+    # Create Grunt Files
+    mkdir "${MAINDIR}grunt";
     mv "${MAINDIR}files/Gruntfile.js" "${MAINDIR}Gruntfile.js";
-    mv "${MAINDIR}files/grunt" "${MAINDIR}grunt";
+    mv "${MAINDIR}files/grunt/clean.js" "${MAINDIR}grunt/clean.js";
+    mv "${MAINDIR}files/grunt/aliases.yaml" "${MAINDIR}grunt/aliases.yaml";
+
+    if [[ $use_compass_fonticon == 'y' ]];then
+
+        # Install fonticons modules
+        npm install --save-dev grunt-svgmin;
+        npm install --save-dev grunt-webfont;
+        npm install --save-dev grunt-contrib-compass;
+
+        # Copy Grunt utilities
+        mv "${MAINDIR}files/grunt/compass.js" "${MAINDIR}grunt/compass.js";
+        mv "${MAINDIR}files/grunt/svgmin.js" "${MAINDIR}grunt/svgmin.js";
+        mv "${MAINDIR}files/grunt/webfont.js" "${MAINDIR}grunt/webfont.js";
+
+        sed -i '' "s/PROJECTID/${project_id}/g" "${MAINDIR}assets/scss/main.scss";
+
+        # Add build command
+        echo "
+build:
+- 'svgmin'
+- 'webfont'
+- 'compass'
+- 'clean'" >> "${MAINDIR}grunt/aliases.yaml";
+    fi;
+
 fi;
 
 cd "${MAINDIR}";

@@ -51,6 +51,11 @@ if [[ $use_compass == 'y' ]]; then
     compass compile;
 fi;
 
+# First build
+if [[ $use_grunt != 'n' && $use_compass_fonticon == 'y' ]];then
+    grunt build;
+fi;
+
 echo '## MENAGE';
 
 cd "${MAINDIR}";
