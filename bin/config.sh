@@ -8,6 +8,9 @@ echo '## CONFIGURATION INITIALE';
 
 # Seulement assets
 read -p "- Récupérer uniquement les assets (y/n) ? " use_onlyassets
+if [[ $use_onlyassets == 'y' ]]; then
+    rm -rf "InteStarter/inc";
+fi;
 
 # Choix du dossier
 read -p "- Créer un sous-dossier \"inte\" (y/n) ? " use_subfolder
