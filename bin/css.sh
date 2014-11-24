@@ -39,7 +39,7 @@ if [[ $use_compass == 'y' ]]; then
     for i in $csscommon_default_modules
     do
         cp "CSSCommon/css/cssc-${i}.css" "scss/csscommon/_cssc-${i}.scss";
-        echo "@import \"csscommon/_cssc-${i}.scss\";"; >> "${MAINDIR}assets/scss/main.scss";
+        echo "@import \"csscommon/_cssc-${i}.scss\";" >> "${MAINDIR}assets/scss/main.scss";
     done;
 
     cp -R CSSCommon/scss/utilities/ scss/utilities/
@@ -72,7 +72,7 @@ if [[ $use_csscommon == 'y' ]]; then
 
                 if [[ $use_compass == 'y' ]]; then
                     cp "CSSCommon/css/cssc-${i}.css" "scss/csscommon/_cssc-${i}.scss";
-                    echo "@import \"csscommon/_cssc-${i}.scss\";"; >> "${MAINDIR}assets/scss/main.scss";
+                    echo "@import \"csscommon/_cssc-${i}.scss\";" >> "${MAINDIR}assets/scss/main.scss";
                 else
                     cp "CSSCommon/css/cssc-${i}.css" "css/cssc-${i}.css";
                     if [[ $use_onlyassets != 'y' ]]; then
