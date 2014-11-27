@@ -12,11 +12,13 @@ if [[ $use_grunt != 'n' ]]; then
     npm install --save-dev grunt;
     npm install --save-dev load-grunt-config;
     npm install --save-dev grunt-contrib-clean;
+    npm install --save-dev grunt-uncss;
 
     # Create Grunt Files
     mkdir "${MAINDIR}grunt";
     mv "${MAINDIR}files/Gruntfile.js" "${MAINDIR}Gruntfile.js";
     mv "${MAINDIR}files/grunt/clean.js" "${MAINDIR}grunt/clean.js";
+    mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
     mv "${MAINDIR}files/grunt/aliases.yaml" "${MAINDIR}grunt/aliases.yaml";
 
     if [[ $use_compass_fonticon == 'y' ]];then
