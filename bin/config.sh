@@ -1,5 +1,25 @@
 #!/bin/bash
 
+###################################
+## Questions
+###################################
+
+function intestarter_yn() {
+    default_choice="[Y/n]";
+    if [[ ${2} == 'n' ]]; then
+        default_choice="[y/N]";
+    fi;
+    while true; do
+        read -p "${1} ${default_choice} : " yn
+        case $yn in
+            [YyOo]* ) yn="y"; break;;
+            [Nn]* ) yn="n"; break;;
+            * ) yn=${2}; break;;
+        esac
+    done
+    echo "${yn}";
+}
+
 #################################################################
 ## CONFIGURATION INITIALE
 #################################################################
@@ -7,13 +27,10 @@
 echo '## CONFIGURATION INITIALE';
 
 # Seulement assets
-read -p "- Récupérer uniquement les assets (y/n) ? " use_onlyassets
-if [[ $use_onlyassets == 'y' ]]; then
-    rm -rf "InteStarter/inc";
-fi;
+use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
 
 # Choix du dossier
-read -p "- Créer un sous-dossier \"inte\" (y/n) ? " use_subfolder
+use_subfolder=$(intestarter_yn "- Créer un sous-dossier \"inte\" ?" 'n');
 case "$use_subfolder" in
     y|Y|O|o )
         # On renomme le dossier créé et on s'y déplace
@@ -47,35 +64,32 @@ read -p "- Quelle est l'URL du projet ? " project_url
 read -p "- Quelle est la description rapide du projet ? " project_description
 
 # Utilisation de Compass
-read -p "- Utiliser Compass (y/n) ? " use_compass
+use_compass=$(intestarter_yn "- Utiliser Compass ?" 'y');
+use_compass_fonticon='';
 use_compass_imgsprite='';
 if [[ $use_compass == 'y' ]]; then
-    read -p "-- Compass : Utiliser des sprites image (y/n) ? " use_compass_imgsprite
-    read -p "-- Compass : Utiliser une font-icon (y/n) ? " use_compass_fonticon
+    use_compass_fonticon=$(intestarter_yn "- -- Compass : Utiliser une font-icon ?" 'y');
+    use_compass_imgsprite=$(intestarter_yn "- -- Compass : Utiliser des sprites image ?" 'n');
 fi;
 
 # Modules supplementaires CSSCommon
-read -p "- Utiliser des modules supplementaires CSSCommon (y/n) ? " use_csscommon
+use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon ?" 'n');
 
 # Utilisation de Grunt
-read -p "- Utiliser Grunt (y/n) ? " use_grunt
+use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
 
 # Bibliothèque JS
-read -p "- Utiliser jQuery (y/n) ? " use_jquery
+use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
 
 # Plugins JS
-read -p "- Utiliser des plugins JSUtilities ? " add_jsutilities_plugins
+add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
 
 # Responsive
-read -p "- Est-ce un site responsive (y/n) ? " is_responsive
+is_responsive=$(intestarter_yn "- Est-ce un site responsive ?" 'y');
 content_width='';
-case "${is_responsive}" in
-    y|Y|O|o )
-    ;;
-    * )
-        read -p "- Quelle est la largeur du contenu sans marges (Default:980) ? " content_width
-    ;;
-esac
+if [[ $is_responsive == 'n' ]]; then
+    read -p "- Quelle est la largeur du contenu sans marges (Default:980) ? " content_width
+fi;
 
 cd "${MAINDIR}";
 
@@ -83,7 +97,7 @@ cd "${MAINDIR}";
 ## Write config
 ###################################
 
-if [[ $use_onlyassets != 'y' ]]; then
+if [[ $use_onlyassets == 'n' ]]; then
     echo "
 define('PROJECT_NAME','${project_name/\'/’}');
 define('PROJECT_ID','${project_id/\'/’}');
@@ -96,7 +110,7 @@ fi;
 ## Styleguide classes
 ###################################
 
-if [[ $use_onlyassets != 'y' ]]; then
+if [[ $use_onlyassets == 'n' ]]; then
     sed -i '' "s/--default/--${project_id}/" "${MAINDIR}index.php";
 fi;
 
