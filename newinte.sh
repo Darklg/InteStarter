@@ -39,7 +39,9 @@ rm -rf "${MAINDIR}InteStarter/.git/";
 . "${EXECDIR}/bin/css.sh";
 . "${EXECDIR}/bin/js.sh";
 . "${EXECDIR}/bin/grunt.sh";
-. "${EXECDIR}/bin/ie.sh";
+if [[ $support_ie8 == 'y' ]]; then
+    . "${EXECDIR}/bin/ie.sh";
+fi;
 . "${EXECDIR}/bin/responsive.sh";
 
 #################################################################
