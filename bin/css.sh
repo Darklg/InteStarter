@@ -34,8 +34,8 @@ if [[ $use_compass == 'y' ]]; then
     touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_base.scss";
 
-    if [[ $use_onlyassets != 'y' ]]; then
-        echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css" />' >> "${MAINDIR}inc/tpl/header/head.php";
+    if [[ $use_onlyassets == 'n' ]]; then
+        echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css?v=<?php echo time(); ?>" />' >> "${MAINDIR}inc/tpl/header/head.php";
     fi;
     for i in $csscommon_default_modules
     do
