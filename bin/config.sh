@@ -1,9 +1,10 @@
 #!/bin/bash
 
 ###################################
-## Questions
+## Functions
 ###################################
 
+## Questions
 function intestarter_yn() {
     default_choice="[Y/n]";
     if [[ ${2} == 'n' ]]; then
@@ -18,6 +19,20 @@ function intestarter_yn() {
         esac
     done
     echo "${yn}";
+}
+
+## Create slug
+function intestarter_slug() {
+    # Thx to https://gist.github.com/saml/4674977
+    title="$1";
+    max_length="${2:-48}";
+    slug="$({
+        tr '[A-Z]' '[a-z]' | tr -cs '[[:alnum:]]' '-'
+    } <<< "$title")";
+    slug="${slug##-}";
+    slug="${slug%%-}";
+    slug="${slug:0:$max_length}";
+    echo "${slug}";
 }
 
 #################################################################
@@ -54,7 +69,7 @@ fi;
 # On recupere l'ID du projet
 read -p "- Quel est l'ID de ce projet ? (default) " project_id
 if [[ $project_id == '' ]]; then
-    project_id='default';
+    project_id=$(intestarter_slug "${project_name}");
 fi;
 
 # On recupere l'URL du projet
