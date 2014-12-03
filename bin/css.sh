@@ -90,7 +90,17 @@ if [[ $use_compass_imgsprite == 'y' ]];then
     mv "${MAINDIR}files/icon-letter-big.png" "${MAINDIR}assets/images/css-sprite-2x/icon-letter.png";
     # Update scss
     sed -i '' 's/\/\/\ imgsprite\ //g' "${MAINDIR}assets/scss/main.scss";
+else
+    # Delete useless files
+    rm "${MAINDIR}assets/scss/utilities/_retina-sprites.scss";
+    rm "${MAINDIR}assets/scss/utilities/list-files.rb";
+    # Delete useless folders
+    rm -rf "${MAINDIR}assets/images/css-sprite/";
+    rm -rf "${MAINDIR}assets/images/css-sprite-2x/";
+    # Remove old references to imgsprite
+    sed -i '' '/^\/\/\ imgsprite/d' "${MAINDIR}assets/scss/main.scss";
 fi;
+
 
 if [[ $use_compass == 'y' ]]; then
 # Project file
