@@ -100,7 +100,7 @@ use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
 add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
 
 # Support IE < 9
-support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'y');
+support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'n');
 
 # Responsive
 is_responsive=$(intestarter_yn "- Est-ce un site responsive ?" 'y');
