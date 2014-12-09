@@ -99,6 +99,7 @@ else
     rm -rf "${MAINDIR}assets/images/css-sprite-2x/";
     # Remove old references to imgsprite
     sed -i '' '/^\/\/\ imgsprite/d' "${MAINDIR}assets/scss/main.scss";
+    sed -i '' '/^require/d' "${MAINDIR}config.rb";
 fi;
 
 
