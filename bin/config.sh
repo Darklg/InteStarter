@@ -129,7 +129,7 @@ fi;
 ###################################
 
 if [[ $use_onlyassets == 'n' ]]; then
-    sed -i '' "s/--default/--${project_id}/" "${MAINDIR}index.php";
+    sed -i '' "s/--default/--${project_id}/" "${MAINDIR}inc/tpl/styleguide/forms.php";
 fi;
 
 ###################################
