@@ -1,0 +1,21 @@
+
+###################################
+## WEB FONTS & SVG
+###################################
+
+<IfModule mod_mime.c>
+    AddType application/x-font-woff woff
+    AddType application/x-font-ttf ttf
+    AddType application/vnd.ms-fontobject eot
+    AddType image/svg+xml svg
+</IfModule>
+
+###################################
+## FILE COMPRESSION
+###################################
+
+<IfModule mod_deflate.c>
+    <FilesMatch "\.(ttf|otf|eot|svg|css|js)$" >
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+</IfModule>

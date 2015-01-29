@@ -14,6 +14,11 @@ fi
 
 cd "${MAINDIR}assets/";
 
+if ! [ -f .htaccess ]; then
+  echo '- Ajout du .htaccess';
+  mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
+fi
+
 # On cree les répertoires principaux
 main_folders="css/ images/ fonts/ js/ js/ie/";
 for i in $main_folders
