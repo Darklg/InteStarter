@@ -45,8 +45,10 @@ fi;
 . "${EXECDIR}/bin/responsive.sh";
 
 #################################################################
-## MENAGE
+## Compilations initiales
 #################################################################
+
+echo '## COMPILATIONS INITIALES';
 
 # Generate file
 if [[ $use_compass == 'y' ]]; then
@@ -57,6 +59,16 @@ fi;
 if [[ $use_grunt != 'n' && $use_compass_fonticon == 'y' ]];then
     grunt build;
 fi;
+
+# Baseline for regression tests
+if [[ $use_regression_tests == 'y' ]];then
+    chmod +x "${MAINDIR}run_tests.sh";
+    . "${MAINDIR}run_tests.sh";
+fi;
+
+#################################################################
+## MENAGE
+#################################################################
 
 echo '## MENAGE';
 

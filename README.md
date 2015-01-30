@@ -12,6 +12,7 @@ Fonctionnalités :
 * Utilisation de Grunt : Clean / Uncss / Font-Icon.
 * Utilisation de [CSSCommon](http://www.csscommon.com).
 * Utilisation de [JSUtilities](http://darklg.github.io/JavaScriptUtilities/).
+* Tests de regression du design avec [PhantomCSS](https://github.com/Huddle/PhantomCSS).
 * Compatibilité IE8.
 * Responsive ou non.
 

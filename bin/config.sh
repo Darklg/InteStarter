@@ -92,6 +92,11 @@ use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon
 
 # Utilisation de Grunt
 use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
+use_regression_tests='';
+if [[ $use_grunt == 'y' ]]; then
+    # Tests de regression JS
+    use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
+fi;
 
 # Bibliothèque JS
 use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');

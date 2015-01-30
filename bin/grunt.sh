@@ -44,6 +44,15 @@ build:
 - 'clean'" >> "${MAINDIR}grunt/aliases.yaml";
     fi;
 
+    if [[ $use_regression_tests == 'y' ]];then
+        # Install PhantomCSS
+        npm install --save-dev phantomcss;
+        # Install tests
+        mv "${MAINDIR}files/tests" "${MAINDIR}tests";
+        # Install test runner
+        mv "${MAINDIR}files/run_tests.sh" "${MAINDIR}run_tests.sh";
+    fi;
+
 fi;
 
 cd "${MAINDIR}";
