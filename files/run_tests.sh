@@ -1,6 +1,16 @@
 #!/bin/bash
 
-main_files="index";
+###################################
+## Extract file names
+###################################
+
+main_files="";
+for f in *.php; do
+    if [ "${main_files}" != "" ]; then
+        main_files+=" ";
+    fi;
+    main_files+=${f//\.php/};
+done
 
 ###################################
 ## Generate static files
@@ -15,7 +25,7 @@ done;
 ## Run PhantomCSS Tests
 ###################################
 
-casperjs test tests/tests.js
+casperjs test tests/test-*.js --web-security=no --main_files="${main_files}"
 
 ###################################
 ## Clean up

@@ -1,5 +1,6 @@
-/* Init PhantomCSS */
 var phantomCSS = require('../node_modules/phantomcss/phantomcss.js');
+
+/* Init PhantomCSS */
 phantomCSS.init({
     addLabelToFailedImage: false,
     comparisonResultRoot: './tests/results',
@@ -8,14 +9,16 @@ phantomCSS.init({
     screenshotRoot: './tests/screenshots',
 });
 
-/* Start casper */
-casper.start().viewport(1280, 800);
+casper.test.begin("\n### PhantomCSS regression tests", function suite(test) {
 
-/* Test content */
-casper.thenOpen('test-index.html', function() {
-    phantomCSS.screenshot('#header', 'index_header');
+    /* Start casper */
+    casper.start().viewport(1280, 800);
+
+    /* Test content */
+    casper.thenOpen('test-index.html', function() {
+        phantomCSS.screenshot('#header', 'index_header');
+    });
 });
-
 
 /* Generate PNG Diffs */
 casper
