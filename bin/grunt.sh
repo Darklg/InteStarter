@@ -13,6 +13,7 @@ if [[ $use_grunt != 'n' ]]; then
     npm install --save-dev load-grunt-config;
     npm install --save-dev grunt-contrib-clean;
     npm install --save-dev grunt-uncss;
+    npm install --save-dev grunt-shell;
 
     # Create Grunt Files
     mkdir "${MAINDIR}grunt";
@@ -51,6 +52,12 @@ build:
         mv "${MAINDIR}files/tests" "${MAINDIR}tests";
         # Install test runner
         mv "${MAINDIR}files/run_tests.sh" "${MAINDIR}run_tests.sh";
+        # Add build command
+        echo "
+run_tests:
+- 'shell:full_tests'" >> "${MAINDIR}grunt/aliases.yaml";
+        # Copy shell file
+        cat "${MAINDIR}files/grunt/shell_tests.js" >> "${MAINDIR}grunt/shell.js";
     fi;
 
 fi;

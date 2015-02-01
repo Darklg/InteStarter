@@ -62,8 +62,7 @@ fi;
 
 # Baseline for regression tests
 if [[ $use_regression_tests == 'y' ]];then
-    chmod +x "${MAINDIR}run_tests.sh";
-    . "${MAINDIR}run_tests.sh";
+    grunt run_tests;
 fi;
 
 #################################################################
