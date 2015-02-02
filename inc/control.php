@@ -20,3 +20,19 @@ if (!defined('TPL_DIR')) {
 if (!defined('ASSETS_DIR')) {
     define('ASSETS_DIR', dirname(__FILE__) . '/../assets/');
 }
+
+/* ----------------------------------------------------------
+  Current page
+---------------------------------------------------------- */
+
+$current_page = 'index';
+$current_url = '';
+if (isset($_SERVER['REQUEST_URI'])) {
+    $current_url = $_SERVER['REQUEST_URI'];
+    $pathinfo = pathinfo($current_url);
+    if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'php') {
+        $current_page = $pathinfo['filename'];
+    }
+}
+
+define('CURRENT_PAGE', $current_page);
