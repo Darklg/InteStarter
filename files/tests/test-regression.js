@@ -7,6 +7,15 @@ phantomCSS.init({
     failedComparisonsRoot: './tests/failures',
     libraryRoot: 'node_modules/phantomcss',
     screenshotRoot: './tests/screenshots',
+    fileNameGetter: function(root, filename) {
+        var name = root + '/' + filename;
+        if (fs.isFile(name + '.png')) {
+            return name + '.diff.png';
+        }
+        else {
+            return name + '.png';
+        }
+    },
 });
 
 casper.test.begin("\n### PhantomCSS regression tests", function suite(test) {
