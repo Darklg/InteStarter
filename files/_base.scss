@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+body {
+    min-width: $content_width_wide;
+    font: 13px/1.2 $font-main;
+    color: $color-main;
+}
+
+/* ----------------------------------------------------------
+  Layout
+---------------------------------------------------------- */
+
+.centered-container {
+    min-width: $content_width_wide;
+}
+
+.centered-container > * {
+    max-width: $content_width;
+}
+
+/* ----------------------------------------------------------
+  Links
+---------------------------------------------------------- */
+
+a {
+    color: $color-main;
+}
+
+a:hover {
+    color: darken($color-main,20);
+}

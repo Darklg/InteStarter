@@ -110,6 +110,7 @@ support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'n');
 # Responsive
 is_responsive=$(intestarter_yn "- Est-ce un site responsive ?" 'y');
 content_width='';
+content_width_wide='';
 if [[ $is_responsive == 'n' ]]; then
     read -p "- Quelle est la largeur du contenu sans marges (Default:980) ? " content_width
 fi;

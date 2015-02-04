@@ -32,7 +32,7 @@ if [[ $use_compass == 'y' ]]; then
     mv "${MAINDIR}files/main.scss" "${MAINDIR}assets/scss/main.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_fonts.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-    touch "${MAINDIR}assets/scss/${project_id}/_base.scss";
+    mv "${MAINDIR}files/_base.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
 
     if [[ $use_onlyassets == 'n' ]]; then
         echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css?v=<?php echo time(); ?>" />' >> "${MAINDIR}inc/tpl/header/head.php";
