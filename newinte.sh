@@ -7,24 +7,29 @@ do
     command -v "$i" >/dev/null 2>&1 || { echo >&2 "Vous avez besoin du programme \"${i}\" pour continuer."; exit 1; }
 done;
 
-EXECDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+SOURCEDIR="$( dirname "${BASH_SOURCE[0]}" )/";
+EXECDIR="$( cd "${SOURCEDIR}" && pwd )/";
 
-# On clone le repository
-echo '# - RECUPERATION DE INTESTARTER'
-git clone https://github.com/Darklg/InteStarter.git
+# Cloning repository or getting local version if available
+echo '# - RECUPERATION DE INTESTARTER';
+if [ ! -d "${SOURCEDIR}files" ]; then
+    git clone https://github.com/Darklg/InteStarter.git
+else
+    git clone "${SOURCEDIR}.git";
+fi;
 
 # Set main directory
 MAINDIR="${PWD}/";
-DIRECTORY="${MAINDIR}InteStarter/";
+DIRECTORY="${MAINDIR}InteStarter";
 
-if [ ! -d "$DIRECTORY" ]; then
+if [ ! -d "${DIRECTORY}" ]; then
     echo 'Le clonage a échoué';
     exit 1;
 fi
 
 # Use cloned files if launch from URL
 if [ ! -f "${EXECDIR}/bin/config.sh" ]; then
-    EXECDIR="${DIRECTORY}";
+    EXECDIR="${DIRECTORY}/";
 fi
 
 # Avoid .git conflict
