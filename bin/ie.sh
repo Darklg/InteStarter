@@ -6,37 +6,19 @@
 
 echo '## COMPATIBILITE IE';
 
-cd assets/js/ie/;
-
-# On recupere html5shim
-echo '- Récupération de html5shim ( Tags HTML5 sur IE < 9 )';
-curl -O http://html5shim.googlecode.com/svn/trunk/html5.js
-if [[ -f html5.js ]] && [[ $use_onlyassets != 'y' ]]; then
-    echo '<!--[if lt IE 9]><script src="assets/js/ie/html5.js"></script><![endif]-->' >> "${MAINDIR}inc/tpl/header/head.php";
-fi
-
-# On recupere selectivizr
-echo '- Récupération de selectivizr ( Selecteurs avancés sur IE < 9 )';
-mkdir selectivizr
-cd selectivizr
-curl -O http://selectivizr.com/downloads/selectivizr-1.0.2.zip
-unzip selectivizr-1.0.2.zip
-cd ..
-if [[ -f selectivizr/selectivizr-min.js ]]; then
-    mv selectivizr/selectivizr-min.js selectivizr-min.js
-    if [[ $use_onlyassets != 'y' ]]; then
-        echo '<!--[if lt IE 9]><script src="assets/js/ie/selectivizr-min.js"></script><![endif]-->' >> "${MAINDIR}inc/tpl/header/head.php";
-    fi;
+# On recupere html5shim & selectivizr
+echo '- Mise en place de html5shim & selectivizr';
+cp "${MAINDIR}files/ie/html5.js" "${MAINDIR}assets/js/ie/html5.js";
+cp "${MAINDIR}files/ie/selectivizr-min.js" "${MAINDIR}assets/js/ie/selectivizr-min.js";
+if [[ $use_onlyassets != 'y' ]]; then
+    echo '<!--[if lt IE 9]><script src="assets/js/ie/html5.js"></script><script src="assets/js/ie/selectivizr-min.js"></script><![endif]-->' >> "${MAINDIR}inc/tpl/header/head.php";
 fi;
-rm -rf selectivizr/
 
-cd "${MAINDIR}";
-
+# Classes HTML
 echo '- Ajout de classes de compatibilité sur la balise HTML';
-
 html_before='<html lang="fr-FR">';
-html_after='<!--[if lt IE 9 ]><html lang="fr-FR" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->\
-<!--[if IE 9 ]><html lang="fr-FR" class="is_ie9 lt_ie10"><![endif]-->\
-<!--[if gt IE 9]><html lang="fr-FR" class="is_ie10"><![endif]-->\
+html_after='<!--[if lt IE 9 ]><html lang="fr-FR" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->\\
+<!--[if IE 9 ]><html lang="fr-FR" class="is_ie9 lt_ie10"><![endif]-->\\
+<!--[if gt IE 9]><html lang="fr-FR" class="is_ie10"><![endif]-->\\
 <!--[if !IE]><!--><html lang="fr-FR"><!--<![endif]-->';
-sed -i '' "s/${html_before}/${html_after}/" "inc/tpl/header.php";
+sed -i '' "s/${html_before}/${html_after}/" "${MAINDIR}inc/tpl/header.php";
