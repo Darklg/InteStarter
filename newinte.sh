@@ -28,7 +28,7 @@ if [ ! -d "${DIRECTORY}" ]; then
 fi
 
 # Use cloned files if launch from URL
-if [ ! -f "${EXECDIR}/bin/config.sh" ]; then
+if [ ! -f "${EXECDIR}bin/config.sh" ]; then
     EXECDIR="${DIRECTORY}/";
 fi
 
@@ -39,15 +39,15 @@ rm -rf "${MAINDIR}InteStarter/.git/";
 ## Basic steps
 #################################################################
 
-. "${EXECDIR}/bin/config.sh";
-. "${EXECDIR}/bin/folders.sh";
-. "${EXECDIR}/bin/css.sh";
-. "${EXECDIR}/bin/js.sh";
-. "${EXECDIR}/bin/grunt.sh";
+. "${EXECDIR}bin/config.sh";
+. "${EXECDIR}bin/folders.sh";
+. "${EXECDIR}bin/css.sh";
+. "${EXECDIR}bin/js.sh";
+. "${EXECDIR}bin/grunt.sh";
 if [[ $support_ie8 == 'y' ]]; then
-    . "${EXECDIR}/bin/ie.sh";
+    . "${EXECDIR}bin/ie.sh";
 fi;
-. "${EXECDIR}/bin/responsive.sh";
+. "${EXECDIR}bin/responsive.sh";
 
 #################################################################
 ## Compilations initiales
