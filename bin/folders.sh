@@ -20,7 +20,6 @@ if ! [ -f .htaccess ]; then
 fi
 
 # On cree les répertoires principaux
-main_folders="css/ images/ fonts/ js/ js/ie/";
 for i in $main_folders
 do
     if ! [ -d "${i}" ]; then

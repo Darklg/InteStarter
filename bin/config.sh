@@ -142,6 +142,8 @@ fi;
 ## Basic values
 ###################################
 
+main_folders="css/ images/ fonts/ js/ js/ie/";
+
 # CSS / COMPASS
 compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/ icons/ icons/original/";
 csscommon_default_modules="default common content buttons forms grid layouts";
