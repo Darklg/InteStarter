@@ -50,8 +50,6 @@ build:
         npm install --save-dev phantomcss;
         # Install tests
         mv "${MAINDIR}files/tests" "${MAINDIR}tests";
-        # Install test runner
-        mv "${MAINDIR}files/run_tests.sh" "${MAINDIR}run_tests.sh";
         # Add build command
         echo "
 run_tests:
