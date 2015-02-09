@@ -8,6 +8,7 @@ include TPL_DIR . 'header.php';
         <?php include TPL_DIR . 'styleguide/pages.php'; ?>
         <?php include TPL_DIR . 'styleguide/forms.php'; ?>
         <?php include TPL_DIR . 'styleguide/icons.php'; ?>
+        <?php include TPL_DIR . 'styleguide/colors.php'; ?>
         <?php include TPL_DIR . 'styleguide/text.php'; ?>
     </div>
 </div>
