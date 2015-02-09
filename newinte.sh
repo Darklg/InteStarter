@@ -34,6 +34,7 @@ fi
 
 # Avoid .git conflict
 rm -rf "${MAINDIR}InteStarter/.git/";
+rm -rf "${MAINDIR}InteStarter/.gitignore";
 
 #################################################################
 ## Basic steps

@@ -14,10 +14,15 @@ fi
 
 cd "${MAINDIR}assets/";
 
+# htaccess
 if ! [ -f .htaccess ]; then
   echo '- Ajout du .htaccess';
   mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
 fi
+
+# Gitignore
+echo '- Ajout du .gitignore';
+cat "${MAINDIR}files/base.gitignore" >> "${MAINDIR}.gitignore";
 
 # On cree les répertoires principaux
 for i in $main_folders
