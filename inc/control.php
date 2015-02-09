@@ -10,7 +10,7 @@ if (!defined('PROJECT_DESCRIPTION')) {
 }
 
 if (!defined('PROJECT_URL')) {
-    define('PROJECT_URL', '/');
+    define('PROJECT_URL', '');
 }
 
 if (!defined('TPL_DIR')) {

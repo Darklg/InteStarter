@@ -5,5 +5,5 @@
 </head>
 <body>
     <header id="header" class="centered-container main-header">
-        <h1><a href="<?php echo PROJECT_URL; ?>"><?php echo PROJECT_NAME; ?></a></h1>
+        <h1><a href="<?php echo PROJECT_URL; ?>styleguide.php"><?php echo PROJECT_NAME; ?></a></h1>
     </header>
