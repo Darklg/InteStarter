@@ -46,6 +46,8 @@ build:
     fi;
 
     if [[ $use_regression_tests == 'y' ]];then
+        # Install HTML Tester
+        npm install --save-dev grunt-html;
         # Install PhantomCSS
         npm install --save-dev phantomcss;
         # Install tests
@@ -53,9 +55,21 @@ build:
         # Add build command
         echo "
 run_tests:
-- 'shell:full_tests'" >> "${MAINDIR}grunt/aliases.yaml";
-        # Copy shell file
+- 'shell:full_tests'
+
+run_tests_html:
+- 'shell:create_static_pages'
+- 'shell:run_tests'
+- 'htmllint'
+- 'shell:delete_static_pages'
+
+run_tests_only_html:
+- 'shell:create_static_pages'
+- 'htmllint'
+- 'shell:delete_static_pages'" >> "${MAINDIR}grunt/aliases.yaml";
+        # Copy test files
         cat "${MAINDIR}files/grunt/shell_tests.js" >> "${MAINDIR}grunt/shell.js";
+        cat "${MAINDIR}files/grunt/htmllint.js" >> "${MAINDIR}grunt/htmllint.js";
     fi;
 
 fi;
