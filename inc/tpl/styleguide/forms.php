@@ -1,5 +1,5 @@
 <h3>Forms &amp; Buttons</h3>
-<form action="" method="post">
+<form action="#" method="post">
     <ul class="cssc-form cssc-form--default">
         <li class="box">
             <label for="test_field">Test</label>
