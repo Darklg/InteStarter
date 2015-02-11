@@ -1,16 +1,7 @@
 #!/bin/bash
 
-###################################
-## Extract file names
-###################################
-
-main_files="";
-for f in *.php; do
-    if [ "${main_files}" != "" ]; then
-        main_files+=" ";
-    fi;
-    main_files+=${f//\.php/};
-done
+# Extract main files
+. "$( dirname "${BASH_SOURCE[0]}" )/main_files.sh";
 
 ###################################
 ## Generate static files
