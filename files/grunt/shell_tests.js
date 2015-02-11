@@ -15,10 +15,10 @@
             command: commands[0]
         },
         delete_static_pages: {
-            command: commands[1]
+            command: commands[2]
         },
         run_tests: {
-            command: commands[2]
+            command: commands[1]
         },
         full_tests: {
             command: commands.join('&&')
