@@ -27,6 +27,11 @@ casper.test.begin("\n### PhantomCSS regression tests", function suite(test) {
     casper.thenOpen('test-index.html', function() {
         phantomCSS.screenshot('#header', 'index_header');
     });
+
+    /* Styleguide */
+    casper.thenOpen('test-index.html', function() {
+        phantomCSS.screenshot('#styleguide-forms', 'styleguide__forms');
+    });
 });
 
 /* Generate PNG Diffs */
