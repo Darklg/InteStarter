@@ -59,8 +59,8 @@ run_tests:
 
 run_tests_html:
 - 'shell:create_static_pages'
-- 'shell:run_tests'
 - 'htmllint'
+- 'shell:run_tests'
 - 'shell:delete_static_pages'
 
 run_tests_only_html:
