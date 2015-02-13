@@ -1,38 +1,50 @@
-var phantomCSS = require('../node_modules/phantomcss/phantomcss.js');
+/* ----------------------------------------------------------
+  Regression tests
+---------------------------------------------------------- */
+
+var regressionTests = [{
+    'page': 'index',
+    'tests': [{
+        'selector': '#header'
+    }, {
+        'selector': '#styleguide-forms'
+    }, ]
+}];
+
+/* ----------------------------------------------------------
+  Start Testing
+---------------------------------------------------------- */
+
+var phantomCSS = require('../node_modules/phantomcss/phantomcss.js'),
+    intestarter = require('lib/intestarter'),
+    phantomsettings = require('lib/phantomsettings');
 
 /* Init PhantomCSS */
-phantomCSS.init({
-    addLabelToFailedImage: false,
-    comparisonResultRoot: './tests/results',
-    failedComparisonsRoot: './tests/failures',
-    libraryRoot: 'node_modules/phantomcss',
-    screenshotRoot: './tests/screenshots',
-    fileNameGetter: function(root, filename) {
-        var name = root + '/' + filename;
-        if (fs.isFile(name + '.png')) {
-            return name + '.diff.png';
-        }
-        else {
-            return name + '.png';
-        }
-    },
-});
+phantomCSS.init(phantomsettings);
 
-casper.test.begin("\n### PhantomCSS regression tests", function suite(test) {
+/* Start casper */
+casper.start().viewport(1280, 800);
 
-    /* Start casper */
-    casper.start().viewport(1280, 800);
-
-    /* Test content */
-    casper.thenOpen('test-index.html', function() {
-        phantomCSS.screenshot('#header', 'index_header');
-    });
-
-    /* Styleguide */
-    casper.thenOpen('test-index.html', function() {
-        phantomCSS.screenshot('#styleguide-forms', 'styleguide__forms');
-    });
-});
+for (var i = 0, len = regressionTests.length; i < len; i++) {
+    (function(i) {
+        /* For each page */
+        casper.test.begin("\n### PhantomCSS regression on page \"" + regressionTests[i].page + "\"", function suite(test) {
+            casper.thenOpen('test-' + regressionTests[i].page + '.html', function() {});
+            // Default status
+            casper.then(function() {
+                intestarter.run_tests(regressionTests[i], 0, 0, this);
+            });
+            // Hover
+            casper.then(function() {
+                intestarter.run_tests(regressionTests[i], 1, 0, this);
+            });
+            // Click
+            casper.then(function() {
+                intestarter.run_tests(regressionTests[i], 0, 1, this);
+            });
+        });
+    }(i));
+}
 
 /* Generate PNG Diffs */
 casper
