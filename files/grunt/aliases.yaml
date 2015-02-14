@@ -1,3 +1,9 @@
 default:
-  - 'clean'
-  - 'uncss'
+- 'clean'
+- 'uncss'
+
+deploy:
+- 'clean'
+- 'shell:intestarter_deploy'
+- 'uncss:intestarter_export'
+- 'shell:intestarter_deploy_zip'

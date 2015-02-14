@@ -22,6 +22,9 @@ if [[ $use_grunt != 'n' ]]; then
     mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
     mv "${MAINDIR}files/grunt/aliases.yaml" "${MAINDIR}grunt/aliases.yaml";
 
+    # Install actions
+    mv "${MAINDIR}files/actions" "${MAINDIR}actions";
+
     if [[ $use_compass_fonticon == 'y' ]];then
 
         # Install fonticons modules

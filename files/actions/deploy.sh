@@ -1,8 +1,6 @@
 #!/bin/bash
 
-project_filename='project';
 prod_folder='prod';
-date_now=$(date +"%Y-%m-%d");
 
 # Delete prod
 rm -rf ${prod_folder}
@@ -40,15 +38,3 @@ done;
 
 # Remove System & hidden files
 find "${prod_folder}" -iname ".DS_Store" -delete && dot_clean .
-
-# Ask to create a zip file
-read -p "- Create a zip export file ? (y/N) ? " export_zip
-if [[ $export_zip == 'y' ]]; then
-    # Zip folder
-    zip -r "export-${project_filename}-${date_now}.zip" "${prod_folder}";
-    # Delete prod folder
-    rm -rf ${prod_folder}
-    # Open current folder
-    open .
-fi;
-
