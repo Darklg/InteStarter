@@ -49,6 +49,8 @@ build:
     fi;
 
     if [[ $use_regression_tests == 'y' ]];then
+        # Install accessibility tester
+        npm install --save-dev grunt-accessibility;
         # Install HTML Tester
         npm install --save-dev grunt-html;
         # Install PhantomCSS
@@ -59,6 +61,11 @@ build:
         echo "
 run_tests:
 - 'shell:full_tests'
+
+run_tests_access:
+- 'shell:create_static_pages'
+- 'accessibility'
+- 'shell:delete_static_pages'
 
 run_tests_html:
 - 'shell:create_static_pages'
