@@ -1,3 +1,4 @@
+var mod = {};
 
 /* ----------------------------------------------------------
   Shell : Deploy
@@ -5,7 +6,7 @@
 
 (function() {
     'use strict';
-    module.exports = {
+    mod = {
         intestarter_deploy: {
             command: '. ./actions/deploy.sh'
         },
@@ -14,3 +15,6 @@
         }
     };
 }());
+
+module.exports = mod;
+
