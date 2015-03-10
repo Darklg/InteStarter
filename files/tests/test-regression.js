@@ -6,7 +6,10 @@ var regressionTests = [{
     'page': 'index',
     'tests': [{
         'selector': '#header'
-    }, {
+    }]
+}, {
+    'page': 'styleguide',
+    'tests': [{
         'selector': '#styleguide-forms'
     }, ]
 }];
