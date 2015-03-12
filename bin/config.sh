@@ -72,11 +72,13 @@ if [[ $project_id == '' ]]; then
     project_id=$(intestarter_slug "${project_name}");
 fi;
 
-# On recupere l'URL du projet
-read -p "- Quelle est l'URL du projet ? " project_url
+if [[ $use_onlyassets == 'n' ]]; then
+    # On recupere l'URL du projet
+    read -p "- Quelle est l'URL du projet ? " project_url
 
-# On recupere la description du projet
-read -p "- Quelle est la description rapide du projet ? " project_description
+    # On recupere la description du projet
+    read -p "- Quelle est la description rapide du projet ? " project_description
+fi;
 
 # Utilisation de Compass
 use_compass=$(intestarter_yn "- Utiliser Compass ?" 'y');
