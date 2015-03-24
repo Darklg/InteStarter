@@ -27,6 +27,10 @@ $tablet-min: 768px;
 $tablet-max: 1023px;
 $desktop-min: 1024px;
 
+$mobile_only: "max-width:"+$mobile-max;
+$desktop_only: "min-width:"+$desktop-min;
+$desktop_excluded: "max-width:"+$tablet-max;
+
 // imgsprite /* Sprites
 // imgsprite -------------------------- */
 // imgsprite
