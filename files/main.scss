@@ -24,12 +24,16 @@ $color-gplus: #DD4B39;
 
 $mobile-max: 767px;
 $tablet-min: 768px;
-$tablet-max: 1023px;
-$desktop-min: 1024px;
+$tablet-max: 1299px;
+$desktop-min: 1300px;
+$desktop-max: 1599px;
+$large-min: 1600px;
 
 $mobile_only: "max-width:"+$mobile-max;
-$desktop_only: "min-width:"+$desktop-min;
 $desktop_excluded: "max-width:"+$tablet-max;
+$desktop_only: "min-width:"+$desktop-min;
+$large_excluded: "max-width:"+$desktop-max;
+$large_only: "min-width:"+$large-min;
 
 // imgsprite /* Sprites
 // imgsprite -------------------------- */
