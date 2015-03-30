@@ -129,6 +129,7 @@ fi;
 if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/_fonts.scss\";
+@import \"${project_id}/_forms.scss\";
 @import \"${project_id}/_base.scss\";
 " >> "${MAINDIR}assets/scss/main.scss";
 
