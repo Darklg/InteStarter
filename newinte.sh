@@ -90,6 +90,7 @@ rm newinte.sh
 if [[ $use_onlyassets == 'y' ]]; then
     rm -rf inc/
     rm -rf index.php
+    rm -rf styleguide.php
 fi;
 
 echo '## FINI !'
