@@ -42,10 +42,19 @@ function intestarter_slug() {
 echo '## CONFIGURATION INITIALE';
 
 # Seulement assets
-use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
+is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
+
+# Seulement assets
+use_onlyassets='y';
+if [[ $is_wp_theme == 'n' ]]; then
+    use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
+fi;
 
 # Choix du dossier
-use_subfolder=$(intestarter_yn "- Créer un sous-dossier \"inte\" ?" 'n');
+use_subfolder='n';
+if [[ $is_wp_theme == 'n' ]]; then
+    use_subfolder=$(intestarter_yn "- Créer un sous-dossier \"inte\" ?" 'n');
+fi;
 case "$use_subfolder" in
     y|Y|O|o )
         # On renomme le dossier créé et on s'y déplace
@@ -94,20 +103,29 @@ use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon
 
 # Utilisation de Grunt
 use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
-use_regression_tests='';
-if [[ $use_grunt == 'y' ]]; then
+use_regression_tests='n';
+if [[ $use_grunt == 'y' && $is_wp_theme == 'n' ]]; then
     # Tests de regression JS
     use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
 fi;
 
-# Bibliothèque JS
-use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
+use_jquery='n';
+if [[ $is_wp_theme == 'n' ]]; then
+    # Bibliothèque JS
+    use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
+fi;
 
-# Plugins JS
-add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
+add_jsutilities_plugins='n';
+if [[ $is_wp_theme == 'n' ]]; then
+    # Plugins JS
+    add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
+fi;
 
-# Support IE < 9
-support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'n');
+support_ie8='n';
+if [[ $is_wp_theme == 'n' ]]; then
+    # Support IE < 9
+    support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'n');
+fi;
 
 # Responsive
 is_responsive=$(intestarter_yn "- Est-ce un site responsive ?" 'y');

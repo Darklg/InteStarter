@@ -25,8 +25,10 @@ if [[ $use_grunt != 'n' ]]; then
     # Set deploy
     cat "${MAINDIR}files/grunt/shell.js" >> "${MAINDIR}grunt/shell.js";
 
-    # Install actions
-    mv "${MAINDIR}files/actions" "${MAINDIR}actions";
+    if [[ $is_wp_theme == 'n' ]];then
+        # Install actions
+        mv "${MAINDIR}files/actions" "${MAINDIR}actions";
+    fi;
 
     if [[ $use_compass_fonticon == 'y' ]];then
 

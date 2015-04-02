@@ -21,8 +21,10 @@ if ! [ -f .htaccess ]; then
 fi
 
 # Gitignore
-echo '- Ajout du .gitignore';
-cat "${MAINDIR}files/base.gitignore" >> "${MAINDIR}.gitignore";
+if [[ $is_wp_theme == 'n' ]]; then
+    echo '- Ajout du .gitignore';
+    cat "${MAINDIR}files/base.gitignore" >> "${MAINDIR}.gitignore";
+fi;
 
 # On cree les répertoires principaux
 for i in $main_folders

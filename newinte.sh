@@ -89,7 +89,9 @@ rm newinte.sh
 # Suppression des fichiers non assets
 if [[ $use_onlyassets == 'y' ]]; then
     rm -rf inc/
-    rm -rf index.php
+    if [[ $is_wp_theme == 'n' ]]; then
+        rm -rf index.php
+    fi;
     rm -rf styleguide.php
 fi;
 
