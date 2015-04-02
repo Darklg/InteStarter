@@ -50,6 +50,11 @@ if [[ $is_wp_theme == 'n' ]]; then
     use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
 fi;
 
+if [[ $use_onlyassets == 'y' ]]; then
+    rm "InteStarter/index.php";
+    rm "InteStarter/styleguide.php";
+fi;
+
 # Choix du dossier
 use_subfolder='n';
 if [[ $is_wp_theme == 'n' ]]; then
