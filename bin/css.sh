@@ -41,11 +41,11 @@ if [[ $use_compass == 'y' ]]; then
     if [[ $use_onlyassets == 'n' ]]; then
         echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css?v=<?php echo time(); ?>" />' >> "${MAINDIR}inc/tpl/header/head.php";
     fi;
-    for i in $csscommon_default_modules
-    do
-        cp "CSSCommon/css/cssc-${i}.css" "scss/csscommon/_cssc-${i}.scss";
-        echo "@import \"csscommon/_cssc-${i}.scss\";" >> "${MAINDIR}assets/scss/main.scss";
-    done;
+
+    cd "${MAINDIR}assets/scss/";
+    git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
+    echo "@import \"csscommon/csscommon\";" >> "${MAINDIR}assets/scss/main.scss";
+    cd "${MAINDIR}assets/";
 
     cp -R CSSCommon/scss/utilities/ scss/utilities/
 
@@ -69,18 +69,12 @@ if [[ $use_csscommon == 'y' ]]; then
     do
         read -p "-- Installer le module CSS ${i} (y/n)? " choice
         case "$choice" in
-            y|O )
+            y|Y|O )
                 echo "-- Installation de ${i}";
-
-                if [[ $use_compass == 'y' ]]; then
-                    cp "CSSCommon/css/cssc-${i}.css" "scss/csscommon/_cssc-${i}.scss";
-                    echo "@import \"csscommon/_cssc-${i}.scss\";" >> "${MAINDIR}assets/scss/main.scss";
-                else
-                    cp "CSSCommon/css/cssc-${i}.css" "css/cssc-${i}.css";
-                    if [[ $use_onlyassets != 'y' ]]; then
-                        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/cssc-${i}.css\" />" >> "${MAINDIR}inc/tpl/header/head.php";
-                    fi;
-                fi
+                cp "CSSCommon/css/cssc-${i}.css" "css/cssc-${i}.css";
+                if [[ $use_onlyassets != 'y' ]]; then
+                    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/cssc-${i}.css\" />" >> "${MAINDIR}inc/tpl/header/head.php";
+                fi;
             ;;
             * );;
         esac

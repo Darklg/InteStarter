@@ -104,7 +104,10 @@ if [[ $use_compass == 'y' ]]; then
 fi;
 
 # Modules supplementaires CSSCommon
-use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon ?" 'n');
+use_csscommon='n';
+if [[ $use_compass == 'n' ]]; then
+    use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon ?" 'n');
+fi;
 
 # Utilisation de Grunt
 use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
@@ -170,7 +173,7 @@ fi;
 main_folders="css/ images/ fonts/ js/ js/ie/";
 
 # CSS / COMPASS
-compass_folders="scss/ scss/csscommon/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/ icons/ icons/original/";
+compass_folders="scss/ scss/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/ icons/ icons/original/";
 csscommon_default_modules="default common content buttons forms grid layouts";
 csscommon_additional_modules="tables push navigation tabs images print effects";
 
