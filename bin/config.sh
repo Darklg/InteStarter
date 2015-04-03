@@ -53,6 +53,8 @@ fi;
 if [[ $use_onlyassets == 'y' ]]; then
     rm "InteStarter/index.php";
     rm "InteStarter/styleguide.php";
+else
+    rm "InteStarter/styleguide-wp.php";
 fi;
 
 # Choix du dossier
@@ -162,9 +164,7 @@ fi;
 ## Styleguide classes
 ###################################
 
-if [[ $use_onlyassets == 'n' ]]; then
-    sed -i '' "s/--default/--${project_id}/" "${MAINDIR}inc/tpl/styleguide/forms.php";
-fi;
+sed -i '' "s/--default/--${project_id}/" "${MAINDIR}inc/tpl/styleguide/forms.php";
 
 ###################################
 ## Basic values

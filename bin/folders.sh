@@ -8,16 +8,16 @@ echo '## CREATION DES DOSSIERS';
 
 # On cree le repertoire des assets
 if ! [ -d assets/ ]; then
-  echo '- Creation de assets/';
-  mkdir "${MAINDIR}assets/";
+    echo '- Creation de assets/';
+    mkdir "${MAINDIR}assets/";
 fi
 
 cd "${MAINDIR}assets/";
 
 # htaccess
 if ! [ -f .htaccess ]; then
-  echo '- Ajout du .htaccess';
-  mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
+    echo '- Ajout du .htaccess';
+    mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
 fi
 
 # Gitignore
@@ -30,9 +30,15 @@ fi;
 for i in $main_folders
 do
     if ! [ -d "${i}" ]; then
-      echo "- Creation de ${i}";
-      mkdir "${MAINDIR}assets/${i}";
+        echo "- Creation de ${i}";
+        mkdir "${MAINDIR}assets/${i}";
     fi
 done;
+
+# Copy styleguide files
+if [[ $is_wp_theme == 'y' ]]; then
+    mkdir "${MAINDIR}tpl";
+    mv "${MAINDIR}inc/tpl/styleguide" "${MAINDIR}tpl/styleguide";
+fi;
 
 cd "${MAINDIR}";
