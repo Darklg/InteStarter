@@ -43,7 +43,11 @@ if [[ $use_compass == 'y' ]]; then
     fi;
 
     cd "${MAINDIR}assets/scss/";
-    git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
+    if [ -d "${MAINDIR}.git" ]; then
+        git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
+    else
+        git clone https://github.com/Darklg/SassCSSCommon.git csscommon;
+    fi;
     echo "@import \"csscommon/csscommon\";" >> "${MAINDIR}assets/scss/main.scss";
     cd "${MAINDIR}assets/";
 
