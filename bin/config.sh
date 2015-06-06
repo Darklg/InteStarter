@@ -114,7 +114,7 @@ fi;
 # Utilisation de Grunt
 use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
 use_regression_tests='n';
-if [[ $use_grunt == 'y' && $is_wp_theme == 'n' ]]; then
+if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $use_onlyassets == 'n' ]]; then
     # Tests de regression JS
     use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
 fi;
@@ -126,7 +126,7 @@ if [[ $is_wp_theme == 'n' ]]; then
 fi;
 
 add_jsutilities_plugins='n';
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $use_jquery == 'y' ]]; then
     # Plugins JS
     add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
 fi;
@@ -170,7 +170,10 @@ sed -i '' "s/--default/--${project_id}/" "${MAINDIR}inc/tpl/styleguide/forms.php
 ## Basic values
 ###################################
 
-main_folders="css/ images/ fonts/ js/ js/ie/";
+main_folders="css/ images/ fonts/ js/"
+if [[ $is_wp_theme == 'n' ]]; then
+    main_folders="${main_folders} js/ie/";
+fi;
 
 # CSS / COMPASS
 compass_folders="scss/ scss/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/ icons/ icons/original/";
