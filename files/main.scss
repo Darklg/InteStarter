@@ -30,6 +30,7 @@ $desktop-max: 1599px;
 $large-min: 1600px;
 
 $mobile_only: "max-width:"+$mobile-max;
+$mobile_excluded: "min-width:"+$tablet-min;
 $desktop_excluded: "max-width:"+$tablet-max;
 $desktop_only: "min-width:"+$desktop-min;
 $large_excluded: "max-width:"+$desktop-max;
