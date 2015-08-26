@@ -53,6 +53,9 @@ fi;
 if [[ $use_onlyassets == 'y' ]]; then
     rm "InteStarter/index.php";
     rm "InteStarter/styleguide.php";
+    if [[ $is_wp_theme == 'n' ]]; then
+        rm "InteStarter/styleguide-wp.php";
+    fi;
 else
     rm "InteStarter/styleguide-wp.php";
 fi;
@@ -70,6 +73,17 @@ case "$use_subfolder" in
         MAINDIR=${PWD}"/";
     ;;
     * )
+        if [[ $is_wp_theme == 'y' ]]; then
+           # Moving useful files
+           mkdir "tpl/";
+           mkdir "tpl/styleguide/";
+           cp -R "InteStarter/inc/tpl/styleguide/" "tpl/styleguide/";
+
+           # Removing useless files
+           rm -rf "InteStarter/inc/";
+
+        fi;
+
         # On récupère le contenu du dossier créé
         mv InteStarter/* .
         rm -rf "InteStarter/";
@@ -164,7 +178,11 @@ fi;
 ## Styleguide classes
 ###################################
 
-sed -i '' "s/--default/--${project_id}/" "${MAINDIR}inc/tpl/styleguide/forms.php";
+styleguide_forms_path="${MAINDIR}inc/";
+if [[ $is_wp_theme == 'y' ]]; then
+    styleguide_forms_path="${MAINDIR}";
+fi;
+sed -i '' "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styleguide/forms.php";
 
 ###################################
 ## Basic values

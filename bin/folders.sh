@@ -15,10 +15,12 @@ fi
 cd "${MAINDIR}assets/";
 
 # htaccess
-if ! [ -f .htaccess ]; then
-    echo '- Ajout du .htaccess';
-    mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
-fi
+if [[ $is_wp_theme == 'n' ]]; then
+    if ! [ -f .htaccess ]; then
+        echo '- Ajout du .htaccess';
+        mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
+    fi;
+fi;
 
 # Gitignore
 if [[ $is_wp_theme == 'n' ]]; then
@@ -34,11 +36,5 @@ do
         mkdir "${MAINDIR}assets/${i}";
     fi
 done;
-
-# Copy styleguide files
-if [[ $is_wp_theme == 'y' ]]; then
-    mkdir "${MAINDIR}tpl";
-    mv "${MAINDIR}inc/tpl/styleguide" "${MAINDIR}tpl/styleguide";
-fi;
 
 cd "${MAINDIR}";
