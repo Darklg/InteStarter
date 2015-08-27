@@ -12,22 +12,37 @@ if [[ $use_grunt != 'n' ]]; then
     npm install --save-dev grunt;
     npm install --save-dev load-grunt-config;
     npm install --save-dev grunt-contrib-clean;
-    npm install --save-dev grunt-uncss;
-    npm install --save-dev grunt-shell;
 
     # Create Grunt Files
     mkdir "${MAINDIR}grunt";
     mv "${MAINDIR}files/Gruntfile.js" "${MAINDIR}Gruntfile.js";
     mv "${MAINDIR}files/grunt/clean.js" "${MAINDIR}grunt/clean.js";
-    mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
     mv "${MAINDIR}files/grunt/aliases.yaml" "${MAINDIR}grunt/aliases.yaml";
 
-    # Set deploy
-    cat "${MAINDIR}files/grunt/shell.js" >> "${MAINDIR}grunt/shell.js";
-
     if [[ $is_wp_theme == 'n' ]];then
+
+        npm install --save-dev grunt-shell;
+        npm install --save-dev grunt-uncss;
+
+        # Set deploy
+        mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
+        cat "${MAINDIR}files/grunt/shell.js" >> "${MAINDIR}grunt/shell.js";
+
         # Install actions
         mv "${MAINDIR}files/actions" "${MAINDIR}actions";
+
+        # Add deploy alias
+        echo "
+default:
+- 'clean'
+- 'uncss'
+
+deploy:
+- 'clean'
+- 'shell:intestarter_deploy'
+- 'uncss:intestarter_export'
+- 'shell:intestarter_deploy_zip'" >> "${MAINDIR}grunt/aliases.yaml";
+
     fi;
 
     if [[ $use_compass_fonticon == 'y' ]];then
