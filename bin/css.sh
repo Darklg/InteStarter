@@ -43,10 +43,11 @@ if [[ $use_compass == 'y' ]]; then
     fi;
 
     cd "${MAINDIR}assets/scss/";
-    if [ -d "${MAINDIR}.git" ]; then
+    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ]; then
         git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
     else
         git clone https://github.com/Darklg/SassCSSCommon.git csscommon;
+        rm -rf "${MAINDIR}assets/scss/csscommon/.git";
     fi;
     echo "@import \"csscommon/csscommon\";" >> "${MAINDIR}assets/scss/main.scss";
     cd "${MAINDIR}assets/";

@@ -74,13 +74,15 @@ case "$use_subfolder" in
     ;;
     * )
         if [[ $is_wp_theme == 'y' ]]; then
-           # Moving useful files
-           mkdir "tpl/";
-           mkdir "tpl/styleguide/";
-           cp -R "InteStarter/inc/tpl/styleguide/" "tpl/styleguide/";
+            # Moving useful files
+            if [ ! -d "tpl/" ]; then
+                mkdir "tpl/";
+            fi;
+            mkdir "tpl/styleguide/";
+            cp -R "InteStarter/inc/tpl/styleguide/" "tpl/styleguide/";
 
-           # Removing useless files
-           rm -rf "InteStarter/inc/";
+            # Removing useless files
+            rm -rf "InteStarter/inc/";
 
         fi;
 
