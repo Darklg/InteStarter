@@ -87,19 +87,22 @@ run_tests_access:
 - 'accessibility'
 - 'shell:delete_static_pages'
 
-run_tests_html:
-- 'shell:create_static_pages'
-- 'htmllint'
-- 'shell:run_tests'
-- 'shell:delete_static_pages'
-
 run_tests_only_html:
 - 'shell:create_static_pages'
 - 'htmllint'
-- 'shell:delete_static_pages'" >> "${MAINDIR}grunt/aliases.yaml";
+- 'shell:delete_static_pages'
+
+run_tests_html:
+- 'shell:create_static_pages'
+- 'htmllint'
+- 'accessibility'
+- 'shell:run_tests'
+- 'shell:delete_static_pages'
+" >> "${MAINDIR}grunt/aliases.yaml";
         # Copy test files
         cat "${MAINDIR}files/grunt/shell_tests.js" >> "${MAINDIR}grunt/shell.js";
         cat "${MAINDIR}files/grunt/htmllint.js" >> "${MAINDIR}grunt/htmllint.js";
+        cat "${MAINDIR}files/grunt/accessibility.js" >> "${MAINDIR}grunt/accessibility.js";
     fi;
 
 fi;
