@@ -10,7 +10,7 @@ cd "assets/";
 
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
-git clone https://github.com/Darklg/CSSCommon.git
+git clone --depth=1 https://github.com/Darklg/CSSCommon.git
 
 # On installe les feuilles de style
 if [[ $use_compass == 'y' ]]; then
@@ -46,7 +46,7 @@ if [[ $use_compass == 'y' ]]; then
     if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ]; then
         git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
     else
-        git clone https://github.com/Darklg/SassCSSCommon.git csscommon;
+        git clone --depth=1 https://github.com/Darklg/SassCSSCommon.git csscommon;
         rm -rf "${MAINDIR}assets/scss/csscommon/.git";
     fi;
     echo "@import \"csscommon/csscommon\";" >> "${MAINDIR}assets/scss/main.scss";

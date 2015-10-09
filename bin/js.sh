@@ -42,7 +42,7 @@ fi;
 
 if [[ $add_jsutilities_plugins == 'y' ]]; then
     # Clone repository
-    git clone https://github.com/Darklg/JavaScriptUtilities.git
+    git clone --depth=1 https://github.com/Darklg/JavaScriptUtilities.git
 
     # Install default plugins
     case "${use_jquery}" in

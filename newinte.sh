@@ -13,7 +13,7 @@ EXECDIR="$( cd "${SOURCEDIR}" && pwd )/";
 # Cloning repository or getting local version if available
 echo '# - RECUPERATION DE INTESTARTER';
 if [ ! -d "${SOURCEDIR}files" ]; then
-    git clone https://github.com/Darklg/InteStarter.git
+    git clone --depth=1 https://github.com/Darklg/InteStarter.git
 else
     git clone "${SOURCEDIR}.git";
 fi;
