@@ -118,11 +118,32 @@ fi;
 
 # Font icon
 if [[ $use_compass_fonticon == 'y' ]];then
-    mv "${MAINDIR}files/icn-heart.svg" "${MAINDIR}assets/icons/original/icn-heart.svg";
+    rsync -ruv "${MAINDIR}files/icons/" "${MAINDIR}assets/icons/original/";
     touch "${MAINDIR}assets/scss/${project_id}/_icons.scss";
     echo "@import \"${project_id}/_icons.scss\";" >> "${MAINDIR}assets/scss/main.scss";
     # Update Scss
     sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
+    # Tweak icons
+    echo "
+/* ----------------------------------------------------------
+  Icons
+---------------------------------------------------------- */
+
+.icon,
+.icon:before {
+    display: inline-block;
+    text-align: center;
+}
+
+.icon_twitter:before {
+    width: 1.3em;
+}
+
+.icon_facebook:before {
+    width: 0.4em;
+}
+" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
+
 fi;
 
 if [[ $use_compass == 'y' ]]; then
