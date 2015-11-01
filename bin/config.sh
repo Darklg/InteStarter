@@ -42,8 +42,9 @@ function intestarter_slug() {
 echo '## CONFIGURATION INITIALE';
 
 # Seulement assets
-is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
-
+if [ -z ${is_wp_theme+x} ]; then
+    is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
+fi
 # Seulement assets
 use_onlyassets='y';
 if [[ $is_wp_theme == 'n' ]]; then
@@ -93,13 +94,17 @@ case "$use_subfolder" in
 esac
 
 # On recupere le nom du projet
-read -p "- Comment s'appelle ce projet ? (Front-End) " project_name
+if [ -z ${project_name+x} ]; then
+    read -p "- Comment s'appelle ce projet ? (Front-End) " project_name
+fi
 if [[ $project_name == '' ]]; then
     project_name='Front-End';
 fi;
 
 # On recupere l'ID du projet
-read -p "- Quel est l'ID de ce projet ? (default) " project_id
+if [ -z ${project_id+x} ]; then
+    read -p "- Quel est l'ID de ce projet ? (default) " project_id
+fi;
 if [[ $project_id == '' ]]; then
     project_id=$(intestarter_slug "${project_name}");
 fi;
