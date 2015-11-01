@@ -118,7 +118,7 @@ fi;
 
 # Font icon
 if [[ $use_compass_fonticon == 'y' ]];then
-    rsync -ruv "${MAINDIR}files/icons/" "${MAINDIR}assets/icons/original/";
+    rsync -az "${MAINDIR}files/icons/" "${MAINDIR}assets/icons/original/";
     touch "${MAINDIR}assets/scss/${project_id}/_icons.scss";
     echo "@import \"${project_id}/_icons.scss\";" >> "${MAINDIR}assets/scss/main.scss";
     # Update Scss
