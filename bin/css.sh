@@ -49,7 +49,7 @@ if [[ $use_compass == 'y' ]]; then
         git clone --depth=1 https://github.com/Darklg/SassCSSCommon.git csscommon;
         rm -rf "${MAINDIR}assets/scss/csscommon/.git";
     fi;
-    echo "@import \"csscommon/csscommon\";" >> "${MAINDIR}assets/scss/main.scss";
+    cat "${MAINDIR}files/base-csscommon.scss" >> "${MAINDIR}assets/scss/main.scss";
     cd "${MAINDIR}assets/";
 
     cp -R CSSCommon/scss/utilities/ scss/utilities/
