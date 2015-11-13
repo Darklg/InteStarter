@@ -121,7 +121,10 @@ if [[ $use_onlyassets == 'n' ]]; then
     read -p "- Quelle est l'URL du projet ? " project_url
 
     # On recupere la description du projet
-    read -p "- Quelle est la description rapide du projet ? " project_description
+    read -p "- Quelle est la description rapide du projet ? (My Project)" project_description
+    if [[ $project_description == '' ]]; then
+        project_description='My Project';
+    fi;
 fi;
 
 # Utilisation de Compass
