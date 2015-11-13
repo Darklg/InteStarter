@@ -41,14 +41,21 @@ function intestarter_slug() {
 
 echo '## CONFIGURATION INITIALE';
 
-# Seulement assets
+# Thème WP
 if [ -z ${is_wp_theme+x} ]; then
     is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
 fi
+
 # Seulement assets
 use_onlyassets='y';
 if [[ $is_wp_theme == 'n' ]]; then
     use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
+fi;
+
+# Site dynamique
+is_static='n';
+if [[ $is_wp_theme == 'n' ]]; then
+    is_static=$(intestarter_yn "- Est-ce un site statique ?" 'n');
 fi;
 
 if [[ $use_onlyassets == 'y' ]]; then

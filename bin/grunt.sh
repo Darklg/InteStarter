@@ -12,6 +12,8 @@ if [[ $use_grunt != 'n' ]]; then
     npm install --save-dev grunt;
     npm install --save-dev load-grunt-config;
     npm install --save-dev grunt-contrib-clean;
+    npm install --save-dev grunt-shell;
+    npm install --save-dev grunt-uncss;
 
     # Create Grunt Files
     mkdir "${MAINDIR}grunt";
@@ -19,10 +21,14 @@ if [[ $use_grunt != 'n' ]]; then
     mv "${MAINDIR}files/grunt/clean.js" "${MAINDIR}grunt/clean.js";
     mv "${MAINDIR}files/grunt/aliases.yaml" "${MAINDIR}grunt/aliases.yaml";
 
-    if [[ $is_wp_theme == 'n' ]];then
+    # Add deploy alias
+    echo "
+default:
+- 'clean'
+- 'uncss'" >> "${MAINDIR}grunt/aliases.yaml";
 
-        npm install --save-dev grunt-shell;
-        npm install --save-dev grunt-uncss;
+    if [[ $is_static == 'y' ]];then
+
 
         # Set deploy
         mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
@@ -31,12 +37,7 @@ if [[ $use_grunt != 'n' ]]; then
         # Install actions
         mv "${MAINDIR}files/actions" "${MAINDIR}actions";
 
-        # Add deploy alias
         echo "
-default:
-- 'clean'
-- 'uncss'
-
 deploy:
 - 'clean'
 - 'shell:intestarter_deploy'
@@ -99,6 +100,11 @@ run_tests_html:
 - 'shell:run_tests'
 - 'shell:delete_static_pages'
 " >> "${MAINDIR}grunt/aliases.yaml";
+
+        if [[ $is_static == 'n' ]];then
+            echo "var mod = {};" >> "${MAINDIR}grunt/shell.js";
+        fi;
+
         # Copy test files
         cat "${MAINDIR}files/grunt/shell_tests.js" >> "${MAINDIR}grunt/shell.js";
         cat "${MAINDIR}files/grunt/htmllint.js" >> "${MAINDIR}grunt/htmllint.js";
