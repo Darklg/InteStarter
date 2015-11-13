@@ -206,7 +206,7 @@ sed -i '' "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styleguide
 ###################################
 
 main_folders="css/ images/ fonts/ js/"
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $support_ie8 == 'y' ]]; then
     main_folders="${main_folders} js/ie/";
 fi;
 
