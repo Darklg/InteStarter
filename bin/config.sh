@@ -54,7 +54,7 @@ fi;
 
 # Site dynamique
 is_static='n';
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n'  && $use_onlyassets == 'n' ]]; then
     is_static=$(intestarter_yn "- Est-ce un site statique ?" 'n');
 fi;
 
