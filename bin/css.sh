@@ -120,7 +120,7 @@ fi;
 if [[ $use_compass_fonticon == 'y' ]];then
     rsync -az "${MAINDIR}files/icons/" "${MAINDIR}assets/icons/original/";
     touch "${MAINDIR}assets/scss/${project_id}/_icons.scss";
-    echo "@import \"${project_id}/_icons.scss\";" >> "${MAINDIR}assets/scss/main.scss";
+    echo "@import \"${project_id}/icons\";" >> "${MAINDIR}assets/scss/main.scss";
     # Update Scss
     sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
     # Tweak icons
@@ -148,10 +148,39 @@ fi;
 
 if [[ $use_compass == 'y' ]]; then
 # Project file
-echo "@import \"${project_id}/_fonts.scss\";
-@import \"${project_id}/_forms.scss\";
-@import \"${project_id}/_base.scss\";
+echo "@import \"${project_id}/fonts\";
+@import \"${project_id}/forms\";
+@import \"${project_id}/base\";
+@import \"${project_id}/header\";
+@import \"${project_id}/footer\";
+@import \"${project_id}/home\";
+@import \"${project_id}/content\";
 " >> "${MAINDIR}assets/scss/main.scss";
+
+# Main files
+touch "${MAINDIR}assets/scss/${project_id}/_header.scss"
+touch "${MAINDIR}assets/scss/${project_id}/_footer.scss"
+touch "${MAINDIR}assets/scss/${project_id}/_home.scss"
+touch "${MAINDIR}assets/scss/${project_id}/_content.scss"
+
+# Forms file
+echo "@charset \"UTF-8\";
+
+/* ----------------------------------------------------------
+  Content
+---------------------------------------------------------- */
+
+.cssc-content {
+    font-size: 14px;
+}
+
+.cssc-content {
+    h2, h3, h4 {
+        font-family: \$font-second;
+    }
+}
+
+" >> "${MAINDIR}assets/scss/${project_id}/_content.scss";
 
 # Forms file
 echo "@charset \"UTF-8\";

@@ -10,6 +10,7 @@
 -------------------------- */
 
 $font-main: Helvetica, Arial, sans-serif;
+$font-second: Times, serif;
 
 /* Basic colors
 -------------------------- */
@@ -50,8 +51,8 @@ $large_only: "min-width:"+$large-min;
   Utilities
 ---------------------------------------------------------- */
 
-// imgsprite @import "utilities/_retina-sprites.scss";
-@import "utilities/_plugins.scss";
+// imgsprite @import "utilities/retina-sprites";
+@import "utilities/plugins";
 
 /* ----------------------------------------------------------
   CSSCommon
