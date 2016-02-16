@@ -37,6 +37,7 @@ if [[ $use_compass == 'y' ]]; then
     else
         mv "${MAINDIR}files/_base.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
     fi;
+    cat "${MAINDIR}files/_base-main.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
 
     if [[ $use_onlyassets == 'n' ]]; then
         echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css?v=<?php echo time(); ?>" />' >> "${MAINDIR}inc/tpl/header/head.php";
@@ -124,26 +125,7 @@ if [[ $use_compass_fonticon == 'y' ]];then
     # Update Scss
     sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
     # Tweak icons
-    echo "
-/* ----------------------------------------------------------
-  Icons
----------------------------------------------------------- */
-
-.icon,
-.icon:before {
-    display: inline-block;
-    text-align: center;
-}
-
-.icon_twitter:before {
-    width: 1.3em;
-}
-
-.icon_facebook:before {
-    width: 0.4em;
-}
-" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
-
+    cat "${MAINDIR}files/_base-icons.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
 fi;
 
 if [[ $use_compass == 'y' ]]; then

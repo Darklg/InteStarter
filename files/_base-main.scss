@@ -1,0 +1,31 @@
+
+/* ----------------------------------------------------------
+  Links
+---------------------------------------------------------- */
+
+a {
+    color: $color-main;
+}
+
+a:focus,
+a:hover {
+    color: $color-hl;
+}
+
+a:active {
+    color: darken($color-hl,20);
+}
+
+/* ----------------------------------------------------------
+  Selection style
+---------------------------------------------------------- */
+
+::-moz-selection {
+    color: $color-main;
+    background: rgba($color-hl,0.5);
+}
+
+::selection {
+    color: $color-main;
+    background: rgba($color-hl,0.5);
+}

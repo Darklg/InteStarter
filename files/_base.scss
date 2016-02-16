@@ -17,15 +17,3 @@ body {
 .centered-container > * {
     max-width: $content_width;
 }
-
-/* ----------------------------------------------------------
-  Links
----------------------------------------------------------- */
-
-a {
-    color: $color-main;
-}
-
-a:hover {
-    color: $color-hl;
-}
