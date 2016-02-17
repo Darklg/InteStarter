@@ -44,18 +44,30 @@ if [[ $use_compass == 'y' ]]; then
     fi;
 
     cd "${MAINDIR}assets/scss/";
-    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ]; then
+
+    # CSS Common
+    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento_skin == 'y' ]; then
         git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
     else
         git clone --depth=1 https://github.com/Darklg/SassCSSCommon.git csscommon;
         rm -rf "${MAINDIR}assets/scss/csscommon/.git";
     fi;
     cat "${MAINDIR}files/base-csscommon.scss" >> "${MAINDIR}assets/scss/main.scss";
-    cd "${MAINDIR}assets/";
 
+    # Integento
+    if [[ $is_magento_skin == 'y' ]]; then
+        git submodule add https://github.com/Darklg/InteGentoStyles.git
+        cat "${MAINDIR}files/base-integento.scss" >> "${MAINDIR}assets/scss/main.scss";
+    fi;
+
+    # Utilities
+    cd "${MAINDIR}assets/";
     cp -R CSSCommon/scss/utilities/ scss/utilities/
 
+    # Retina sprite
     sed -i '' 's/images\/css-sprite/assets\/images\/css-sprite/' scss/utilities/_retina-sprites.scss
+
+
 
 else
 

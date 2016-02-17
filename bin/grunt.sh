@@ -29,7 +29,6 @@ default:
 
     if [[ $is_static == 'y' ]];then
 
-
         # Set deploy
         mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
         cat "${MAINDIR}files/grunt/shell.js" >> "${MAINDIR}grunt/shell.js";

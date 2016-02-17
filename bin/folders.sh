@@ -15,7 +15,7 @@ fi
 cd "${MAINDIR}assets/";
 
 # htaccess
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     if ! [ -f .htaccess ]; then
         echo '- Ajout du .htaccess';
         mv "${MAINDIR}files/assets.htaccess" "${MAINDIR}assets/.htaccess";
@@ -23,7 +23,7 @@ if [[ $is_wp_theme == 'n' ]]; then
 fi;
 
 # Gitignore
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     echo '- Ajout du .gitignore';
     cat "${MAINDIR}files/base.gitignore" >> "${MAINDIR}.gitignore";
 fi;

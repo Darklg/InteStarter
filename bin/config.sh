@@ -42,35 +42,36 @@ function intestarter_slug() {
 echo '## CONFIGURATION INITIALE';
 
 # Thème WP
-if [ -z ${is_wp_theme+x} ]; then
-    is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
-fi
+is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
+
+is_magento_skin='n';
+if [[ $is_wp_theme == 'n' ]]; then
+    is_magento_skin=$(intestarter_yn "- Est-ce un skin Magento ?" 'n');
+fi;
 
 # Seulement assets
 use_onlyassets='y';
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
 fi;
 
 # Site dynamique
 is_static='n';
-if [[ $is_wp_theme == 'n'  && $use_onlyassets == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $use_onlyassets == 'n' ]]; then
     is_static=$(intestarter_yn "- Est-ce un site statique ?" 'n');
 fi;
 
 if [[ $use_onlyassets == 'y' ]]; then
     rm "InteStarter/index.php";
     rm "InteStarter/styleguide.php";
-    if [[ $is_wp_theme == 'n' ]]; then
-        rm "InteStarter/styleguide-wp.php";
-    fi;
-else
+fi;
+if [[ $is_wp_theme == 'n' ]]; then
     rm "InteStarter/styleguide-wp.php";
 fi;
 
 # Choix du dossier
 use_subfolder='n';
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     use_subfolder=$(intestarter_yn "- Créer un sous-dossier \"inte\" ?" 'n');
 fi;
 case "$use_subfolder" in
@@ -145,25 +146,25 @@ fi;
 # Utilisation de Grunt
 use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
 use_regression_tests='n';
-if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $use_onlyassets == 'n' ]]; then
+if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $is_magento_skin == 'n' && $use_onlyassets == 'n' ]]; then
     # Tests de regression JS
     use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
 fi;
 
 use_jquery='n';
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     # Bibliothèque JS
     use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
 fi;
 
 add_jsutilities_plugins='n';
-if [[ $is_wp_theme == 'n' && $use_jquery == 'y' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $use_jquery == 'y' ]]; then
     # Plugins JS
     add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
 fi;
 
 support_ie8='n';
-if [[ $is_wp_theme == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     # Support IE < 9
     support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'n');
 fi;
@@ -206,7 +207,7 @@ sed -i '' "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styleguide
 ###################################
 
 main_folders="css/ images/ fonts/ js/"
-if [[ $is_wp_theme == 'n' && $support_ie8 == 'y' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $support_ie8 == 'y' ]]; then
     main_folders="${main_folders} js/ie/";
 fi;
 
