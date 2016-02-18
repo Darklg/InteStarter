@@ -49,6 +49,9 @@ if [[ $support_ie8 == 'y' ]]; then
     . "${EXECDIR}bin/ie.sh";
 fi;
 . "${EXECDIR}bin/responsive.sh";
+if [[ $is_magento_skin == 'y' ]]; then
+    . "${EXECDIR}bin/magento.sh";
+fi;
 
 #################################################################
 ## Compilations initiales
