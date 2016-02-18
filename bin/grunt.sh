@@ -9,11 +9,11 @@ if [[ $use_grunt != 'n' ]]; then
     echo "{\"name\": \"${project_id}\",\"version\": \"0.0.0\",\"description\": \"\"}" > "${MAINDIR}package.json";
 
     # Install Grunt & default modules
-    npm install --save-dev grunt;
-    npm install --save-dev load-grunt-config;
-    npm install --save-dev grunt-contrib-clean;
-    npm install --save-dev grunt-shell;
-    npm install --save-dev grunt-uncss;
+    npm install --silent --save-dev grunt;
+    npm install --silent --save-dev load-grunt-config;
+    npm install --silent --save-dev grunt-contrib-clean;
+    npm install --silent --save-dev grunt-shell;
+    npm install --silent --save-dev grunt-uncss;
 
     # Create Grunt Files
     mkdir "${MAINDIR}grunt";
@@ -48,9 +48,9 @@ deploy:
     if [[ $use_compass_fonticon == 'y' ]];then
 
         # Install fonticons modules
-        npm install --save-dev grunt-svgmin;
-        npm install --save-dev grunt-webfont;
-        npm install --save-dev grunt-contrib-compass;
+        npm install --silent --save-dev grunt-svgmin;
+        npm install --silent --save-dev grunt-webfont;
+        npm install --silent --save-dev grunt-contrib-compass;
 
         # Copy Grunt utilities
         mv "${MAINDIR}files/grunt/compass.js" "${MAINDIR}grunt/compass.js";
@@ -70,11 +70,11 @@ build:
 
     if [[ $use_regression_tests == 'y' ]];then
         # Install accessibility tester
-        npm install --save-dev grunt-accessibility;
+        npm install --silent --save-dev grunt-accessibility;
         # Install HTML Tester
-        npm install --save-dev grunt-html;
+        npm install --silent --save-dev grunt-html;
         # Install PhantomCSS
-        npm install --save-dev phantomcss;
+        npm install --silent --save-dev phantomcss;
         # Install tests
         mv "${MAINDIR}files/tests" "${MAINDIR}tests";
         # Add build command
