@@ -137,7 +137,7 @@ if [[ $use_compass_fonticon == 'y' ]];then
     # Update Scss
     sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
     # Tweak icons
-    cat "${MAINDIR}files/_base-icons.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
+    cat "${MAINDIR}files/base-icons.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
 fi;
 
 if [[ $use_compass == 'y' ]]; then
