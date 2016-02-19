@@ -197,6 +197,26 @@ echo "@charset \"UTF-8\";
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi
 
+if [[ $is_magento_skin == 'y' ]]; then
+
+    echo "
+.form-list {
+}
+
+.form-list label {
+}
+
+
+.form-list .input-box select,
+.form-list .input-box textarea,
+.form-list .input-box input[type=text],
+.form-list .input-box input[type=email],
+.form-list .input-box input[type=password] {
+}
+" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+
+fi;
+
 # On supprime CSSCommon
 rm -rf CSSCommon
 
