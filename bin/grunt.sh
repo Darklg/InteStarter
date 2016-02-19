@@ -13,7 +13,6 @@ if [[ $use_grunt != 'n' ]]; then
     npm install --silent --save-dev load-grunt-config;
     npm install --silent --save-dev grunt-contrib-clean;
     npm install --silent --save-dev grunt-shell;
-    npm install --silent --save-dev grunt-uncss;
 
     # Create Grunt Files
     mkdir "${MAINDIR}grunt";
@@ -24,10 +23,16 @@ if [[ $use_grunt != 'n' ]]; then
     # Add deploy alias
     echo "
 default:
-- 'clean'
-- 'uncss'" >> "${MAINDIR}grunt/aliases.yaml";
+- 'clean'" > "${MAINDIR}grunt/aliases.yaml";
 
     if [[ $is_static == 'y' ]];then
+
+        npm install --silent --save-dev grunt-uncss;
+
+        echo "
+default:
+- 'clean'
+- 'uncss'" > "${MAINDIR}grunt/aliases.yaml";
 
         # Set deploy
         mv "${MAINDIR}files/grunt/uncss.js" "${MAINDIR}grunt/uncss.js";
