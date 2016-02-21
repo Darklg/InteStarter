@@ -103,9 +103,6 @@ esac
 
 # On recupere le nom du projet
 default_project_name='Front-End';
-if [ -z ${project_name+x} ]; then
-    default_project_name="${project_name}";
-fi
 read -p "- Comment s'appelle ce projet ? (${default_project_name}) " project_name
 if [[ $project_name == '' ]]; then
     project_name="${default_project_name}";
@@ -113,9 +110,6 @@ fi;
 
 # On recupere l'ID du projet
 default_project_id=$(intestarter_slug "${project_name}");
-if [ -z ${project_id+x} ]; then
-    default_project_id="${project_id}";
-fi;
 read -p "- Quel est l'ID de ce projet ? (${default_project_id}) " project_id
 if [[ $project_id == '' ]]; then
     project_id="${default_project_id}";
