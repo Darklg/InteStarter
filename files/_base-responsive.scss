@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-    font: 13px/1.2 $font-main;
+    font: $font-size/1.2 $font-main;
     color: $color-main;
 }
 
@@ -9,7 +9,16 @@ body {
   Layout
 ---------------------------------------------------------- */
 
+.centered-container {
+    padding: 0 $desktop-padding;
+}
+
 .centered-container > * {
     max-width: $content_width_wide;
 }
 
+@media($mobile_only) {
+    .centered-container {
+        padding: 0 $mobile-padding;
+    }
+}

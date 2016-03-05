@@ -11,6 +11,15 @@
 
 $font-main: Helvetica, Arial, sans-serif;
 $font-second: Times, serif;
+$font-size: 13px;
+
+/* Margins
+-------------------------- */
+
+$mobile-padding: 15px;
+$mobile-padding-neg: -15px;
+$desktop-padding: 30px;
+$desktop-padding-neg: -30px;
 
 /* Basic colors
 -------------------------- */
@@ -31,6 +40,7 @@ $mobile-max: 767px;
 $tablet-min: 768px;
 $tablet-max: 1023px;
 $desktop-min: 1024px;
+$desktop-mid: 1299px;
 $desktop-max: 1599px;
 $large-min: 1600px;
 

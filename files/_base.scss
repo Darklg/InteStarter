@@ -2,7 +2,7 @@
 
 body {
     min-width: $content_width_wide;
-    font: 13px/1.2 $font-main;
+    font: $font-size/1.2 $font-main;
     color: $color-main;
 }
 
@@ -11,6 +11,7 @@ body {
 ---------------------------------------------------------- */
 
 .centered-container {
+    padding: 0 $desktop-padding;
     min-width: $content_width_wide;
 }
 
