@@ -42,7 +42,11 @@ function intestarter_slug() {
 echo '## CONFIGURATION INITIALE';
 
 # Thème WP
-is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
+if [ -z ${from_wpinstaller+x} ]; then
+    is_wp_theme='y';
+else
+    is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
+fi;
 
 is_magento_skin='n';
 if [[ $is_wp_theme == 'n' ]]; then
@@ -101,18 +105,22 @@ case "$use_subfolder" in
     ;;
 esac
 
-# On recupere le nom du projet
-default_project_name='Front-End';
-read -p "- Comment s'appelle ce projet ? (${default_project_name}) " project_name
-if [[ $project_name == '' ]]; then
-    project_name="${default_project_name}";
-fi;
+if [ -z ${from_wpinstaller+x} ]; then
+    echo "Using values from WPUInstaller : ${project_name} - ${project_id}";
+else
+    # On recupere le nom du projet
+    default_project_name='Front-End';
+    read -p "- Comment s'appelle ce projet ? (${default_project_name}) " project_name
+    if [[ $project_name == '' ]]; then
+        project_name="${default_project_name}";
+    fi;
 
-# On recupere l'ID du projet
-default_project_id=$(intestarter_slug "${project_name}");
-read -p "- Quel est l'ID de ce projet ? (${default_project_id}) " project_id
-if [[ $project_id == '' ]]; then
-    project_id="${default_project_id}";
+    # On recupere l'ID du projet
+    default_project_id=$(intestarter_slug "${project_name}");
+    read -p "- Quel est l'ID de ce projet ? (${default_project_id}) " project_id
+    if [[ $project_id == '' ]]; then
+        project_id="${default_project_id}";
+    fi;
 fi;
 
 # Use only assets
