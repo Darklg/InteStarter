@@ -43,9 +43,9 @@ echo '## CONFIGURATION INITIALE';
 
 # Thème WP
 if [ -z ${from_wpinstaller+x} ]; then
-    is_wp_theme='y';
-else
     is_wp_theme=$(intestarter_yn "- Est-ce un thème WordPress ?" 'n');
+else
+    is_wp_theme='y';
 fi;
 
 is_magento_skin='n';
@@ -106,8 +106,6 @@ case "$use_subfolder" in
 esac
 
 if [ -z ${from_wpinstaller+x} ]; then
-    echo "Using values from WPUInstaller : ${project_name} - ${project_id}";
-else
     # On recupere le nom du projet
     default_project_name='Front-End';
     read -p "- Comment s'appelle ce projet ? (${default_project_name}) " project_name
@@ -121,6 +119,8 @@ else
     if [[ $project_id == '' ]]; then
         project_id="${default_project_id}";
     fi;
+else
+    echo "Using values from WPUInstaller : ${project_name} - ${project_id}";
 fi;
 
 # Use only assets
