@@ -148,8 +148,7 @@ echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/header\";
 @import \"${project_id}/footer\";
 @import \"${project_id}/home\";
-@import \"${project_id}/content\";
-" >> "${MAINDIR}assets/scss/main.scss";
+@import \"${project_id}/content\";" >> "${MAINDIR}assets/scss/main.scss";
 
 # Main files
 touch "${MAINDIR}assets/scss/${project_id}/_header.scss"
