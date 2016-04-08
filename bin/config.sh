@@ -53,6 +53,11 @@ if [[ $is_wp_theme == 'n' ]]; then
     is_magento_skin=$(intestarter_yn "- Est-ce un skin Magento ?" 'n');
 fi;
 
+create_utils_magento='n';
+if [[ $is_magento_skin == 'y' ]]; then
+    create_utils_magento=$(intestarter_yn "- Creer un dossier _utils/ ?" 'n');
+fi;
+
 # Seulement assets
 use_onlyassets='y';
 if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
