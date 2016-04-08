@@ -185,7 +185,18 @@ echo "@charset \"UTF-8\";
 .cssc-button--${project_id} {
 
 }
+" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+fi
 
+if [[ $is_magento_skin == 'y' ]]; then
+
+    echo "
+.button {
+
+}
+" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+
+echo "
 /* ----------------------------------------------------------
   Forms
 ---------------------------------------------------------- */
@@ -204,7 +215,6 @@ if [[ $is_magento_skin == 'y' ]]; then
 
 .form-list label {
 }
-
 
 .form-list .input-box select,
 .form-list .input-box textarea,
