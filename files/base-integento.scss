@@ -5,23 +5,32 @@
 
 @import "InteGentoStyles/components/common";
 @import "InteGentoStyles/components/forms";
+@import "InteGentoStyles/components/buttons";
 @import "InteGentoStyles/components/messages";
 @import "InteGentoStyles/components/breadcrumbs";
 @import "InteGentoStyles/components/layouts";
-@import "InteGentoStyles/components/grid";
+@import "InteGentoStyles/components/col2set";
+@import "InteGentoStyles/components/loader";
 
 /* Content
 -------------------------- */
 
-@import "InteGentoStyles/components/std";
+@import "InteGentoStyles/components/page/cms/std";
 
 /* Filters
 -------------------------- */
 
-@import "InteGentoStyles/components/pager";
+@import "InteGentoStyles/components/page/html/pager";
 
 /* Products
 -------------------------- */
 
-@import "InteGentoStyles/components/price-box";
-@import "InteGentoStyles/components/item-options";
+@import "InteGentoStyles/components/catalog/product/price-box";
+@import "InteGentoStyles/components/catalog/product/list/grid";
+
+/* View
+-------------------------- */
+
+@import "InteGentoStyles/components/catalog/product/view/essential";
+@import "InteGentoStyles/components/catalog/product/view/item-options";
+@import "InteGentoStyles/components/catalog/product/view/medias";
