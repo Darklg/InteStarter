@@ -17,6 +17,7 @@ if [ -f "${MAGENTODIR}api.php" && $use_grunt == 'y' ]; then
     mkdir "${MAINDIR}assets/scss/${project_id}/checkout";
     touch "${MAINDIR}assets/scss/${project_id}/checkout/_cart.scss";
     touch "${MAINDIR}assets/scss/${project_id}/checkout/_checkout.scss";
+    touch "${MAINDIR}assets/scss/${project_id}/checkout/_success.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_catalog.scss";
     mkdir "${MAINDIR}assets/scss/${project_id}/catalog";
     touch "${MAINDIR}assets/scss/${project_id}/catalog/_filters.scss";
@@ -24,15 +25,21 @@ if [ -f "${MAGENTODIR}api.php" && $use_grunt == 'y' ]; then
     touch "${MAINDIR}assets/scss/${project_id}/catalog/_item.scss";
     touch "${MAINDIR}assets/scss/${project_id}/catalog/_view.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_customer.scss";
+    mkdir "${MAINDIR}assets/scss/${project_id}/customer";
+    touch "${MAINDIR}assets/scss/${project_id}/customer/_nonloggedin.scss";
+    touch "${MAINDIR}assets/scss/${project_id}/customer/_account.scss";
     echo "@import \"${project_id}/checkout\";
     @import \"${project_id}/checkout/cart\";
     @import \"${project_id}/checkout/checkout\";
+    @import \"${project_id}/checkout/success\";
     @import \"${project_id}/catalog\";
     @import \"${project_id}/catalog/filters\";
     @import \"${project_id}/catalog/grid\";
     @import \"${project_id}/catalog/item\";
     @import \"${project_id}/catalog/view\";
-    @import \"${project_id}/customer\";" >> "${MAINDIR}assets/scss/main.scss";
+    @import \"${project_id}/customer\";
+    @import \"${project_id}/customer/nonloggedin\";
+    @import \"${project_id}/customer/account\";" >> "${MAINDIR}assets/scss/main.scss";
 
 
     if [[ $create_utils_magento == 'y' ]]; then
