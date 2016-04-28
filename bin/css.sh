@@ -183,7 +183,16 @@ echo "@charset \"UTF-8\";
 ---------------------------------------------------------- */
 
 .cssc-button--${project_id} {
+    & {
 
+    }
+    &:hover,
+    &:focus {
+
+    }
+    &:active {
+
+    }
 }
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi
@@ -192,7 +201,29 @@ if [[ $is_magento_skin == 'y' ]]; then
 
     echo "
 .button {
+    & {
 
+    }
+    &:hover,
+    &:focus {
+
+    }
+    &:active {
+
+    }
+}
+
+.button--secondary {
+    & {
+
+    }
+    &:hover,
+    &:focus {
+
+    }
+    &:active {
+
+    }
 }
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 
@@ -204,23 +235,71 @@ echo "
 .cssc-form--${project_id} {
 
 }
+
+/* Form items */
+
+%project--label {
+    text-transform: uppercase;
+}
+
+%project--field,
+%project--select {
+    @extend .inputreset;
+}
+
+%project--field {
+    border: 1px solid #000;
+}
+
+%project--select {
+    @extend .cssc-select;
+    padding-right: 30px;
+    background: transparent no-repeat right 0 center;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAQAAADvCgS4AAAAGklEQVR4AWNg+I8BcQGCyhAAXRlhpcQAQsoAMGIY6KADYAUAAAAASUVORK5CYII=);
+}
+
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi
 
 if [[ $is_magento_skin == 'y' ]]; then
 
     echo "
-.form-list {
-}
+
+/* Selectors */
 
 .form-list label {
+    @extend %project--label;
 }
 
-.form-list .input-box select,
-.form-list .input-box textarea,
-.form-list .input-box input[type=text],
-.form-list .input-box input[type=email],
-.form-list .input-box input[type=password] {
+.form-list .input-box  {
+    select,
+    textarea,
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+        @extend %project--field;
+    }
+}
+" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+
+else
+
+    echo "
+
+/* Selectors */
+
+.cssc-form label {
+    @extend %project--label;
+}
+
+.cssc-form .box  {
+    select,
+    textarea,
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+        @extend %project--field;
+    }
 }
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 
