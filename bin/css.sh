@@ -156,7 +156,7 @@ touch "${MAINDIR}assets/scss/${project_id}/_footer.scss"
 touch "${MAINDIR}assets/scss/${project_id}/_home.scss"
 touch "${MAINDIR}assets/scss/${project_id}/_content.scss"
 
-# Forms file
+# Content file
 echo "@charset \"UTF-8\";
 
 /* ----------------------------------------------------------
@@ -271,7 +271,7 @@ if [[ $is_magento_skin == 'y' ]]; then
     @extend %project--label;
 }
 
-.form-list .input-box  {
+.form-list .input-box {
     select,
     textarea,
     input[type=text],
