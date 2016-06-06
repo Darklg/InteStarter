@@ -8,28 +8,23 @@ do
 done;
 
 SOURCEDIR="$( dirname "${BASH_SOURCE[0]}" )/";
-EXECDIR="$( cd "${SOURCEDIR}" && pwd )/";
 
 # Cloning repository or getting local version if available
 echo '# - RECUPERATION DE INTESTARTER';
 if [ ! -d "${SOURCEDIR}files" ]; then
     git clone --depth=1 https://github.com/Darklg/InteStarter.git
 else
-    git clone --depth=1 "${SOURCEDIR}.git";
+    git clone "${SOURCEDIR}.git";
 fi;
+
 
 # Set main directory
 MAINDIR="${PWD}/";
-DIRECTORY="${MAINDIR}InteStarter";
+EXECDIR="${MAINDIR}InteStarter/";
 
-if [ ! -d "${DIRECTORY}" ]; then
+if [ ! -d "${EXECDIR}" ]; then
     echo 'Le clonage a échoué';
-    exit 1;
-fi
-
-# Use cloned files if launch from URL
-if [ ! -f "${EXECDIR}bin/config.sh" ]; then
-    EXECDIR="${DIRECTORY}/";
+    return 1;
 fi
 
 # Avoid .git conflict
