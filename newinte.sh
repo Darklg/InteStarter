@@ -15,7 +15,7 @@ echo '# - RECUPERATION DE INTESTARTER';
 if [ ! -d "${SOURCEDIR}files" ]; then
     git clone --depth=1 https://github.com/Darklg/InteStarter.git
 else
-    git clone "${SOURCEDIR}.git";
+    git clone --depth=1 "${SOURCEDIR}.git";
 fi;
 
 # Set main directory

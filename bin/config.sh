@@ -88,7 +88,7 @@ case "$use_subfolder" in
         # On renomme le dossier créé et on s'y déplace
         mv "InteStarter" "inte";
         cd "inte/";
-        MAINDIR=${PWD}"/";
+        MAINDIR="${PWD}/";
     ;;
     * )
         if [[ $is_wp_theme == 'y' ]]; then
@@ -107,20 +107,21 @@ case "$use_subfolder" in
         # On récupère le contenu du dossier créé
         mv InteStarter/* .
         rm -rf "InteStarter/";
+        EXECDIR="${PWD}/";
     ;;
 esac
 
 if [ -z ${from_wpinstaller+x} ]; then
     # On recupere le nom du projet
     default_project_name='Front-End';
-    read -p "- Comment s'appelle ce projet ? (${default_project_name}) " project_name
+    read -p "- Comment s'appelle ce projet ? (${default_project_name}) : " project_name
     if [[ $project_name == '' ]]; then
         project_name="${default_project_name}";
     fi;
 
     # On recupere l'ID du projet
     default_project_id=$(intestarter_slug "${project_name}");
-    read -p "- Quel est l'ID de ce projet ? (${default_project_id}) " project_id
+    read -p "- Quel est l'ID de ce projet ? (${default_project_id}) : " project_id
     if [[ $project_id == '' ]]; then
         project_id="${default_project_id}";
     fi;
@@ -134,9 +135,10 @@ if [[ $use_onlyassets == 'n' ]]; then
     read -p "- Quelle est l'URL du projet ? " project_url
 
     # On recupere la description du projet
-    read -p "- Quelle est la description rapide du projet ? (My Project)" project_description
+    default_project_description="${project_name}";
+    read -p "- Quelle est la description rapide du projet ? (${default_project_description}) : " project_description
     if [[ $project_description == '' ]]; then
-        project_description='My Project';
+        project_description="${default_project_description}";
     fi;
 fi;
 
