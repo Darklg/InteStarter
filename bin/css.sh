@@ -22,7 +22,7 @@ if [[ $use_compass == 'y' ]]; then
         if ! [ -d "${i}" ]; then
           echo "- Creation de ${i}";
           mkdir "${MAINDIR}assets/${i}";
-        fi
+        fi;
     done;
 
     # On cree le fichier de config compass
@@ -79,7 +79,7 @@ else
         fi;
     done;
 
-fi
+fi;
 
 # Installation de modules CSS au choix
 if [[ $use_csscommon == 'y' ]]; then
@@ -95,9 +95,9 @@ if [[ $use_csscommon == 'y' ]]; then
                 fi;
             ;;
             * );;
-        esac
-    done
-fi
+        esac;
+    done;
+fi;
 
 # Img sprite
 if [[ $use_compass_imgsprite == 'y' ]];then
@@ -195,7 +195,7 @@ echo "@charset \"UTF-8\";
     }
 }
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-fi
+fi;
 
 if [[ $is_magento_skin == 'y' ]]; then
 
@@ -226,6 +226,7 @@ if [[ $is_magento_skin == 'y' ]]; then
     }
 }
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+fi;
 
 echo "
 /* ----------------------------------------------------------
@@ -259,7 +260,6 @@ echo "
 }
 
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-fi
 
 if [[ $is_magento_skin == 'y' ]]; then
 
