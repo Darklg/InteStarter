@@ -12,6 +12,8 @@
 $font-main: Helvetica, Arial, sans-serif;
 $font-second: Times, serif;
 $font-size: 13px;
+$line-height: 1.3;
+$line-height-em: 1.3em;
 
 /* Margins
 -------------------------- */
@@ -45,18 +47,28 @@ $color-linkedin: #0077B5;
 
 $mobile-max: 767px;
 $tablet-min: 768px;
+$tablet-mid: 895px;
 $tablet-max: 1023px;
 $desktop-min: 1024px;
 $desktop-mid: 1299px;
-$desktop-max: 1599px;
-$large-min: 1600px;
+$desktop-midt: 1300px;
+$desktop-max: 1499px;
+$large-min: 1500px;
 
 $mobile_only: "max-width:"+$mobile-max;
 $mobile_excluded: "min-width:"+$tablet-min;
 $desktop_excluded: "max-width:"+$tablet-max;
 $desktop_only: "min-width:"+$desktop-min;
+$desktopmid_excluded:"max-width:"+$desktop-mid;
+$desktopmid_only:"min-width:"+$desktop-midt;
 $large_excluded: "max-width:"+$desktop-max;
 $large_only: "min-width:"+$large-min;
+
+/* Compass values
+-------------------------- */
+
+$critical-usage-threshold: 2;
+$graceful-usage-threshold: 2;
 
 // imgsprite /* Sprites
 // imgsprite -------------------------- */
