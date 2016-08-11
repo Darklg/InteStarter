@@ -239,6 +239,16 @@ echo "
 
 /* Form items */
 
+%project--fieldgroup {
+    & {
+        margin-bottom: 2em;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 %project--label {
     text-transform: uppercase;
 }
@@ -267,6 +277,11 @@ if [[ $is_magento_skin == 'y' ]]; then
 
 /* Selectors */
 
+.form-list .field,
+.form-list .fields .field {
+    @extend %project--fieldgroup;
+}
+
 .form-list label {
     @extend %project--label;
 }
@@ -278,6 +293,10 @@ if [[ $is_magento_skin == 'y' ]]; then
     input[type=email],
     input[type=password] {
         @extend %project--field;
+    }
+
+    select {
+        @extend %project--select;
     }
 }
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
