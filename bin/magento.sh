@@ -8,7 +8,7 @@ echo '## MAGENTO';
 
 MAGENTODIR="${MAINDIR}../../../../";
 
-if [ -f "${MAGENTODIR}api.php" && $use_grunt == 'y' ]; then
+if [ $is_magento_skin == 'y' && $use_grunt == 'y' ]; then
 
     echo '- Création de templates Sass';
 
