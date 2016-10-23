@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 body {
-    min-width: $content_width_wide;
-    font: $font-size/1.2 $font-main;
+    font: $font-size $font-main;
+    line-height: $line-height;
     color: $color-main;
 }
 
@@ -12,9 +12,14 @@ body {
 
 .centered-container {
     padding: 0 $desktop-padding;
-    min-width: $content_width_wide;
 }
 
 .centered-container > * {
-    max-width: $content_width;
+    max-width: $content_width_wide;
+}
+
+@media($mobile_only) {
+    .centered-container {
+        padding: 0 $mobile-padding;
+    }
 }
