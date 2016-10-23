@@ -249,6 +249,12 @@ echo "
     }
 }
 
+%project--legend {
+    margin-bottom: 1.1em;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
 %project--label {
     text-transform: uppercase;
 }
@@ -282,6 +288,11 @@ if [[ $is_magento_skin == 'y' ]]; then
     @extend %project--fieldgroup;
 }
 
+.box-info .box-title h3,
+.fieldset .legend {
+    @extend %project--legend;
+}
+
 .form-list label {
     @extend %project--label;
 }
@@ -299,6 +310,74 @@ if [[ $is_magento_skin == 'y' ]]; then
         @extend %project--select;
     }
 }
+
+/* Radios & Checkboxes
+-------------------------- */
+
+%fake-check-ghost,
+%fake-radio-ghost {
+    & + label {
+        padding-left: 1.5em;
+    }
+
+    & + label:before {
+        top: 0.45em;
+        border: 1px solid rgba($color-hl,0.4);
+        box-shadow: 0 0 0 1px rgba($color-hl,0);
+    }
+
+    &:checked + label:before {
+        border-color: $color-hl;
+        color: $color-hl;
+        box-shadow: 0 0 0 1px rgba($color-hl,0.999);
+    }
+}
+
+/* Checkboxes */
+
+.form-list {
+    li.control {
+        z-index: 1;
+        position: relative;
+    }
+
+    [id=\"primary_billing\"],
+    [id=\"primary_shipping\"],
+    [id=\"shipping:save_in_address_book\"],
+    [id=\"billing:save_in_address_book\"],
+    [id=\"shipping:same_as_billing\"],
+    #is_subscribed,
+    #subscription,
+    #change_password {
+        @extend %fake-check-ghost;
+    }
+}
+
+/* Radio */
+
+.sp-methods input[type=radio],
+#checkoutSteps input[name=\"shipping_method\"],
+#checkoutSteps .control input[name=\"checkout_method\"],
+#co-billing-form .control input[type=radio] {
+    @extend %fake-radio-ghost;
+}
+
+.field.name-prefix .input-box input[type=radio] {
+    & {
+        @extend %fake-radio-ghost;
+    }
+
+    & + label {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    & + label ~ label {
+        margin-left: 2em;
+    }
+}
+
+
 " >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 
 else
