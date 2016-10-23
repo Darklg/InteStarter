@@ -4,6 +4,10 @@ module.exports = {
             removeViewBox: false
         }, {
             removeUselessStrokeAndFill: true
+        }, {
+            removeAttrs: {
+                attrs: ['width', 'height']
+            }
         }]
     },
     multiple: {
