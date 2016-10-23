@@ -32,11 +32,7 @@ if [[ $use_compass == 'y' ]]; then
     mv "${MAINDIR}files/main.scss" "${MAINDIR}assets/scss/main.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_fonts.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-    if [[ $is_responsive == 'y' ]]; then
-        mv "${MAINDIR}files/_base-responsive.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
-    else
-        mv "${MAINDIR}files/_base.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
-    fi;
+    mv "${MAINDIR}files/_base.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
     cat "${MAINDIR}files/_base-main.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
 
     if [[ $use_onlyassets == 'n' ]]; then
