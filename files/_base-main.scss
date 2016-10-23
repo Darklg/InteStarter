@@ -1,17 +1,20 @@
-
 /* ----------------------------------------------------------
   Links
 ---------------------------------------------------------- */
 
+%main-link,
 a {
     color: $color-main;
 }
 
+%main-link:hover,
+%main-link:focus,
 a:focus,
 a:hover {
     color: $color-hl;
 }
 
+%main-link:active,
 a:active {
     color: darken($color-hl,20);
 }
