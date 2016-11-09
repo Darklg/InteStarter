@@ -266,7 +266,7 @@ echo "
 
 %project--select {
     @extend .cssc-select;
-    padding-right: 30px;
+    padding-right: 30px!important;
     background: transparent no-repeat right 0 center;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAQAAADvCgS4AAAAGklEQVR4AWNg+I8BcQGCyhAAXRlhpcQAQsoAMGIY6KADYAUAAAAASUVORK5CYII=);
 }
@@ -280,6 +280,10 @@ if [[ $is_magento_skin == 'y' ]]; then
 /* Selectors */
 
 .form-list .field,
+.form-list .control,
+.form-list .wide,
+.form-list > li,
+.form-list > .fields,
 .form-list .fields .field {
     @extend %project--fieldgroup;
 }
@@ -289,8 +293,17 @@ if [[ $is_magento_skin == 'y' ]]; then
     @extend %project--legend;
 }
 
-.form-list label {
-    @extend %project--label;
+.form-list {
+    label {
+        @extend %project--label;
+    }
+
+    & > li:not(.control) > label,
+    .field > label,
+    .wide > label {
+        display: block;
+        margin-bottom: 0.9em;
+    }
 }
 
 .form-list .input-box {
@@ -318,14 +331,14 @@ if [[ $is_magento_skin == 'y' ]]; then
 
     & + label:before {
         top: 0.45em;
-        border: 1px solid rgba($color-hl,0.4);
-        box-shadow: 0 0 0 1px rgba($color-hl,0);
+        border: 1px solid rgba(\$color-hl,0.4);
+        box-shadow: 0 0 0 1px rgba(\$color-hl,0);
     }
 
     &:checked + label:before {
-        border-color: $color-hl;
-        color: $color-hl;
-        box-shadow: 0 0 0 1px rgba($color-hl,0.999);
+        border-color: \$color-hl;
+        color: \$color-hl;
+        box-shadow: 0 0 0 1px rgba(\$color-hl,0.999);
     }
 }
 
