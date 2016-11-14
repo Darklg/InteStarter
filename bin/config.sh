@@ -146,10 +146,8 @@ fi;
 # Utilisation de Compass
 use_compass=$(intestarter_yn "- Utiliser Compass ?" 'y');
 use_compass_fonticon='';
-use_compass_imgsprite='';
 if [[ $use_compass == 'y' ]]; then
     use_compass_fonticon=$(intestarter_yn "- -- Compass : Utiliser une font-icon ?" 'y');
-    use_compass_imgsprite=$(intestarter_yn "- -- Compass : Utiliser des sprites image ?" 'n');
 fi;
 
 # Modules supplementaires CSSCommon
@@ -219,7 +217,7 @@ if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $support_ie8 == 'y' ]]; 
 fi;
 
 # CSS / COMPASS
-compass_folders="scss/ scss/utilities/ scss/${project_id}/ images/css-sprite/ images/css-sprite-2x/ icons/ icons/original/";
+compass_folders="scss/ scss/${project_id}/ icons/ icons/original/";
 csscommon_default_modules="default common content buttons forms grid layouts";
 csscommon_additional_modules="tables push navigation tabs images print effects";
 

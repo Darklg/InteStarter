@@ -31,6 +31,7 @@ if [[ $use_compass == 'y' ]]; then
     # On initialise le fichier principal
     mv "${MAINDIR}files/main.scss" "${MAINDIR}assets/scss/main.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_fonts.scss";
+    touch "${MAINDIR}assets/scss/${project_id}/_plugins.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
     mv "${MAINDIR}files/_base.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
     cat "${MAINDIR}files/_base-main.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
@@ -55,15 +56,6 @@ if [[ $use_compass == 'y' ]]; then
         git submodule add https://github.com/Darklg/InteGentoStyles.git
         cat "${MAINDIR}files/base-integento.scss" >> "${MAINDIR}assets/scss/main.scss";
     fi;
-
-    # Utilities
-    cd "${MAINDIR}assets/";
-    cp -R CSSCommon/scss/utilities/ scss/utilities/
-
-    # Retina sprite
-    sed -i '' 's/images\/css-sprite/assets\/images\/css-sprite/' scss/utilities/_retina-sprites.scss
-
-
 
 else
 
@@ -95,26 +87,6 @@ if [[ $use_csscommon == 'y' ]]; then
     done;
 fi;
 
-# Img sprite
-if [[ $use_compass_imgsprite == 'y' ]];then
-    # Copy images
-    mv "${MAINDIR}files/icon-letter.png" "${MAINDIR}assets/images/css-sprite/icon-letter.png";
-    mv "${MAINDIR}files/icon-letter-big.png" "${MAINDIR}assets/images/css-sprite-2x/icon-letter.png";
-    # Update scss
-    sed -i '' 's/\/\/\ imgsprite\ //g' "${MAINDIR}assets/scss/main.scss";
-    sed -i '' 's/\/\/\ imgsprite//g' "${MAINDIR}assets/scss/main.scss";
-else
-    # Delete useless files
-    rm "${MAINDIR}assets/scss/utilities/_retina-sprites.scss";
-    rm "${MAINDIR}assets/scss/utilities/list-files.rb";
-    # Delete useless folders
-    rm -rf "${MAINDIR}assets/images/css-sprite/";
-    rm -rf "${MAINDIR}assets/images/css-sprite-2x/";
-    # Remove old references to imgsprite
-    sed -i '' '/^\/\/\ imgsprite/d' "${MAINDIR}assets/scss/main.scss";
-    sed -i '' '/list-files.rb")$/d' "${MAINDIR}config.rb";
-fi;
-
 
 if [[ $use_compass == 'y' ]]; then
 # Project file
@@ -139,6 +111,7 @@ fi;
 if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/fonts\";
+@import \"${project_id}/plugins\";
 @import \"${project_id}/forms\";
 @import \"${project_id}/base\";
 @import \"${project_id}/header\";

@@ -8,7 +8,7 @@ Fonctionnalités :
 ---
 
 * Génération de templates HTML.
-* Utilisation de Compass : Mixins / Sprites.
+* Utilisation de Compass : Mixins.
 * Utilisation de Grunt : Clean / Uncss / Font-Icon.
 * Utilisation de [CSSCommon](http://www.csscommon.com).
 * Utilisation de [JSUtilities](http://darklg.github.io/JavaScriptUtilities/).

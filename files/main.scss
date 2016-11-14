@@ -70,19 +70,6 @@ $large_only: "min-width:"+$large-min;
 $critical-usage-threshold: 2;
 $graceful-usage-threshold: 2;
 
-// imgsprite /* Sprites
-// imgsprite -------------------------- */
-// imgsprite
-// imgsprite $sprites: sprite-map("css-sprite/*.png", $spacing: 10px);       /* :) */
-// imgsprite $sprites2x: sprite-map("css-sprite-2x/*.png", $spacing: 10px);  /* :) */
-// imgsprite
-/* ----------------------------------------------------------
-  Utilities
----------------------------------------------------------- */
-
-// imgsprite @import "utilities/retina-sprites";
-@import "utilities/plugins";
-
 /* ----------------------------------------------------------
   CSSCommon
 ---------------------------------------------------------- */

@@ -54,7 +54,7 @@ if [[ $add_jsutilities_plugins == 'y' ]]; then
                 echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${MAINDIR}inc/tpl/header/head.php";
                 css_file="assets/css/${i}.css";
                 if [[ $use_compass == 'y' ]]; then
-                    cat ${directory_jsu}${css_file} >> "${MAINDIR}assets/scss/utilities/_plugins.scss";
+                    cat ${directory_jsu}${css_file} >> "${MAINDIR}assets/scss/${project_id}/_plugins.scss";
                 else
                     cp "${directory_jsu}${css_file}" "${MAINDIR}${css_file}";
                     if [[ $use_onlyassets != 'y' ]]; then
