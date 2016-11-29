@@ -23,3 +23,51 @@ body {
         padding: 0 $mobile-padding;
     }
 }
+
+/* ----------------------------------------------------------
+  Links
+---------------------------------------------------------- */
+
+%main-link,
+a {
+    color: $color-main;
+}
+
+%main-link:hover,
+%main-link:focus,
+a:focus,
+a:hover {
+    color: $color-hl;
+}
+
+%main-link:active,
+a:active {
+    color: darken($color-hl,20);
+}
+
+/* ----------------------------------------------------------
+  Selection style
+---------------------------------------------------------- */
+
+::-moz-selection {
+    color: $color-main;
+    background: rgba($color-hl,0.5);
+}
+
+::selection {
+    color: $color-main;
+    background: rgba($color-hl,0.5);
+}
+
+/* ----------------------------------------------------------
+  Titles
+---------------------------------------------------------- */
+
+%project--subtitle {
+
+}
+
+
+%project--title {
+
+}
