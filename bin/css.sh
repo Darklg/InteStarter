@@ -167,34 +167,7 @@ echo "@charset \"UTF-8\";
 fi;
 
 if [[ $is_magento_skin == 'y' ]]; then
-
-    echo "
-.button {
-    & {
-
-    }
-    &:hover,
-    &:focus {
-
-    }
-    &:active {
-
-    }
-}
-
-.button--secondary {
-    & {
-
-    }
-    &:hover,
-    &:focus {
-
-    }
-    &:active {
-
-    }
-}
-" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/magento/buttons.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi;
 
 echo "
@@ -248,119 +221,7 @@ echo "
 
 if [[ $is_magento_skin == 'y' ]]; then
 
-    echo "
-
-/* Selectors */
-
-.form-list .field,
-.form-list .control,
-.form-list .wide,
-.form-list > li,
-.form-list > .fields,
-.form-list .fields .field {
-    @extend %project--fieldgroup;
-}
-
-.box-info .box-title h3,
-.fieldset .legend {
-    @extend %project--legend;
-}
-
-.form-list {
-    label {
-        @extend %project--label;
-    }
-
-    & > li:not(.control) > label,
-    .field > label,
-    .wide > label {
-        display: block;
-        margin-bottom: 0.9em;
-    }
-}
-
-.form-list .input-box {
-    select,
-    textarea,
-    input[type=text],
-    input[type=email],
-    input[type=password] {
-        @extend %project--field;
-    }
-
-    select {
-        @extend %project--select;
-    }
-}
-
-/* Radios & Checkboxes
--------------------------- */
-
-%fake-check-ghost,
-%fake-radio-ghost {
-    & + label {
-        padding-left: 1.5em;
-    }
-
-    & + label:before {
-        top: 0.45em;
-        border: 1px solid rgba(\$color-hl,0.4);
-        box-shadow: 0 0 0 1px rgba(\$color-hl,0);
-    }
-
-    &:checked + label:before {
-        border-color: \$color-hl;
-        color: \$color-hl;
-        box-shadow: 0 0 0 1px rgba(\$color-hl,0.999);
-    }
-}
-
-/* Checkboxes */
-
-.form-list {
-    li.control {
-        z-index: 1;
-        position: relative;
-    }
-
-    [id=\"primary_billing\"],
-    [id=\"primary_shipping\"],
-    [id=\"shipping:save_in_address_book\"],
-    [id=\"billing:save_in_address_book\"],
-    [id=\"shipping:same_as_billing\"],
-    #is_subscribed,
-    #subscription,
-    #change_password {
-        @extend %fake-check-ghost;
-    }
-}
-
-/* Radio */
-
-.sp-methods input[type=radio],
-#checkoutSteps input[name=\"shipping_method\"],
-#checkoutSteps .control input[name=\"checkout_method\"],
-#co-billing-form .control input[type=radio] {
-    @extend %fake-radio-ghost;
-}
-
-.field.name-prefix .input-box input[type=radio] {
-    & {
-        @extend %fake-radio-ghost;
-    }
-
-    & + label {
-        display: inline-block;
-        vertical-align: top;
-    }
-
-    & + label ~ label {
-        margin-left: 2em;
-    }
-}
-
-
-" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/magento/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 
 else
 

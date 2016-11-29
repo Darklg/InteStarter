@@ -13,7 +13,6 @@ if [ $is_magento_skin == 'y' && $use_grunt == 'y' ]; then
     echo '- Création de templates Sass';
 
     # Add templates
-    touch "${MAINDIR}assets/scss/${project_id}/_checkout.scss";
     mkdir "${MAINDIR}assets/scss/${project_id}/checkout";
     touch "${MAINDIR}assets/scss/${project_id}/checkout/_cart.scss";
     touch "${MAINDIR}assets/scss/${project_id}/checkout/_checkout.scss";
@@ -28,8 +27,7 @@ if [ $is_magento_skin == 'y' && $use_grunt == 'y' ]; then
     mkdir "${MAINDIR}assets/scss/${project_id}/customer";
     touch "${MAINDIR}assets/scss/${project_id}/customer/_public.scss";
     touch "${MAINDIR}assets/scss/${project_id}/customer/_loggedin.scss";
-    echo "@import \"${project_id}/checkout\";
-    @import \"${project_id}/checkout/cart\";
+    echo "@import \"${project_id}/checkout/cart\";
     @import \"${project_id}/checkout/checkout\";
     @import \"${project_id}/checkout/success\";
     @import \"${project_id}/catalog\";
@@ -41,6 +39,7 @@ if [ $is_magento_skin == 'y' && $use_grunt == 'y' ]; then
     @import \"${project_id}/customer/public\";
     @import \"${project_id}/customer/loggedin\";" >> "${MAINDIR}assets/scss/main.scss";
 
+    cat "${MAINDIR}files/magento/checkout.scss" >> "${MAINDIR}assets/scss/${project_id}/checkout/_checkout.scss";
 
     if [[ $create_utils_magento == 'y' ]]; then
         UTILSDIR="${MAGENTODIR}_utils/";
