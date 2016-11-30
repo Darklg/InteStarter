@@ -6,11 +6,12 @@
 
 echo '## GESTION DU CSS';
 
-cd "assets/";
+cd "${MAINDIR}assets/";
 
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
 git clone --depth=1 https://github.com/Darklg/CSSCommon.git
+
 
 # On installe les feuilles de style
 if [[ $use_compass == 'y' ]]; then
@@ -248,6 +249,6 @@ else
 fi;
 
 # On supprime CSSCommon
-rm -rf CSSCommon
+rm -rf "${MAINDIR}assets/CSSCommon";
 
 cd "${MAINDIR}";
