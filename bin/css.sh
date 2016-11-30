@@ -43,8 +43,11 @@ if [[ $use_compass == 'y' ]]; then
 
     # CSS Common
     if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento_skin == 'y' ]; then
+        echo "-- add SassCSSCommon submodule";
+    fi;
         git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
     else
+        echo "-- clone SassCSSCommon";
         git clone --depth=1 https://github.com/Darklg/SassCSSCommon.git csscommon;
         rm -rf "${MAINDIR}assets/scss/csscommon/.git";
     fi;
