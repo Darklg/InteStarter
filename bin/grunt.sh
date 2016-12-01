@@ -55,12 +55,14 @@ deploy:
         # Install fonticons modules
         npm install --silent --save-dev grunt-svgmin;
         npm install --silent --save-dev grunt-webfont;
+        npm install --silent --save-dev grunt-string-replace;
         npm install --silent --save-dev grunt-contrib-compass;
 
         # Copy Grunt utilities
-        mv "${MAINDIR}files/grunt/compass.js" "${MAINDIR}grunt/compass.js";
         mv "${MAINDIR}files/grunt/svgmin.js" "${MAINDIR}grunt/svgmin.js";
         mv "${MAINDIR}files/grunt/webfont.js" "${MAINDIR}grunt/webfont.js";
+        mv "${MAINDIR}files/grunt/search-replace.js" "${MAINDIR}grunt/search-replace.js";
+        mv "${MAINDIR}files/grunt/compass.js" "${MAINDIR}grunt/compass.js";
 
         sed -i '' "s/PROJECTID/${project_id}/g" "${MAINDIR}grunt/webfont.js";
 
@@ -69,6 +71,7 @@ deploy:
 build:
 - 'svgmin'
 - 'webfont'
+- 'string-replace'
 - 'compass'
 - 'clean'" >> "${MAINDIR}grunt/aliases.yaml";
     fi;
