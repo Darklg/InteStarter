@@ -36,3 +36,15 @@
 @import "InteGentoStyles/components/catalog/product/view/essential";
 @import "InteGentoStyles/components/catalog/product/view/item-options";
 @import "InteGentoStyles/components/catalog/product/view/medias";
+
+/* Customer
+-------------------------- */
+
+@import "InteGentoStyles/components/customer/public";
+@import "InteGentoStyles/components/customer/loggedin";
+
+/* Checkout
+-------------------------- */
+
+@import "InteGentoStyles/components/checkout/qty";
+@import "InteGentoStyles/components/checkout/onepage";
