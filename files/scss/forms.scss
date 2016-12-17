@@ -1,0 +1,44 @@
+/* ----------------------------------------------------------
+  Forms
+---------------------------------------------------------- */
+
+.cssc-form--project_id {
+}
+
+/* Form items */
+
+%project--fieldgroup {
+    & {
+        margin-bottom: 2em;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+%project--legend {
+    margin-bottom: 1.1em;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+%project--label {
+    text-transform: uppercase;
+}
+
+%project--field,
+%project--select {
+    @extend .inputreset;
+}
+
+%project--field {
+    border: 1px solid #000;
+}
+
+%project--select {
+    @extend .cssc-select;
+    padding-right: 30px!important;
+    background: transparent no-repeat right 0 center;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAQAAADvCgS4AAAAGklEQVR4AWNg+I8BcQGCyhAAXRlhpcQAQsoAMGIY6KADYAUAAAAASUVORK5CYII=);
+}

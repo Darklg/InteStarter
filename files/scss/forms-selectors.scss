@@ -1,0 +1,15 @@
+/* Selectors */
+
+.cssc-form label {
+    @extend %project--label;
+}
+
+.cssc-form .box {
+    select,
+    textarea,
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+        @extend %project--field;
+    }
+}

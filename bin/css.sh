@@ -113,13 +113,13 @@ fi;
 if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/fonts\";
-@import \"${project_id}/plugins\";
-@import \"${project_id}/forms\";
 @import \"${project_id}/base\";
 @import \"${project_id}/header\";
+@import \"${project_id}/forms\";
 @import \"${project_id}/footer\";
 @import \"${project_id}/home\";
-@import \"${project_id}/content\";" >> "${MAINDIR}assets/scss/main.scss";
+@import \"${project_id}/content\";
+@import \"${project_id}/plugins\";" >> "${MAINDIR}assets/scss/main.scss";
 
 # Main files
 touch "${MAINDIR}assets/scss/${project_id}/_header.scss"
@@ -127,124 +127,22 @@ touch "${MAINDIR}assets/scss/${project_id}/_footer.scss"
 touch "${MAINDIR}assets/scss/${project_id}/_home.scss"
 touch "${MAINDIR}assets/scss/${project_id}/_content.scss"
 
-# Content file
-echo "@charset \"UTF-8\";
+## CONTENT
+cat "${MAINDIR}files/scss/content.scss" >> "${MAINDIR}assets/scss/${project_id}/_content.scss";
 
-/* ----------------------------------------------------------
-  Content
----------------------------------------------------------- */
-
-.cssc-content {
-    font-size: 14px;
-}
-
-.cssc-content {
-    h2, h3, h4 {
-        font-family: \$font-second;
-    }
-}
-
-" >> "${MAINDIR}assets/scss/${project_id}/_content.scss";
-
-# Forms file
-echo "@charset \"UTF-8\";
-
-/* ----------------------------------------------------------
-  Buttons
----------------------------------------------------------- */
-
-.cssc-button--${project_id} {
-    & {
-
-    }
-    &:hover,
-    &:focus {
-
-    }
-    &:active {
-
-    }
-}
-" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-fi;
-
+## FORMS
+cat "${MAINDIR}files/scss/buttons.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 if [[ $is_magento_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/buttons.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi;
-
-echo "
-/* ----------------------------------------------------------
-  Forms
----------------------------------------------------------- */
-
-.cssc-form--${project_id} {
-
-}
-
-/* Form items */
-
-%project--fieldgroup {
-    & {
-        margin-bottom: 2em;
-    }
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-%project--legend {
-    margin-bottom: 1.1em;
-    text-transform: uppercase;
-    font-size: 1.1em;
-}
-
-%project--label {
-    text-transform: uppercase;
-}
-
-%project--field,
-%project--select {
-    @extend .inputreset;
-}
-
-%project--field {
-    border: 1px solid #000;
-}
-
-%project--select {
-    @extend .cssc-select;
-    padding-right: 30px!important;
-    background: transparent no-repeat right 0 center;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAQAAADvCgS4AAAAGklEQVR4AWNg+I8BcQGCyhAAXRlhpcQAQsoAMGIY6KADYAUAAAAASUVORK5CYII=);
-}
-
-" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-
+cat "${MAINDIR}files/scss/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 if [[ $is_magento_skin == 'y' ]]; then
-
     cat "${MAINDIR}files/magento/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-
 else
-
-    echo "
-
-/* Selectors */
-
-.cssc-form label {
-    @extend %project--label;
-}
-
-.cssc-form .box  {
-    select,
-    textarea,
-    input[type=text],
-    input[type=email],
-    input[type=password] {
-        @extend %project--field;
-    }
-}
-" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/scss/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+fi;
+# Add project ID
+sed -i '' "s/--project_id/--${project_id}/" "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 
 fi;
 

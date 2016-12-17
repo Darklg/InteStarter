@@ -63,11 +63,44 @@ a:active {
   Titles
 ---------------------------------------------------------- */
 
-%project--subtitle {
-
+%project--title {
+    font-family: $font-second;
 }
 
+%project--subtitle {
+    font-family: $font-second;
+}
 
-%project--title {
+/* ----------------------------------------------------------
+  Text
+---------------------------------------------------------- */
 
+p,
+li,
+ul {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+p,
+ul {
+    &:not(:last-child) {
+        margin-bottom: $line-height-em;
+    }
+}
+
+/* ----------------------------------------------------------
+  Project padding
+---------------------------------------------------------- */
+
+%project--padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+@media($mobile_only) {
+    %project--padding {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
 }
