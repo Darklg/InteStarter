@@ -114,8 +114,8 @@ if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/base\";
-@import \"${project_id}/header\";
 @import \"${project_id}/forms\";
+@import \"${project_id}/header\";
 @import \"${project_id}/footer\";
 @import \"${project_id}/home\";
 @import \"${project_id}/content\";
