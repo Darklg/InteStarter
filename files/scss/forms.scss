@@ -36,6 +36,33 @@
     border: 1px solid #000;
 }
 
+@mixin project-placeholder() {
+    color: $color-main;
+    opacity: 0.5;
+}
+
+%project--field {
+    &::-webkit-input-placeholder {
+    @include project-placeholder;
+    }
+
+    &:-moz-placeholder {
+    @include project-placeholder;
+    }
+
+    &::-moz-placeholder {
+    @include project-placeholder;
+    }
+
+    &:-ms-input-placeholder {
+    @include project-placeholder;
+    }
+
+    &::placeholder {
+    @include project-placeholder;
+    }
+}
+
 %project--select {
     @extend .cssc-select;
     padding-right: 30px!important;

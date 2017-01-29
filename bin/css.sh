@@ -139,7 +139,7 @@ cat "${MAINDIR}files/scss/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_f
 if [[ $is_magento_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 else
-    cat "${MAINDIR}files/scss/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi;
 # Add project ID
 sed -i '' "s/--project_id/--${project_id}/" "${MAINDIR}assets/scss/${project_id}/_forms.scss";
