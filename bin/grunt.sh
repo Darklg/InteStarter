@@ -61,7 +61,7 @@ deploy:
         # Copy Grunt utilities
         mv "${MAINDIR}files/grunt/svgmin.js" "${MAINDIR}grunt/svgmin.js";
         mv "${MAINDIR}files/grunt/webfont.js" "${MAINDIR}grunt/webfont.js";
-        mv "${MAINDIR}files/grunt/search-replace.js" "${MAINDIR}grunt/search-replace.js";
+        mv "${MAINDIR}files/grunt/string-replace.js" "${MAINDIR}grunt/string-replace.js";
         mv "${MAINDIR}files/grunt/compass.js" "${MAINDIR}grunt/compass.js";
 
         sed -i '' "s/PROJECTID/${project_id}/g" "${MAINDIR}grunt/webfont.js";
