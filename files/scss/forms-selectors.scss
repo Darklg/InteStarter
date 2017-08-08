@@ -5,6 +5,10 @@
 }
 
 .cssc-form .box {
+    & {
+        @extend %project--fieldgroup;
+    }
+
     select,
     textarea,
     input[type=text],
