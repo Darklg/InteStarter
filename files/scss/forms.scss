@@ -33,8 +33,20 @@
 }
 
 %project--field {
+    padding: 0.5em 1em;
+    min-height: 2.5em;
     border: 1px solid #000;
+    line-height: 1.5em;
 }
+
+%project--select {
+    @extend .cssc-select;
+    padding-right: 2!important;
+    background: transparent no-repeat right 0 center;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAQAAADvCgS4AAAAGklEQVR4AWNg+I8BcQGCyhAAXRlhpcQAQsoAMGIY6KADYAUAAAAASUVORK5CYII=);
+}
+
+/* Placeholder */
 
 @mixin project-placeholder() {
     color: $color-main;
@@ -63,9 +75,23 @@
     }
 }
 
-%project--select {
-    @extend .cssc-select;
-    padding-right: 30px!important;
-    background: transparent no-repeat right 0 center;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAQAAADvCgS4AAAAGklEQVR4AWNg+I8BcQGCyhAAXRlhpcQAQsoAMGIY6KADYAUAAAAASUVORK5CYII=);
+/* Radio - Checkboxes */
+
+%fake-check-ghost,
+%fake-radio-ghost {
+    & + label {
+        padding-left: 1.5em;
+    }
+
+    & + label:before {
+        top: 0.45em;
+        border: 1px solid rgba($color-hl,0.4);
+        box-shadow: 0 0 0 1px rgba($color-hl,0);
+    }
+
+    &:checked + label:before {
+        border-color: $color-hl;
+        color: $color-hl;
+        box-shadow: 0 0 0 1px rgba($color-hl,0.999);
+    }
 }

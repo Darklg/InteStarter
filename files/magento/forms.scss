@@ -1,5 +1,5 @@
-
-/* Selectors */
+/* Selectors
+-------------------------- */
 
 .form-list .field,
 .form-list .control,
@@ -31,36 +31,14 @@
 .form-list .input-box {
     select,
     textarea,
-    input[type=text],
-    input[type=email],
-    input[type=password] {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
         @extend %project--field;
     }
 
     select {
         @extend %project--select;
-    }
-}
-
-/* Radios & Checkboxes
--------------------------- */
-
-%fake-check-ghost,
-%fake-radio-ghost {
-    & + label {
-        padding-left: 1.5em;
-    }
-
-    & + label:before {
-        top: 0.45em;
-        border: 1px solid rgba($color-hl,0.4);
-        box-shadow: 0 0 0 1px rgba($color-hl,0);
-    }
-
-    &:checked + label:before {
-        border-color: $color-hl;
-        color: $color-hl;
-        box-shadow: 0 0 0 1px rgba($color-hl,0.999);
     }
 }
 
@@ -86,14 +64,14 @@
 
 /* Radio */
 
-.sp-methods input[type=radio],
+.sp-methods input[type="radio"],
 #checkoutSteps input[name="shipping_method"],
 #checkoutSteps .control input[name="checkout_method"],
-#co-billing-form .control input[type=radio] {
+#co-billing-form .control input[type="radio"] {
     @extend %fake-radio-ghost;
 }
 
-.field.name-prefix .input-box input[type=radio] {
+.field.name-prefix .input-box input[type="radio"] {
     & {
         @extend %fake-radio-ghost;
     }
