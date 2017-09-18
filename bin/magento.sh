@@ -19,6 +19,7 @@ if [[ $is_magento_skin == 'y' && $use_grunt == 'y' ]]; then
     touch "${MAINDIR}assets/scss/${project_id}/checkout/_success.scss";
     touch "${MAINDIR}assets/scss/${project_id}/_catalog.scss";
     mkdir "${MAINDIR}assets/scss/${project_id}/catalog";
+    touch "${MAINDIR}assets/scss/${project_id}/catalog/_toolbar.scss";
     touch "${MAINDIR}assets/scss/${project_id}/catalog/_filters.scss";
     touch "${MAINDIR}assets/scss/${project_id}/catalog/_grid.scss";
     touch "${MAINDIR}assets/scss/${project_id}/catalog/_item.scss";
@@ -31,6 +32,7 @@ if [[ $is_magento_skin == 'y' && $use_grunt == 'y' ]]; then
     @import \"${project_id}/checkout/checkout\";
     @import \"${project_id}/checkout/success\";
     @import \"${project_id}/catalog\";
+    @import \"${project_id}/catalog/toolbar\";
     @import \"${project_id}/catalog/filters\";
     @import \"${project_id}/catalog/grid\";
     @import \"${project_id}/catalog/item\";
