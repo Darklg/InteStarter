@@ -3,6 +3,7 @@
 body {
     font: $font-size $font-main;
     line-height: $line-height;
+    letter-spacing: $letter-spacing-base;
     color: $color-main;
 }
 
@@ -65,10 +66,12 @@ a:active {
 
 %project--title {
     font-family: $font-second;
+    letter-spacing: $letter-spacing-title;
 }
 
 %project--subtitle {
     font-family: $font-second;
+    letter-spacing: $letter-spacing-title;
 }
 
 /* ----------------------------------------------------------
