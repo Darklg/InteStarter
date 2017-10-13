@@ -64,6 +64,9 @@ a:active {
   Titles
 ---------------------------------------------------------- */
 
+/* Common
+-------------------------- */
+
 %project--title {
     font-family: $font-second;
     letter-spacing: $letter-spacing-title;
@@ -72,6 +75,39 @@ a:active {
 %project--subtitle {
     font-family: $font-second;
     letter-spacing: $letter-spacing-title;
+}
+
+/* Native
+-------------------------- */
+
+%project-h1,
+%project-h2,
+%project-h3,
+%project-h4,
+%project-h5,
+%project-h6 {
+    @extend %project--title;
+    letter-spacing: $letter-spacing-title;
+}
+
+%project--h1 {
+    font-size: 2em;
+}
+
+%project--h2 {
+    font-size: 1.8em;
+}
+
+%project--h3 {
+    font-size: 1.6em;
+}
+
+%project--h4 {
+    font-size: 1.4em;
+}
+
+%project--h5 {
+    font-size: 1.2em;
 }
 
 /* ----------------------------------------------------------
