@@ -6,13 +6,13 @@
 
 .cssc-button--project_id {
     & {
-
+        @extend .cssc-button;
     }
+
     &:hover,
     &:focus {
-
     }
-    &:active {
 
+    &:active {
     }
 }
