@@ -21,4 +21,4 @@ html_after='<!--[if lt IE 9 ]><html lang="fr-FR" class="is_ie8 lt_ie9 lt_ie10"><
 <!--[if IE 9 ]><html lang="fr-FR" class="is_ie9 lt_ie10"><![endif]-->\\
 <!--[if gt IE 9]><html lang="fr-FR" class="is_ie10"><![endif]-->\\
 <!--[if !IE]><!--><html lang="fr-FR"><!--<![endif]-->';
-sed -i '' "s/${html_before}/${html_after}/" "${MAINDIR}inc/tpl/header.php";
+intestarter_sed "s/${html_before}/${html_after}/" "${MAINDIR}inc/tpl/header.php";

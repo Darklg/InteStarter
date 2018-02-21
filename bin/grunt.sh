@@ -64,7 +64,7 @@ deploy:
         mv "${MAINDIR}files/grunt/string-replace.js" "${MAINDIR}grunt/string-replace.js";
         mv "${MAINDIR}files/grunt/compass.js" "${MAINDIR}grunt/compass.js";
 
-        sed -i '' "s/PROJECTID/${project_id}/g" "${MAINDIR}grunt/webfont.js";
+        intestarter_sed "s/PROJECTID/${project_id}/g" "${MAINDIR}grunt/webfont.js";
 
         # Add build command
         echo "

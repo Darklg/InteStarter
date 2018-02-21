@@ -35,6 +35,7 @@ rm -rf "${MAINDIR}InteStarter/.gitignore";
 ## Basic steps
 #################################################################
 
+. "${EXECDIR}bin/tools.sh";
 . "${EXECDIR}bin/config.sh";
 . "${EXECDIR}bin/folders.sh";
 . "${EXECDIR}bin/css.sh";

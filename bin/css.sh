@@ -105,7 +105,7 @@ if [[ $use_compass_fonticon == 'y' ]];then
     touch "${MAINDIR}assets/scss/${project_id}/_icons.scss";
     echo "@import \"${project_id}/icons\";" >> "${MAINDIR}assets/scss/main.scss";
     # Update Scss
-    sed -i '' 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
+    intestarter_sed 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
     # Tweak icons
     cat "${MAINDIR}files/base-icons.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
 fi;
@@ -142,7 +142,7 @@ else
     cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 fi;
 # Add project ID
-sed -i '' "s/--project_id/--${project_id}/" "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+intestarter_sed "s/--project_id/--${project_id}/" "${MAINDIR}assets/scss/${project_id}/_forms.scss";
 
 fi;
 

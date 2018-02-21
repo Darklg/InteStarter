@@ -65,7 +65,7 @@ if [[ $is_magento_skin == 'y' && $use_grunt == 'y' ]]; then
         filespathconvertmage='grunt/svgmin.js grunt/webfont.js config.rb';
         for i in $filespathconvertmage
         do
-            sed -i '' "s/assets\//..\/skin\/frontend\/${project_id}\/default\/assets\//g" "${i}";
+            intestarter_sed "s/assets\//..\/skin\/frontend\/${project_id}\/default\/assets\//g" "${i}";
         done;
     fi;
 

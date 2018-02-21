@@ -32,7 +32,7 @@ do
         # Cache page
         php "${url}.php" > "${html_file}";
         # Replace php links
-        sed -i '' 's/\.php/\.html/g' "${html_file}";
+        intestarter_sed 's/\.php/\.html/g' "${html_file}";
     fi;
 done;
 
