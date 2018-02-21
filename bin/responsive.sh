@@ -14,7 +14,8 @@ if [[ $use_onlyassets != 'y' ]]; then
 fi;
 
 if [[ $use_compass == 'y' ]]; then
-    content_vars="\$content_width_wide: ${content_width_wide}px;\\
-\$content_width: ${content_width}px;";
+    content_vars="\$content_width_wide:${content_width_wide}px;";
+    intestarter_sed "s/\$vars/\$vars${content_vars}/" "${MAINDIR}assets/scss/main.scss";
+    content_vars="\$content_width:${content_width}px;";
     intestarter_sed "s/\/\/\$vars/${content_vars}/" "${MAINDIR}assets/scss/main.scss";
 fi;
