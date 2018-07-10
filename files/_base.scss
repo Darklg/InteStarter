@@ -115,14 +115,12 @@ a:active {
 ---------------------------------------------------------- */
 
 p,
-li,
 ul {
-    font-size: $font-size;
-    line-height: $line-height;
-}
+    & {
+        font-size: $font-size;
+        line-height: $line-height;
+    }
 
-p,
-ul {
     &:not(:last-child) {
         margin-bottom: $line-height-em;
     }
