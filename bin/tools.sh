@@ -37,6 +37,6 @@ function intestarter_slug() {
 
 ## Multi-platform sed
 function intestarter_sed(){
-    sed -i.bak ${1} ${2};
+    sed -i.bak "${1}" "${2}";
     rm "${2}.bak";
 }
