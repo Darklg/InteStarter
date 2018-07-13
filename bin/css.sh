@@ -6,7 +6,7 @@
 
 echo '## GESTION DU CSS';
 
-cd "${MAINDIR}assets/";
+cd "${ASSETSDIR}/";
 
 # On y clone CSSCommon
 echo '- Recuperation de CSSCommon';
@@ -22,7 +22,7 @@ if [[ $use_compass == 'y' ]]; then
     do
         if ! [ -d "${i}" ]; then
           echo "- Creation de ${i}";
-          mkdir "${MAINDIR}assets/${i}";
+          mkdir "${ASSETSDIR}/${i}";
         fi;
     done;
 
@@ -30,33 +30,39 @@ if [[ $use_compass == 'y' ]]; then
     mv "${MAINDIR}files/config.rb" "${MAINDIR}config.rb";
 
     # On initialise le fichier principal
-    mv "${MAINDIR}files/main.scss" "${MAINDIR}assets/scss/main.scss";
-    touch "${MAINDIR}assets/scss/${project_id}/_fonts.scss";
-    touch "${MAINDIR}assets/scss/${project_id}/_plugins.scss";
-    touch "${MAINDIR}assets/scss/${project_id}/_forms.scss";
-    mv "${MAINDIR}files/_base.scss" "${MAINDIR}assets/scss/${project_id}/_base.scss";
+    mv "${MAINDIR}files/main.scss" "${SCSSFILE}";
+    touch "${SCSSDIR}/${project_id}/_fonts.scss";
+    touch "${SCSSDIR}/${project_id}/_plugins.scss";
+    touch "${SCSSDIR}/${project_id}/_forms.scss";
+    mv "${MAINDIR}files/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 
     if [[ $use_onlyassets == 'n' ]]; then
         echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css?v=<?php echo time(); ?>" />' >> "${MAINDIR}inc/tpl/header/head.php";
     fi;
 
-    cd "${MAINDIR}assets/scss/";
+    cd "${SCSSDIR}/";
 
     # CSS Common
-    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento_skin == 'y' ]; then
+    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento_skin == 'y' ] || [ $is_magento2_skin == 'y' ]; then
         echo "-- add SassCSSCommon submodule";
-        git submodule add https://github.com/Darklg/SassCSSCommon.git csscommon;
+        git submodule add --force https://github.com/Darklg/SassCSSCommon.git csscommon;
     else
         echo "-- clone SassCSSCommon";
         git clone --depth=1 https://github.com/Darklg/SassCSSCommon.git csscommon;
-        rm -rf "${MAINDIR}assets/scss/csscommon/.git";
+        rm -rf "${SCSSDIR}/csscommon/.git";
     fi;
-    cat "${MAINDIR}files/base-csscommon.scss" >> "${MAINDIR}assets/scss/main.scss";
+    cat "${MAINDIR}files/base-csscommon.scss" >> "${SCSSFILE}";
 
     # Integento
     if [[ $is_magento_skin == 'y' ]]; then
-        git submodule add https://github.com/Darklg/InteGentoStyles.git
-        cat "${MAINDIR}files/base-integento.scss" >> "${MAINDIR}assets/scss/main.scss";
+        git submodule add --force https://github.com/Darklg/InteGentoStyles.git
+        cat "${MAINDIR}files/base-integento.scss" >> "${SCSSFILE}";
+    fi;
+
+    # Integento 2
+    if [[ $is_magento2_skin == 'y' ]]; then
+        git submodule add --force https://github.com/InteGento/InteGentoStyles2.git integento
+        cat "${MAINDIR}files/base-integento2.scss" >> "${SCSSFILE}";
     fi;
 
 else
@@ -96,18 +102,18 @@ echo "
 /* ----------------------------------------------------------
   ${project_name}
 ---------------------------------------------------------- */
-" >> "${MAINDIR}assets/scss/main.scss";
+" >> "${SCSSFILE}";
 fi;
 
 # Font icon
 if [[ $use_compass_fonticon == 'y' ]];then
-    rsync -az "${MAINDIR}files/icons/" "${MAINDIR}assets/icons/original/";
-    touch "${MAINDIR}assets/scss/${project_id}/_icons.scss";
-    echo "@import \"${project_id}/icons\";" >> "${MAINDIR}assets/scss/main.scss";
+    rsync -az "${MAINDIR}files/icons/" "${ASSETSDIR}/icons/original/";
+    touch "${SCSSDIR}/${project_id}/_icons.scss";
+    echo "@import \"${project_id}/icons\";" >> "${SCSSFILE}";
     # Update Scss
-    intestarter_sed 's/\/\/\ fonticon\ //g' "${MAINDIR}assets/scss/main.scss";
+    intestarter_sed 's/\/\/\ fonticon\ //g' "${SCSSFILE}";
     # Tweak icons
-    cat "${MAINDIR}files/base-icons.scss" >> "${MAINDIR}assets/scss/${project_id}/_base.scss";
+    cat "${MAINDIR}files/base-icons.scss" >> "${SCSSDIR}/${project_id}/_base.scss";
 fi;
 
 if [[ $use_compass == 'y' ]]; then
@@ -119,34 +125,34 @@ echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/footer\";
 @import \"${project_id}/home\";
 @import \"${project_id}/content\";
-@import \"${project_id}/plugins\";" >> "${MAINDIR}assets/scss/main.scss";
+@import \"${project_id}/plugins\";" >> "${SCSSFILE}";
 
 # Main files
-touch "${MAINDIR}assets/scss/${project_id}/_header.scss"
-touch "${MAINDIR}assets/scss/${project_id}/_footer.scss"
-touch "${MAINDIR}assets/scss/${project_id}/_home.scss"
-touch "${MAINDIR}assets/scss/${project_id}/_content.scss"
+touch "${SCSSDIR}/${project_id}/_header.scss"
+touch "${SCSSDIR}/${project_id}/_footer.scss"
+touch "${SCSSDIR}/${project_id}/_home.scss"
+touch "${SCSSDIR}/${project_id}/_content.scss"
 
 ## CONTENT
-cat "${MAINDIR}files/scss/content.scss" >> "${MAINDIR}assets/scss/${project_id}/_content.scss";
+cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/_content.scss";
 
 ## FORMS
-cat "${MAINDIR}files/scss/buttons.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 if [[ $is_magento_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/buttons.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 fi;
-cat "${MAINDIR}files/scss/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+cat "${MAINDIR}files/scss/forms.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 if [[ $is_magento_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/forms.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/magento/forms.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 else
-    cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 fi;
 # Add project ID
-intestarter_sed "s/--project_id/--${project_id}/" "${MAINDIR}assets/scss/${project_id}/_forms.scss";
+intestarter_sed "s/--project_id/--${project_id}/" "${SCSSDIR}/${project_id}/_forms.scss";
 
 fi;
 
 # On supprime CSSCommon
-rm -rf "${MAINDIR}assets/CSSCommon";
+rm -rf "${ASSETSDIR}/CSSCommon";
 
 cd "${MAINDIR}";

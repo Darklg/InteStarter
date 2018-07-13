@@ -47,6 +47,7 @@ $color-linkedin: #0077B5;
 /* Breakpoints
 -------------------------- */
 
+$tiny-max: 450px;
 $mobile-max: 767px;
 $tablet-min: 768px;
 $tablet-mid: 895px;
@@ -57,6 +58,7 @@ $desktop-midt: 1300px;
 $desktop-max: 1499px;
 $large-min: 1500px;
 
+$tiny_only: "max-width:"+$tiny-max;
 $mobile_only: "max-width:"+$mobile-max;
 $mobile_excluded: "min-width:"+$tablet-min;
 $desktop_excluded: "max-width:"+$tablet-max;

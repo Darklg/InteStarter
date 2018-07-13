@@ -7,10 +7,12 @@
 echo '## GESTION DU JS';
 
 # On ajoute les fichiers JS essentiels
-cd "${MAINDIR}assets/js/";
+if [[ -d "${ASSETSDIR}/js/" ]];then
+    cd "${ASSETSDIR}/js/";
+fi;
 
 # On propose de télécharger une librairie JS
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
     case "${use_jquery}" in
         j|J|o|O|Y|y )
             echo '- Installation de jQuery';
@@ -22,7 +24,7 @@ if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
                 if [[ $use_onlyassets != 'y' ]]; then
                     echo '<script src="assets/js/jquery/jquery.min.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
                 fi;
-                echo "jQuery(document).ready(function($) {});" > "${MAINDIR}assets/js/events.js";
+                echo "jQuery(document).ready(function($) {});" > "${ASSETSDIR}/js/events.js";
             fi
             cd "${MAINDIR}";
         ;;
@@ -31,7 +33,7 @@ if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
             if [[ $use_onlyassets != 'y' ]]; then
                 echo '<script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
             fi;
-            echo "(function(){})();" > "${MAINDIR}assets/js/events.js";
+            echo "(function(){})();" > "${ASSETSDIR}/js/events.js";
         ;;
     esac
 fi;
@@ -54,7 +56,7 @@ if [[ $add_jsutilities_plugins == 'y' ]]; then
                 echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${MAINDIR}inc/tpl/header/head.php";
                 css_file="assets/css/${i}.css";
                 if [[ $use_compass == 'y' ]]; then
-                    cat ${directory_jsu}${css_file} >> "${MAINDIR}assets/scss/${project_id}/_plugins.scss";
+                    cat ${directory_jsu}${css_file} >> "${ASSETSDIR}/scss/${project_id}/_plugins.scss";
                 else
                     cp "${directory_jsu}${css_file}" "${MAINDIR}${css_file}";
                     if [[ $use_onlyassets != 'y' ]]; then

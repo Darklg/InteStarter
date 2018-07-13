@@ -17,9 +17,11 @@ else
     git clone "${SOURCEDIR}.git";
 fi;
 
-
 # Set main directory
 MAINDIR="${PWD}/";
+ASSETSDIR="${MAINDIR}/assets";
+SCSSDIR="${ASSETSDIR}/scss";
+SCSSFILE="${SCSSDIR}/main.scss";
 EXECDIR="${MAINDIR}InteStarter/";
 
 if [ ! -d "${EXECDIR}" ]; then
@@ -45,7 +47,7 @@ if [[ $support_ie8 == 'y' ]]; then
     . "${EXECDIR}bin/ie.sh";
 fi;
 . "${EXECDIR}bin/responsive.sh";
-if [[ $is_magento_skin == 'y' ]]; then
+if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
     . "${EXECDIR}bin/magento.sh";
 fi;
 

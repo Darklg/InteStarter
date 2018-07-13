@@ -15,7 +15,7 @@ fi;
 
 if [[ $use_compass == 'y' ]]; then
     content_vars="\$content_width_wide:${content_width_wide}px;";
-    intestarter_sed "s/\$vars/\$vars${content_vars}/" "${MAINDIR}assets/scss/main.scss";
+    intestarter_sed "s/\$vars/\$vars${content_vars}/" "${SCSSFILE}";
     content_vars="\$content_width:${content_width}px;";
-    intestarter_sed "s/\/\/\$vars/${content_vars}/" "${MAINDIR}assets/scss/main.scss";
+    intestarter_sed "s/\/\/\$vars/${content_vars}/" "${SCSSFILE}";
 fi;

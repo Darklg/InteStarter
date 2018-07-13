@@ -8,8 +8,8 @@ echo '## COMPATIBILITE IE';
 
 # On recupere html5shim & selectivizr
 echo '- Mise en place de html5shim & selectivizr';
-cp "${MAINDIR}files/ie/html5.js" "${MAINDIR}assets/js/ie/html5.js";
-cp "${MAINDIR}files/ie/selectivizr-min.js" "${MAINDIR}assets/js/ie/selectivizr-min.js";
+cp "${MAINDIR}files/ie/html5.js" "${ASSETSDIR}/js/ie/html5.js";
+cp "${MAINDIR}files/ie/selectivizr-min.js" "${ASSETSDIR}/js/ie/selectivizr-min.js";
 if [[ $use_onlyassets != 'y' ]]; then
     echo '<!--[if lt IE 9]><script src="assets/js/ie/html5.js"></script><script src="assets/js/ie/selectivizr-min.js"></script><![endif]-->' >> "${MAINDIR}inc/tpl/header/head.php";
 fi;
