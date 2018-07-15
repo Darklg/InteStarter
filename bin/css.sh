@@ -16,7 +16,6 @@ git clone --depth=1 https://github.com/Darklg/CSSCommon.git
 # On installe les feuilles de style
 if [[ $use_compass == 'y' ]]; then
 
-
     # On cree les répertoires contenant le Scss
     for i in $compass_folders
     do
@@ -137,18 +136,30 @@ touch "${SCSSDIR}/${project_id}/_content.scss"
 cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/_content.scss";
 
 ## FORMS
+
+### Buttons
 cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 if [[ $is_magento_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 fi;
+if [[ $is_magento_skin == 'y' ]]; then
+    cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+fi;
+
+### Mixins & base
 cat "${MAINDIR}files/scss/forms.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+
+### Selectors
 if [[ $is_magento_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/forms.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+elif [[ $is_magento2_skin == 'y' ]]; then
+    cat "${MAINDIR}files/magento/forms-magento2.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 else
     cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 fi;
+
 # Add project ID
-intestarter_sed "s/--project_id/--${project_id}/" "${SCSSDIR}/${project_id}/_forms.scss";
+intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/_forms.scss";
 
 fi;
 

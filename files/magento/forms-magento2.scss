@@ -1,0 +1,41 @@
+/* Selectors
+-------------------------- */
+
+fieldset.fieldset {
+    legend {
+        @extend %project--h3;
+    }
+}
+
+.control,
+.field {
+    & + &,
+    .nested {
+        margin-top: 2em;
+    }
+
+    legend.label,
+    label {
+        @extend %project--label;
+    }
+
+    select,
+    textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        @extend %project--field;
+    }
+
+    select {
+        @extend %project--select;
+    }
+}
+
+div.choice input[type="checkbox"] {
+    @extend %fake-check-ghost;
+}
+
+div.control {
+    overflow: visible;
+}

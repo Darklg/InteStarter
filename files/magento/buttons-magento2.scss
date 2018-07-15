@@ -1,0 +1,46 @@
+
+%project_id-button {
+    & {
+        @extend .cssc-button;
+        min-width: 20em;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 4.16;
+        letter-spacing: 0.1em;
+        color: #fff;
+        background-color: $color-main;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+    &:focus,
+    &:hover {
+        color: #fff;
+        background-color: $color-hl;
+        box-shadow: inset 0 0 0 1px $color-hl;
+    }
+}
+
+%project_id-button--secondary {
+    & {
+        color: $color-main;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1px currentColor;
+    }
+}
+
+.project_id-button,
+.action.action-apply,
+.action.action-login,
+.action.primary {
+    @extend %project_id-button;
+}
+
+%project_id-button-secondary-action,
+.action.secondary,
+.actions-toolbar .secondary .action,
+.project_id-button--secondary.action {
+    @extend %project_id-button;
+    @extend %project_id-button--secondary;
+}
