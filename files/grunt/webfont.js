@@ -6,7 +6,7 @@ module.exports = {
         options: {
             stylesheet: 'scss',
             relativeFontPath: '../fonts/icons/',
-            destHtml: 'assets/',
+            destHtml: 'assets/fonts/icons',
             types: 'eot,woff2,woff,ttf'
         }
     },
