@@ -31,6 +31,13 @@
 }
 
 .project_id-button,
+.action.update,
+.action.tocart,
+.action.viewcart,
+.action.action-gotocart,
+.action.action-update,
+.action.action-select-shipping-item,
+.action.action-toggle,
 .action.action-apply,
 .action.action-login,
 .action.primary {
@@ -38,7 +45,10 @@
 }
 
 %project_id-button-secondary-action,
-.action.secondary,
+.action.secondary.viewcart,
+.action.action-continueshopping,
+.action.action-hide-popup,
+.action.action-cancel,
 .actions-toolbar .secondary .action,
 .project_id-button--secondary.action {
     @extend %project_id-button;
