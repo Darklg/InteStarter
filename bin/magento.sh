@@ -7,45 +7,64 @@
 echo '## MAGENTO';
 
 MAGENTODIR="${MAINDIR}../../../../";
-if [[ $is_magento2_skin == 'y' ]]; then
+if [[ "${is_magento2_skin}" == 'y' ]]; then
     MAGENTODIR="${MAGENTODIR}../";
 fi;
 
-if [[ $use_grunt == 'y' ]]; then
+if [[ "${use_grunt}" == 'y' ]]; then
 
     echo '- Création de templates Sass';
 
     # Add templates
-    if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
+    if [[ "${is_magento_skin}" == 'y' ]] || [[ "${is_magento2_skin}" == 'y' ]]; then
+
+        # HEADER
+        mkdir "${SCSSDIR}/${project_id}/header";
+        touch "${SCSSDIR}/${project_id}/header/_logo.scss";
+        echo "@import \"${project_id}/header/logo\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/header/_cart.scss";
+        echo "@import \"${project_id}/header/cart\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/header/_customer.scss";
+        echo "@import \"${project_id}/header/customer\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/header/_search.scss";
+        echo "@import \"${project_id}/header/search\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/header/_navigation.scss";
+        echo "@import \"${project_id}/header/navigation\";" >> "${SCSSFILE}";
+
+        # CHECKOUT
         mkdir "${SCSSDIR}/${project_id}/checkout";
         touch "${SCSSDIR}/${project_id}/checkout/_cart.scss";
+        echo "@import \"${project_id}/checkout/cart\";" >> "${SCSSFILE}";
         touch "${SCSSDIR}/${project_id}/checkout/_checkout.scss";
-        touch "${SCSSDIR}/${project_id}/checkout/_success.scss";
-        touch "${SCSSDIR}/${project_id}/_catalog.scss";
-        mkdir "${SCSSDIR}/${project_id}/catalog";
-        touch "${SCSSDIR}/${project_id}/catalog/_toolbar.scss";
-        touch "${SCSSDIR}/${project_id}/catalog/_filters.scss";
-        touch "${SCSSDIR}/${project_id}/catalog/_grid.scss";
-        touch "${SCSSDIR}/${project_id}/catalog/_item.scss";
-        touch "${SCSSDIR}/${project_id}/catalog/_view.scss";
-        touch "${SCSSDIR}/${project_id}/_customer.scss";
-        mkdir "${SCSSDIR}/${project_id}/customer";
-        touch "${SCSSDIR}/${project_id}/customer/_public.scss";
-        touch "${SCSSDIR}/${project_id}/customer/_loggedin.scss";
-        echo "@import \"${project_id}/checkout/cart\";
-@import \"${project_id}/checkout/checkout\";
-@import \"${project_id}/checkout/success\";
-@import \"${project_id}/catalog\";
-@import \"${project_id}/catalog/toolbar\";
-@import \"${project_id}/catalog/filters\";
-@import \"${project_id}/catalog/grid\";
-@import \"${project_id}/catalog/item\";
-@import \"${project_id}/catalog/view\";
-@import \"${project_id}/customer\";
-@import \"${project_id}/customer/public\";
-@import \"${project_id}/customer/loggedin\";" >> "${SCSSFILE}";
-
         cat "${MAINDIR}files/magento/checkout.scss" >> "${SCSSDIR}/${project_id}/checkout/_checkout.scss";
+        echo "@import \"${project_id}/checkout/checkout\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/checkout/_success.scss";
+        echo "@import \"${project_id}/checkout/success\";" >> "${SCSSFILE}";
+
+        # CATALOG
+        mkdir "${SCSSDIR}/${project_id}/catalog";
+        touch "${SCSSDIR}/${project_id}/_catalog.scss";
+        echo "@import \"${project_id}/catalog\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/catalog/_toolbar.scss";
+        echo "@import \"${project_id}/catalog/toolbar\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/catalog/_filters.scss";
+        echo "@import \"${project_id}/catalog/filters\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/catalog/_grid.scss";
+        echo "@import \"${project_id}/catalog/grid\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/catalog/_item.scss";
+        echo "@import \"${project_id}/catalog/item\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/catalog/_view.scss";
+        echo "@import \"${project_id}/catalog/view\";" >> "${SCSSFILE}";
+
+        # CUSTOMER
+        mkdir "${SCSSDIR}/${project_id}/customer";
+        touch "${SCSSDIR}/${project_id}/_customer.scss";
+        echo "@import \"${project_id}/customer\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/customer/_public.scss";
+        echo "@import \"${project_id}/customer/public\";" >> "${SCSSFILE}";
+        touch "${SCSSDIR}/${project_id}/customer/_loggedin.scss";
+        echo "@import \"${project_id}/customer/loggedin\";" >> "${SCSSFILE}";
+
     fi;
 
     # Creating config RB

@@ -19,7 +19,7 @@ if [[ $is_wp_theme == 'n' ]]; then
 fi;
 
 is_magento2_skin='n';
-if [[ $is_magento_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
     is_magento2_skin=$(intestarter_yn "- Est-ce un skin Magento 2 ?" 'n');
 fi;
 
