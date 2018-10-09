@@ -36,38 +36,18 @@ $color-main: #333333;
 $color-hl: #336699;
 $color-border: #e0e0e0;
 
-/* Social */
-
-$color-fb: #3B5998;
-$color-gplus: #DD4B39;
-$color-twitter: #00ACED;
-$color-youtube: #CD201F;
-$color-gplus: #DD4B39;
-$color-linkedin: #0077B5;
+/* Social colors */
+@import "csscommon/components/vars/colors";
 
 /* Breakpoints
 -------------------------- */
 
-$tiny-max: 450px;
-$mobile-max: 767px;
-$tablet-min: 768px;
-$tablet-mid: 895px;
-$tablet-max: 1023px;
-$desktop-min: 1024px;
-$desktop-mid: 1299px;
-$desktop-midt: 1300px;
-$desktop-max: 1499px;
-$large-min: 1500px;
+@import "csscommon/components/vars/breakpoints";
+@import "csscommon/components/vars/mediaqueries";
 
-$tiny_only: "max-width:"+$tiny-max;
-$mobile_only: "max-width:"+$mobile-max;
-$mobile_excluded: "min-width:"+$tablet-min;
-$desktop_excluded: "max-width:"+$tablet-max;
-$desktop_only: "min-width:"+$desktop-min;
-$desktopmid_excluded:"max-width:"+$desktop-mid;
-$desktopmid_only:"min-width:"+$desktop-midt;
-$large_excluded: "max-width:"+$desktop-max;
-$large_only: "min-width:"+$large-min;
+/* Custom breakpoints */
+$has_mobile_menu: $desktop_excluded;
+$has_desktop_menu: $desktop_only;
 
 /* Compass values
 -------------------------- */
