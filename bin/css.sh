@@ -140,10 +140,11 @@ cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/_content.sc
 ### Buttons
 cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
 if [[ $is_magento_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
-fi;
-if [[ $is_magento_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+    if [[ $is_magento2_skin == 'y' ]]; then
+        cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+    else
+        cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+    fi;
 fi;
 
 ### Mixins & base

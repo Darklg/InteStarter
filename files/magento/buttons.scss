@@ -1,24 +1,8 @@
 .button {
-    & {
-        @extend .cssc-button;
-    }
-
-    &:hover,
-    &:focus {
-    }
-
-    &:active {
-    }
+    @extend %project_id-button;
 }
 
 .button--secondary {
-    & {
-    }
-
-    &:hover,
-    &:focus {
-    }
-
-    &:active {
-    }
+    @extend %project_id-button;
+    @extend %project_id-button--secondary;
 }
