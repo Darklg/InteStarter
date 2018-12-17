@@ -126,18 +126,3 @@ ul {
     }
 }
 
-/* ----------------------------------------------------------
-  Project padding
----------------------------------------------------------- */
-
-%project--padding {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-@media($mobile_only) {
-    %project--padding {
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-}
