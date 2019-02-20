@@ -119,6 +119,7 @@ if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/base\";
+@import \"${project_id}/buttons\";
 @import \"${project_id}/forms\";
 @import \"${project_id}/header\";
 @import \"${project_id}/footer\";
@@ -138,12 +139,12 @@ cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/_content.sc
 ## FORMS
 
 ### Buttons
-cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/_buttons.scss";
 if [[ $is_magento_skin == 'y' ]]; then
     if [[ $is_magento2_skin == 'y' ]]; then
-        cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+        cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/_buttons.scss";
     else
-        cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+        cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_buttons.scss";
     fi;
 fi;
 

@@ -6,7 +6,7 @@
 
 %project_id-button {
     & {
-        @extend .cssc-button;
+        @extend %cssc-button;
         min-width: 20em;
         text-transform: uppercase;
         font-size: 12px;
