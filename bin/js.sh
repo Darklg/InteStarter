@@ -71,3 +71,24 @@ if [[ $add_jsutilities_plugins == 'y' ]]; then
     rm -rf "${MAINDIR}JavaScriptUtilities";
 fi;
 
+###################################
+## Slick Slider
+###################################
+
+if [[ "${add_slick_slider}" == 'y' ]]; then
+    cd "${MAINDIR}";
+
+    # Download Slick
+    npm install slick-carousel --no-save --no-optional;
+    mv node_modules/slick-carousel/ "${ASSETSDIR}/js/slick-carousel/";
+
+    # Import JS
+    if [[ $is_wp_theme == 'y' ]]; then
+        SED_REPREP="\$js_files['slick'] = array('uri' => '\/assets\/js\/slick-carousel\/slick\/slick.min.js','footer' => 1);return \$js_files;";
+        sed -i '' "s/return \$js_files;/${SED_REPREP}/g" "${MAINDIR}functions.php";
+    fi;
+
+    # Add CSS
+    CSS_CONTENT=$(cat "${ASSETSDIR}js/slick-carousel/slick/slick.css");
+    echo "${CSS_CONTENT}" >> "${ASSETSDIR}/scss/${project_id}/_plugins.scss";
+fi;

@@ -146,6 +146,12 @@ if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n'
     use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
 fi;
 
+add_slick_slider='n';
+if [[ $use_jquery == 'y' ]]; then
+    # Plugins JS
+    add_slick_slider=$(intestarter_yn "- Installer Slick Slider ?" 'n');
+fi;
+
 add_jsutilities_plugins='n';
 if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $use_jquery == 'y' ]]; then
     # Plugins JS
