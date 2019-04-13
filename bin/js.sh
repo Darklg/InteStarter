@@ -84,8 +84,11 @@ if [[ "${add_slick_slider}" == 'y' ]]; then
 
     # Import JS
     if [[ $is_wp_theme == 'y' ]]; then
-        SED_LINEBREAK=$(echo -e '\n\r')
-        SED_REPREP="\$js_files['slick'] = array('uri' => '\/assets\/js\/slick-carousel\/slick\/slick.min.js','footer' => 1);\\${SED_LINEBREAK}    return \$js_files;";
+        SED_LINEBREAK=$(echo -e '\n\r');
+        SED_TAB=$(echo -e '    ');
+        SED_REPREP="\$js_files['slick'] = array(\n\t\t'uri' => '\/assets\/js\/slick-carousel\/slick\/slick.min.js',\n\t\t'footer' => 1\n\t);\n    return \$js_files;";
+        SED_REPREP=${SED_REPREP//\\n/\\${SED_LINEBREAK}};
+        SED_REPREP=${SED_REPREP//\\t/\\${SED_TAB}};
         sed -i '' "s/return \$js_files;/${SED_REPREP}/g" "${MAINDIR}functions.php";
     fi;
 
