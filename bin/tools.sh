@@ -40,3 +40,13 @@ function intestarter_sed(){
     sed -i.bak "${1}" "${2}";
     rm "${2}.bak";
 }
+
+## Advanced SED : "before" "after" "file";
+function intestarter_simple_sed(){
+    SED_LINEBREAK=$(echo -e '\n\r');
+    SED_TAB=$(echo -e '    ');
+    SED_REPREP=${2//\\n/\\${SED_LINEBREAK}};
+    SED_REPREP=${SED_REPREP//\\t/\\${SED_TAB}};
+    sed -i.bak "s/${1}/${SED_REPREP}/g" "${3}";
+    rm "${3}.bak";
+}
