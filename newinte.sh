@@ -51,6 +51,8 @@ if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
     . "${EXECDIR}bin/magento.sh";
 fi;
 
+. "${EXECDIR}bin/documentation.sh";
+
 #################################################################
 ## Compilations initiales
 #################################################################
