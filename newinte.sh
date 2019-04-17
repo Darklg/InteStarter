@@ -86,7 +86,6 @@ cd "${MAINDIR}";
 rm -rf files
 rm -rf bin
 rm -rf .sass-cache
-rm README.md
 rm newinte.sh
 
 # Suppression des fichiers non assets

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-DOCUMENTATION_CONTENT="${MAINDIR}README-FrontEnd.md";
+DOCUMENTATION_CONTENT="${MAINDIR}README.md";
 
+rm "${DOCUMENTATION_CONTENT}";
 touch "${DOCUMENTATION_CONTENT}";
 
 echo "# ${project_name} - Front-End Documentation" >> "${DOCUMENTATION_CONTENT}";
