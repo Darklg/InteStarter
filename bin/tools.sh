@@ -26,9 +26,13 @@ function intestarter_slug() {
     # Thx to https://gist.github.com/saml/4674977
     title="$1";
     max_length="${2:-48}";
+    slug="$(echo ${title} | iconv -f utf8 -t ascii//TRANSLIT)";
+    slug="${slug/\'/}";
+    slug="${slug/\`/}";
+    slug="${slug/\ˊ/}";
     slug="$({
         tr '[A-Z]' '[a-z]' | tr -cs '[[:alnum:]]' '-'
-    } <<< "$title")";
+    } <<< "$slug")";
     slug="${slug##-}";
     slug="${slug%%-}";
     slug="${slug:0:$max_length}";
