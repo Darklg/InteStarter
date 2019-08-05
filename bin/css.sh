@@ -118,14 +118,14 @@ fi;
 if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/fonts\";
-@import \"${project_id}/base\";
+@import \"${project_id}/plugins\";
 @import \"${project_id}/buttons\";
 @import \"${project_id}/forms\";
+@import \"${project_id}/base\";
 @import \"${project_id}/header\";
 @import \"${project_id}/footer\";
 @import \"${project_id}/home\";
-@import \"${project_id}/content\";
-@import \"${project_id}/plugins\";" >> "${SCSSFILE}";
+@import \"${project_id}/content\";" >> "${SCSSFILE}";
 
 # Main files
 touch "${SCSSDIR}/${project_id}/_header.scss"
