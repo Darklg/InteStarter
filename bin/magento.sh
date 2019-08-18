@@ -65,6 +65,7 @@ if [[ "${use_grunt}" == 'y' ]]; then
         intestarter_sed "s/assets\///g" "${MAINDIR}grunt/string-replace.js";
         intestarter_sed "s/assets\///g" "${MAINDIR}grunt/webfont.js";
         intestarter_sed "s/scss\//styles\//g" "${MAINDIR}grunt/webfont.js";
+        intestarter_sed "s/'fonts\/icons/'web\/fonts\/icons/g" "${MAINDIR}grunt/webfont.js";
     fi;
 
     # Utils
