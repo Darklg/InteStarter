@@ -11,7 +11,7 @@ fieldset.fieldset {
 .field {
     & + &,
     .nested {
-        margin-top: 2em;
+        margin-top: $fieldset-margin;
     }
 
     legend.label,
