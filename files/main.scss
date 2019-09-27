@@ -17,17 +17,17 @@ $line-height-em: 1.3em;
 $letter-spacing-base: 0em;
 $letter-spacing-title: 0.05em;
 $fieldset-margin: 2em;
+$border-radius: 3px;
 
 /* Margins
 -------------------------- */
 
 $mobile-padding: 15px;
-$mobile-padding-neg: -15px;
 $tablet-padding: 30px;
-$tablet-padding-neg: -30px;
 $desktop-padding: 45px;
-$desktop-padding-neg: -45px;
-$border-radius: 3px;
+
+/* Default margins */
+@import "csscommon/components/vars/margins";
 
 /* Basic colors
 -------------------------- */
