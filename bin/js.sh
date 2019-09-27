@@ -6,6 +6,9 @@
 
 echo '## GESTION DU JS';
 
+# Create package.json
+echo "{\"name\": \"${project_id}\",\"version\": \"0.0.0\",\"description\": \"\"}" > "${MAINDIR}package.json";
+
 # On ajoute les fichiers JS essentiels
 if [[ -d "${ASSETSDIR}/js/" ]];then
     cd "${ASSETSDIR}/js/";

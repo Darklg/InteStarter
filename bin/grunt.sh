@@ -5,9 +5,6 @@
 #################################################################
 
 if [[ $use_grunt != 'n' ]]; then
-    # Create package.json
-    echo "{\"name\": \"${project_id}\",\"version\": \"0.0.0\",\"description\": \"\"}" > "${MAINDIR}package.json";
-
     # Install Grunt & default modules
     npm install --silent --save-dev grunt;
     npm install --silent --save-dev load-grunt-config;
