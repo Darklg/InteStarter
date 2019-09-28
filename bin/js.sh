@@ -83,15 +83,15 @@ if [[ "${add_slick_slider}" == 'y' ]]; then
 
     # Download Slick
     npm install slick-carousel --no-save --no-optional;
-    mv node_modules/slick-carousel/ "${ASSETSDIR}/js/slick-carousel/";
+    mv node_modules/slick-carousel/slick/ "${ASSETSDIR}/js/slick/";
 
     # Import JS
     if [[ $is_wp_theme == 'y' ]]; then
-        PHP_SLICK_JS_LOADING="\$js_files['slick'] = array(\n\t\t'uri' => '\/assets\/js\/slick-carousel\/slick\/slick.min.js',\n\t\t'footer' => 1\n\t);\n\treturn \$js_files;";
+        PHP_SLICK_JS_LOADING="\$js_files['slick'] = array(\n\t\t'uri' => '\/assets\/js\/slick\/slick.min.js',\n\t\t'footer' => 1\n\t);\n\treturn \$js_files;";
         intestarter_simple_sed "return \$js_files;" "${PHP_SLICK_JS_LOADING}" "${MAINDIR}functions.php";
     fi;
 
     # Add CSS
-    CSS_CONTENT=$(cat "${ASSETSDIR}js/slick-carousel/slick/slick.css");
+    CSS_CONTENT=$(cat "${ASSETSDIR}/js/slick/slick.css");
     echo "${CSS_CONTENT}" >> "${ASSETSDIR}/scss/${project_id}/_plugins.scss";
 fi;
