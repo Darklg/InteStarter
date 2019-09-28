@@ -32,7 +32,6 @@ if [[ $use_compass == 'y' ]]; then
     mv "${MAINDIR}files/main.scss" "${SCSSFILE}";
     touch "${SCSSDIR}/${project_id}/_fonts.scss";
     touch "${SCSSDIR}/${project_id}/_plugins.scss";
-    touch "${SCSSDIR}/${project_id}/_forms.scss";
     mv "${MAINDIR}files/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 
     if [[ $use_onlyassets == 'n' ]]; then
@@ -119,49 +118,51 @@ if [[ $use_compass == 'y' ]]; then
 # Project file
 echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/plugins\";
-@import \"${project_id}/buttons\";
-@import \"${project_id}/forms\";
+@import \"${project_id}/common/buttons\";
+@import \"${project_id}/common/forms\";
+@import \"${project_id}/common/content\";
 @import \"${project_id}/base\";
 @import \"${project_id}/header\";
 @import \"${project_id}/footer\";
-@import \"${project_id}/home\";
-@import \"${project_id}/content\";" >> "${SCSSFILE}";
+@import \"${project_id}/pages/home\";" >> "${SCSSFILE}";
 
 # Main files
 touch "${SCSSDIR}/${project_id}/_header.scss"
 touch "${SCSSDIR}/${project_id}/_footer.scss"
-touch "${SCSSDIR}/${project_id}/_home.scss"
-touch "${SCSSDIR}/${project_id}/_content.scss"
+mkdir "${SCSSDIR}/${project_id}/common"
+touch "${SCSSDIR}/${project_id}/common/_content.scss"
+mkdir "${SCSSDIR}/${project_id}/pages"
+touch "${SCSSDIR}/${project_id}/pages/_home.scss"
 
 ## CONTENT
-cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/_content.scss";
+cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/common/_content.scss";
 
 ## FORMS
 
 ### Buttons
-cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/_buttons.scss";
+cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
 if [[ $is_magento_skin == 'y' ]]; then
     if [[ $is_magento2_skin == 'y' ]]; then
-        cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/_buttons.scss";
+        cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
     else
-        cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/_buttons.scss";
+        cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
     fi;
 fi;
 
 ### Mixins & base
-cat "${MAINDIR}files/scss/forms.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+cat "${MAINDIR}files/scss/forms.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 
 ### Selectors
 if [[ $is_magento_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/forms.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/magento/forms.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 elif [[ $is_magento2_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/forms-magento2.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/magento/forms-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 else
-    cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${SCSSDIR}/${project_id}/_forms.scss";
+    cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 fi;
 
 # Add project ID
-intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/_forms.scss";
+intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_forms.scss";
 
 fi;
 

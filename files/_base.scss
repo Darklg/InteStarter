@@ -110,6 +110,29 @@ a:active {
     font-size: 1.2em;
 }
 
+/* Helpers
+-------------------------- */
+
+h1,
+.h1 {
+    @extend %project--h1;
+}
+
+h2,
+.h2 {
+    @extend %project--h2;
+}
+
+h3,
+.h3 {
+    @extend %project--h3;
+}
+
+h4,
+.h4 {
+    @extend %project--h4;
+}
+
 /* ----------------------------------------------------------
   Text
 ---------------------------------------------------------- */
@@ -125,4 +148,3 @@ ul {
         margin-bottom: $line-height-em;
     }
 }
-
