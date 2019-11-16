@@ -4,14 +4,15 @@
   Buttons
 ---------------------------------------------------------- */
 
+.project_id-button,
 %project_id-button {
     & {
         @extend %cssc-button;
-        min-width: 20em;
+        padding: 0 1em;
         text-transform: uppercase;
         font-size: 12px;
         font-weight: bold;
-        line-height: 4.16;
+        line-height: 2.5;
         letter-spacing: 0.1em;
         color: #fff;
         background-color: $color-main;
@@ -27,6 +28,7 @@
     }
 }
 
+.project_id-button--secondary,
 %project_id-button--secondary {
     & {
         color: $color-main;

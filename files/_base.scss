@@ -15,14 +15,20 @@ body {
     padding: 0 $desktop-padding;
 }
 
-.centered-container > * {
-    max-width: $content_width_wide;
+@media($desktop_excluded) {
+    .centered-container {
+        padding: 0 $tablet-padding;
+    }
 }
 
 @media($mobile_only) {
     .centered-container {
         padding: 0 $mobile-padding;
     }
+}
+
+.centered-container > * {
+    max-width: $content_width_wide;
 }
 
 /* ----------------------------------------------------------

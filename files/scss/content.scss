@@ -5,14 +5,16 @@
 ---------------------------------------------------------- */
 
 .cssc-content {
-    font-size: $font-size;
-    line-height: $line-height;
-}
+    & {
+        font-size: $font-size;
+        line-height: $line-height;
+    }
 
-.cssc-content {
-    h2,
-    h3,
-    h4 {
-        font-family: $font-second;
+    h2 {
+        @extend %project--h2;
+    }
+
+    h3 {
+        @extend %project--h3;
     }
 }

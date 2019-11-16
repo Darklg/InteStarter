@@ -162,7 +162,9 @@ else
 fi;
 
 # Add project ID
+intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_buttons.scss";
 intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_forms.scss";
+intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_content.scss";
 
 fi;
 
