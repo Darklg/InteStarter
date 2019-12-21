@@ -69,7 +69,7 @@ if [[ "${use_grunt}" == 'y' ]]; then
     fi;
 
     if [[ "${is_magento2_skin}" == 'y' ]]; then
-        MAGE2_DEF_HEAD_DIR="${MAGENTODIR}/Magento_Theme/layout/";
+        MAGE2_DEF_HEAD_DIR="${MAINDIR}/Magento_Theme/layout/";
         MAGE2_DEF_HEAD_FILE="${MAGE2_DEF_HEAD_DIR}default_head_blocks.xml"
         if [ ! -f "${MAGE2_DEF_HEAD_FILE}" ]; then
             mkdir -p "${MAGE2_DEF_HEAD_DIR}";
