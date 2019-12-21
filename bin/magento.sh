@@ -68,6 +68,17 @@ if [[ "${use_grunt}" == 'y' ]]; then
         intestarter_sed "s/'fonts\/icons/'web\/fonts\/icons/g" "${MAINDIR}grunt/webfont.js";
     fi;
 
+    if [[ "${is_magento2_skin}" == 'y' ]]; then
+        MAGE2_DEF_HEAD_DIR="${MAGENTODIR}/Magento_Theme/layout/";
+        MAGE2_DEF_HEAD_FILE="${MAGE2_DEF_HEAD_DIR}default_head_blocks.xml"
+        if [ ! -f "${MAGE2_DEF_HEAD_FILE}" ]; then
+            mkdir -p "${MAGE2_DEF_HEAD_DIR}";
+            echo '- Création de default_head_blocks.xml';
+            mv "${MAINDIR}files/magento/default_head_blocks.xml" "${MAGE2_DEF_HEAD_DIR}";
+        fi;
+
+    fi;
+
     # Utils
     if [[ $create_utils_magento == 'y' ]]; then
         UTILSDIR="${MAGENTODIR}_utils/";
