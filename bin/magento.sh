@@ -51,12 +51,18 @@ if [[ "${use_grunt}" == 'y' ]]; then
 
     # Creating config RB
     if [[ $is_magento2_skin == 'y' ]]; then
+        # Root config.rb
         cat "${SCSSDIR}/integento/example-config.rb" >> "${MAGENTODIR}config.rb";
         intestarter_sed "s/Mytheme/${project_name}/g" "${MAGENTODIR}config.rb";
-        intestarter_sed "s/assets\/scss/styles/g" "${MAGENTODIR}config.rb";
         intestarter_sed "s/assets\/css/web\/css/g" "${MAGENTODIR}config.rb";
         intestarter_sed "s/assets\/images/web\/images/g" "${MAGENTODIR}config.rb";
         intestarter_sed "s/assets\/js/web\/js/g" "${MAGENTODIR}config.rb";
+        intestarter_sed "s/assets\/scss/styles/g" "${MAGENTODIR}config.rb";
+        # Theme config.rb
+        intestarter_sed "s/assets\/css/web\/css/g" "${MAINDIR}config.rb";
+        intestarter_sed "s/assets\/images/web\/images/g" "${MAINDIR}config.rb";
+        intestarter_sed "s/assets\/js/web\/js/g" "${MAINDIR}config.rb";
+        intestarter_sed "s/assets\/scss/styles/g" "${MAINDIR}config.rb";
     fi;
 
     # Changing path for Magento 2
