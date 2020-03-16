@@ -42,10 +42,10 @@ if [[ "${use_grunt}" == 'y' ]]; then
 
         # CUSTOMER
         mkdir "${SCSSDIR}/${project_id}/customer";
-        for _file in {"public","loggedin"}; do
-          touch "${SCSSDIR}/${project_id}/customer/_${_file}.scss";
-          echo "@import \"${project_id}/customer/${_file}\";" >> "${SCSSFILE}";
-        done
+        cat "${MAINDIR}files/magento/customer-loggedin.scss" >> "${SCSSDIR}/${project_id}/customer/_loggedin.scss";
+        echo "@import \"${project_id}/customer/loggedin\";" >> "${SCSSFILE}";
+        cat "${MAINDIR}files/magento/customer-public.scss" >> "${SCSSDIR}/${project_id}/customer/_public.scss";
+        echo "@import \"${project_id}/customer/public\";" >> "${SCSSFILE}";
 
     fi;
 
