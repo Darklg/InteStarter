@@ -37,7 +37,7 @@
 %project--field {
     padding: 0.5em 1em;
     min-height: 2.5em;
-    border: 1px solid #000;
+    border: 1px solid $color-border;
     line-height: 1.5em;
 }
 
@@ -57,23 +57,23 @@
 
 %project--field {
     &::-webkit-input-placeholder {
-    @include project-placeholder;
+        @include project-placeholder;
     }
 
     &:-moz-placeholder {
-    @include project-placeholder;
+        @include project-placeholder;
     }
 
     &::-moz-placeholder {
-    @include project-placeholder;
+        @include project-placeholder;
     }
 
     &:-ms-input-placeholder {
-    @include project-placeholder;
+        @include project-placeholder;
     }
 
     &::placeholder {
-    @include project-placeholder;
+        @include project-placeholder;
     }
 }
 
@@ -87,13 +87,12 @@
 
     & + label:before {
         top: 0.45em;
-        border: 1px solid rgba($color-hl,0.4);
-        box-shadow: 0 0 0 1px rgba($color-hl,0);
+        border: 1px solid $color-border!important;
+        box-shadow: 0 0 0 1px transparent!important;
     }
 
     &:checked + label:before {
-        border-color: $color-hl;
-        color: $color-hl;
-        box-shadow: 0 0 0 1px rgba($color-hl,0.999);
+        border-color: $color-main!important;
+        color: $color-border;
     }
 }
