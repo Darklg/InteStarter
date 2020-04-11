@@ -27,7 +27,7 @@ if [[ "${use_grunt}" == 'y' ]]; then
 
         # CHECKOUT
         mkdir "${SCSSDIR}/${project_id}/checkout";
-        for _file in {"cart","checkout","success"}; do
+        for _file in {"cart","checkout","sidebar","success"}; do
           touch "${SCSSDIR}/${project_id}/checkout/_${_file}.scss";
           echo "@import \"${project_id}/checkout/${_file}\";" >> "${SCSSFILE}";
         done
@@ -47,6 +47,12 @@ if [[ "${use_grunt}" == 'y' ]]; then
         cat "${MAINDIR}files/magento/customer-public.scss" >> "${SCSSDIR}/${project_id}/customer/_public.scss";
         echo "@import \"${project_id}/customer/public\";" >> "${SCSSFILE}";
 
+        # CONTENT
+        mkdir "${SCSSDIR}/${project_id}/content";
+        for _file in {"blocks","faq","contact"}; do
+          touch "${SCSSDIR}/${project_id}/content/_${_file}.scss";
+          echo "@import \"${project_id}/content/${_file}\";" >> "${SCSSFILE}";
+        done
     fi;
 
     # Creating config RB

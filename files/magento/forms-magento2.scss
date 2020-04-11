@@ -23,6 +23,7 @@ fieldset.fieldset {
     textarea,
     input[type="text"],
     input[type="email"],
+    input[type="number"]:not(.qty),
     input[type="password"] {
         @extend %project--field;
     }
@@ -38,4 +39,12 @@ div.choice input[type="checkbox"] {
 
 div.control {
     overflow: visible;
+}
+
+%project--field {
+    &[aria-invalid="true"],
+    &.mage-error {
+        border-color: $color-red;
+        color: $color-red;
+    }
 }
