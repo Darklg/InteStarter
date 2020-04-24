@@ -151,26 +151,16 @@ exports.pug = pug_trigger;
 ---------------------------------------------------------- */
 
 exports.watch = function watch() {
-    defaultTask();
     gulp.watch(svg_files, buildiconfont);
     gulp.watch(pug_files, pug_generate);
     gulp.watch(sass_files, style);
+    return defaultTask();
 };
 
 /* ----------------------------------------------------------
   Default
 ---------------------------------------------------------- */
 
-function defaultTask(cb) {
-    /* Build icon font */
-    buildiconfont();
-    /* Build style */
-    style();
-    /* Regenerate styleguide */
-    pug_trigger();
-    if (cb) {
-        cb();
-    }
-}
+var defaultTask = series(buildiconfont, style, pug_trigger);
 
 exports.default = defaultTask;

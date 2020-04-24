@@ -58,7 +58,7 @@ fi;
 echo '## COMPILATIONS INITIALES';
 
 # Generate file
-if [[ $use_compass == 'y' ]]; then
+if [[ $use_gulp != 'n' && $use_compass == 'y' ]]; then
     compass compile;
 fi;
 
@@ -70,6 +70,11 @@ fi;
 # Baseline for regression tests
 if [[ $use_regression_tests == 'y' ]];then
     grunt run_tests;
+fi;
+
+# First build
+if [[ $use_gulp == 'y' ]];then
+    gulp;
 fi;
 
 #################################################################
@@ -87,7 +92,7 @@ rm -rf .sass-cache
 rm newinte.sh
 
 # Suppression des fichiers non assets
-if [[ $use_onlyassets == 'y' ]]; then
+if [[ $use_onlyassets == 'y' || $use_gulp == 'y' ]]; then
     if [[ $is_wp_theme == 'n' ]]; then
         rm -rf inc/
         rm -rf index.php

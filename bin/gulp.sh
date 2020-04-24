@@ -23,6 +23,7 @@ if [[ "${use_gulp}" != 'n' ]]; then
 
     # Set project ID
     intestarter_sed "s/PROJECTID/${project_id}/g" "${MAINDIR}gulpfile.js";
+    intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}gulp/views/styleguide.pug";
 
     gulp;
 
