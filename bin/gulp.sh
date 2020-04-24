@@ -4,7 +4,7 @@
 ## Utiliser Gulp
 #################################################################
 
-if [[ $use_gulp != 'n' ]]; then
+if [[ "${use_gulp}" != 'n' ]]; then
     # Install Gulp & default modules
     npm install --silent --save-dev gulp
     npm install --silent --save-dev gulp-iconfont

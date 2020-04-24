@@ -43,6 +43,7 @@ rm -rf "${MAINDIR}InteStarter/.gitignore";
 . "${EXECDIR}bin/css.sh";
 . "${EXECDIR}bin/js.sh";
 . "${EXECDIR}bin/grunt.sh";
+. "${EXECDIR}bin/gulp.sh";
 if [[ $support_ie8 == 'y' ]]; then
     . "${EXECDIR}bin/ie.sh";
 fi;
