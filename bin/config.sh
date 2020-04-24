@@ -119,26 +119,35 @@ if [[ $use_onlyassets == 'n' ]]; then
     fi;
 fi;
 
-# Utilisation de Compass
-use_compass=$(intestarter_yn "- Utiliser Compass ?" 'y');
-use_compass_fonticon='';
-if [[ $use_compass == 'y' ]]; then
-    use_compass_fonticon=$(intestarter_yn "- -- Compass : Utiliser une font-icon ?" 'y');
-fi;
 
-# Modules supplementaires CSSCommon
-use_csscommon='n';
-if [[ $use_compass == 'n' ]]; then
-    use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon ?" 'n');
-fi;
+use_gulp=$(intestarter_yn "- Utiliser Gulp ?" 'y');
+if [[ "${use_gulp}" == 'y' ]];then
+    use_compass='y';
+    use_compass_fonticon='y';
+    use_regression_tests='n';
+    use_grunt='n';
+else
+    # Utilisation de Compass
+    use_compass=$(intestarter_yn "- Utiliser Compass ?" 'y');
+    use_compass_fonticon='';
+    if [[ $use_compass == 'y' ]]; then
+        use_compass_fonticon=$(intestarter_yn "- -- Compass : Utiliser une font-icon ?" 'y');
+    fi;
 
-# Utilisation de Grunt
-use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
-use_regression_tests='n';
-if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
-    # Tests de regression JS
-    use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
-fi;
+    # Modules supplementaires CSSCommon
+    use_csscommon='n';
+    if [[ $use_compass == 'n' ]]; then
+        use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon ?" 'n');
+    fi;
+
+    # Utilisation de Grunt
+    use_regression_tests='n';
+    use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
+    if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
+        # Tests de regression JS
+        use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
+    fi;
+fi
 
 use_jquery='n';
 if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
