@@ -73,8 +73,11 @@ case "$use_subfolder" in
             if [ ! -d "tpl/" ]; then
                 mkdir "tpl/";
             fi;
-            mkdir "tpl/styleguide/";
-            cp -R "InteStarter/inc/tpl/styleguide/" "tpl/styleguide/";
+
+            if [[ $use_gulp == 'n' ]];then
+                mkdir "tpl/styleguide/";
+                cp -R "InteStarter/inc/tpl/styleguide/" "tpl/styleguide/";
+            fi;
 
             # Removing useless files
             rm -rf "InteStarter/inc/";
