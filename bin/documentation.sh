@@ -27,27 +27,27 @@ cat "${MAINDIR}files/doc/csscommon.md" >> "${DOCUMENTATION_CONTENT}";
 echo "" >> "${DOCUMENTATION_CONTENT}";
 
 ## Integento
-
 if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
     cat "${MAINDIR}files/doc/integento.md" >> "${DOCUMENTATION_CONTENT}";
     echo "" >> "${DOCUMENTATION_CONTENT}";
 fi;
 
-## Compass
-if [[ $use_compass == 'y' ]]; then
-    cat "${MAINDIR}files/doc/compass.md" >> "${DOCUMENTATION_CONTENT}";
+if [[ "${use_gulp}" != 'n' ]]; then
+    cat "${MAINDIR}files/doc/gulp.md" >> "${DOCUMENTATION_CONTENT}";
     echo "" >> "${DOCUMENTATION_CONTENT}";
-fi;
+else
+    ## Compass
+    if [[ $use_compass == 'y' ]]; then
+        cat "${MAINDIR}files/doc/compass.md" >> "${DOCUMENTATION_CONTENT}";
+        echo "" >> "${DOCUMENTATION_CONTENT}";
+    fi;
 
-###################################
-## Grunt
-###################################
-
-## Icon Fonts
-if [[ $use_compass_fonticon == 'y' ]]; then
-    cat "${MAINDIR}files/doc/fonticons.md" >> "${DOCUMENTATION_CONTENT}";
-    echo "" >> "${DOCUMENTATION_CONTENT}";
-fi;
+    ## Icon Fonts
+    if [[ $use_compass_fonticon == 'y' ]]; then
+        cat "${MAINDIR}files/doc/fonticons.md" >> "${DOCUMENTATION_CONTENT}";
+        echo "" >> "${DOCUMENTATION_CONTENT}";
+    fi;
+fi
 
 ###################################
 ## Submodules
