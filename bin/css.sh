@@ -26,7 +26,9 @@ if [[ $use_compass == 'y' ]]; then
     done;
 
     # On cree le fichier de config compass
-    mv "${MAINDIR}files/config.rb" "${MAINDIR}config.rb";
+    if [[ "${use_gulp}" != 'y' ]];then
+        mv "${MAINDIR}files/config.rb" "${MAINDIR}config.rb";
+    fi
 
     # On initialise le fichier principal
     mv "${MAINDIR}files/main.scss" "${SCSSFILE}";
