@@ -44,9 +44,6 @@ rm -rf "${MAINDIR}InteStarter/.gitignore";
 . "${EXECDIR}bin/js.sh";
 . "${EXECDIR}bin/grunt.sh";
 . "${EXECDIR}bin/gulp.sh";
-if [[ $support_ie8 == 'y' ]]; then
-    . "${EXECDIR}bin/ie.sh";
-fi;
 . "${EXECDIR}bin/responsive.sh";
 if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
     . "${EXECDIR}bin/magento.sh";

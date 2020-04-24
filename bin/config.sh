@@ -167,12 +167,6 @@ if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n'
     add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
 fi;
 
-support_ie8='n';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
-    # Support IE < 9
-    support_ie8=$(intestarter_yn "- Gérer IE8 ?" 'n');
-fi;
-
 cd "${MAINDIR}";
 
 ###################################
@@ -205,9 +199,6 @@ intestarter_sed "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styl
 main_folders="css/ images/ fonts/";
 if [[ $is_magento2_skin == 'n' ]];then
     main_folders="${main_folders} js/";
-fi;
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $support_ie8 == 'y' ]]; then
-    main_folders="${main_folders} js/ie/";
 fi;
 
 # CSS / COMPASS
