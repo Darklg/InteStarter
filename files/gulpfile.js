@@ -2,26 +2,40 @@
   Modules
 ---------------------------------------------------------- */
 
+var p = require('./package.json');
+
+/* Tools */
 const gulp = require('gulp');
-const sass = require('gulp-sass');
-const gulpFilelist = require('gulp-filelist');
-const stripCssComments = require('gulp-strip-css-comments');
-const removeEmptyLines = require('gulp-remove-empty-lines');
-const trimlines = require('gulp-trimlines');
-const runTimestamp = Math.round(Date.now() / 1000);
-const replace = require('gulp-replace');
-const pug = require('gulp-pug');
-const iconfont = require('gulp-iconfont');
-const iconfontCss = require('gulp-iconfont-css');
 const {
     series
 } = require('gulp');
+
+/* Reload */
+var bs = require('browser-sync').create();
+
+/* Sass */
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const stripCssComments = require('gulp-strip-css-comments');
+const removeEmptyLines = require('gulp-remove-empty-lines');
+const trimlines = require('gulp-trimlines');
+
+/* Icon font */
+const runTimestamp = Math.round(Date.now() / 1000);
+const replace = require('gulp-replace');
+const iconfont = require('gulp-iconfont');
+const iconfontCss = require('gulp-iconfont-css');
+
+/* Styleguide */
+const gulpFilelist = require('gulp-filelist');
+const pug = require('gulp-pug');
 
 /* ----------------------------------------------------------
   Config
 ---------------------------------------------------------- */
 
-const project_name = 'PROJECTID';
+const project_name = p.name;
+const project_host = p.project_hostname;
 const app_folder = 'assets/';
 const fonts_folder = app_folder + 'fonts';
 const sass_folder = app_folder + 'scss';
@@ -44,8 +58,8 @@ function buildiconfont() {
             fontName: fontName,
             targetPath: '../../../' + sass_folder_proj + '/_icons.scss',
             path: 'css',
-            timestamp: runTimestamp,
-            fontPath: '../../assets/fonts/' + fontName + '/'
+            cacheBuster: runTimestamp,
+            fontPath: '../../' + fonts_folder + '/' + fontName + '/'
         }))
         .pipe(iconfont({
             normalize: true,
@@ -76,6 +90,9 @@ function style() {
             indentType: 'space',
             indentWidth: 0
         }))
+        .pipe(autoprefixer({
+            cascade: false
+        }))
         .pipe(stripCssComments({
             whitespace: false
         }))
@@ -83,7 +100,8 @@ function style() {
         .pipe(trimlines())
         .pipe(gulp.dest(css_folder, {
             sourcemaps: false
-        }));
+        }))
+        .pipe(bs.stream());
 }
 exports.style = style;
 
@@ -151,10 +169,15 @@ exports.pug = pug_trigger;
 ---------------------------------------------------------- */
 
 exports.watch = function watch() {
+    bs.init({
+        proxy: project_host,
+        ghostMode: false,
+        notify: false,
+        open: false
+    });
     gulp.watch(svg_files, buildiconfont);
     gulp.watch(pug_files, pug_generate);
-    gulp.watch(sass_files, style);
-    return defaultTask();
+    return gulp.watch(sass_files, style);
 };
 
 /* ----------------------------------------------------------

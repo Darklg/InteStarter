@@ -35,4 +35,8 @@ You can also insert it directly in Sass :
 
 ## Watch
 
-If you launch the following command, Gulp will automatically check for modified scss files & new icons.
+If you launch the following command, Gulp will automatically check for modified scss files & new icons :
+
+`gulp watch;`
+
+A browser-sync instance is also available. Please ensure there is a correct project_hostname value in your package.json to enable proxying.

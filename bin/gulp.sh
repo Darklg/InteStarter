@@ -6,16 +6,18 @@
 
 if [[ "${use_gulp}" != 'n' ]]; then
     # Install Gulp & default modules
-    npm install --silent --save-dev gulp
-    npm install --silent --save-dev gulp-filelist
-    npm install --silent --save-dev gulp-iconfont
-    npm install --silent --save-dev gulp-iconfont-css
-    npm install --silent --save-dev gulp-pug
-    npm install --silent --save-dev gulp-remove-empty-lines
-    npm install --silent --save-dev gulp-replace
-    npm install --silent --save-dev gulp-sass
-    npm install --silent --save-dev gulp-strip-css-comments
-    npm install --silent --save-dev gulp-trimlines
+    npm install --silent --save-dev gulp;
+    npm install --silent --save-dev gulp-filelist;
+    npm install --silent --save-dev gulp-iconfont;
+    npm install --silent --save-dev gulp-iconfont-css;
+    npm install --silent --save-dev gulp-pug;
+    npm install --silent --save-dev gulp-remove-empty-lines;
+    npm install --silent --save-dev gulp-replace;
+    npm install --silent --save-dev gulp-sass;
+    npm install --silent --save-dev gulp-strip-css-comments;
+    npm install --silent --save-dev gulp-trimlines;
+    npm install --silent --save-dev gulp-autoprefixer;
+    npm install --silent --save-dev browser-sync;
 
     # Create Grunt Files
     mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
