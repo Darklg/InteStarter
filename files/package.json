@@ -1,0 +1,12 @@
+{
+  "name": "project_id",
+  "project_hostname": "project_id.test",
+  "version": "0.1.0",
+  "description": "",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead"
+    ]
+  }
+}
