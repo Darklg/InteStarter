@@ -175,7 +175,7 @@ exports.watch = function watch() {
         notify: false,
         open: false
     });
-    gulp.watch(svg_files, buildiconfont);
+    gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
     gulp.watch(pug_files, pug_generate);
     return gulp.watch(sass_files, style);
 };
