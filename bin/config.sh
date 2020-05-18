@@ -193,7 +193,9 @@ styleguide_forms_path="${MAINDIR}inc/";
 if [[ $is_wp_theme == 'y' ]]; then
     styleguide_forms_path="${MAINDIR}";
 fi;
-intestarter_sed "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styleguide/forms.php";
+if [[ -f "${styleguide_forms_path}tpl/styleguide/forms.php" ]];then
+    intestarter_sed "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styleguide/forms.php";
+fi
 
 ###################################
 ## Basic values
