@@ -15,6 +15,7 @@ var bs = require('browser-sync').create();
 
 /* Sass */
 const sass = require('gulp-sass');
+const sassGlob = require('gulp-sass-glob');
 const autoprefixer = require('gulp-autoprefixer');
 const stripCssComments = require('gulp-strip-css-comments');
 const removeEmptyLines = require('gulp-remove-empty-lines');
@@ -85,6 +86,7 @@ exports.iconfont = buildiconfont;
 
 function style() {
     return gulp.src(sass_files)
+        .pipe(sassGlob())
         .pipe(sass({
             outputStyle: 'compact',
             indentType: 'space',
