@@ -14,7 +14,7 @@ Gulp will generate an icon font. This icon font allows us to insert a vectorized
 
 ### Adding a new icon to the fonticon :
 
-Please add a SVG file in the folder icons/original/. The filename will be used as the icon name. Then launch the following command :
+Please add a SVG file in the folder icons/. The filename will be used as the icon name. Then launch the following command :
 
 `gulp default;`
 

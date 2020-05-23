@@ -107,7 +107,11 @@ fi;
 
 # Font icon
 if [[ $use_compass_fonticon == 'y' ]];then
-    rsync -az "${MAINDIR}files/icons/" "${ASSETSDIR}/icons/original/";
+    if [[ "${use_gulp}" == 'y' ]];then
+        rsync -az "${MAINDIR}files/icons/" "${ASSETSDIR}/icons/";
+    else
+        rsync -az "${MAINDIR}files/icons/" "${ASSETSDIR}/icons/original/";
+    fi
     touch "${SCSSDIR}/${project_id}/_icons.scss";
     echo "@import \"${project_id}/icons\";" >> "${SCSSFILE}";
     # Update Scss
