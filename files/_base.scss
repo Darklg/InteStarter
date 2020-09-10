@@ -143,6 +143,7 @@ h4,
   Text
 ---------------------------------------------------------- */
 
+dl,
 p,
 ul {
     & {
@@ -153,4 +154,10 @@ ul {
     &:not(:last-child) {
         margin-bottom: $line-height-em;
     }
+}
+
+dd,
+dt,
+li {
+    font: inherit;
 }

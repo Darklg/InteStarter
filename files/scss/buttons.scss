@@ -18,6 +18,8 @@
         background-color: $color-main;
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
     }
 
     &:focus,

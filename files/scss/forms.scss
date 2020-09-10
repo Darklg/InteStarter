@@ -82,17 +82,31 @@
 %fake-check-ghost,
 %fake-radio-ghost {
     & + label {
+        display: inline-block;
+        margin-right: 1em;
         padding-left: 1.5em;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
     }
 
     & + label:before {
-        top: 0.45em;
+        top: 0.1em;
         border: 1px solid $color-border!important;
+        background-color: #fff;
         box-shadow: 0 0 0 1px transparent!important;
     }
 
     &:checked + label:before {
         border-color: $color-main!important;
-        color: $color-border;
+        color: $color-main;
     }
+}
+
+input[type="checkbox"] {
+    @extend %fake-check-ghost;
+}
+
+input[type="radio"] {
+    @extend %fake-radio-ghost;
 }
