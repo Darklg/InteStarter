@@ -45,7 +45,7 @@ const css_folder = app_folder + 'css';
 const sass_files = [sass_folder + '/**.scss', sass_folder + '/**/**.scss'];
 const svg_files = app_folder + 'icons/*.svg';
 const pug_views = 'gulp/views/';
-const pug_files = [pug_views + '**.pug', pug_views + '*/**.pug'];
+const pug_files = [pug_views + '**.pug', pug_views + '*/**.html'];
 const fontName = 'icons';
 
 /* ----------------------------------------------------------
@@ -121,7 +121,7 @@ function pug_list_styles() {
 
     return gulp
         .src([css_folder + '/*.css'])
-        .pipe(gulpFilelist('head-css.pug', {
+        .pipe(gulpFilelist('head-css.html', {
             flatten: true,
             removeExtensions: true,
             destRowTemplate: formatter
@@ -141,7 +141,7 @@ function pug_list_icons() {
     }
     return gulp
         .src(svg_files)
-        .pipe(gulpFilelist('icons.pug', {
+        .pipe(gulpFilelist('icons.html', {
             flatten: true,
             removeExtensions: true,
             destRowTemplate: formatter
