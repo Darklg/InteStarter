@@ -4,14 +4,14 @@ html
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1')
   <style>.styleguide-icons{-webkit-column-count:4;-webkit-column-gap:10px;-moz-column-count:4;-moz-column-gap:10px;column-count:4;column-gap: 10px;}</style>
-  include includes/head-css.pug
+  include includes/head-css.html
   body
     div.centered-container
       div.cc-main
         h1 MySite
         h2 Icons
         <div class="styleguide-icons">
-        include includes/icons.pug
+        include includes/icons.html
         </div>
-        include parts/forms.pug
-        include parts/text.pug
+        include parts/forms.html
+        include parts/text.html

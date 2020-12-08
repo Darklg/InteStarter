@@ -32,22 +32,8 @@ if [[ $is_magento2_skin == 'y' ]]; then
     echo "" >> "${DOCUMENTATION_CONTENT}";
 fi;
 
-if [[ "${use_gulp}" != 'n' ]]; then
-    cat "${MAINDIR}files/doc/gulp.md" >> "${DOCUMENTATION_CONTENT}";
-    echo "" >> "${DOCUMENTATION_CONTENT}";
-else
-    ## Compass
-    if [[ $use_compass == 'y' ]]; then
-        cat "${MAINDIR}files/doc/compass.md" >> "${DOCUMENTATION_CONTENT}";
-        echo "" >> "${DOCUMENTATION_CONTENT}";
-    fi;
-
-    ## Icon Fonts
-    if [[ $use_compass_fonticon == 'y' ]]; then
-        cat "${MAINDIR}files/doc/fonticons.md" >> "${DOCUMENTATION_CONTENT}";
-        echo "" >> "${DOCUMENTATION_CONTENT}";
-    fi;
-fi
+cat "${MAINDIR}files/doc/gulp.md" >> "${DOCUMENTATION_CONTENT}";
+echo "" >> "${DOCUMENTATION_CONTENT}";
 
 ###################################
 ## Submodules

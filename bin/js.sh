@@ -23,10 +23,10 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
             mkdir jquery;
             cd jquery;
             mkdir plugins;
-            curl -O http://code.jquery.com/jquery.min.js;
+            curl -o jquery.min.js https://code.jquery.com/jquery-3.5.1.min.js
             if test -f jquery.min.js; then
                 if [[ $use_onlyassets != 'y' ]]; then
-                    echo '<script src="assets/js/jquery/jquery.min.js"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+                    echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
                 fi;
                 echo "jQuery(document).ready(function($) {});" > "${ASSETSDIR}/js/events.js";
             fi
@@ -59,14 +59,7 @@ if [[ $add_jsutilities_plugins == 'y' ]]; then
                 cp -r "${directory_jsu}${jquery_path}${i}/" "${MAINDIR}${jquery_path}${i}/";
                 echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${MAINDIR}inc/tpl/header/head.php";
                 css_file="assets/css/${i}.css";
-                if [[ $use_compass == 'y' ]]; then
-                    cat ${directory_jsu}${css_file} >> "${ASSETSDIR}/scss/${project_id}/_plugins.scss";
-                else
-                    cp "${directory_jsu}${css_file}" "${MAINDIR}${css_file}";
-                    if [[ $use_onlyassets != 'y' ]]; then
-                        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"${css_file}\" />" >> "${MAINDIR}inc/tpl/header/head.php";
-                    fi;
-                fi;
+                cat ${directory_jsu}${css_file} >> "${SCSSDIR}/${project_id}/_plugins.scss";
             done;
         ;;
     esac
@@ -90,9 +83,14 @@ if [[ "${add_slick_slider}" == 'y' ]]; then
     if [[ $is_wp_theme == 'y' ]]; then
         PHP_SLICK_JS_LOADING="\$js_files['slick'] = array(\n\t\t'uri' => '\/assets\/js\/slick\/slick.min.js',\n\t\t'footer' => 1\n\t);\n\treturn \$js_files;";
         intestarter_simple_sed "return \$js_files;" "${PHP_SLICK_JS_LOADING}" "${MAINDIR}functions.php";
+    else
+        if [[ $use_onlyassets != 'y' ]]; then
+            echo '<script src="assets/js/slick/slick.min.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+        fi;
     fi;
+
 
     # Add CSS
     CSS_CONTENT=$(cat "${ASSETSDIR}/js/slick/slick.css");
-    echo "${CSS_CONTENT}" >> "${ASSETSDIR}/scss/${project_id}/_plugins.scss";
+    echo "${CSS_CONTENT}" >> "${SCSSDIR}/${project_id}/_plugins.scss";
 fi;

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Test commands
-main_commands="npm grunt git compass";
+main_commands="npm git";
 for i in $main_commands
 do
     command -v "$i" >/dev/null 2>&1 || { echo >&2 "Vous avez besoin du programme \"${i}\" pour continuer."; exit 1; }
@@ -43,7 +43,6 @@ rm -rf "${MAINDIR}InteStarter/.gitignore";
 . "${EXECDIR}bin/folders.sh";
 . "${EXECDIR}bin/css.sh";
 . "${EXECDIR}bin/js.sh";
-. "${EXECDIR}bin/grunt.sh";
 . "${EXECDIR}bin/gulp.sh";
 . "${EXECDIR}bin/responsive.sh";
 if [[ $is_magento2_skin == 'y' ]]; then
@@ -58,25 +57,8 @@ fi;
 
 echo '## COMPILATIONS INITIALES';
 
-# Generate file
-if [[ $use_gulp != 'n' && $use_compass == 'y' ]]; then
-    compass compile;
-fi;
-
 # First build
-if [[ $use_grunt != 'n' && $use_compass_fonticon == 'y' ]];then
-    grunt build;
-fi;
-
-# Baseline for regression tests
-if [[ $use_regression_tests == 'y' ]];then
-    grunt run_tests;
-fi;
-
-# First build
-if [[ $use_gulp == 'y' ]];then
-    gulp;
-fi;
+gulp;
 
 #################################################################
 ## MENAGE

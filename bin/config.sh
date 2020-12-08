@@ -30,12 +30,6 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
 fi;
 
-# Site dynamique
-is_static='n';
-if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
-    is_static=$(intestarter_yn "- Est-ce un site statique ?" 'n');
-fi;
-
 if [[ $use_onlyassets == 'y' ]]; then
     rm "InteStarter/index.php";
     rm "InteStarter/styleguide.php";
@@ -45,41 +39,21 @@ if [[ $is_wp_theme == 'n' ]]; then
 fi;
 
 # Choix du dossier
-use_subfolder='n';
-if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
-    use_subfolder=$(intestarter_yn "- Créer un sous-dossier \"inte\" ?" 'n');
+if [[ $is_wp_theme == 'y' ]]; then
+    # Moving useful files
+    if [ ! -d "tpl/" ]; then
+        mkdir "tpl/";
+    fi;
+
+    # Removing useless files
+    rm -rf "InteStarter/inc/";
+
 fi;
-case "$use_subfolder" in
-    y|Y|O|o )
-        # On renomme le dossier créé et on s'y déplace
-        mv "InteStarter" "inte";
-        cd "inte/";
-        MAINDIR="${PWD}/";
-        EXECDIR="${PWD}/";
-    ;;
-    * )
-        if [[ $is_wp_theme == 'y' ]]; then
-            # Moving useful files
-            if [ ! -d "tpl/" ]; then
-                mkdir "tpl/";
-            fi;
 
-            if [[ $use_gulp == 'n' ]];then
-                mkdir "tpl/styleguide/";
-                cp -R "InteStarter/inc/tpl/styleguide/" "tpl/styleguide/";
-            fi;
-
-            # Removing useless files
-            rm -rf "InteStarter/inc/";
-
-        fi;
-
-        # On récupère le contenu du dossier créé
-        mv InteStarter/* .
-        rm -rf "InteStarter/";
-        EXECDIR="${PWD}/";
-    ;;
-esac
+# On récupère le contenu du dossier créé
+mv InteStarter/* .
+rm -rf "InteStarter/";
+EXECDIR="${PWD}/";
 
 if [ -z ${from_wpinstaller+x} ]; then
     # On recupere le nom du projet
@@ -111,36 +85,6 @@ if [[ $use_onlyassets == 'n' ]]; then
         project_description="${default_project_description}";
     fi;
 fi;
-
-
-use_gulp=$(intestarter_yn "- Utiliser Gulp ?" 'y');
-if [[ "${use_gulp}" == 'y' ]];then
-    use_compass='y';
-    use_compass_fonticon='y';
-    use_regression_tests='n';
-    use_grunt='n';
-else
-    # Utilisation de Compass
-    use_compass=$(intestarter_yn "- Utiliser Compass ?" 'y');
-    use_compass_fonticon='';
-    if [[ $use_compass == 'y' ]]; then
-        use_compass_fonticon=$(intestarter_yn "- -- Compass : Utiliser une font-icon ?" 'y');
-    fi;
-
-    # Modules supplementaires CSSCommon
-    use_csscommon='n';
-    if [[ $use_compass == 'n' ]]; then
-        use_csscommon=$(intestarter_yn "- Utiliser des modules supplementaires CSSCommon ?" 'n');
-    fi;
-
-    # Utilisation de Grunt
-    use_regression_tests='n';
-    use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
-    if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
-        # Tests de regression JS
-        use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
-    fi;
-fi
 
 use_jquery='n';
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
@@ -198,11 +142,11 @@ fi;
 
 # CSS / COMPASS
 if [[ $is_magento2_skin == 'y' ]]; then
-    compass_folders="styles/ styles/${project_id}/";
+    src_folders="styles/ styles/${project_id}/";
 else
-    compass_folders="scss/ scss/${project_id}/";
+    src_folders="scss/ scss/${project_id}/";
 fi;
-compass_folders="${compass_folders} icons/ icons/original/";
+src_folders="${src_folders} icons/";
 csscommon_default_modules="default common content buttons forms grid layouts";
 csscommon_additional_modules="tables push navigation tabs images print effects";
 

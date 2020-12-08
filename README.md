@@ -8,11 +8,9 @@ Fonctionnalités :
 ---
 
 * Génération de templates HTML.
-* Utilisation de Compass : Mixins.
-* Utilisation de Grunt : Clean / Uncss / Font-Icon.
-* Utilisation de [CSSCommon](http://www.csscommon.com).
-* Utilisation de [JSUtilities](http://darklg.github.io/JavaScriptUtilities/).
-* Tests de regression du design avec [PhantomCSS](https://github.com/Huddle/PhantomCSS).
+* Utilisation de Gulp : Clean / Sass / Font-Icon.
+* Utilisation de [CSSCommon](https://www.csscommon.com).
+* Utilisation de [JSUtilities](https://darklg.github.io/JavaScriptUtilities/).
 * Responsive ou non.
 
 
@@ -20,10 +18,8 @@ Pré-requis :
 ---
 
 * Ligne de commande avec Bash (OSX / Unix).
-* [Git](http://git-scm.com/downloads)
-* [NPM](http://nodejs.org/download/)
-* [Compass](http://compass-style.org/install/)
-* [Grunt](http://gruntjs.com/getting-started)
+* [Git](https://git-scm.com/downloads)
+* [NPM](https://nodejs.org/download/)
 * Serveur LAMP (Utilisé pour des include / boucles)
 
 

@@ -2,5 +2,3 @@
 export-*.zip
 node_modules
 test-*.html
-tests/failures
-tests/results

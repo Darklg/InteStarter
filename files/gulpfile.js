@@ -38,14 +38,15 @@ const pug = require('gulp-pug');
 const project_name = p.name;
 const project_host = p.project_hostname;
 const app_folder = 'assets/';
+const src_folder = 'src/';
 const fonts_folder = app_folder + 'fonts';
-const sass_folder = app_folder + 'scss';
+const sass_folder = src_folder + 'scss';
 const sass_folder_proj = sass_folder + '/' + project_name;
 const css_folder = app_folder + 'css';
 const sass_files = [sass_folder + '/**.scss', sass_folder + '/**/**.scss'];
-const svg_files = app_folder + 'icons/*.svg';
 const pug_views = 'gulp/views/';
 const pug_files = [pug_views + '**.pug', pug_views + '*/**.html'];
+const svg_files = src_folder + 'icons/*.svg';
 const fontName = 'icons';
 
 /* ----------------------------------------------------------

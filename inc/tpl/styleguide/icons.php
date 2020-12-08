@@ -1,7 +1,7 @@
 <?php
 
 // Icons - SVG / Iconfont
-$ico_svg_dir = ASSETS_DIR . 'icons/original/';
+$ico_svg_dir = ASSETS_DIR . 'icons/';
 $ico_svg = glob($ico_svg_dir . '*.svg');
 if (!empty($ico_svg)) {
     echo '<h3>Icons - SVG / Iconfont</h3>';

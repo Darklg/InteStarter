@@ -12,13 +12,23 @@ if ! [ -d "${ASSETSDIR}/" ]; then
     mkdir "${ASSETSDIR}/";
 fi
 
+# On cree le repertoire des assets
+if ! [ -d "${SRCDIR}/" ]; then
+    echo '- Creation de src/';
+    mkdir "${SRCDIR}/";
+fi
+
 cd "${ASSETSDIR}/";
 
 # htaccess
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
-    if ! [ -f .htaccess ]; then
-        echo '- Ajout du .htaccess';
+    if ! [ -f "${ASSETSDIR}/.htaccess" ]; then
+        echo '- Ajout du .htaccess assets';
         mv "${MAINDIR}files/assets.htaccess" "${ASSETSDIR}/.htaccess";
+    fi;
+    if ! [ -f "${SRCDIR}/.htaccess" ]; then
+        echo '- Ajout du .htaccess src';
+        mv "${MAINDIR}files/src.htaccess" "${SRCDIR}/.htaccess";
     fi;
 fi;
 
@@ -38,3 +48,12 @@ do
 done;
 
 cd "${MAINDIR}";
+
+# On cree les répertoires contenant le Scss
+for i in $src_folders
+do
+    if ! [ -d "${SRCDIR}/${i}" ]; then
+      echo "- Creation de ${i}";
+      mkdir "${SRCDIR}/${i}";
+    fi;
+done;
