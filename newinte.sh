@@ -20,7 +20,8 @@ fi;
 # Set main directory
 MAINDIR="${PWD}/";
 ASSETSDIR="${MAINDIR}/assets";
-SCSSDIR="${ASSETSDIR}/scss";
+SRCDIR="${MAINDIR}/src";
+SCSSDIR="${SRCDIR}/scss";
 SCSSFILE="${SCSSDIR}/main.scss";
 EXECDIR="${MAINDIR}InteStarter/";
 
@@ -45,7 +46,7 @@ rm -rf "${MAINDIR}InteStarter/.gitignore";
 . "${EXECDIR}bin/grunt.sh";
 . "${EXECDIR}bin/gulp.sh";
 . "${EXECDIR}bin/responsive.sh";
-if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
+if [[ $is_magento2_skin == 'y' ]]; then
     . "${EXECDIR}bin/magento.sh";
 fi;
 

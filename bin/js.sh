@@ -16,7 +16,7 @@ if [[ -d "${ASSETSDIR}/js/" ]];then
 fi;
 
 # On propose de télécharger une librairie JS
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     case "${use_jquery}" in
         j|J|o|O|Y|y )
             echo '- Installation de jQuery';

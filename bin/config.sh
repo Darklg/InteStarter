@@ -13,13 +13,8 @@ else
     is_wp_theme='y';
 fi;
 
-is_magento_skin='n';
-if [[ $is_wp_theme == 'n' ]]; then
-    is_magento_skin=$(intestarter_yn "- Est-ce un skin Magento 1 ?" 'n');
-fi;
-
 is_magento2_skin='n';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' ]]; then
     is_magento2_skin=$(intestarter_yn "- Est-ce un skin Magento 2 ?" 'n');
 fi;
 
@@ -29,20 +24,15 @@ if [[ $is_magento2_skin == 'y' ]]; then
     SCSSFILE="${SCSSDIR}/styles.scss";
 fi;
 
-create_utils_magento='n';
-if [[ $is_magento_skin == 'y' ]]; then
-    create_utils_magento=$(intestarter_yn "- Creer un dossier _utils/ ?" 'n');
-fi;
-
 # Seulement assets
 use_onlyassets='y';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
 fi;
 
 # Site dynamique
 is_static='n';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
     is_static=$(intestarter_yn "- Est-ce un site statique ?" 'n');
 fi;
 
@@ -56,7 +46,7 @@ fi;
 
 # Choix du dossier
 use_subfolder='n';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     use_subfolder=$(intestarter_yn "- Créer un sous-dossier \"inte\" ?" 'n');
 fi;
 case "$use_subfolder" in
@@ -146,14 +136,14 @@ else
     # Utilisation de Grunt
     use_regression_tests='n';
     use_grunt=$(intestarter_yn "- Utiliser Grunt ?" 'y');
-    if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
+    if [[ $use_grunt == 'y' && $is_wp_theme == 'n' && $is_magento2_skin == 'n' && $use_onlyassets == 'n' ]]; then
         # Tests de regression JS
         use_regression_tests=$(intestarter_yn "- Utiliser des tests de regression ?" 'y');
     fi;
 fi
 
 use_jquery='n';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     # Bibliothèque JS
     use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
 fi;
@@ -165,7 +155,7 @@ if [[ $use_jquery == 'y' ]]; then
 fi;
 
 add_jsutilities_plugins='n';
-if [[ $is_wp_theme == 'n' && $is_magento_skin == 'n' && $is_magento2_skin == 'n' && $use_jquery == 'y' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' && $use_jquery == 'y' ]]; then
     # Plugins JS
     add_jsutilities_plugins=$(intestarter_yn "- Utiliser des plugins JSUtilities ?" 'n');
 fi;

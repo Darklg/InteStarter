@@ -27,7 +27,7 @@ cat "${MAINDIR}files/doc/csscommon.md" >> "${DOCUMENTATION_CONTENT}";
 echo "" >> "${DOCUMENTATION_CONTENT}";
 
 ## Integento
-if [[ $is_magento_skin == 'y' ]] || [[ $is_magento2_skin == 'y' ]]; then
+if [[ $is_magento2_skin == 'y' ]]; then
     cat "${MAINDIR}files/doc/integento.md" >> "${DOCUMENTATION_CONTENT}";
     echo "" >> "${DOCUMENTATION_CONTENT}";
 fi;

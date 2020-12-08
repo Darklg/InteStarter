@@ -1,8 +1,0 @@
-.button {
-    @extend %project_id-button;
-}
-
-.button--secondary {
-    @extend %project_id-button;
-    @extend %project_id-button--secondary;
-}

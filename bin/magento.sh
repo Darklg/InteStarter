@@ -6,13 +6,10 @@
 
 echo '## MAGENTO';
 
-MAGENTODIR="${MAINDIR}../../../../";
+# Add templates
 if [[ "${is_magento2_skin}" == 'y' ]]; then
     MAGENTODIR="${MAGENTODIR}../";
-fi;
 
-# Add templates
-if [[ "${is_magento_skin}" == 'y' ]] || [[ "${is_magento2_skin}" == 'y' ]]; then
     echo '- Création de templates Sass';
 
     # HEADER

@@ -43,7 +43,7 @@ if [[ $use_compass == 'y' ]]; then
     cd "${SCSSDIR}/";
 
     # CSS Common
-    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento_skin == 'y' ] || [ $is_magento2_skin == 'y' ]; then
+    if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento2_skin == 'y' ]; then
         echo "-- add SassCSSCommon submodule";
         git submodule add --force https://github.com/Darklg/SassCSSCommon.git csscommon;
     else
@@ -52,12 +52,6 @@ if [[ $use_compass == 'y' ]]; then
         rm -rf "${SCSSDIR}/csscommon/.git";
     fi;
     cat "${MAINDIR}files/base-csscommon.scss" >> "${SCSSFILE}";
-
-    # Integento
-    if [[ $is_magento_skin == 'y' ]]; then
-        git submodule add --force https://github.com/Darklg/InteGentoStyles.git
-        cat "${MAINDIR}files/base-integento.scss" >> "${SCSSFILE}";
-    fi;
 
     # Integento 2
     if [[ $is_magento2_skin == 'y' ]]; then
@@ -147,21 +141,15 @@ cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/common/_con
 
 ### Buttons
 cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
-if [[ $is_magento_skin == 'y' ]]; then
-    if [[ $is_magento2_skin == 'y' ]]; then
-        cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
-    else
-        cat "${MAINDIR}files/magento/buttons.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
-    fi;
+if [[ $is_magento2_skin == 'y' ]]; then
+    cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
 fi;
 
 ### Mixins & base
 cat "${MAINDIR}files/scss/forms.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 
 ### Selectors
-if [[ $is_magento_skin == 'y' ]]; then
-    cat "${MAINDIR}files/magento/forms.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
-elif [[ $is_magento2_skin == 'y' ]]; then
+if [[ $is_magento2_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/forms-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 else
     cat "${MAINDIR}files/scss/forms-selectors.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
