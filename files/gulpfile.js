@@ -31,6 +31,10 @@ const iconfontCss = require('gulp-iconfont-css');
 const gulpFilelist = require('gulp-filelist');
 const pug = require('gulp-pug');
 
+/* JS */
+var concat = require('gulp-concat');
+var minify = require("gulp-minify");
+
 /* ----------------------------------------------------------
   Config
 ---------------------------------------------------------- */
@@ -48,6 +52,9 @@ const pug_views = 'gulp/views/';
 const pug_files = [pug_views + '**.pug', pug_views + '*/**.html'];
 const svg_files = src_folder + 'icons/*.svg';
 const fontName = 'icons';
+const js_src_folder = src_folder + 'js';
+const js_folder = app_folder + 'js';
+const js_src_files = [js_src_folder + '/**.js', js_src_folder + '/**/**.js'];
 
 /* ----------------------------------------------------------
   Font-Icon
@@ -80,6 +87,25 @@ function buildiconfont() {
 }
 
 exports.iconfont = buildiconfont;
+
+/* ----------------------------------------------------------
+  JS Minify
+---------------------------------------------------------- */
+
+function minifyjs() {
+    return gulp.src(js_src_files, {
+            allowEmpty: true
+        })
+        .pipe(minify({
+            noSource: true
+        }))
+        .pipe(concat('app.js', {
+            newLine: "\n"
+        }))
+        .pipe(gulp.dest('assets/js'));
+}
+
+exports.minifyjs = minifyjs;
 
 /* ----------------------------------------------------------
   Compile styles
@@ -180,6 +206,7 @@ exports.watch = function watch() {
     });
     style();
     gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
+    gulp.watch(js_src_files, minifyjs);
     gulp.watch(pug_files, pug_generate);
     return gulp.watch(sass_files, style);
 };
@@ -188,6 +215,6 @@ exports.watch = function watch() {
   Default
 ---------------------------------------------------------- */
 
-var defaultTask = series(buildiconfont, style, pug_trigger);
+var defaultTask = series(buildiconfont, style, minifyjs, pug_trigger);
 
 exports.default = defaultTask;

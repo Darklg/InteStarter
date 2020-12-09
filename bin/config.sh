@@ -146,7 +146,7 @@ if [[ $is_magento2_skin == 'y' ]]; then
 else
     src_folders="scss/ scss/${project_id}/";
 fi;
-src_folders="${src_folders} icons/";
+src_folders="${src_folders} js/ icons/";
 csscommon_default_modules="default common content buttons forms grid layouts";
 csscommon_additional_modules="tables push navigation tabs images print effects";
 

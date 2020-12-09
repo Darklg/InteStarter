@@ -18,6 +18,8 @@ npm install --silent --save-dev gulp-sass-glob;
 npm install --silent --save-dev gulp-strip-css-comments;
 npm install --silent --save-dev gulp-trimlines;
 npm install --silent --save-dev browser-sync;
+npm install --silent --save-dev gulp-concat;
+npm install --silent --save-dev gulp-minify;
 
 # Create Grunt Files
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";

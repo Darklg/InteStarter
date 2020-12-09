@@ -26,18 +26,18 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
             curl -o jquery.min.js https://code.jquery.com/jquery-3.5.1.min.js
             if test -f jquery.min.js; then
                 if [[ $use_onlyassets != 'y' ]]; then
-                    echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+                    echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
                 fi;
-                echo "jQuery(document).ready(function($) {});" > "${ASSETSDIR}/js/events.js";
+                echo "jQuery(document).ready(function($) {});" > "${SRCDIR}/js/events.js";
             fi
             cd "${MAINDIR}";
         ;;
         * )
             echo '- Aucune librairie utilisée.';
             if [[ $use_onlyassets != 'y' ]]; then
-                echo '<script src="assets/js/events.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
+                echo '<script src="assets/js/app.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
             fi;
-            echo "(function(){})();" > "${ASSETSDIR}/js/events.js";
+            echo "(function(){})();" > "${SRCDIR}/js/events.js";
         ;;
     esac
 fi;
