@@ -208,7 +208,10 @@ exports.watch = function watch() {
     style();
     gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
     gulp.watch(js_src_files, minifyjs);
-    gulp.watch(pug_files, pug_generate);
+    gulp.watch(pug_files, series(pug_generate, function bs_reload(done) {
+        bs.reload();
+        done();
+    }));
     return gulp.watch(sass_files, style);
 };
 
