@@ -1,6 +1,6 @@
 ## Gulp
 
-Gulp is used to compile CSS files & generate a font-icon.
+Gulp is used to compile Sass files, merge & minify JS files & generate a font-icon.
 
 ## How to install
 
@@ -8,9 +8,13 @@ Go to the folder containing the package.json file, and launch the following comm
 
 `npm install && gulp default;`
 
+## JS
+
+All JS files added to the src/js folder will be watched and merged into a single assets/js/app.js file.
+
 ## Font Icons
 
-Gulp will generate an icon font. This icon font allows us to insert a vectorized graphic anywhere in the project, with customizations like color, shadows, size or transitions, with a good front-end performance impact.
+Gulp will generate an icon font. This icon font allows us to insert a vectorized graphic anywhere in the project without editing the layout, with customizations like color, shadows, size or transitions, with a good front-end performance impact.
 
 ### Adding a new icon to the fonticon :
 
@@ -35,8 +39,8 @@ You can also insert it directly in Sass :
 
 ## Watch
 
-If you launch the following command, Gulp will automatically check for modified scss files & new icons :
+If you launch the following command, Gulp will automatically check for modified Sass files, js files & new icons :
 
-`gulp watch;`
+`gulp watch`
 
 A browser-sync instance is also available. Please ensure there is a correct project_hostname value in your package.json to enable proxying.
