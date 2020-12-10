@@ -103,7 +103,7 @@ function minifyjs() {
             newLine: ";\n"
         }))
         .pipe(replace(';;', ';'))
-        .pipe(gulp.dest('assets/js'));
+        .pipe(gulp.dest(js_folder));
 }
 
 exports.minifyjs = minifyjs;
