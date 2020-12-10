@@ -100,8 +100,9 @@ function minifyjs() {
             noSource: true
         }))
         .pipe(concat('app.js', {
-            newLine: "\n"
+            newLine: ";\n"
         }))
+        .pipe(replace(';;', ';'))
         .pipe(gulp.dest('assets/js'));
 }
 
