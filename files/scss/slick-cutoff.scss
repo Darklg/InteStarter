@@ -1,0 +1,17 @@
+
+/* Cutoff
+-------------------------- */
+
+.centered-container--slider-cutoff {
+    & {
+        overflow: hidden;
+    }
+
+    .slick-list {
+        overflow: visible;
+    }
+
+    .slick-slide {
+        padding-right: 10px;
+    }
+}

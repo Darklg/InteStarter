@@ -89,8 +89,12 @@ if [[ "${add_slick_slider}" == 'y' ]]; then
         fi;
     fi;
 
-
     # Add CSS
-    CSS_CONTENT=$(cat "${ASSETSDIR}/js/slick/slick.css");
-    echo "${CSS_CONTENT}" >> "${SCSSDIR}/${project_id}/_plugins.scss";
+    echo "${ASSETSDIR}/js/slick/slick.css" >> "${SCSSDIR}/${project_id}/_plugins.scss";
+fi;
+
+# Cut-off slider
+if [[ "${add_slick_slider_cutoff}" == 'y' ]];then
+    cat "${MAINDIR}files/js/slick-cutoff.js" >> "${ASSETSDIR}/js/slick-cutoff.js";
+    cat "${MAINDIR}files/scss/slick-cutoff.scss" >> "${SCSSDIR}/${project_id}/_plugins.scss";
 fi;
