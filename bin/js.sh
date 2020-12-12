@@ -6,10 +6,6 @@
 
 echo '## GESTION DU JS';
 
-# Create package.json
-mv "${MAINDIR}files/package.json" "${MAINDIR}package.json";
-intestarter_sed "s/project_id/${project_id}/" "${MAINDIR}package.json";
-
 # On ajoute les fichiers JS essentiels
 if [[ -d "${ASSETSDIR}/js/" ]];then
     cd "${ASSETSDIR}/js/";

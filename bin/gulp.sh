@@ -1,8 +1,12 @@
 #!/bin/bash
 
 #################################################################
-## Utiliser Gulp
+## Use Gulp
 #################################################################
+
+# Create package.json
+mv "${MAINDIR}files/package.json" "${MAINDIR}package.json";
+intestarter_sed "s/project_id/${project_id}/" "${MAINDIR}package.json";
 
 # Install Gulp & default modules
 npm install --silent --save-dev gulp;
