@@ -25,13 +25,13 @@ npm install --silent --save-dev browser-sync;
 npm install --silent --save-dev gulp-concat;
 npm install --silent --save-dev gulp-minify;
 
-# Create Grunt Files
+# Create Gulp Files
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
-mv "${MAINDIR}files/gulp" "${MAINDIR}gulp";
+mv "${MAINDIR}files/pug" "${MAINDIR}src/pug";
 
 # Set project ID
 intestarter_sed "s/PROJECTID/${project_id}/g" "${MAINDIR}gulpfile.js";
-intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}gulp/views/styleguide.pug";
+intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}src/pug/views/styleguide.pug";
 
 gulp;
 

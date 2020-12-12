@@ -24,7 +24,7 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
                 if [[ $use_onlyassets != 'y' ]]; then
                     echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
                 fi;
-                echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${MAINDIR}gulp/views/includes/head-js.html";
+                echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${SRCDIR}/pug/views/includes/head-js.html";
                 echo "jQuery(document).ready(function($) {});" > "${SRCDIR}/js/events.js";
             fi
             cd "${MAINDIR}";
@@ -39,7 +39,7 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     esac
 fi;
 
-echo '<script src="assets/js/app.js"></script>' >> "${MAINDIR}gulp/views/includes/head-js.html";
+echo '<script src="assets/js/app.js"></script>' >> "${SRCDIR}/pug/views/includes/head-js.html";
 if [[ $is_wp_theme == 'y' ]]; then
     PHP_APP_JS_LOADING="\$js_files['app'] = array(\n\t\t'uri' => '\/assets\/js\/app.js',\n\t\t'footer' => 1\n\t);\n\treturn \$js_files;";
     intestarter_simple_sed "return \$js_files;" "${PHP_APP_JS_LOADING}" "${MAINDIR}functions.php";
