@@ -44,6 +44,10 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
 fi;
 
 echo '<script src="assets/js/app.js"></script>' >> "${MAINDIR}gulp/includes/head-js.html";
+if [[ $is_wp_theme == 'y' ]]; then
+    PHP_APP_JS_LOADING="\$js_files['app'] = array(\n\t\t'uri' => '\/assets\/js\/app.js',\n\t\t'footer' => 1\n\t);\n\treturn \$js_files;";
+    intestarter_simple_sed "return \$js_files;" "${PHP_APP_JS_LOADING}" "${MAINDIR}functions.php";
+fi;
 
 ###################################
 ## Use JSUtilities
