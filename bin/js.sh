@@ -39,7 +39,13 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     esac
 fi;
 
+# Default JS
+echo "console.log('App JS');" >> "${SRCDIR}/js/default.js";
+
+# Load app JS in styleguide head
 echo '<script src="assets/js/app.js"></script>' >> "${SRCDIR}/pug/views/includes/head-js.html";
+
+# Load app JS in WordPress
 if [[ $is_wp_theme == 'y' ]]; then
     PHP_APP_JS_LOADING="\$js_files['app'] = array(\n\t\t'uri' => '\/assets\/js\/app.js',\n\t\t'footer' => 1\n\t);\n\treturn \$js_files;";
     intestarter_simple_sed "return \$js_files;" "${PHP_APP_JS_LOADING}" "${MAINDIR}functions.php";
