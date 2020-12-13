@@ -1,10 +1,18 @@
-
 /* Cutoff
 -------------------------- */
 
 .centered-container--slider-cutoff {
     & {
         overflow: hidden;
+    }
+
+    .slider-cutoff:not(.slick-slider) > * {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .slider-cutoff:not(.slick-slider) {
+        white-space: nowrap;
     }
 
     .slick-list {
