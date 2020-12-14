@@ -24,7 +24,7 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
                 if [[ $use_onlyassets != 'y' ]]; then
                     echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
                 fi;
-                echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${SRCDIR}/pug/views/includes/head-js.html";
+                echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script>' >> "${SRCDIR}/pug/views/includes/head-js.html";
                 echo "jQuery(document).ready(function($) {});" > "${SRCDIR}/js/events.js";
             fi
             cd "${MAINDIR}";
