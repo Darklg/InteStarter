@@ -19,7 +19,16 @@
         overflow: visible;
     }
 
+    .slick-track {
+        display: flex !important;
+    }
+
     .slick-slide {
+        height: inherit !important;
         padding-right: 10px;
+    }
+
+    .slick-slide > *:only-child {
+        height: 100% !important;
     }
 }
