@@ -67,6 +67,7 @@ if [[ $add_jsutilities_plugins == 'y' ]]; then
             do
                 cp -r "${directory_jsu}${jquery_path}${i}/" "${MAINDIR}${jquery_path}${i}/";
                 echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${MAINDIR}inc/tpl/header/head.php";
+                echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${SRCDIR}/pug/includes/head-js.html";
                 css_file="assets/css/${i}.css";
                 cat ${directory_jsu}${css_file} >> "${SCSSDIR}/${project_id}/_plugins.scss";
             done;
