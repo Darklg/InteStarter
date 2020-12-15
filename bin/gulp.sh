@@ -9,21 +9,22 @@ mv "${MAINDIR}files/package.json" "${MAINDIR}package.json";
 intestarter_sed "s/project_id/${project_id}/" "${MAINDIR}package.json";
 
 # Install Gulp & default modules
-npm install --silent --save-dev gulp;
-npm install --silent --save-dev gulp-autoprefixer;
-npm install --silent --save-dev gulp-filelist;
-npm install --silent --save-dev gulp-iconfont;
-npm install --silent --save-dev gulp-iconfont-css;
-npm install --silent --save-dev gulp-pug;
-npm install --silent --save-dev gulp-remove-empty-lines;
-npm install --silent --save-dev gulp-replace;
-npm install --silent --save-dev gulp-sass;
-npm install --silent --save-dev gulp-sass-glob;
-npm install --silent --save-dev gulp-strip-css-comments;
-npm install --silent --save-dev gulp-trimlines;
-npm install --silent --save-dev browser-sync;
-npm install --silent --save-dev gulp-concat;
-npm install --silent --save-dev gulp-minify;
+yarn add --dev \
+    gulp \
+    gulp-autoprefixer \
+    gulp-filelist \
+    gulp-iconfont \
+    gulp-iconfont-css \
+    gulp-pug \
+    gulp-remove-empty-lines \
+    gulp-replace \
+    gulp-sass \
+    gulp-sass-glob \
+    gulp-strip-css-comments \
+    gulp-trimlines \
+    browser-sync \
+    gulp-concat \
+    gulp-minify
 
 # Create Gulp Files
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
