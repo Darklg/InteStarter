@@ -1,6 +1,6 @@
 {
   "name": "project_id",
-  "project_hostname": "project_id.test",
+  "project_hostname": "p_hostname",
   "version": "0.1.0",
   "description": "",
   "browserslist": {

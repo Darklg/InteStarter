@@ -21,9 +21,6 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
             mkdir plugins;
             curl -o jquery.min.js https://code.jquery.com/jquery-3.5.1.min.js
             if test -f jquery.min.js; then
-                if [[ $use_onlyassets != 'y' ]]; then
-                    echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script><script src="assets/js/app.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
-                fi;
                 echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script>' >> "${SRCDIR}/pug/includes/head-js.html";
                 echo "jQuery(document).ready(function($) {});" > "${SRCDIR}/js/events.js";
             fi
@@ -31,9 +28,6 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
         ;;
         * )
             echo '- Aucune librairie utilisée.';
-            if [[ $use_onlyassets != 'y' ]]; then
-                echo '<script src="assets/js/app.js"></script>' >> "${MAINDIR}inc/tpl/header/head.php";
-            fi;
             echo "(function(){})();" > "${SRCDIR}/js/events.js";
         ;;
     esac
@@ -66,7 +60,6 @@ if [[ $add_jsutilities_plugins == 'y' ]]; then
             for i in $jquery_plugins
             do
                 cp -r "${directory_jsu}${jquery_path}${i}/" "${MAINDIR}${jquery_path}${i}/";
-                echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${MAINDIR}inc/tpl/header/head.php";
                 echo "<script src=\"${jquery_path}${i}/${i}.min.js\"></script>" >> "${SRCDIR}/pug/includes/head-js.html";
                 css_file="assets/css/${i}.css";
                 cat ${directory_jsu}${css_file} >> "${SCSSDIR}/${project_id}/_plugins.scss";

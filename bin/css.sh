@@ -12,10 +12,6 @@ touch "${SCSSDIR}/${project_id}/_fonts.scss";
 touch "${SCSSDIR}/${project_id}/_plugins.scss";
 mv "${MAINDIR}files/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 
-if [[ $use_onlyassets == 'n' ]]; then
-    echo '<link rel="stylesheet" type="text/css" href="assets/css/main.css?v=<?php echo time(); ?>" />' >> "${MAINDIR}inc/tpl/header/head.php";
-fi;
-
 cd "${SCSSDIR}/";
 
 # CSS Common

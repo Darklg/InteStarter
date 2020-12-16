@@ -24,32 +24,6 @@ if [[ $is_magento2_skin == 'y' ]]; then
     SCSSFILE="${SCSSDIR}/styles.scss";
 fi;
 
-# Seulement assets
-use_onlyassets='y';
-if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
-    use_onlyassets=$(intestarter_yn "- Récupérer uniquement les assets ?" 'n');
-fi;
-
-if [[ $use_onlyassets == 'y' ]]; then
-    rm "InteStarter/index.php";
-    rm "InteStarter/styleguide.php";
-fi;
-if [[ $is_wp_theme == 'n' ]]; then
-    rm "InteStarter/styleguide-wp.php";
-fi;
-
-# Choix du dossier
-if [[ $is_wp_theme == 'y' ]]; then
-    # Moving useful files
-    if [ ! -d "tpl/" ]; then
-        mkdir "tpl/";
-    fi;
-
-    # Removing useless files
-    rm -rf "InteStarter/inc/";
-
-fi;
-
 # On récupère le contenu du dossier créé
 mv InteStarter/* .
 rm -rf "InteStarter/";
@@ -73,18 +47,8 @@ else
     echo "Using values from WPUInstaller : ${project_name} - ${project_id}";
 fi;
 
-# Use only assets
-if [[ $use_onlyassets == 'n' ]]; then
-    # On recupere l'URL du projet
-    read -p "- Quelle est l'URL du projet ? " project_url
-
-    # On recupere la description du projet
-    default_project_description="${project_name}";
-    read -p "- Quelle est la description rapide du projet ? (${default_project_description}) : " project_description
-    if [[ $project_description == '' ]]; then
-        project_description="${default_project_description}";
-    fi;
-fi;
+# Project hostname
+read -p "- Project hostname ? " project_hostname
 
 use_jquery='n';
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
@@ -110,31 +74,6 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' && $use_jquery == 'y' ]]; 
 fi;
 
 cd "${MAINDIR}";
-
-###################################
-## Write config
-###################################
-
-if [[ $use_onlyassets == 'n' ]]; then
-    echo "
-define('PROJECT_NAME','${project_name/\'/’}');
-define('PROJECT_ID','${project_id/\'/’}');
-define('PROJECT_URL','${project_url/\'/’}');
-define('PROJECT_DESCRIPTION','${project_description/\'/’}');
-" >> "${MAINDIR}inc/config.php";
-fi;
-
-###################################
-## Styleguide classes
-###################################
-
-styleguide_forms_path="${MAINDIR}inc/";
-if [[ $is_wp_theme == 'y' ]]; then
-    styleguide_forms_path="${MAINDIR}";
-fi;
-if [[ -f "${styleguide_forms_path}tpl/styleguide/forms.php" ]];then
-    intestarter_sed "s/--default/--${project_id}/" "${styleguide_forms_path}tpl/styleguide/forms.php";
-fi
 
 ###################################
 ## Basic values
