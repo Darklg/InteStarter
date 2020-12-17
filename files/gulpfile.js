@@ -2,7 +2,7 @@
   Modules
 ---------------------------------------------------------- */
 
-var p = require('./package.json');
+const p = require('./package.json');
 
 /* Tools */
 const gulp = require('gulp');
@@ -11,7 +11,7 @@ const {
 } = require('gulp');
 
 /* Reload */
-var bs = require('browser-sync').create();
+const bs = require('browser-sync').create();
 
 /* Sass */
 const sass = require('gulp-sass');
@@ -26,14 +26,15 @@ const runTimestamp = Math.round(Date.now() / 1000);
 const replace = require('gulp-replace');
 const iconfont = require('gulp-iconfont');
 const iconfontCss = require('gulp-iconfont-css');
+const svgmin = require('gulp-svgmin');
 
 /* Styleguide */
 const gulpFilelist = require('gulp-filelist');
 const pug = require('gulp-pug');
 
 /* JS */
-var concat = require('gulp-concat');
-var minify = require("gulp-minify");
+const concat = require('gulp-concat');
+const minify = require("gulp-minify");
 
 /* ----------------------------------------------------------
   Config
@@ -62,6 +63,7 @@ const js_src_files = [js_src_folder + '/**.js', js_src_folder + '/**/**.js'];
 
 function buildiconfont() {
     return gulp.src([svg_files])
+        .pipe(svgmin())
         .pipe(iconfontCss({
             cssClass: 'icon',
             fontName: fontName,
@@ -190,7 +192,7 @@ function pug_generate() {
         .pipe(gulp.dest('./'));
 }
 
-var pug_trigger = series(pug_list_styles, pug_list_icons, pug_generate);
+const pug_trigger = series(pug_list_styles, pug_list_icons, pug_generate);
 
 exports.pug = pug_trigger;
 
@@ -223,6 +225,6 @@ exports.watch = function watch() {
   Default
 ---------------------------------------------------------- */
 
-var defaultTask = series(buildiconfont, style, minifyjs, pug_trigger);
+const defaultTask = series(buildiconfont, style, minifyjs, pug_trigger);
 
 exports.default = defaultTask;

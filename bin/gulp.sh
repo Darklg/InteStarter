@@ -16,21 +16,22 @@ intestarter_sed "s/p_hostname/${project_hostname}/" "${MAINDIR}package.json";
 
 # Install Gulp & default modules
 yarn add --dev \
+    browser-sync \
     gulp \
     gulp-autoprefixer \
+    gulp-concat \
     gulp-filelist \
     gulp-iconfont \
     gulp-iconfont-css \
+    gulp-minify \
     gulp-pug \
     gulp-remove-empty-lines \
     gulp-replace \
     gulp-sass \
     gulp-sass-glob \
     gulp-strip-css-comments \
-    gulp-trimlines \
-    browser-sync \
-    gulp-concat \
-    gulp-minify
+    gulp-svgmin \
+    gulp-trimlines
 
 # Create Gulp Files
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
