@@ -2,4 +2,5 @@
 export-*.zip
 node_modules
 package-lock.json
+yarn.lock
 test-*.html

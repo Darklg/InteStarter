@@ -11,6 +11,10 @@ if [[ -d "${ASSETSDIR}/js/" ]];then
     cd "${ASSETSDIR}/js/";
 fi;
 
+# Main pug file
+touch "${SRCDIR}/pug/includes/head-js.html";
+touch "${SRCDIR}/pug/includes/foot-js.html";
+
 # On propose de télécharger une librairie JS
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     case "${use_jquery}" in
@@ -35,9 +39,6 @@ fi;
 
 # Default JS
 echo "console.log('App JS');" >> "${SRCDIR}/js/default.js";
-
-# Load app JS in styleguide head
-echo '<script src="assets/js/app.js"></script>' >> "${SRCDIR}/pug/includes/head-js.html";
 
 # Load app JS in WordPress
 if [[ $is_wp_theme == 'y' ]]; then

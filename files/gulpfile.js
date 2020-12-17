@@ -141,6 +141,24 @@ exports.style = style;
   Generate styleguide
 ---------------------------------------------------------- */
 
+/* Load JS files
+-------------------------- */
+
+function pug_list_scripts() {
+    function formatter(filePath) {
+        return '<script src="' + js_folder + '/' + filePath + '.js?v=' + runTimestamp + '"></script>' + '\r\n';
+    }
+
+    return gulp
+        .src([js_folder + '/*.js'])
+        .pipe(gulpFilelist('foot-js.html', {
+            flatten: true,
+            removeExtensions: true,
+            destRowTemplate: formatter
+        }))
+        .pipe(gulp.dest(pug_views + 'includes/'));
+}
+
 /* Load CSS files
 -------------------------- */
 
@@ -192,7 +210,7 @@ function pug_generate() {
         .pipe(gulp.dest('./'));
 }
 
-const pug_trigger = series(pug_list_styles, pug_list_icons, pug_generate);
+const pug_trigger = series(pug_list_styles, pug_list_scripts, pug_list_icons, pug_generate);
 
 exports.pug = pug_trigger;
 
