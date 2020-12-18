@@ -221,9 +221,9 @@ exports.pug = pug_trigger;
 exports.watch = function watch() {
     bs.init({
         /* 1/ Local */
-        // server: "./",
+        // #server: "./",
         /* 2/ Proxy */
-        proxy: project_host,
+        // #proxy: project_host,
         /* Common */
         ghostMode: false,
         notify: false,
