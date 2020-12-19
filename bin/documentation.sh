@@ -22,7 +22,6 @@ echo "" >> "${DOCUMENTATION_CONTENT}";
 ###################################
 
 ## CSSCommon
-
 cat "${MAINDIR}files/doc/csscommon.md" >> "${DOCUMENTATION_CONTENT}";
 echo "" >> "${DOCUMENTATION_CONTENT}";
 
