@@ -7,10 +7,10 @@
 echo '## GESTION DU CSS';
 
 # On initialise le fichier principal
-mv "${MAINDIR}files/main.scss" "${SCSSFILE}";
+mv "${MAINDIR}files/scss/main.scss" "${SCSSFILE}";
 touch "${SCSSDIR}/${project_id}/_fonts.scss";
 touch "${SCSSDIR}/${project_id}/_plugins.scss";
-mv "${MAINDIR}files/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
+mv "${MAINDIR}files/scss/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 
 cd "${SCSSDIR}/";
 
@@ -23,12 +23,12 @@ else
     git clone --depth=1 https://github.com/Darklg/SassCSSCommon.git csscommon;
     rm -rf "${SCSSDIR}/csscommon/.git";
 fi;
-cat "${MAINDIR}files/base-csscommon.scss" >> "${SCSSFILE}";
+cat "${MAINDIR}files/scss/base-csscommon.scss" >> "${SCSSFILE}";
 
 # Integento 2
 if [[ $is_magento2_skin == 'y' ]]; then
     git submodule add --force https://github.com/InteGento/InteGentoStyles2.git integento
-    cat "${MAINDIR}files/base-integento2.scss" >> "${SCSSFILE}";
+    cat "${MAINDIR}files/magento/base-integento2.scss" >> "${SCSSFILE}";
 fi;
 
 # Project file
@@ -46,7 +46,7 @@ echo "@import \"${project_id}/icons\";" >> "${SCSSFILE}";
 # Update Scss
 intestarter_sed 's/\/\/\ fonticon\ //g' "${SCSSFILE}";
 # Tweak icons
-cat "${MAINDIR}files/base-icons.scss" >> "${SCSSDIR}/${project_id}/_base.scss";
+cat "${MAINDIR}files/scss/base-icons.scss" >> "${SCSSDIR}/${project_id}/_base.scss";
 
 # Project file
 echo "@import \"${project_id}/fonts\";
