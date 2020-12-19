@@ -67,6 +67,9 @@ touch "${SCSSDIR}/${project_id}/common/_content.scss"
 mkdir "${SCSSDIR}/${project_id}/pages"
 touch "${SCSSDIR}/${project_id}/pages/_home.scss"
 
+## HEADER
+cat "${MAINDIR}files/scss/header.scss" >> "${SCSSDIR}/${project_id}/_header.scss";
+
 ## CONTENT
 cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/common/_content.scss";
 
