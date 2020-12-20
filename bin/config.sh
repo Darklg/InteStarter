@@ -43,12 +43,17 @@ if [ -z ${from_wpinstaller+x} ]; then
     if [[ $project_id == '' ]]; then
         project_id="${default_project_id}";
     fi;
+
+    # Project hostname
+    default_project_hostname="${project_id}.test";
+    read -p "- Project hostname ? (${default_project_hostname})" project_hostname
+    if [[ "${default_project_hostname}" == '' ]];then
+        project_hostname="${default_project_hostname}";
+    fi;
 else
-    echo "Using values from WPUInstaller : ${project_name} - ${project_id}";
+    echo "Using values from WPUInstaller : ${project_name} - ${project_id} - ${project_hostname}";
 fi;
 
-# Project hostname
-read -p "- Project hostname ? " project_hostname
 
 use_jquery='n';
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
