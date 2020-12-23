@@ -11,8 +11,6 @@ Fonctionnalités :
 * Utilisation de Gulp : Clean / Sass / Font-Icon.
 * Utilisation de [CSSCommon](https://www.csscommon.com).
 * Utilisation de [JSUtilities](https://darklg.github.io/JavaScriptUtilities/).
-* Responsive ou non.
-
 
 Pré-requis :
 ---
@@ -20,8 +18,6 @@ Pré-requis :
 * Ligne de commande avec Bash (OSX / Unix).
 * [Git](https://git-scm.com/downloads)
 * [NPM](https://nodejs.org/download/)
-* Serveur LAMP (Utilisé pour des include / boucles)
-
 
 Comment l'utiliser :
 ---
