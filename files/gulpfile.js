@@ -227,7 +227,7 @@ exports.watch = function watch() {
         /* Common */
         ghostMode: false,
         notify: false,
-        open: false
+        open: true
     });
     style();
     gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
