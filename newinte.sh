@@ -44,7 +44,6 @@ rm -rf "${MAINDIR}InteStarter/.gitignore";
 . "${EXECDIR}bin/css.sh";
 . "${EXECDIR}bin/gulp.sh";
 . "${EXECDIR}bin/js.sh";
-. "${EXECDIR}bin/responsive.sh";
 if [[ $is_magento2_skin == 'y' ]]; then
     . "${EXECDIR}bin/magento.sh";
 fi;
