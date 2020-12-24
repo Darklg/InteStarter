@@ -38,6 +38,7 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
 fi;
 
 # Default JS
+mv "${MAINDIR}files/js/get-responsive-layout.js" "${SRCDIR}/js/get-responsive-layout.js";
 echo "console.log('App JS');" >> "${SRCDIR}/js/default.js";
 
 # Load app JS in WordPress
