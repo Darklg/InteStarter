@@ -1,11 +1,12 @@
 extends layouts/layout.pug
 block content
-  div.centered-container.az
+  div.centered-container
     div.cc-main
       h1 MySite
-      h2 Icons
-      <div class="styleguide-icons">
-      include includes/icons.html
-      </div>
+      div.section
+        h2 Icons
+        div.styleguide-icons
+          include includes/icons.html
       include parts/forms.html
+      include parts/breadcrumbs.html
       include parts/text.html
