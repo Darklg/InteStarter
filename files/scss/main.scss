@@ -11,12 +11,12 @@ $content_width_full: 1440px;
 /* Fonts
 -------------------------- */
 
-$font-main: Helvetica, Arial, sans-serif;
-$font-second: Times, serif;
+$font-main: Helvetica,Arial,sans-serif;
+$font-second: Times,serif;
 $font-size: 13px;
 $line-height: 1.3;
 $line-height-em: 1.3em;
-$letter-spacing-base: 0em;
+$letter-spacing-base: 0;
 $letter-spacing-title: 0.05em;
 
 /* Margins
@@ -27,17 +27,18 @@ $tablet-padding: 30px;
 $desktop-padding: 45px;
 $fieldset-margin: 2em;
 
-
 /* Default margins */
 @import "csscommon/components/vars/margins";
 
 /* Basic colors
 -------------------------- */
 
-$color-main: #333333;
-$color-hl: #336699;
+$color-main: #333;
+$color-hl: #369;
 $color-border: #e0e0e0;
 $color-bg: #f0f0f0;
+$color-red: #CC0000;
+$color-green: #00CC00;
 
 /* Social colors */
 @import "csscommon/components/vars/colors";
