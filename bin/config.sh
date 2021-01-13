@@ -46,7 +46,7 @@ if [ -z ${from_wpinstaller+x} ]; then
 
     # Project hostname
     default_project_hostname="${project_id}.test";
-    read -p "- Project hostname ? (${default_project_hostname})" project_hostname
+    read -p "- Project hostname ? (${default_project_hostname}) : " project_hostname
     if [[ "${default_project_hostname}" == '' ]];then
         project_hostname="${default_project_hostname}";
     fi;
