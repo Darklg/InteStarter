@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+    @extend %responsive-selector-type;
     font: $font-size $font-main;
     line-height: $line-height;
     letter-spacing: $letter-spacing-base;
