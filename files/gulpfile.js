@@ -22,7 +22,7 @@ const removeEmptyLines = require('gulp-remove-empty-lines');
 const trimlines = require('gulp-trimlines');
 
 /* Icon font */
-const runTimestamp = Math.round(Date.now() / 1000);
+const runTimestamp = function(){return Math.round(Date.now() / 1000);};
 const replace = require('gulp-replace');
 const iconfont = require('gulp-iconfont');
 const iconfontCss = require('gulp-iconfont-css');
