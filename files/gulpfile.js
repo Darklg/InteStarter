@@ -6,9 +6,7 @@ const p = require('./package.json');
 
 /* Tools */
 const gulp = require('gulp');
-const {
-    series
-} = require('gulp');
+const {series} = gulp;
 
 /* Reload */
 const bs = require('browser-sync').create();
@@ -130,6 +128,8 @@ function style() {
         }))
         .pipe(removeEmptyLines())
         .pipe(trimlines())
+        .pipe(replace(/( ?)([\,\:\{\}\;\(\)\>])( ?)/g, '$2'))
+        .pipe(replace(';}', '}'))
         .pipe(gulp.dest(css_folder, {
             sourcemaps: false
         }))
