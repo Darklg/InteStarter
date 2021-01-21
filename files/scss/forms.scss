@@ -4,19 +4,10 @@
   Forms
 ---------------------------------------------------------- */
 
-.cssc-form--project_id {
-}
-
 /* Form items */
 
-%project--fieldgroup {
-    & {
-        margin-bottom: $fieldset-margin;
-    }
-
-    &:last-child {
-        margin-bottom: 0;
-    }
+%project--fieldgroup:not(:last-child) {
+    margin-bottom: $fieldset-margin;
 }
 
 %project--legend {
@@ -85,8 +76,6 @@
         display: inline-block;
         margin-right: 1em;
         padding-left: 1.5em;
-        -webkit-user-select: none;
-        -moz-user-select: none;
         user-select: none;
     }
 
