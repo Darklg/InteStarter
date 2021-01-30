@@ -128,7 +128,7 @@ function style() {
         }))
         .pipe(removeEmptyLines())
         .pipe(trimlines())
-        .pipe(replace(/( ?)([\,\:\{\}\;\(\)\>])( ?)/g, '$2'))
+        .pipe(replace(/( ?)([\,\:\{\}\;\>])( ?)/g, '$2'))
         .pipe(replace(';}', '}'))
         .pipe(gulp.dest(css_folder, {
             sourcemaps: false
