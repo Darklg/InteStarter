@@ -21,7 +21,7 @@ fi
 cd "${ASSETSDIR}/";
 
 # htaccess
-if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
+if [[ $is_magento2_skin == 'n' ]]; then
     if ! [ -f "${ASSETSDIR}/.htaccess" ]; then
         echo '- Ajout du .htaccess assets';
         mv "${MAINDIR}files/assets.htaccess" "${ASSETSDIR}/.htaccess";
