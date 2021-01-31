@@ -20,7 +20,9 @@ const removeEmptyLines = require('gulp-remove-empty-lines');
 const trimlines = require('gulp-trimlines');
 
 /* Icon font */
-const runTimestamp = function(){return Math.round(Date.now() / 1000);};
+const runTimestamp = function() {
+    return Math.round(Date.now() / 1000);
+};
 const replace = require('gulp-replace');
 const iconfont = require('gulp-iconfont');
 const iconfontCss = require('gulp-iconfont-css');
@@ -146,7 +148,7 @@ exports.style = style;
 
 function pug_list_scripts() {
     function formatter(filePath) {
-        return '<script src="' + js_folder + '/' + filePath + '.js?v=' + runTimestamp + '"></script>' + '\r\n';
+        return '<script src="' + js_folder + '/' + filePath + '.js?v=' + runTimestamp() + '"></script>' + '\r\n';
     }
 
     return gulp
@@ -164,7 +166,7 @@ function pug_list_scripts() {
 
 function pug_list_styles() {
     function formatter(filePath) {
-        return '<link rel="stylesheet" type="text/css" href="' + css_folder + '/' + filePath + '.css?v=' + runTimestamp + '" />' + '\r\n';
+        return '<link rel="stylesheet" type="text/css" href="' + css_folder + '/' + filePath + '.css?v=' + runTimestamp() + '" />' + '\r\n';
     }
 
     return gulp
