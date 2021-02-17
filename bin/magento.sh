@@ -8,7 +8,7 @@ echo '## MAGENTO';
 
 # Add templates
 if [[ "${is_magento2_skin}" == 'y' ]]; then
-    MAGENTODIR="${MAGENTODIR}../";
+    MAGENTODIR="${SRCDIR}../";
 
     echo '- Création de templates Sass';
 
@@ -49,31 +49,6 @@ if [[ "${is_magento2_skin}" == 'y' ]]; then
     done
 fi;
 
-# Creating config RB
-if [[ $is_magento2_skin == 'y' ]]; then
-    # Root config.rb
-    cat "${SCSSDIR}/integento/example-config.rb" >> "${MAGENTODIR}config.rb";
-    intestarter_sed "s/Mytheme/${project_name}/g" "${MAGENTODIR}config.rb";
-    intestarter_sed "s/assets\/css/web\/css/g" "${MAGENTODIR}config.rb";
-    intestarter_sed "s/assets\/images/web\/images/g" "${MAGENTODIR}config.rb";
-    intestarter_sed "s/assets\/js/web\/js/g" "${MAGENTODIR}config.rb";
-    intestarter_sed "s/assets\/scss/styles/g" "${MAGENTODIR}config.rb";
-    # Theme config.rb
-    intestarter_sed "s/assets\/css/web\/css/g" "${MAINDIR}config.rb";
-    intestarter_sed "s/assets\/images/web\/images/g" "${MAINDIR}config.rb";
-    intestarter_sed "s/assets\/js/web\/js/g" "${MAINDIR}config.rb";
-    intestarter_sed "s/assets\/scss/styles/g" "${MAINDIR}config.rb";
-fi;
-
-# Changing path for Magento 2
-if [[ $is_magento2_skin == 'y' ]]; then
-    intestarter_sed "s/assets\///g" "${MAINDIR}grunt/svgmin.js";
-    intestarter_sed "s/assets\///g" "${MAINDIR}grunt/string-replace.js";
-    intestarter_sed "s/assets\///g" "${MAINDIR}grunt/webfont.js";
-    intestarter_sed "s/scss\//styles\//g" "${MAINDIR}grunt/webfont.js";
-    intestarter_sed "s/'fonts\/icons/'web\/fonts\/icons/g" "${MAINDIR}grunt/webfont.js";
-fi;
-
 if [[ "${is_magento2_skin}" == 'y' ]]; then
     MAGE2_DEF_HEAD_DIR="${MAINDIR}/Magento_Theme/layout/";
     MAGE2_DEF_HEAD_FILE="${MAGE2_DEF_HEAD_DIR}default_head_blocks.xml"
@@ -82,5 +57,4 @@ if [[ "${is_magento2_skin}" == 'y' ]]; then
         echo '- Création de default_head_blocks.xml';
         mv "${MAINDIR}files/magento/default_head_blocks.xml" "${MAGE2_DEF_HEAD_DIR}";
     fi;
-
 fi;

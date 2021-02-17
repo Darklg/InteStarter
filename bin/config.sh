@@ -20,7 +20,7 @@ fi;
 
 if [[ $is_magento2_skin == 'y' ]]; then
     ASSETSDIR="${MAINDIR}";
-    SCSSDIR="${ASSETSDIR}/styles";
+    SCSSDIR="${SRCDIR}/styles";
     SCSSFILE="${SCSSDIR}/styles.scss";
 fi;
 
