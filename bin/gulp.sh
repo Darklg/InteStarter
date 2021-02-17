@@ -38,7 +38,7 @@ mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
 mv "${MAINDIR}files/pug" "${MAINDIR}src/pug";
 
 # Set watch mode
-if [[ "${is_wp_theme}" == 'y' || "${is_magento2_skin}" == 'y' ]]; then
+if [[ "${is_wp_theme}" == 'y' ]]; then
     intestarter_sed "s~// #proxy~proxy~g" "${MAINDIR}gulpfile.js";
 else
     intestarter_sed "s~// #server~server~g" "${MAINDIR}gulpfile.js";

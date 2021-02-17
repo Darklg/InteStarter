@@ -19,8 +19,7 @@ if [[ $is_wp_theme == 'n' ]]; then
 fi;
 
 if [[ $is_magento2_skin == 'y' ]]; then
-    ASSETSDIR="${MAINDIR}";
-    SCSSDIR="${SRCDIR}/styles";
+    ASSETSDIR="${MAINDIR}/web";
     SCSSFILE="${SCSSDIR}/styles.scss";
 fi;
 
@@ -90,14 +89,8 @@ if [[ $is_magento2_skin == 'n' ]];then
 fi;
 
 # CSS / COMPASS
-if [[ $is_magento2_skin == 'y' ]]; then
-    src_folders="styles/ styles/${project_id}/";
-else
-    src_folders="scss/ scss/${project_id}/";
-fi;
+src_folders="scss/ scss/${project_id}/";
 src_folders="${src_folders} js/ icons/";
-csscommon_default_modules="default common content buttons forms grid layouts";
-csscommon_additional_modules="tables push navigation tabs images print effects";
 
 # JS / JSU
 directory_jsu="${MAINDIR}JavaScriptUtilities/";
