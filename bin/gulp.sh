@@ -44,6 +44,10 @@ else
     intestarter_sed "s~// #server~server~g" "${MAINDIR}gulpfile.js";
 fi;
 
+if [[ "${s_magento2_skin}" == 'y' ]]; then
+    intestarter_sed "s~assets/~web/~g" "${MAINDIR}gulpfile.js";
+fi;
+
 # Set project ID
 intestarter_sed "s/PROJECTID/${project_id}/g" "${MAINDIR}gulpfile.js";
 intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}src/pug/layouts/layout.pug";
