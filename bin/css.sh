@@ -51,13 +51,11 @@ cat "${MAINDIR}files/scss/base-icons.scss" >> "${SCSSDIR}/${project_id}/_base.sc
 # Project file
 echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/plugins\";
-@import \"${project_id}/common/buttons\";
-@import \"${project_id}/common/forms\";
-@import \"${project_id}/common/content\";
+@import \"${project_id}/common/*\";
 @import \"${project_id}/base\";
 @import \"${project_id}/header\";
 @import \"${project_id}/footer\";
-@import \"${project_id}/pages/home\";" >> "${SCSSFILE}";
+@import \"${project_id}/pages/*\";" >> "${SCSSFILE}";
 
 # Main files
 touch "${SCSSDIR}/${project_id}/_header.scss"
