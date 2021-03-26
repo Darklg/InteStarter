@@ -79,23 +79,46 @@
         user-select: none;
     }
 
+    & + label {
+        cursor: pointer;
+    }
+
     & + label:before {
-        top: 0.1em;
-        border: 1px solid $color-border!important;
+        top: 0.2em;
+        border: 1px solid $color-hl!important;
         background-color: #fff;
         box-shadow: 0 0 0 1px transparent!important;
     }
 
     &:checked + label:before {
-        border-color: $color-main!important;
-        color: $color-main;
+        border-color: $color-hl!important;
+        color: $color-hl;
     }
 }
 
 input[type="checkbox"] {
-    @extend %fake-check-ghost;
+    & {
+        @extend %fake-check-ghost;
+    }
+
+    &:checked + label:before {
+        color: #FFF;
+        background-color: $color-hl!important;
+    }
 }
 
 input[type="radio"] {
-    @extend %fake-radio-ghost;
+    & {
+        @extend %fake-radio-ghost;
+    }
+
+    & + label:before {
+        content: '';
+        border-radius: 10em;
+    }
+
+    &:checked + label:before {
+        color: #FFF;
+        box-shadow: 0 0 0 1px transparent,inset 0 0 0 2px #FFF,inset 0 0 0 20px $color-hl!important;
+    }
 }
