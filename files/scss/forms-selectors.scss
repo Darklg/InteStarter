@@ -14,8 +14,13 @@
     textarea,
     input[type="text"],
     input[type="email"],
+    input[type="number"],
     input[type="password"] {
         @extend %project--field;
+    }
+
+    select {
+        @extend %project--select;
     }
 }
 
