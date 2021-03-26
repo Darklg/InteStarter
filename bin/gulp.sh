@@ -51,6 +51,7 @@ fi;
 # Set project ID
 intestarter_sed "s/PROJECTID/${project_id}/g" "${MAINDIR}gulpfile.js";
 intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}src/pug/layouts/layout.pug";
+intestarter_sed "s/project_id/${project_id}/" "${MAINDIR}src/pug/parts/forms.html";
 intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}src/pug/index.pug";
 
 gulp;
