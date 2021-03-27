@@ -8,6 +8,7 @@ echo '## GESTION DU CSS';
 
 # On initialise le fichier principal
 mv "${MAINDIR}files/scss/main.scss" "${SCSSFILE}";
+mv "${MAINDIR}files/scss/_vars.scss" "${SCSSDIR}/_vars.scss";
 mv "${MAINDIR}files/scss/_fonts.scss" "${SCSSDIR}/${project_id}/_fonts.scss";
 mv "${MAINDIR}files/scss/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 touch "${SCSSDIR}/${project_id}/_plugins.scss";
