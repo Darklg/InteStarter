@@ -13,6 +13,11 @@ mv "${MAINDIR}files/scss/_fonts.scss" "${SCSSDIR}/${project_id}/_fonts.scss";
 mv "${MAINDIR}files/scss/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 touch "${SCSSDIR}/${project_id}/_plugins.scss";
 
+if [[ "${is_wp_theme}" == 'y' ]]; then
+    mv "${MAINDIR}files/scss/admin.scss" "${SCSSDIR}/admin.scss";
+    intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/admin.scss";
+fi;
+
 cd "${SCSSDIR}/";
 
 # CSS Common
