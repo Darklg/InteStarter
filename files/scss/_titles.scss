@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Titles
+---------------------------------------------------------- */
+
+/* Common
+-------------------------- */
+
+%project--title {
+    font-family: $font-second;
+    letter-spacing: $letter-spacing-title;
+}
+
+%project--subtitle {
+    font-family: $font-second;
+    letter-spacing: $letter-spacing-title;
+}
+
+/* Native
+-------------------------- */
+
+%project--h1,
+%project--h2,
+%project--h3,
+%project--h4,
+%project--h5,
+%project--h6 {
+    @extend %project--title;
+    letter-spacing: $letter-spacing-title;
+}
+
+%project--h1 {
+    font-size: 2em;
+}
+
+%project--h2 {
+    font-size: 1.8em;
+}
+
+%project--h3 {
+    font-size: 1.6em;
+}
+
+%project--h4 {
+    font-size: 1.4em;
+}
+
+%project--h5 {
+    font-size: 1.2em;
+}
+
+/* Helpers
+-------------------------- */
+
+h1,
+.h1 {
+    @extend %project--h1;
+}
+
+h2,
+.h2 {
+    @extend %project--h2;
+}
+
+h3,
+.h3 {
+    @extend %project--h3;
+}
+
+h4,
+.h4 {
+    @extend %project--h4;
+}

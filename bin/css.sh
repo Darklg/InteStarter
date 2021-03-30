@@ -68,6 +68,7 @@ touch "${SCSSDIR}/${project_id}/_header.scss"
 touch "${SCSSDIR}/${project_id}/_footer.scss"
 mkdir "${SCSSDIR}/${project_id}/common"
 touch "${SCSSDIR}/${project_id}/common/_content.scss"
+mv "${MAINDIR}files/scss/_titles.scss" "${SCSSDIR}/common/_titles.scss";
 mkdir "${SCSSDIR}/${project_id}/pages"
 touch "${SCSSDIR}/${project_id}/pages/_home.scss"
 
