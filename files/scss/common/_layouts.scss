@@ -1,0 +1,46 @@
+
+/* ----------------------------------------------------------
+  Layout
+---------------------------------------------------------- */
+
+.centered-container--thin > * {
+    max-width: $content_width;
+}
+
+.centered-container > * {
+    max-width: $content_width_wide;
+}
+
+.centered-container--full > * {
+    max-width: $content_width_full;
+}
+
+/* ----------------------------------------------------------
+  Section
+---------------------------------------------------------- */
+
+.section {
+    & {
+        padding-top: $desktop-padding;
+        padding-bottom: $desktop-padding;
+    }
+
+    @include resp($desktop_excluded) {
+        padding-top: $tablet-padding;
+        padding-bottom: $tablet-padding;
+    }
+
+    @include resp($mobile_only) {
+        padding-top: $mobile-padding;
+        padding-bottom: $mobile-padding;
+    }
+}
+
+.section--dark {
+    color: #fff;
+    background-color: $color-main;
+}
+
+.section--gray {
+    background-color: #F9F9F9;
+}

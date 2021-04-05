@@ -66,17 +66,12 @@ echo "@import \"${project_id}/fonts\";
 # Main files
 touch "${SCSSDIR}/${project_id}/_header.scss"
 touch "${SCSSDIR}/${project_id}/_footer.scss"
-mkdir "${SCSSDIR}/${project_id}/common"
-touch "${SCSSDIR}/${project_id}/common/_content.scss"
-mv "${MAINDIR}files/scss/_titles.scss" "${SCSSDIR}/common/_titles.scss";
+mv "${MAINDIR}files/scss/common" "${SCSSDIR}/${project_id}/common"
 mkdir "${SCSSDIR}/${project_id}/pages"
 touch "${SCSSDIR}/${project_id}/pages/_home.scss"
 
 ## HEADER
 cat "${MAINDIR}files/scss/header.scss" >> "${SCSSDIR}/${project_id}/_header.scss";
-
-## CONTENT
-cat "${MAINDIR}files/scss/content.scss" >> "${SCSSDIR}/${project_id}/common/_content.scss";
 
 ## FORMS
 
@@ -99,7 +94,6 @@ fi;
 # Add project ID
 intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_buttons.scss";
 intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_forms.scss";
-intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/${project_id}/common/_content.scss";
 
 # On supprime CSSCommon
 rm -rf "${ASSETSDIR}/CSSCommon";

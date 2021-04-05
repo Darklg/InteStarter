@@ -12,6 +12,10 @@ ul {
         line-height: $line-height;
     }
 
+    @include resp($mobile_only) {
+        font-size: $font-size-mobile;
+    }
+
     &:not(:last-child) {
         margin-bottom: $line-height-em;
     }

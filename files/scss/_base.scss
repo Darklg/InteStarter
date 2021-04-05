@@ -12,56 +12,10 @@ body {
     color: $color-main;
 }
 
-@media ($mobile_only) {
+@media($mobile_only) {
     body {
         font-size: $font-size-mobile;
     }
-}
-
-/* ----------------------------------------------------------
-  Layout
----------------------------------------------------------- */
-
-.centered-container--thin > * {
-    max-width: $content_width;
-}
-
-.centered-container > * {
-    max-width: $content_width_wide;
-}
-
-.centered-container--full > * {
-    max-width: $content_width_full;
-}
-
-/* ----------------------------------------------------------
-  Section
----------------------------------------------------------- */
-
-.section {
-    & {
-        padding-top: $desktop-padding;
-        padding-bottom: $desktop-padding;
-    }
-
-    @include resp($desktop_excluded) {
-        padding-top: $tablet-padding;
-        padding-bottom: $tablet-padding;
-    }
-
-    @include resp($mobile_only) {
-        padding-top: $mobile-padding;
-        padding-bottom: $mobile-padding;
-    }
-}
-
-.section--dark {
-    color: #fff;
-    background-color: $color-main;
-}
-
-.section--gray {
-    background-color: #F9F9F9;
 }
 
 /* ----------------------------------------------------------
@@ -83,54 +37,4 @@ a:hover {
 %main-link:active,
 a:active {
     color: darken($color-hl,20);
-}
-
-/* ----------------------------------------------------------
-  Selection style
----------------------------------------------------------- */
-
-::-moz-selection {
-    color: $color-main;
-    background: rgba($color-hl,0.5);
-}
-
-::selection {
-    color: $color-main;
-    background: rgba($color-hl,0.5);
-}
-
-/* ----------------------------------------------------------
-  Scrollbar
----------------------------------------------------------- */
-
-/* Variables
--------------------------- */
-
-$scrollbar-color: #999;
-$scrollbar-background: #F0F0F0;
-
-/* Firefox
--------------------------- */
-
-html {
-    scrollbar-color: $scrollbar-color $scrollbar-background;
-    scrollbar-width: thin;
-}
-
-/* Common
--------------------------- */
-
-body::-webkit-scrollbar {
-    width: 10px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: $scrollbar-background;
-}
-
-body::-webkit-scrollbar-thumb {
-    border: 2px solid $scrollbar-background;
-    border-left-width: 2px;
-    border-radius: 5px;
-    background-color: $scrollbar-color;
 }

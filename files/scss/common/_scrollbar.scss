@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Scrollbar
+---------------------------------------------------------- */
+
+/* Variables
+-------------------------- */
+
+$scrollbar-color: #999;
+$scrollbar-background: #F0F0F0;
+
+/* Firefox
+-------------------------- */
+
+html {
+    scrollbar-color: $scrollbar-color $scrollbar-background;
+    scrollbar-width: thin;
+}
+
+/* Common
+-------------------------- */
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: $scrollbar-background;
+}
+
+body::-webkit-scrollbar-thumb {
+    border: 2px solid $scrollbar-background;
+    border-left-width: 2px;
+    border-radius: 5px;
+    background-color: $scrollbar-color;
+}
