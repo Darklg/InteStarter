@@ -51,8 +51,6 @@ touch "${SCSSDIR}/${project_id}/_icons.scss";
 echo "@import \"${project_id}/icons\";" >> "${SCSSFILE}";
 # Update Scss
 intestarter_sed 's/\/\/\ fonticon\ //g' "${SCSSFILE}";
-# Tweak icons
-cat "${MAINDIR}files/scss/base-icons.scss" >> "${SCSSDIR}/${project_id}/_base.scss";
 
 # Project file
 echo "@import \"${project_id}/fonts\";
@@ -76,15 +74,11 @@ cat "${MAINDIR}files/scss/header.scss" >> "${SCSSDIR}/${project_id}/_header.scss
 ## FORMS
 
 ### Buttons
-cat "${MAINDIR}files/scss/buttons.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
 if [[ $is_magento2_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/buttons-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_buttons.scss";
 fi;
 
-### Mixins & base
-cat "${MAINDIR}files/scss/forms.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
-
-### Selectors
+### Forms
 if [[ $is_magento2_skin == 'y' ]]; then
     cat "${MAINDIR}files/magento/forms-magento2.scss" >> "${SCSSDIR}/${project_id}/common/_forms.scss";
 else
