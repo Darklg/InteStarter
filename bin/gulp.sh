@@ -23,6 +23,8 @@ yarn add --dev \
     gulp-filelist \
     gulp-iconfont \
     gulp-iconfont-css \
+    jshint \
+    gulp-jshint \
     gulp-minify \
     gulp-pug \
     gulp-remove-empty-lines \

@@ -35,6 +35,7 @@ const pug = require('gulp-pug');
 /* JS */
 const concat = require('gulp-concat');
 const minify = require("gulp-minify");
+const jshint = require('gulp-jshint');
 
 /* ----------------------------------------------------------
   Config
@@ -89,6 +90,18 @@ function buildiconfont() {
 }
 
 exports.iconfont = buildiconfont;
+
+/* ----------------------------------------------------------
+  lint
+---------------------------------------------------------- */
+
+function lintjs() {
+    return gulp.src(js_src_files)
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+}
+
+exports.lintjs = lintjs;
 
 /* ----------------------------------------------------------
   JS Minify
@@ -233,7 +246,7 @@ exports.watch = function watch() {
     });
     style();
     gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
-    gulp.watch(js_src_files, minifyjs);
+    gulp.watch(js_src_files, lintjs, minifyjs);
     gulp.watch(pug_files, series(pug_generate, function bs_reload(done) {
         bs.reload();
         done();
@@ -245,6 +258,6 @@ exports.watch = function watch() {
   Default
 ---------------------------------------------------------- */
 
-const defaultTask = series(buildiconfont, style, minifyjs, pug_trigger);
+const defaultTask = series(buildiconfont, style, lintjs, minifyjs, pug_trigger);
 
 exports.default = defaultTask;
