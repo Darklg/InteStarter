@@ -69,7 +69,7 @@ function buildiconfont() {
             fontName: fontName,
             targetPath: '../../../' + sass_folder_proj + '/_icons.scss',
             path: 'css',
-            cacheBuster: runTimestamp,
+            cacheBuster: runTimestamp(),
             fontPath: '../../' + fonts_folder + '/' + fontName + '/'
         }))
         .pipe(iconfont({
