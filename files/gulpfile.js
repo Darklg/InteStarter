@@ -246,7 +246,7 @@ exports.watch = function watch() {
     });
     style();
     gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
-    gulp.watch(js_src_files, lintjs, minifyjs);
+    gulp.watch(js_src_files, series(lintjs, minifyjs));
     gulp.watch(pug_files, series(pug_generate, function bs_reload(done) {
         bs.reload();
         done();
