@@ -26,12 +26,7 @@
 
 @media($mobile_only) {
     .cssc-form .twoboxes .box {
-        display: block;
-        float: none;
-        width: auto;
         margin-bottom: $fieldset-margin;
-        padding-right: 0!important;
-        padding-left: 0!important;
     }
 
     .cssc-form .box.box--submit {
