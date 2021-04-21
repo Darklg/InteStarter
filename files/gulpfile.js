@@ -18,6 +18,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const stripCssComments = require('gulp-strip-css-comments');
 const removeEmptyLines = require('gulp-remove-empty-lines');
 const trimlines = require('gulp-trimlines');
+const gulpStylelint = require('gulp-stylelint');
 
 /* Icon font */
 const runTimestamp = function() {
@@ -148,7 +149,15 @@ function style() {
         .pipe(gulp.dest(css_folder, {
             sourcemaps: false
         }))
-        .pipe(bs.stream());
+        .pipe(bs.stream())
+        .pipe(gulpStylelint({
+            failAfterError: false,
+            reporters: [{
+                formatter: 'string',
+                console: true
+            }],
+            debug: false
+        }));
 }
 exports.style = style;
 

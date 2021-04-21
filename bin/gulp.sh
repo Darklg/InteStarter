@@ -17,6 +17,8 @@ intestarter_sed "s/p_hostname/${project_hostname}/" "${MAINDIR}package.json";
 # Install Gulp & default modules
 yarn add --dev \
     browser-sync \
+    stylelint \
+    gulp-stylelint \
     gulp \
     gulp-autoprefixer \
     gulp-concat \
@@ -35,7 +37,9 @@ yarn add --dev \
     gulp-svgmin \
     gulp-trimlines
 
-# Create Gulp Files
+# Gulp Files
+mv "${MAINDIR}files/stylelint/stylelintrc.txt" "${MAINDIR}.stylelintrc";
+mv "${MAINDIR}files/stylelint/stylelintignore.txt" "${MAINDIR}.stylelintignore";
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
 mv "${MAINDIR}files/pug" "${MAINDIR}src/pug";
 
