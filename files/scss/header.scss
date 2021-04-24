@@ -7,3 +7,40 @@
 /* ----------------------------------------------------------
   Logo
 ---------------------------------------------------------- */
+
+/* ----------------------------------------------------------
+  Sticky Header : fix selector below to enable
+---------------------------------------------------------- */
+
+body.can-use-sticky-header {
+    @extend %has-sticky-header!optional;
+}
+
+@media($has_desktop_menu) {
+    %has-sticky-header .main-header__wrapper {
+        height: $header-main-height-desktop;
+    }
+
+    %has-sticky-header .main-header {
+        z-index: $zindex-header;
+        position: relative;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: $header-main-height-desktop;
+    }
+
+    %has-sticky-header[data-prepare-sticky-header="1"] .main-header {
+        position: fixed;
+        background-color: #fff;
+        transform: translate3d(0,0 - $header-main-height-desktop,0);
+    }
+
+    %has-sticky-header[data-before-sticky-header="1"] .main-header {
+        transition: transform 0.3s ease;
+    }
+
+    %has-sticky-header[data-has-sticky-header="1"][data-scrolldir="up"] .main-header {
+        transform: translate3d(0,0,0);
+    }
+}
