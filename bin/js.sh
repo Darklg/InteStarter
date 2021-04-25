@@ -38,8 +38,7 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
 fi;
 
 # Default JS
-mv "${MAINDIR}files/js/get-responsive-layout.js" "${SRCDIR}/js/get-responsive-layout.js";
-mv "${MAINDIR}files/js/scroll-events.js" "${SRCDIR}/js/scroll-events.js";
+mv "${MAINDIR}files/js/*.js" "${SRCDIR}/js/";
 
 # Load app JS in WordPress
 if [[ $is_wp_theme == 'y' ]]; then
@@ -93,6 +92,6 @@ fi;
 
 # Cut-off slider
 if [[ "${add_slick_slider_cutoff}" == 'y' ]];then
-    cat "${MAINDIR}files/js/slick-cutoff.js" >> "${ASSETSDIR}/js/slick-cutoff.js";
-    cat "${MAINDIR}files/scss/slick-cutoff.scss" >> "${SCSSDIR}/${project_id}/_plugins.scss";
+    cat "${MAINDIR}files/slick/slick-cutoff.js" >> "${ASSETSDIR}/js/slick-cutoff.js";
+    cat "${MAINDIR}files/slick/slick-cutoff.scss" >> "${SCSSDIR}/${project_id}/_plugins.scss";
 fi;
