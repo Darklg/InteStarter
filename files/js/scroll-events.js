@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         /* Get scrolltop */
         var _scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
-        /* Set scroll directon */
+        /* Set scroll direction */
         document.body.setAttribute('data-scrolldir', lastScroll > _scrollTop ? 'up' : 'down');
 
         /* Prepare : Add fixed behavior & hidden status  */
