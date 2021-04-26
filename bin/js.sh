@@ -38,7 +38,7 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
 fi;
 
 # Default JS
-mv "${MAINDIR}files/js/*.js" "${SRCDIR}/js/";
+cp "${MAINDIR}files/js/"*.js "${SRCDIR}/js/";
 
 # Load app JS in WordPress
 if [[ $is_wp_theme == 'y' ]]; then
