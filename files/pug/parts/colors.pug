@@ -1,0 +1,7 @@
+h3 Colors
+
+div.styleguide-icons
+  each color_hexa, color_name in locals.project_colors
+    p.
+        <span style="border:1px solid #CCC;display:block;height:30px;background-color:#{color_hexa};"></span>
+        <span contenteditable>$#{color_name}</span>

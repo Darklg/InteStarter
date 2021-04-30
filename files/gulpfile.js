@@ -228,6 +228,7 @@ function pug_generate() {
     return gulp
         .src([pug_views + '*.pug'])
         .pipe(pug({
+            locals: p,
             doctype: 'html',
             pretty: false
         }))

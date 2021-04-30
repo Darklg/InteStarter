@@ -1,7 +1,14 @@
 {
   "name": "project_id",
-  "project_hostname": "p_hostname",
   "version": "0.1.0",
+  "project_hostname": "p_hostname",
+  "project_colors": {
+    "color-main": "#000",
+    "color-hl": "#369"
+  },
+  "scripts": {
+    "watch": "gulp watch"
+  },
   "description": "",
   "browserslist": {
     "production": [
