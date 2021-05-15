@@ -15,27 +15,22 @@ fi;
 touch "${SRCDIR}/pug/includes/head-js.html";
 touch "${SRCDIR}/pug/includes/foot-js.html";
 
-# On propose de télécharger une librairie JS
-if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
-    case "${use_jquery}" in
-        j|J|o|O|Y|y )
-            echo '- Installation de jQuery';
-            mkdir jquery;
-            cd jquery;
-            mkdir plugins;
-            curl -o jquery.min.js https://code.jquery.com/jquery-3.5.1.min.js
-            if test -f jquery.min.js; then
-                echo '<script src="assets/js/jquery/jquery.min.js?v=3.5.1"></script>' >> "${SRCDIR}/pug/includes/head-js.html";
-                echo "jQuery(document).ready(function($) {});" > "${SRCDIR}/js/events.js";
-            fi
-            cd "${MAINDIR}";
-        ;;
-        * )
-            echo '- Aucune librairie utilisée.';
-            echo "(function(){})();" > "${SRCDIR}/js/events.js";
-        ;;
-    esac
-fi;
+# If jQuery is needed : download it
+case "${use_jquery}" in
+    j|J|o|O|Y|y )
+        echo '- Installation de jQuery';
+        mkdir jquery;
+        cd jquery;
+        curl -o jquery.min.js https://code.jquery.com/jquery-3.6.0.min.js
+        if test -f jquery.min.js; then
+            echo '<script src="assets/js/jquery/jquery.min.js?v=3.6.0"></script>' >> "${SRCDIR}/pug/includes/head-js.html";
+        fi
+        cd "${MAINDIR}";
+    ;;
+    * )
+        echo '- Aucune librairie utilisée.';
+    ;;
+esac
 
 # Default JS
 cp "${MAINDIR}files/js/"*.js "${SRCDIR}/js/";

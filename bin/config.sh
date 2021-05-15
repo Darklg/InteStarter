@@ -53,15 +53,11 @@ else
     echo "Using values from WPUInstaller : ${project_name} - ${project_id} - ${project_hostname}";
 fi;
 
-
-use_jquery='n';
-if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
-    # Bibliothèque JS
-    use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
-fi;
+# Ask if jQuery is needed
+use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
 
 add_slick_slider='n';
-if [[ $use_jquery == 'y' ]]; then
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     # Plugins JS
     add_slick_slider=$(intestarter_yn "- Installer Slick Slider ?" 'n');
 fi;
