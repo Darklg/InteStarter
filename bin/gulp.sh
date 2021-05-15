@@ -60,6 +60,7 @@ intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}src/pug/layouts/layout.p
 intestarter_sed "s/project_id/${project_id}/" "${MAINDIR}src/pug/parts/forms.html";
 intestarter_sed "s/MySite/${project_name}/g" "${MAINDIR}src/pug/index.pug";
 
-gulp;
+# Add nvmrc
+node -v > .nvmrc;
 
 cd "${MAINDIR}";
