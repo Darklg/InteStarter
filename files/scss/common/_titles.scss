@@ -4,19 +4,6 @@
   Titles
 ---------------------------------------------------------- */
 
-/* Common
--------------------------- */
-
-%project--title {
-    font-family: $font-second;
-    letter-spacing: $letter-spacing-title;
-}
-
-%project--subtitle {
-    font-family: $font-second;
-    letter-spacing: $letter-spacing-title;
-}
-
 /* Native
 -------------------------- */
 
@@ -24,22 +11,39 @@
 %project--h2,
 %project--h3,
 %project--h4,
-%project--h5,
-%project--h6 {
-    @extend %project--title;
+%project--h5 {
+    font-family: $font-second;
     letter-spacing: $letter-spacing-title;
 }
 
 %project--h1 {
-    font-size: 2em;
+    & {
+        font-size: 2em;
+    }
+
+    @include resp($mobile_only) {
+        font-size: 2em;
+    }
 }
 
 %project--h2 {
-    font-size: 1.8em;
+    & {
+        font-size: 1.8em;
+    }
+
+    @include resp($mobile_only) {
+        font-size: 1.8em;
+    }
 }
 
 %project--h3 {
-    font-size: 1.6em;
+    & {
+        font-size: 1.6em;
+    }
+
+    @include resp($mobile_only) {
+        font-size: 1.6em;
+    }
 }
 
 %project--h4 {
@@ -71,4 +75,9 @@ h3,
 h4,
 .h4 {
     @extend %project--h4;
+}
+
+h5,
+.h5 {
+    @extend %project--h5;
 }
