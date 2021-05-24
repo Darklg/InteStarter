@@ -1,14 +1,13 @@
-
 /* ----------------------------------------------------------
   Layout
 ---------------------------------------------------------- */
 
-.centered-container--thin > * {
-    max-width: $content_width;
-}
-
 .centered-container > * {
     max-width: $content_width_wide;
+}
+
+.centered-container--thin > * {
+    max-width: $content_width;
 }
 
 .centered-container--full > * {
