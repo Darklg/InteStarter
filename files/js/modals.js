@@ -26,19 +26,42 @@ jQuery(document).ready(function($) {
     /* Close modal */
     $jQbody.on('click', '.modal-overlay,.modal-close', function(e) {
         e.preventDefault();
-        jQuery(this).closest('.modal-wrapper').removeClass('is-open');
+        modal_close();
     });
 
-    /* Close modal on escape */
+    /* Next modal */
+    $jQbody.on('click', '.modal-next', function(e) {
+        e.preventDefault();
+        modal_goto('next');
+    });
+
+    /* Prev modal */
+    $jQbody.on('click', '.modal-prev', function(e) {
+        e.preventDefault();
+        modal_goto('prev');
+    });
+
+    /* Keyboard events */
     jQuery(document).keyup(function(e) {
         if (e.key === "Escape") {
-            jQuery('.modal-wrapper').removeClass('is-open');
+            modal_close();
+        }
+        if (e.key == 'ArrowLeft') {
+            modal_goto('prev');
+        }
+        if (e.key == 'ArrowRight') {
+            modal_goto('next');
         }
     });
 
+    /* Trigger modaldomready to handle an ajax refresh */
     $jQbody.trigger('modaldomready');
 
 });
+
+/* ----------------------------------------------------------
+  Domready
+---------------------------------------------------------- */
 
 jQuery('body').on('modaldomready', function() {
 
@@ -55,6 +78,48 @@ jQuery('body').on('modaldomready', function() {
     });
 });
 
+/* ----------------------------------------------------------
+  Helpers
+---------------------------------------------------------- */
+
+function modal_close() {
+    jQuery('.modal-wrapper').removeClass('is-open');
+}
+
+function modal_goto(dir) {
+    var $activeModal = jQuery('.modal-wrapper.is-open'),
+        _group = $activeModal.attr('data-modal-group');
+    if (!_group) {
+        return;
+    }
+    var $groupModals = jQuery('.modal-wrapper[data-modal-group="' + _group + '"]'),
+        $elModal = $activeModal.get(0),
+        nbI = $groupModals.length - 1,
+        newI = false,
+        currentI = false;
+    $groupModals.each(function(i) {
+        if (this == $elModal) {
+            currentI = i;
+        }
+    });
+
+    if (dir == 'next') {
+        newI = currentI + 1;
+    }
+    if (dir == 'prev') {
+        newI = currentI - 1;
+    }
+    /* Handle loops */
+    if (newI > nbI) {
+        newI = 0;
+    }
+    if (newI < 0) {
+        newI = nbI;
+    }
+    $groupModals.eq(newI).addClass('is-open');
+    $activeModal.removeClass('is-open');
+}
+
 function build_modal($item) {
 
     /* Create elements */
@@ -65,9 +130,17 @@ function build_modal($item) {
 
     /* Set attributes */
     $item.removeAttr('data-build-modal');
-    if ($item.attr('data-init-modal') == '1') {
-        $item.removeAttr('data-init-modal');
-        $wrapper.attr('data-init-modal', '1');
+
+    /* Transfer attributes to modal */
+    var _attributes = [
+        'data-init-modal',
+        'data-modal-group',
+    ];
+    for (var i = 0, len = _attributes.length; i < len; i++) {
+        if ($item.attr(_attributes[i])) {
+            $wrapper.attr(_attributes[i], $item.attr(_attributes[i]));
+            $item.removeAttr(_attributes[i]);
+        }
     }
 
     /* Build modal */
