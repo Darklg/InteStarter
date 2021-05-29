@@ -14,13 +14,7 @@ jQuery(document).ready(function($) {
         if (!$modal.length) {
             return;
         }
-        /* Load iframe */
-        var $iframe = $modal.find('iframe[data-src]');
-        if ($iframe.length) {
-            $iframe.attr('src', $iframe.attr('data-src'));
-        }
-        /* Open modal */
-        $modal.addClass('is-open');
+        modal_open($modal);
     });
 
     /* Close modal */
@@ -59,31 +53,41 @@ jQuery(document).ready(function($) {
 
 });
 
-/* ----------------------------------------------------------
-  Domready
----------------------------------------------------------- */
+function modal_open($modal) {
+    if (!$modal) {
+        return;
+    }
+    $modal.removeAttr('data-init-modal');
 
-jQuery('body').on('modaldomready', function() {
+    /* Open iframe */
+    var $iframe = $modal.find('iframe[data-src]');
+    if ($iframe.length) {
+        $iframe.attr('src', $iframe.attr('data-src'));
+    }
 
-    /* Build all modals */
-    jQuery('[data-build-modal]').each(function() {
-        build_modal(jQuery(this));
-    });
+    /* Open modal */
+    $modal.addClass('is-open');
 
-    /* Open autoloaded modals */
-    jQuery('.modal-wrapper[data-init-modal="1"]').each(function() {
-        jQuery(this)
-            .addClass('is-open')
-            .removeAttr('data-init-modal');
-    });
-});
+    /* Event */
+    $modal.trigger('modal-open');
+}
 
-/* ----------------------------------------------------------
-  Helpers
----------------------------------------------------------- */
+function modal_close($modal) {
+    if (!$modal) {
+        $modal = jQuery('.modal-wrapper');
+    }
 
-function modal_close() {
-    jQuery('.modal-wrapper').removeClass('is-open');
+    /* Close modal */
+    $modal.removeClass('is-open');
+
+    /* Close iframe */
+    var $iframe = $modal.find('iframe');
+    if ($iframe.length) {
+        $iframe.attr('src', $iframe.attr('src'));
+    }
+
+    /* Event */
+    $modal.trigger('modal-close');
 }
 
 function modal_goto(dir) {
@@ -116,9 +120,22 @@ function modal_goto(dir) {
     if (newI < 0) {
         newI = nbI;
     }
-    $groupModals.eq(newI).addClass('is-open');
-    $activeModal.removeClass('is-open');
+    modal_open($groupModals.eq(newI));
+    modal_close($activeModal);
 }
+
+jQuery('body').on('ajaxdomready', function() {
+
+    /* Build all modals */
+    jQuery('[data-build-modal]').each(function() {
+        build_modal(jQuery(this));
+    });
+
+    /* Open autoloaded modals */
+    jQuery('.modal-wrapper[data-init-modal="1"]').each(function() {
+        modal_open(jQuery(this));
+    });
+});
 
 function build_modal($item) {
 
