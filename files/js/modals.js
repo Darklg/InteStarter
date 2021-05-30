@@ -74,7 +74,7 @@ function modal_open($modal) {
 
 function modal_close($modal) {
     if (!$modal) {
-        $modal = jQuery('.modal-wrapper');
+        $modal = jQuery('.modal-wrapper.is-open');
     }
 
     /* Close modal */
@@ -168,4 +168,6 @@ function build_modal($item) {
 
     /* Insert at body end */
     jQuery('body').append($wrapper);
+
+    return $wrapper;
 }
