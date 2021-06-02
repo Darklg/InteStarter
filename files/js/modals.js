@@ -65,6 +65,8 @@ function modal_open($modal) {
         $iframe.attr('src', $iframe.attr('data-src'));
     }
 
+    jQuery('body').attr('data-modal-open', 1);
+
     /* Open modal */
     $modal.addClass('is-open');
 
@@ -85,6 +87,8 @@ function modal_close($modal) {
     if ($iframe.length) {
         $iframe.attr('src', $iframe.attr('src'));
     }
+
+    jQuery('body').attr('data-modal-open', 0);
 
     /* Event */
     $modal.trigger('modal-close');
@@ -120,8 +124,8 @@ function modal_goto(dir) {
     if (newI < 0) {
         newI = nbI;
     }
-    modal_open($groupModals.eq(newI));
     modal_close($activeModal);
+    modal_open($groupModals.eq(newI));
 }
 
 jQuery('body').on('ajaxdomready', function() {
