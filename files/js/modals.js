@@ -69,6 +69,7 @@ function modal_open($modal) {
 
     /* Open modal */
     $modal.addClass('is-open');
+    $modal.attr('aria-hidden', 'false');
 
     /* Event */
     $modal.trigger('modal-open');
@@ -81,6 +82,7 @@ function modal_close($modal) {
 
     /* Close modal */
     $modal.removeClass('is-open');
+    $modal.attr('aria-hidden', 'true');
 
     /* Close iframe */
     var $iframe = $modal.find('iframe');
@@ -144,7 +146,7 @@ jQuery('body').on('ajaxdomready', function() {
 function build_modal($item) {
 
     /* Create elements */
-    var $wrapper = jQuery('<div class="modal-wrapper" id="' + $item.attr('data-build-modal') + '"></div>');
+    var $wrapper = jQuery('<div aria-hidden="true" class="modal-wrapper" role="dialog" aria-modal="true" id="' + $item.attr('data-build-modal') + '"></div>');
     var $overlay = jQuery('<div class="modal-overlay"></div>');
     var $inner = jQuery('<div class="modal-inner"></div>');
     var $close = jQuery('<a href="#" class="modal-close"><span>&times;</span></a>');
