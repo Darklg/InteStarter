@@ -26,6 +26,7 @@ yarn add --dev \
     gulp-iconfont \
     gulp-iconfont-css \
     jshint \
+    node-sass \
     gulp-jshint \
     gulp-minify \
     gulp-pug \

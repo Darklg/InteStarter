@@ -12,7 +12,7 @@ const {series} = gulp;
 const bs = require('browser-sync').create();
 
 /* Sass */
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('node-sass'));
 const sassGlob = require('gulp-sass-glob');
 const autoprefixer = require('gulp-autoprefixer');
 const stripCssComments = require('gulp-strip-css-comments');
