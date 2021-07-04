@@ -5,6 +5,8 @@
 ---------------------------------------------------------- */
 
 @import "vars";
+@import "csscommon/components/mixins/common";
+@import "laremanufacture/fonts";
 
 /* ----------------------------------------------------------
   Files
@@ -19,7 +21,6 @@
     @import "csscommon/components/buttons/core";
     @import "csscommon/components/forms/core";
     @import "csscommon/components/forms/fake-check-ghost";
-    @import "csscommon/components/mixins/common";
 
     /* Vars */
     font-family: $font-main;
@@ -27,7 +28,6 @@
 
     /* Project */
     @import "project_id/icons";
-    @import "project_id/fonts";
     @import "project_id/common/*";
     @import "project_id/blocks/*";
 }
