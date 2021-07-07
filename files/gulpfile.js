@@ -135,7 +135,7 @@ function style() {
             outputStyle: 'compact',
             indentType: 'space',
             indentWidth: 0
-        }))
+        }).on('error', sass.logError))
         .pipe(autoprefixer({
             cascade: false
         }))
