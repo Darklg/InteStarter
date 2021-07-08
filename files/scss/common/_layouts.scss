@@ -18,6 +18,9 @@
   Section
 ---------------------------------------------------------- */
 
+/* Classic
+-------------------------- */
+
 .section {
     & {
         padding-top: $desktop-padding;
@@ -34,6 +37,29 @@
         padding-bottom: $mobile-padding;
     }
 }
+
+/* Margin
+-------------------------- */
+
+.section-m {
+    & {
+        margin-top: $desktop-padding;
+        margin-bottom: $desktop-padding;
+    }
+
+    @include resp($desktop_excluded) {
+        margin-top: $tablet-padding;
+        margin-bottom: $tablet-padding;
+    }
+
+    @include resp($mobile_only) {
+        margin-top: $mobile-padding;
+        margin-bottom: $mobile-padding;
+    }
+}
+
+/* Themes
+-------------------------- */
 
 .section--dark {
     color: #fff;
