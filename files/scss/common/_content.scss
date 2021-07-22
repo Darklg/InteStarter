@@ -33,8 +33,13 @@ li {
 
 .cssc-content {
     & {
+        max-width: 100%;
         font-size: $font-size;
         line-height: $line-height;
+    }
+
+    @include resp($mobile_only) {
+        font-size: $font-size-mobile;
     }
 
     h2 {
@@ -43,5 +48,13 @@ li {
 
     h3 {
         @extend %project--h3;
+    }
+
+    h4 {
+        @extend %project--h4;
+    }
+
+    a {
+        text-decoration: underline;
     }
 }

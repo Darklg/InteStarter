@@ -67,5 +67,42 @@
 }
 
 .section--gray {
-    background-color: #F9F9F9;
+    background-color: rgba($color-bg,0.5);
+}
+
+.section--hl {
+    background-color: $color-hl;
+}
+
+/* ----------------------------------------------------------
+  Project grid
+---------------------------------------------------------- */
+
+.simple-grid {
+    @extend %responsive-padding-lr-inv-half;
+    @extend %responsive-margin-bottom;
+    display: flex;
+    flex-direction: row;
+}
+
+.simple-grid > * {
+    @extend %responsive-padding-lr-half;
+    flex-grow: 1;
+}
+
+@media ($desktop_excluded) {
+    .simple-grid > *,
+    .simple-grid {
+        display: block;
+    }
+
+    .simple-grid > * + * {
+        margin-top: $tablet-padding;
+    }
+}
+
+@media ($mobile_only) {
+    .simple-grid > * + * {
+        margin-top: $mobile-padding;
+    }
 }
