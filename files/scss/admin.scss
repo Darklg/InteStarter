@@ -9,6 +9,26 @@
 @import "project_id/fonts";
 
 /* ----------------------------------------------------------
+  Preview fix
+---------------------------------------------------------- */
+
+#poststuff .layout > .acfe-fc-placeholder.acfe-fc-preview {
+    & > a {
+        z-index: 2;
+    }
+
+    & > .acfe-fc-overlay {
+        z-index: 1;
+    }
+
+    & > .acfe-flexible-placeholder {
+        z-index: 0;
+        position: relative;
+        pointer-events: none;
+    }
+}
+
+/* ----------------------------------------------------------
   Files
 ---------------------------------------------------------- */
 
@@ -21,6 +41,7 @@
     @import "csscommon/components/buttons/core";
     @import "csscommon/components/forms/core";
     @import "csscommon/components/forms/fake-check-ghost";
+    @import "csscommon/components/layouts/containers";
 
     /* Vars */
     font-family: $font-main;
