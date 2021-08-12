@@ -1,4 +1,7 @@
-jQuery(document).ready(function($) {
+/* global jQuery */
+
+jQuery(document).ready(function() {
+    'use strict';
     var $jQbody = jQuery('body');
 
     /* Move modal wrapper */
@@ -36,7 +39,7 @@ jQuery(document).ready(function($) {
     });
 
     /* Keyboard events */
-    jQuery(document).keyup(function(e) {
+    jQuery(document).on('keyup',function(e) {
         if (e.key === "Escape") {
             modal_close();
         }
@@ -54,6 +57,7 @@ jQuery(document).ready(function($) {
 });
 
 function modal_open($modal) {
+    'use strict';
     if (!$modal) {
         return;
     }
@@ -76,6 +80,7 @@ function modal_open($modal) {
 }
 
 function modal_close($modal) {
+    'use strict';
     if (!$modal) {
         $modal = jQuery('.modal-wrapper.is-open');
     }
@@ -97,6 +102,7 @@ function modal_close($modal) {
 }
 
 function modal_goto(dir) {
+    'use strict';
     var $activeModal = jQuery('.modal-wrapper.is-open'),
         _group = $activeModal.attr('data-modal-group');
     if (!_group) {
@@ -131,7 +137,7 @@ function modal_goto(dir) {
 }
 
 jQuery('body').on('ajaxdomready', function() {
-
+    'use strict';
     /* Build all modals */
     jQuery('[data-build-modal]').each(function() {
         build_modal(jQuery(this));
@@ -144,7 +150,7 @@ jQuery('body').on('ajaxdomready', function() {
 });
 
 function build_modal($item) {
-
+    'use strict';
     /* Create elements */
     var $wrapper = jQuery('<div aria-hidden="true" class="modal-wrapper" role="dialog" aria-modal="true" id="' + $item.attr('data-build-modal') + '"></div>');
     var $overlay = jQuery('<div class="modal-overlay"></div>');
