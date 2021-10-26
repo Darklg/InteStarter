@@ -20,7 +20,7 @@ body.can-use-sticky-header {
     @extend %has-sticky-header!optional;
 }
 
-@media($has_desktop_menu) {
+@media ($has_desktop_menu) {
     %has-sticky-header .main-header__wrapper {
         height: $header-main-height-desktop;
     }
@@ -47,4 +47,28 @@ body.can-use-sticky-header {
     %has-sticky-header[data-has-sticky-header="1"][data-scrolldir="up"] .main-header {
         transform: translate3d(0,0,0);
     }
+}
+
+/* ----------------------------------------------------------
+  Main menu
+---------------------------------------------------------- */
+
+.main-menu__wrapper {
+    @extend %cssc-desktop-menu__wrapper;
+    @extend %cssc-mobile-menu-down__wrapper;
+}
+
+.main-menu {
+    @extend %cssc-desktop-menu;
+    @extend %cssc-mobile-menu-down;
+}
+
+.main-menu > .menu-item {
+    @extend %cssc-desktop-menu__first_level;
+    @extend %cssc-mobile-menu-down__first_level;
+}
+
+.main-menu > .menu-item > .sub-menu {
+    @extend %cssc-desktop-menu__submenu;
+    @extend %cssc-mobile-menu-down__submenu;
 }
