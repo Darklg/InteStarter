@@ -10,9 +10,10 @@ body {
     line-height: $line-height;
     letter-spacing: $letter-spacing-base;
     color: $color-main;
+    accent-color: $color-hl;
 }
 
-@media($mobile_only) {
+@media ($mobile_only) {
     body {
         font-size: $font-size-mobile;
     }
