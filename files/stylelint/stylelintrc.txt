@@ -11,7 +11,6 @@
             },
         ],
         "font-family-no-duplicate-names": true,
-        "function-calc-no-invalid": true,
         "function-linear-gradient-no-nonstandard-direction": true,
         "keyframe-declaration-no-important": true,
         "media-feature-name-no-unknown": true,
