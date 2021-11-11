@@ -7,6 +7,7 @@ const p = require('./package.json');
 /* Tools */
 const gulp = require('gulp');
 const {series} = gulp;
+const glob = require('glob');
 
 /* Reload */
 const bs = require('browser-sync').create();
@@ -164,79 +165,29 @@ exports.style = style;
   Generate styleguide
 ---------------------------------------------------------- */
 
-/* Load JS files
--------------------------- */
-
-function pug_list_scripts() {
-    function formatter(filePath) {
-        return '<script src="' + js_folder + '/' + filePath + '.js?v=' + runTimestamp() + '"></script>' + '\r\n';
-    }
-
-    return gulp
-        .src([js_folder + '/*.js'])
-        .pipe(gulpFilelist('foot-js.html', {
-            flatten: true,
-            removeExtensions: true,
-            destRowTemplate: formatter
-        }))
-        .pipe(gulp.dest(pug_views + 'includes/'));
-}
-
-/* Load CSS files
--------------------------- */
-
-function pug_list_styles() {
-    function formatter(filePath) {
-        return '<link rel="stylesheet" type="text/css" href="' + css_folder + '/' + filePath + '.css?v=' + runTimestamp() + '" />' + '\r\n';
-    }
-
-    return gulp
-        .src([css_folder + '/*.css'])
-        .pipe(gulpFilelist('head-css.html', {
-            flatten: true,
-            removeExtensions: true,
-            destRowTemplate: formatter
-        }))
-        .pipe(gulp.dest(pug_views + 'includes/'));
-}
-
-/* Load icons
--------------------------- */
-
-function pug_list_icons() {
-    function formatter(filePath) {
-        return '<p>' +
-            '<i class="icon icon_' + filePath + '"></i> - <strong>' + filePath + '</strong><br />' +
-            '<span contenteditable>&lt;i class="icon icon_' + filePath + '"&gt;&lt;/i&gt;</span>' +
-            '</p>' + '\r\n';
-    }
-    return gulp
-        .src(svg_files)
-        .pipe(gulpFilelist('icons.html', {
-            flatten: true,
-            removeExtensions: true,
-            destRowTemplate: formatter
-        }))
-        .pipe(gulp.dest(pug_views + 'includes/'));
-}
-
-/* Generate styleguide
--------------------------- */
-
 function pug_generate() {
+
+    /* List icons */
+    var _icons = glob.sync(svg_files).map(function(item) {
+        return item.split('/').reverse()[0].replace('.svg', '');
+    });
+
     return gulp
         .src([pug_views + '*.pug'])
         .pipe(pug({
-            locals: p,
+            locals: {
+                icons: _icons,
+                jsFiles: glob.sync(js_folder + '/*.js'),
+                cssFiles: glob.sync(css_folder + '/*.css'),
+                package: p
+            },
             doctype: 'html',
             pretty: false
         }))
         .pipe(gulp.dest('./'));
 }
 
-const pug_trigger = series(pug_list_styles, pug_list_scripts, pug_list_icons, pug_generate);
-
-exports.pug = pug_trigger;
+exports.pug = pug_generate;
 
 /* ----------------------------------------------------------
   Watch
@@ -254,7 +205,7 @@ exports.watch = function watch() {
         open: true
     });
     style();
-    gulp.watch(svg_files, series(buildiconfont, pug_list_icons, pug_generate));
+    gulp.watch(svg_files, series(buildiconfont, pug_generate));
     gulp.watch(js_src_files, series(lintjs, minifyjs));
     gulp.watch(pug_files, series(pug_generate, function bs_reload(done) {
         bs.reload();
@@ -267,6 +218,6 @@ exports.watch = function watch() {
   Default
 ---------------------------------------------------------- */
 
-const defaultTask = series(buildiconfont, style, lintjs, minifyjs, pug_trigger);
+const defaultTask = series(buildiconfont, style, lintjs, minifyjs, pug_generate);
 
 exports.default = defaultTask;

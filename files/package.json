@@ -1,6 +1,7 @@
 {
-  "name": "project_id",
+  "name": "p_id",
   "version": "0.1.0",
+  "project_name": "p_name",
   "project_hostname": "p_hostname",
   "project_colors": {
     "color-main": "#000",

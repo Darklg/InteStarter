@@ -11,13 +11,15 @@ mv "${MAINDIR}files/package.json" "${MAINDIR}package.json";
 if [[ "${project_hostname}" == '' ]];then
     project_hostname="${project_id}.test";
 fi;
-intestarter_sed "s/project_id/${project_id}/" "${MAINDIR}package.json";
+intestarter_sed "s/p_id/${project_id}/" "${MAINDIR}package.json";
+intestarter_sed "s/p_name/${project_name}/" "${MAINDIR}package.json";
 intestarter_sed "s/p_hostname/${project_hostname}/" "${MAINDIR}package.json";
 
 # Install Gulp & default modules
 yarn add --dev \
     browser-sync \
     stylelint \
+    glob \
     gulp-stylelint \
     gulp \
     gulp-autoprefixer \

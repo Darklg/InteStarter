@@ -2,12 +2,9 @@ extends layouts/layout.pug
 block content
   div.centered-container
     div.cc-main.section
-      h1.main-logo MySite
-        <a href="/"><img src="assets/images/logo.svg" alt="MySite"></a>
-      div.section
-        h3 Icons
-        div.styleguide-icons
-          include includes/icons.html
+      h1.main-logo #{locals.package.project_name}
+        <a href="/"><img src="assets/images/logo.svg" alt="#{locals.package.project_name}"></a>
+      include parts/icons.pug
       include parts/colors.pug
       include parts/forms.html
       include parts/breadcrumbs.html

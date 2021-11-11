@@ -13,7 +13,6 @@ fi;
 
 # Main pug file
 touch "${SRCDIR}/pug/includes/head-js.html";
-touch "${SRCDIR}/pug/includes/foot-js.html";
 
 # If jQuery is needed : download it
 case "${use_jquery}" in

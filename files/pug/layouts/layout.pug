@@ -1,11 +1,14 @@
 doctype html
 html
-  title MySite
-  meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1')
-  <style>.styleguide-icons>*{break-inside:avoid;margin-bottom:20px!important;}.styleguide-icons{-webkit-column-count:4;-webkit-column-gap:20px;-moz-column-count:4;-moz-column-gap:20px;column-count:4;column-gap:20px;}</style>
-  include ../includes/head-css.html
-  include ../includes/head-js.html
+  head
+    title #{locals.package.project_name}
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    <style>.styleguide-icons>*{break-inside:avoid;margin-bottom:20px!important;}.styleguide-icons{-webkit-column-count:4;-webkit-column-gap:20px;-moz-column-count:4;-moz-column-gap:20px;column-count:4;column-gap:20px;}</style>
+    each f in locals.cssFiles
+      <link rel="stylesheet" type="text/css" href="#{f}?v=#{Date.now()}" />
+    include ../includes/head-js.html
   body
     block content
-    include ../includes/foot-js.html
+    each f in locals.jsFiles
+      <script src="#{f}?v=#{Date.now()}"></script>
