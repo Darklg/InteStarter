@@ -31,7 +31,6 @@ const iconfontCss = require('gulp-iconfont-css');
 const svgmin = require('gulp-svgmin');
 
 /* Styleguide */
-const gulpFilelist = require('gulp-filelist');
 const pug = require('gulp-pug');
 
 /* JS */

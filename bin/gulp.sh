@@ -24,7 +24,6 @@ yarn add --dev \
     gulp \
     gulp-autoprefixer \
     gulp-concat \
-    gulp-filelist \
     gulp-iconfont \
     gulp-iconfont-css \
     jshint \
