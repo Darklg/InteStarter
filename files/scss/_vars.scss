@@ -4,9 +4,14 @@
   Config
 ---------------------------------------------------------- */
 
-$content_width: 1080px;
-$content_width_wide: 1260px;
-$content_width_full: 1440px;
+@import "csscommon/components/mixins/components/grid-dimensions";
+
+$column_width: 90;
+$gutter_width: 20;
+
+$content_width: get_grid_width(10);
+$content_width_wide: get_grid_width(12);
+$content_width_full: get_grid_width(14);
 
 /* Fonts
 -------------------------- */
