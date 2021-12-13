@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     'use strict';
 
     function set_textarea_autoheight($item) {
+        $item.setAttribute('rows', 1);
         $item.style.height = 'auto';
         $item.style.overflow = 'hidden';
         $item.style.height = $item.scrollHeight + 'px';
