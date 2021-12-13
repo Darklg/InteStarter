@@ -25,17 +25,16 @@ body {
 
 %main-link,
 a {
-    color: $color-main;
-}
+    & {
+        color: inherit;
+    }
 
-%main-link:hover,
-%main-link:focus,
-a:focus,
-a:hover {
-    color: $color-hl;
-}
+    &:hover,
+    &:focus {
+        color: $color-hl;
+    }
 
-%main-link:active,
-a:active {
-    color: darken($color-hl,20);
+    &:active {
+        color: darken($color-hl,20);
+    }
 }
