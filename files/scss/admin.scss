@@ -28,12 +28,18 @@
         pointer-events: none;
     }
 
-    .centered-container a:not([class*="button"]),
+    .centered-container a:not([class*="button"]) ,
     h1,
     h2,
     h3,
     h4 {
         color: inherit;
+    }
+
+    .will-scrollanim-children > *,
+    .will-scrollanim-fade-bottom {
+        opacity: 0.9999!important;
+        transform: translate3d(0,0,0) !important;
     }
 }
 

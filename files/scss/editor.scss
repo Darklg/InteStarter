@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Editor Stylesheet
+---------------------------------------------------------- */
+
+/* Components & vars
+-------------------------- */
+
+@import "vars";
+
+/* CSS Common */
+@import "csscommon/components/mixins/common";
+@import "csscommon/components/default";
+@import "csscommon/components/common";
+@import "csscommon/components/content/text";
+@import "csscommon/components/buttons/core";
+@import "csscommon/components/forms/core";
+@import "csscommon/components/forms/fake-check-ghost";
+@import "csscommon/components/layouts/containers";
+
+/* Project */
+@import "project_id/fonts";
+@import "project_id/icons";
+@import "project_id/common/*";
+
+/* Fix icon
+-------------------------- */
+
+@font-face {
+    font-family: "icons";
+    src: url("../fonts/icons/icons.woff2") format("woff2");
+}
+
+/* Content
+-------------------------- */
+
+#tinymce.mceContentBody {
+    @extend .cssc-content;
+    width: auto;
+    margin: 1em;
+    font-family: $font-main;
+    font-size: $font-size;
+}

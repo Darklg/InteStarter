@@ -14,8 +14,12 @@ mv "${MAINDIR}files/scss/_base.scss" "${SCSSDIR}/${project_id}/_base.scss";
 touch "${SCSSDIR}/${project_id}/_plugins.scss";
 
 if [[ "${is_wp_theme}" == 'y' ]]; then
+    # Admin preview
     mv "${MAINDIR}files/scss/admin.scss" "${SCSSDIR}/admin.scss";
     intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/admin.scss";
+    # Editor stylesheet
+    mv "${MAINDIR}files/scss/editor.scss" "${SCSSDIR}/editor.scss";
+    intestarter_sed "s/project_id/${project_id}/" "${SCSSDIR}/editor.scss";
 fi;
 
 cd "${SCSSDIR}/";
