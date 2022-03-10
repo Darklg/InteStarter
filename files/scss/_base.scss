@@ -25,6 +25,9 @@ body {
 
 %main-link,
 a {
+    [data-inputmode="touch"] &:hover,
+    [data-inputmode="touch"] &:focus,
+    [data-inputmode="touch"] &:active,
     & {
         color: inherit;
     }
