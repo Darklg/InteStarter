@@ -64,6 +64,7 @@ const js_src_files = [js_src_folder + '/**.js', js_src_folder + '/**/**.js'];
 ---------------------------------------------------------- */
 
 function buildiconfont() {
+    var _ts = runTimestamp();
     return gulp.src([svg_files])
         .pipe(svgmin())
         .pipe(iconfontCss({
@@ -71,7 +72,7 @@ function buildiconfont() {
             fontName: fontName,
             targetPath: '../../../' + sass_folder_proj + '/_icons.scss',
             path: 'css',
-            cacheBuster: runTimestamp(),
+            cacheBuster: _ts,
             fontPath: '../../' + fonts_folder + '/' + fontName + '/'
         }))
         .pipe(iconfont({
