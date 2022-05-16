@@ -42,7 +42,7 @@
 /* Placeholder */
 
 @mixin project-placeholder() {
-    color: $color-main;
+    color: inherit;
     opacity: 0.5;
 }
 
