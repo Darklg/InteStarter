@@ -3,5 +3,5 @@ div.section
   div.styleguide-icons
     each f in locals.icons
       p.
-        <i class="icon icon_#{f}"></i> - <strong>#{f}</strong><br />
-        <span contenteditable>&lt;i class="icon icon_#{f}"&gt;&lt;/i&gt;</span>
+        <i class="icon icon_#{f}" aria-hidden="true"></i> - <strong>#{f}</strong>
+        <span style="white-space:nowrap;display:block;overflow:hidden;" contenteditable>&lt;i class="icon icon_#{f}" aria-hidden="true"&gt;&lt;/i&gt;</span>
