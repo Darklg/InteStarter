@@ -87,7 +87,7 @@
 
 .simple-grid > * {
     @extend %responsive-padding-lr-half;
-    flex-grow: 1;
+    flex: 1;
 }
 
 @media ($desktop_excluded) {
