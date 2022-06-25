@@ -1,6 +1,17 @@
 /* Selectors
 -------------------------- */
 
+select,
+textarea,
+.fake-upload-cover,
+input[type="tel"],
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+    @extend %project--selectors!optional;
+}
+
 .cssc-form label {
     @extend %project--label;
 }
@@ -10,13 +21,16 @@
         @extend %project--fieldgroup;
     }
 
-    select,
-    textarea,
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    input[type="password"] {
+    %project--selectors {
         @extend %project--field;
+    }
+
+    %project--selectors:hover {
+        border-color: #999;
+    }
+
+    %project--selectors:focus {
+        border-color: #000;
     }
 
     select {
