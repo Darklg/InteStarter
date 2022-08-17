@@ -119,7 +119,9 @@ function minifyjs() {
         .pipe(concat('app.js', {
             newLine: ";\n"
         }))
-        .pipe(replace(';;', ';'))
+        .pipe(replace(/;\n;/g, ';;'))
+        .pipe(replace(/;+/g, ';'))
+        .pipe(replace(";\n;", ';'))
         .pipe(gulp.dest(js_folder));
 }
 
