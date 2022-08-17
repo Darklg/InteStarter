@@ -23,18 +23,18 @@
 
 .section {
     & {
-        padding-top: $desktop-padding;
-        padding-bottom: $desktop-padding;
+        padding-top: $desktop-section-padding;
+        padding-bottom: $desktop-section-padding;
     }
 
     @include resp($desktop_excluded) {
-        padding-top: $tablet-padding;
-        padding-bottom: $tablet-padding;
+        padding-top: $tablet-section-padding;
+        padding-bottom: $tablet-section-padding;
     }
 
     @include resp($mobile_only) {
-        padding-top: $mobile-padding;
-        padding-bottom: $mobile-padding;
+        padding-top: $mobile-section-padding;
+        padding-bottom: $mobile-section-padding;
     }
 }
 
@@ -43,18 +43,18 @@
 
 .section-m {
     & {
-        margin-top: $desktop-padding;
-        margin-bottom: $desktop-padding;
+        margin-top: $desktop-section-padding;
+        margin-bottom: $desktop-section-padding;
     }
 
     @include resp($desktop_excluded) {
-        margin-top: $tablet-padding;
-        margin-bottom: $tablet-padding;
+        margin-top: $tablet-section-padding;
+        margin-bottom: $tablet-section-padding;
     }
 
     @include resp($mobile_only) {
-        margin-top: $mobile-padding;
-        margin-bottom: $mobile-padding;
+        margin-top: $mobile-section-padding;
+        margin-bottom: $mobile-section-padding;
     }
 }
 
