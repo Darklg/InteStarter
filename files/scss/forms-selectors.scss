@@ -33,12 +33,23 @@ input[type="password"] {
         border-color: #000;
     }
 
+    &[data-has-error="1"] %project--selectors {
+        border-color: $color-red;
+    }
+
+    .error-msg-input,
+    [data-error-invalid] {
+        margin-top: 4px;
+        font-size: 12px;
+        color: $color-red;
+    }
+
     select {
         @extend %project--select;
     }
 }
 
-@media($mobile_only) {
+@media ($mobile_only) {
     .cssc-form .twoboxes .box {
         margin-bottom: $fieldset-margin;
     }

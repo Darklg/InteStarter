@@ -26,10 +26,17 @@
 }
 
 %project--field {
-    padding: 0.5em 1em;
-    min-height: 2.5em;
-    border: 1px solid $color-border;
-    line-height: 1.5em;
+    & {
+        padding: 0.5em 1em;
+        min-height: 2.5em;
+        border: 1px solid $color-border;
+        line-height: 1.5em;
+        transition: border 0.3s ease,color 0.3s ease;
+    }
+
+    @include resp($mobile_only) {
+        font-size: 16px;
+    }
 }
 
 %project--select {
