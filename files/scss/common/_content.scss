@@ -57,4 +57,24 @@ li {
     a {
         text-decoration: underline;
     }
+
+    ol {
+        counter-reset: cssc-content-section;
+        list-style-type: none;
+    }
+
+    ol li {
+        z-index: 0;
+        position: relative;
+        padding-left: 1em;
+    }
+
+    ol li:before {
+        content: counter(cssc-content-section);
+        counter-increment: cssc-content-section;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
