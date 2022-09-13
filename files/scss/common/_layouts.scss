@@ -78,6 +78,7 @@
   Project grid
 ---------------------------------------------------------- */
 
+.simple-grid-tab,
 .simple-grid {
     @extend %responsive-padding-lr-inv-half;
     @extend %responsive-margin-bottom;
@@ -85,6 +86,7 @@
     flex-direction: row;
 }
 
+.simple-grid-tab > *,
 .simple-grid > * {
     @extend %responsive-padding-lr-half;
     flex: 1;
@@ -102,6 +104,12 @@
 }
 
 @media ($mobile_only) {
+    .simple-grid-tab > *,
+    .simple-grid-tab {
+        display: block;
+    }
+
+    .simple-grid-tab > * + *,
     .simple-grid > * + * {
         margin-top: $mobile-padding;
     }

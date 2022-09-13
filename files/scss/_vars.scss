@@ -72,9 +72,10 @@ $has_desktop_menu: $desktop_only;
 /* Sizes
 -------------------------- */
 
-$header-main-height-desktop: 100px;
-$header-sticky-height-desktop: 80px;
-$header-main-height-mobile: 60px;
+$header-main-height-desktop: 40px;
+$header-main-height-desktop--withmargin: 80px;
+$header-main-height-mobile: 40px;
+$header-main-height-mobile--withmargin: 100px;
 $border-radius: 3px;
 
 /* Positions

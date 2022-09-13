@@ -4,18 +4,30 @@
   Layout
 ---------------------------------------------------------- */
 
+.cc-header-main {
+    padding-top: 20px;
+}
+
+.header-main {
+    z-index: 1;
+    position: relative;
+    height: $header-main-height-desktop;
+    line-height: $header-main-height-desktop;
+}
+
 /* ----------------------------------------------------------
   Logo
 ---------------------------------------------------------- */
 
 .main-title.main-logo {
     margin: 0;
+    max-width: 135px;
     font-size: $header-main-height-desktop;
     line-height: 1;
 }
 
 /* ----------------------------------------------------------
-  Sticky Header : fix selector below to enable
+  Sticky Header : change selector below to enable
 ---------------------------------------------------------- */
 
 body.can-use-sticky-header {
@@ -23,31 +35,46 @@ body.can-use-sticky-header {
 }
 
 @media ($has_desktop_menu) {
-    %has-sticky-header .main-header__wrapper {
-        height: $header-main-height-desktop;
+    %has-sticky-header .cc-header-main__wrapper {
+        height: $header-main-height-desktop--withmargin;
     }
 
-    %has-sticky-header .main-header {
+    %has-sticky-header .cc-header-main {
         z-index: $zindex-header;
         position: relative;
         top: 0;
         right: 0;
         left: 0;
-        height: $header-main-height-desktop;
+        height: $header-main-height-desktop--withmargin;
     }
 
-    %has-sticky-header[data-prepare-sticky-header="1"] .main-header {
+    %has-sticky-header[data-prepare-sticky-header="1"] .cc-header-main {
         position: fixed;
         background-color: #fff;
-        transform: translate3d(0,0 - $header-main-height-desktop,0);
+        transform: translate3d(0,0 - $header-main-height-desktop--withmargin,0);
     }
 
-    %has-sticky-header[data-before-sticky-header="1"] .main-header {
+    %has-sticky-header[data-before-sticky-header="1"] .cc-header-main {
         transition: transform 0.3s ease;
     }
 
-    %has-sticky-header[data-has-sticky-header="1"][data-scrolldir="up"] .main-header {
+    %has-sticky-header[data-has-sticky-header="1"][data-scrolldir="up"] .cc-header-main {
         transform: translate3d(0,0,0);
+    }
+}
+
+@media ($has_mobile_menu) {
+    %has-sticky-header .cc-header-main__wrapper {
+        height: $header-main-height-mobile--withmargin;
+    }
+
+    %has-sticky-header .cc-header-main {
+        z-index: $zindex-header;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: $header-main-height-desktop--withmargin;
     }
 }
 
