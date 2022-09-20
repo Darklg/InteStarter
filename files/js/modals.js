@@ -1,8 +1,18 @@
 /* global jQuery */
 
+/*
+<a data-modal="mymodal" href="#">Open me</a>
+<div data-build-modal="mymodal">htmlcontent</div>;
+ */
+
 jQuery(document).ready(function() {
     'use strict';
     var $jQbody = jQuery('body');
+
+    /* Build all modals */
+    jQuery('[data-build-modal]').each(function() {
+        build_modal(jQuery(this));
+    });
 
     /* Move modal wrapper */
     jQuery('.modal-wrapper').each(function() {
@@ -39,7 +49,7 @@ jQuery(document).ready(function() {
     });
 
     /* Keyboard events */
-    jQuery(document).on('keyup',function(e) {
+    jQuery(document).on('keyup', function(e) {
         if (e.key === "Escape") {
             modal_close();
         }

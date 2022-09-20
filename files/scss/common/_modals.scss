@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Modal
+---------------------------------------------------------- */
+
+.modal-wrapper {
+    @extend %cssc-modal;
+}
+
+.modal-inner {
+    & {
+        @extend %cssc-modal--inner;
+        @extend %responsive-padding;
+        box-sizing: border-box;
+        width: 900px;
+        height: auto;
+        padding-top: 50px;
+        min-height: 200px;
+    }
+
+    @include resp($mobile_only) {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    iframe {
+        width: 100%;
+    }
+}
+
+.modal-overlay {
+    @extend %cssc-modal--overlay;
+    background: rgba($color-main,0.75);
+}
+
+.modal-close {
+    @extend %cssc-modal--close;
+    margin-top: -0.25em;
+    font-size: 40px;
+    line-height: 1;
+}
