@@ -9,15 +9,36 @@ jQuery(document).ready(function() {
     'use strict';
     var $jQbody = jQuery('body');
 
+    /* ----------------------------------------------------------
+      Build
+    ---------------------------------------------------------- */
+
     /* Build all modals */
     jQuery('[data-build-modal]').each(function() {
-        build_modal(jQuery(this));
+        modal_build(jQuery(this));
     });
 
     /* Move modal wrapper */
     jQuery('.modal-wrapper').each(function() {
         $jQbody.append(jQuery(this));
     });
+
+    /* Handle ajax */
+    $jQbody.on('ajaxdomready', function() {
+        /* Build all modals */
+        jQuery('[data-build-modal]').each(function() {
+            modal_build(jQuery(this));
+        });
+
+        /* Open autoloaded modals */
+        jQuery('.modal-wrapper[data-init-modal="1"]').each(function() {
+            modal_open(jQuery(this));
+        });
+    });
+
+    /* ----------------------------------------------------------
+      Behavior
+    ---------------------------------------------------------- */
 
     /* Open modal on click */
     $jQbody.on('click', '[data-modal]', function(e) {
@@ -61,10 +82,15 @@ jQuery(document).ready(function() {
         }
     });
 
+    /* ----------------------------------------------------------
+      Ready
+    ---------------------------------------------------------- */
+
     /* Trigger modaldomready to handle an ajax refresh */
     $jQbody.trigger('modaldomready');
 
 });
+
 
 function modal_open($modal) {
     'use strict';
@@ -146,20 +172,7 @@ function modal_goto(dir) {
     modal_open($groupModals.eq(newI));
 }
 
-jQuery('body').on('ajaxdomready', function() {
-    'use strict';
-    /* Build all modals */
-    jQuery('[data-build-modal]').each(function() {
-        build_modal(jQuery(this));
-    });
-
-    /* Open autoloaded modals */
-    jQuery('.modal-wrapper[data-init-modal="1"]').each(function() {
-        modal_open(jQuery(this));
-    });
-});
-
-function build_modal($item) {
+function modal_build($item) {
     'use strict';
     /* Create elements */
     var $wrapper = jQuery('<div aria-hidden="true" class="modal-wrapper" role="dialog" aria-modal="true" id="' + $item.attr('data-build-modal') + '"></div>');
