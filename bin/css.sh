@@ -63,12 +63,14 @@ echo "@import \"${project_id}/fonts\";
 @import \"${project_id}/base\";
 @import \"${project_id}/header\";
 @import \"${project_id}/footer\";
-@import \"${project_id}/pages/*\";" >> "${SCSSFILE}";
+@import \"${project_id}/pages/*\";
+@import \"${project_id}/blocks/*\";" >> "${SCSSFILE}";
 
 # Main files
 touch "${SCSSDIR}/${project_id}/_header.scss"
 touch "${SCSSDIR}/${project_id}/_footer.scss"
 mv "${MAINDIR}files/scss/common" "${SCSSDIR}/${project_id}/common"
+mkdir "${SCSSDIR}/${project_id}/blocks"
 mkdir "${SCSSDIR}/${project_id}/pages"
 touch "${SCSSDIR}/${project_id}/pages/_home.scss"
 
