@@ -16,17 +16,6 @@
 }
 
 /* ----------------------------------------------------------
-  Logo
----------------------------------------------------------- */
-
-.main-title.main-logo {
-    margin: 0;
-    max-width: 135px;
-    font-size: $header-main-height-desktop;
-    line-height: 1;
-}
-
-/* ----------------------------------------------------------
   Sticky Header : change selector below to enable
 ---------------------------------------------------------- */
 
@@ -79,22 +68,124 @@ body.can-use-sticky-header {
 }
 
 /* ----------------------------------------------------------
+  Logo
+---------------------------------------------------------- */
+
+.main-title.main-logo {
+    & {
+        height: 1em;
+        margin: 0;
+        max-width: 135px;
+        font-size: $header-main-height-desktop;
+        line-height: 1;
+    }
+
+    a {
+        display: block;
+        height: 100%;
+    }
+
+    img {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
+
+/* ----------------------------------------------------------
+  Toggle
+---------------------------------------------------------- */
+
+.header-main .nav-toggle {
+    & {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    @include resp($has_desktop_menu) {
+        display: none;
+    }
+}
+
+/* ----------------------------------------------------------
   Main menu
 ---------------------------------------------------------- */
 
+/* Wrapper
+-------------------------- */
+
+.header-main__menu {
+    & {
+        @extend %cssc-mobile-menu-down__wrapper;
+    }
+
+    @include resp($has_desktop_menu) {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    @include resp($has_mobile_menu) {
+        top: $header-main-height-mobile--withmargin;
+    }
+}
+
+.header-main__menu-inner {
+    & {
+        @extend %cssc-mobile-menu-down;
+    }
+
+    @include resp($has_mobile_menu) {
+        margin: auto;
+        padding: $desktop-padding;
+        max-width: 400px;
+        text-align: center;
+    }
+}
+
+/* Menu
+-------------------------- */
+
 .main-menu__wrapper {
     @extend %cssc-desktop-menu__wrapper;
-    @extend %cssc-mobile-menu-down__wrapper;
+}
+
+@media ($has_desktop_menu) {
+    .header-main__menu-inner > * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .header-main__menu-inner > * + * {
+        margin-left: $desktop-padding;
+    }
+}
+
+@media ($has_desktop_menu) and ($desktopmid_excluded) {
+    .header-main__menu-inner > * + * {
+        margin-left: $tablet-padding;
+    }
 }
 
 .main-menu {
     @extend %cssc-desktop-menu;
-    @extend %cssc-mobile-menu-down;
 }
 
 .main-menu > .menu-item {
-    @extend %cssc-desktop-menu__first_level;
-    @extend %cssc-mobile-menu-down__first_level;
+    & {
+        @extend %cssc-desktop-menu__first_level;
+        @extend %cssc-mobile-menu-down__first_level;
+    }
+
+    @include resp($has_desktop_menu) {
+        margin-left: $desktop-padding;
+    }
 }
 
 .main-menu > .menu-item > .sub-menu {
