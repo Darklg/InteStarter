@@ -73,6 +73,8 @@ body.can-use-sticky-header {
 
 .main-title.main-logo {
     & {
+        z-index: 1;
+        position: relative;
         height: 1em;
         margin: 0;
         max-width: 135px;
@@ -90,6 +92,7 @@ body.can-use-sticky-header {
         position: absolute;
         top: 50%;
         left: 0;
+        width: 100%;
         transform: translateY(-50%);
     }
 }
