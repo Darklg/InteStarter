@@ -26,7 +26,7 @@ Please add a SVG file in the folder icons/. The filename will be used as the ico
 
 You can put anywhere you want the following HTML ( for an icon named test.svg ) :
 
-`<i class="icon icon_test"></i>`
+`<i aria-hidden="true" class="icon icon_test"></i>`
 
 You can also insert it directly in Sass :
 
