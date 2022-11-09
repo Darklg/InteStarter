@@ -81,14 +81,8 @@ function buildiconfont() {
             fontHeight: 1001,
             formats: ['ttf', 'eot', 'woff', 'woff2'],
         }))
-        .pipe(gulp.dest(fonts_folder + '/' + fontName + '/'))
-        .on("finish", function() {
-            return gulp.src(sass_folder_proj + '/_icons.scss', {
-                    base: "./"
-                })
-                .pipe(replace('icon-', 'icon_'))
-                .pipe(gulp.dest('./'));
-        });
+        .pipe(replace('icon-', 'icon_'))
+        .pipe(gulp.dest(fonts_folder + '/' + fontName + '/'));
 }
 
 exports.iconfont = buildiconfont;
