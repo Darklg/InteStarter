@@ -8,6 +8,7 @@ const p = require('./package.json');
 const gulp = require('gulp');
 const {series} = gulp;
 const glob = require('glob');
+const Vinyl = require('vinyl');
 
 /* Reload */
 const bs = require('browser-sync').create();
@@ -81,12 +82,36 @@ function buildiconfont() {
             fontHeight: 1001,
             formats: ['ttf', 'eot', 'woff', 'woff2'],
         }))
-        .pipe(replace('icon-', 'icon_'))
-        .pipe(gulp.dest(fonts_folder + '/' + fontName + '/'));
+        .pipe(gulp.dest(fonts_folder + '/' + fontName + '/'))
+        .on("finish", function() {
+            /* Create version file */
+            build_file_from_string("version.txt", '' + _ts)
+                .pipe(gulp.dest(fonts_folder + '/' + fontName + '/'));
+            /* Correct dir & prefix */
+            return gulp.src(sass_folder_proj + '/_icons.scss', {
+                    base: "./"
+                })
+                .pipe(replace('icon-', 'icon_'))
+                .pipe(gulp.dest('./'));
+        });
 }
 
 exports.iconfont = buildiconfont;
 
+function build_file_from_string(filename, string) {
+    var src = require('stream').Readable({
+        objectMode: true
+    });
+    src._read = function() {
+        this.push(new Vinyl({
+            cwd: "",
+            path: filename,
+            contents: Buffer.from(string, 'utf-8')
+        }));
+        this.push(null);
+    };
+    return src;
+}
 /* ----------------------------------------------------------
   lint
 ---------------------------------------------------------- */
