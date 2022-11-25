@@ -29,7 +29,10 @@
 
 @font-face {
     font-family: "icons";
-    src: url("../fonts/icons/icons.woff2") format("woff2");
+    src: url('../fonts/icons/icons.woff2') format('woff2'),
+        url('../fonts/icons/icons.woff') format('woff'),
+        url('../fonts/icons/icons.ttf') format('truetype'),
+        url('../fonts/icons/icons.svg#icons') format('svg');
 }
 
 /* Content
