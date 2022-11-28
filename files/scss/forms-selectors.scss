@@ -13,7 +13,14 @@ input[type="password"] {
 }
 
 .cssc-form label {
-    @extend %project--label;
+    & {
+        @extend %project--label;
+    }
+
+    &:first-child {
+        display: block;
+        margin-bottom: 0.5em;
+    }
 }
 
 .cssc-form .box {
