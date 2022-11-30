@@ -77,6 +77,9 @@ touch "${SCSSDIR}/${project_id}/pages/_home.scss"
 ## HEADER
 cat "${MAINDIR}files/scss/header.scss" >> "${SCSSDIR}/${project_id}/_header.scss";
 
+## Footer
+cat "${MAINDIR}files/scss/footer.scss" >> "${SCSSDIR}/${project_id}/_footer.scss";
+
 ## FORMS
 
 ### Buttons

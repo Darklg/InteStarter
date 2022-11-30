@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Social
+---------------------------------------------------------- */
+
+.wputh-social-links {
+    li {
+        display: inline-block;
+    }
+
+    li + li {
+        margin-left: 1em;
+    }
+
+    a {
+        display: block;
+        z-index: 0;
+        position: relative;
+        text-align: center;
+    }
+
+    a:before {
+        @extend %absolute-cover;
+        content: '';
+        margin: -0.5em;
+    }
+}
