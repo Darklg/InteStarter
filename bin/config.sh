@@ -54,7 +54,10 @@ else
 fi;
 
 # Ask if jQuery is needed
-use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
+use_jquery='y';
+if [[ $is_wp_theme == 'n' ]]; then
+    use_jquery=$(intestarter_yn "- Utiliser jQuery ?" 'n');
+fi;
 
 add_slick_slider='n';
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
