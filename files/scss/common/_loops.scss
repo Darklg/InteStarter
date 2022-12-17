@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Lists
+---------------------------------------------------------- */
+
+/* Slider
+-------------------------- */
+
+.centered-container--slider-wrapper {
+    overflow: hidden;
+}
+
+.list--slider:not(.slick-slider) {
+    & {
+        @extend %responsive-padding-lr-inv-half;
+        z-index: 1;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    & > * {
+        @extend %responsive-padding-lr-half;
+        display: inline-block;
+        box-sizing: border-box;
+        width: 33.3%;
+        white-space: normal;
+        vertical-align: top;
+    }
+}
+
+.list--slider.slick-slider {
+    .slick-list {
+        @extend %responsive-padding-lr-inv-half;
+        overflow: visible;
+    }
+
+    .slick-track > * {
+        @extend %responsive-padding-lr-half;
+        transition: opacity 0.3s ease;
+    }
+
+    .slick-track > *[aria-hidden="true"] {
+        opacity: 0.25;
+    }
+}
+
+@media ($mobile_only) {
+    .list--slider.slick-slider .slick-track > * {
+        width: 400px;
+        max-width: 70vw;
+    }
+}
