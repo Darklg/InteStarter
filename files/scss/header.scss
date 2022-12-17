@@ -6,19 +6,26 @@
 
 .cc-header-main {
     & {
-        padding-top: ($header-main-height-desktop--withmargin*0.5-$header-main-height-desktop);
+        padding-top: (($header-main-height-desktop--withmargin - $header-main-height-desktop) *0.5);
     }
 
     @include resp($has_mobile_menu) {
-        padding-top: ($header-main-height-mobile--withmargin*0.5-$header-main-height-mobile);
+        padding-top: (($header-main-height-mobile--withmargin - $header-main-height-mobile) *0.5);
     }
 }
 
 .header-main {
-    z-index: 1;
-    position: relative;
-    height: $header-main-height-desktop;
-    line-height: $header-main-height-desktop;
+    & {
+        z-index: 1;
+        position: relative;
+        height: $header-main-height-desktop;
+        line-height: $header-main-height-desktop;
+    }
+
+    @include resp($mobile_only) {
+        height: $header-main-height-mobile;
+        line-height: $header-main-height-mobile;
+    }
 }
 
 /* ----------------------------------------------------------
@@ -69,7 +76,7 @@ body.can-use-sticky-header {
         top: 0;
         left: 0;
         width: 100%;
-        height: $header-main-height-desktop--withmargin;
+        height: $header-main-height-mobile--withmargin;
     }
 }
 
@@ -118,6 +125,12 @@ body.can-use-sticky-header {
         top: 50%;
         right: 0;
         transform: translateY(-50%);
+    }
+
+    &:before {
+        @extend %absolute-cover;
+        content: '';
+        margin: -10px;
     }
 
     @include resp($has_desktop_menu) {
