@@ -32,8 +32,11 @@ if [[ $is_magento2_skin == 'n' ]]; then
     fi;
 fi;
 
-# Gitignore
 if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
+    # htaccess
+    echo '- Ajout du .htaccess';
+    cat "${MAINDIR}files/base.htaccess" >> "${MAINDIR}.htaccess";
+    # Gitignore
     echo '- Ajout du .gitignore';
     cat "${MAINDIR}files/base.gitignore" >> "${MAINDIR}.gitignore";
 fi;

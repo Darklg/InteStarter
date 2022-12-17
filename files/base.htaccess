@@ -1,0 +1,17 @@
+# Prevent some files
+<FilesMatch "^\.">
+Order allow,deny
+Deny from all
+</FilesMatch>
+<Files "package.json">
+Order allow,deny
+Deny from all
+</Files>
+<Files "gulpfile.js">
+Order allow,deny
+Deny from all
+</Files>
+<Files "README.md">
+Order allow,deny
+Deny from all
+</Files>
