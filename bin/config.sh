@@ -23,6 +23,11 @@ if [[ $is_magento2_skin == 'y' ]]; then
     SCSSFILE="${SCSSDIR}/styles.scss";
 fi;
 
+is_static_website='n';
+if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
+    is_static_website=$(intestarter_yn "- Est-ce un site statique PHP ?" 'n');
+fi;
+
 # On récupère le contenu du dossier créé
 mv InteStarter/* .
 rm -rf "InteStarter/";

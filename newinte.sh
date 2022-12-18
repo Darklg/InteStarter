@@ -48,6 +48,10 @@ if [[ $is_magento2_skin == 'y' ]]; then
     . "${EXECDIR}bin/magento.sh";
 fi;
 
+if [[ $is_static_website == 'y' ]]; then
+    . "${EXECDIR}bin/static.sh";
+fi;
+
 . "${EXECDIR}bin/documentation.sh";
 
 #################################################################
