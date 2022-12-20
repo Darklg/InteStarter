@@ -66,6 +66,7 @@
     /* Vars */
     font-family: $font-main;
     font-size: $font-size;
+    letter-spacing: $letter-spacing-base;
 
     /* Project */
     @import "project_id/icons";
@@ -79,7 +80,5 @@
 @font-face {
     font-family: "icons";
     src: url('../fonts/icons/icons.woff2') format('woff2'),
-        url('../fonts/icons/icons.woff') format('woff'),
-        url('../fonts/icons/icons.ttf') format('truetype'),
-        url('../fonts/icons/icons.svg#icons') format('svg');
+        url('../fonts/icons/icons.woff') format('woff');
 }
