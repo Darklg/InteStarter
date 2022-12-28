@@ -21,6 +21,13 @@
         -webkit-tap-highlight-color: transparent;
     }
 
+    @include resp($mobile_only) {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        line-height: 1.5;
+        white-space: normal;
+    }
+
     &:focus,
     &:hover {
         color: #fff;

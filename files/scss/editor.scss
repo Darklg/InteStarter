@@ -36,12 +36,18 @@
 /* Content
 -------------------------- */
 
+html {
+    background-color: $color-bg;
+}
+
 #tinymce.mceContentBody {
     @extend .cssc-content;
     width: auto;
-    margin: 1em;
+    margin: 0;
+    padding: 1em;
     font-family: $font-main;
     font-size: $font-size;
-    letter-spacing: $letter-spacing-base;
     color: $color-main;
+    letter-spacing: $letter-spacing-base;
+    background-color: $color-bg;
 }

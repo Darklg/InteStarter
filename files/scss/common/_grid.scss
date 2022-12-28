@@ -22,6 +22,7 @@
 %simple-grid > * {
     @extend %responsive-padding-lr-half;
     flex: 1;
+    min-width: 0;
 }
 
 @media ($desktop_excluded) {
