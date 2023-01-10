@@ -87,16 +87,21 @@ function buildiconfont() {
             /* Create version file */
             build_file_from_string("version.txt", '' + _ts)
                 .pipe(gulp.dest(fonts_folder + '/' + fontName + '/'));
-            /* Correct dir & prefix */
-            return gulp.src(sass_folder_proj + '/_icons.scss', {
-                    base: "./"
-                })
-                .pipe(replace('icon-', 'icon_'))
-                .pipe(gulp.dest('./'));
         });
 }
 
 exports.iconfont = buildiconfont;
+
+function fixiconfont(){
+    /* Correct dir & prefix */
+    return gulp.src(sass_folder_proj + '/_icons.scss', {
+            base: "./"
+        })
+        .pipe(replace('icon-', 'icon_'))
+        .pipe(gulp.dest('./'));
+}
+
+exports.fixiconfont = fixiconfont;
 
 function build_file_from_string(filename, string) {
     var src = require('stream').Readable({
@@ -112,6 +117,7 @@ function build_file_from_string(filename, string) {
     };
     return src;
 }
+
 /* ----------------------------------------------------------
   lint
 ---------------------------------------------------------- */
@@ -226,7 +232,7 @@ exports.watch = function watch() {
         open: true
     });
     style();
-    gulp.watch(svg_files, series(buildiconfont, pug_generate));
+    gulp.watch(svg_files, series(buildiconfont, fixiconfont, pug_generate));
     gulp.watch(js_src_files, series(lintjs, minifyjs));
     gulp.watch(pug_files, series(pug_generate, function bs_reload(done) {
         bs.reload();
@@ -239,6 +245,6 @@ exports.watch = function watch() {
   Default
 ---------------------------------------------------------- */
 
-const defaultTask = series(buildiconfont, style, lintjs, minifyjs, pug_generate);
+const defaultTask = series(buildiconfont, fixiconfont, style, lintjs, minifyjs, pug_generate);
 
 exports.default = defaultTask;
