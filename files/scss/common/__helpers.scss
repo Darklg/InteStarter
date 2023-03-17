@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Gap
+---------------------------------------------------------- */
+
+%responsive-gap {
+    & {
+        gap: $desktop-padding;
+    }
+
+    @include resp($desktop_excluded) {
+        gap: $tablet-padding;
+    }
+
+    @include resp($mobile_only) {
+        gap: $mobile-padding;
+    }
+}
