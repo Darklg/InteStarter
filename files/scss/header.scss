@@ -22,7 +22,7 @@
         line-height: $header-main-height-desktop;
     }
 
-    @include resp($mobile_only) {
+    @include resp($has_mobile_menu) {
         height: $header-main-height-mobile;
         line-height: $header-main-height-mobile;
     }
