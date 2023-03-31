@@ -45,6 +45,16 @@ mv "${MAINDIR}files/stylelint/stylelintignore.txt" "${MAINDIR}.stylelintignore";
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
 mv "${MAINDIR}files/pug" "${MAINDIR}src/pug";
 
+# Load intestarter gulp
+if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento2_skin == 'y' ]; then
+    echo "-- add intestarter_gulpfile submodule";
+    git submodule add --force https://github.com/Darklg/intestarter_gulpfile.git  "${MAINDIR}/src/gulp/";
+else
+    echo "-- clone intestarter_gulpfile";
+    git clone --depth=1 https://github.com/Darklg/intestarter_gulpfile.git "${MAINDIR}/src/gulp/";
+    rm -rf "${MAINDIR}/src/gulp/.git";
+fi;
+
 # Set watch mode
 if [[ "${is_wp_theme}" == 'y' ]]; then
     intestarter_sed "s~// #proxy~proxy~g" "${MAINDIR}gulpfile.js";
