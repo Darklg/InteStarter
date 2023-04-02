@@ -46,13 +46,14 @@ mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
 mv "${MAINDIR}files/pug" "${MAINDIR}src/pug";
 
 # Load intestarter gulp
+mkdir "${MAINDIR}/src/gulp";
 if [ $(git rev-parse --is-inside-work-tree) ] || [ $is_wp_theme == 'y' ] || [ $is_magento2_skin == 'y' ]; then
     echo "-- add intestarter_gulpfile submodule";
-    git submodule add --force https://github.com/Darklg/intestarter_gulpfile.git  "${MAINDIR}/src/gulp/";
+    git submodule add --force https://github.com/Darklg/intestarter_gulpfile.git  "${MAINDIR}/src/gulp/intestarter_gulpfile";
 else
     echo "-- clone intestarter_gulpfile";
-    git clone --depth=1 https://github.com/Darklg/intestarter_gulpfile.git "${MAINDIR}/src/gulp/";
-    rm -rf "${MAINDIR}/src/gulp/.git";
+    git clone --depth=1 https://github.com/Darklg/intestarter_gulpfile.git "${MAINDIR}/src/gulp/intestarter_gulpfile";
+    rm -rf "${MAINDIR}/src/gulp/intestarter_gulpfile.git";
 fi;
 
 # Set watch mode
