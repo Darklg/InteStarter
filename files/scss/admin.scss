@@ -14,6 +14,10 @@
 ---------------------------------------------------------- */
 
 #poststuff .layout > .acfe-fc-placeholder.acfe-fc-preview {
+    & {
+        color: $color-main;
+    }
+
     & > a {
         z-index: 2;
     }
