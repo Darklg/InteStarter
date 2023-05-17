@@ -44,7 +44,7 @@ html {
     @extend .cssc-content;
     width: auto;
     margin: 0;
-    padding: 1em;
+    padding: 1em!important;
     font-family: $font-main;
     font-size: $font-size;
     color: $color-main;
