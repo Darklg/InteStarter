@@ -15,7 +15,6 @@
         "keyframe-declaration-no-important": true,
         "media-feature-name-no-unknown": true,
         "no-empty-source": true,
-        "no-extra-semicolons": true,
         "property-no-unknown": true,
         "selector-max-id": 1,
         "selector-max-type": 3,
