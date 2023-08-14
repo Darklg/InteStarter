@@ -1,0 +1,14 @@
+{
+    "undef": true,
+    "unused": true,
+    "browser": true,
+    "jquery": true,
+    "curly": true,
+    "strict": true,
+    "maxlen": 256,
+    "globals":
+    {
+        "vanillaMoveBlocks": true,
+        "morphHTMLNumber": true
+    }
+}

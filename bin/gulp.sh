@@ -40,6 +40,7 @@ yarn add --dev \
     gulp-trimlines
 
 # Gulp Files
+mv "${MAINDIR}files/base.jshintrc" "${MAINDIR}.jshintrc";
 mv "${MAINDIR}files/stylelint/stylelintrc.txt" "${MAINDIR}.stylelintrc";
 mv "${MAINDIR}files/stylelint/stylelintignore.txt" "${MAINDIR}.stylelintignore";
 mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
