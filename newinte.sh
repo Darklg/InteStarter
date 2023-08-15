@@ -19,8 +19,8 @@ fi;
 
 # Set main directory
 MAINDIR="${PWD}/";
-ASSETSDIR="${MAINDIR}/assets";
-SRCDIR="${MAINDIR}/src";
+ASSETSDIR="${MAINDIR}assets";
+SRCDIR="${MAINDIR}src";
 SCSSDIR="${SRCDIR}/scss";
 SCSSFILE="${SCSSDIR}/main.scss";
 EXECDIR="${MAINDIR}InteStarter/";

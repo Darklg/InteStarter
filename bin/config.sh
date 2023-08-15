@@ -19,7 +19,7 @@ if [[ $is_wp_theme == 'n' ]]; then
 fi;
 
 if [[ $is_magento2_skin == 'y' ]]; then
-    ASSETSDIR="${MAINDIR}/web";
+    ASSETSDIR="${MAINDIR}web";
     SCSSFILE="${SCSSDIR}/styles.scss";
 fi;
 
