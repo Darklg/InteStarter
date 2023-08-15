@@ -28,11 +28,6 @@ if [[ $is_wp_theme == 'n' && $is_magento2_skin == 'n' ]]; then
     is_static_website=$(intestarter_yn "- Est-ce un site statique PHP ?" 'n');
 fi;
 
-# On récupère le contenu du dossier créé
-mv InteStarter/* .
-rm -rf "InteStarter/";
-EXECDIR="${PWD}/";
-
 if [ -z ${from_wpinstaller+x} ]; then
     # On recupere le nom du projet
     default_project_name='Front-End';
