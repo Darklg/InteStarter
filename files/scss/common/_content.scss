@@ -28,6 +28,30 @@ li {
 }
 
 /* ----------------------------------------------------------
+  Custom text size
+---------------------------------------------------------- */
+
+.text--big.text--big {
+    & {
+        font-size: $font-size*1.2;
+    }
+
+    @include resp($mobile_only) {
+        font-size: $font-size-mobile*1.2;
+    }
+}
+
+.text--small.text--small {
+    & {
+        font-size: $font-size*0.8;
+    }
+
+    @include resp($mobile_only) {
+        font-size: $font-size-mobile*0.8;
+    }
+}
+
+/* ----------------------------------------------------------
   CMS Content
 ---------------------------------------------------------- */
 
