@@ -49,7 +49,7 @@ EXECDIR="${PWD}/";
 . "${EXECDIR}bin/tools.sh";
 
 if [[ "${1}" == 'update' ]];then
-    . "${SOURCEDIR}bin/update.sh";
+    . "${EXECDIR}bin/update.sh";
 else
     . "${EXECDIR}bin/config.sh";
     . "${EXECDIR}bin/folders.sh";
@@ -64,12 +64,11 @@ else
         . "${EXECDIR}bin/static.sh";
     fi;
 
-
     . "${EXECDIR}bin/documentation.sh";
 
     echo '## FIRST BUILD';
     gulp;
 fi;
 
-
-. "${SOURCEDIR}bin/clean.sh";
+. "${EXECDIR}bin/clean.sh";
+. "${EXECDIR}bin/stop.sh";
