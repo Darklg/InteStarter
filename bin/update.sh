@@ -3,13 +3,10 @@
 echo '## UPDATE';
 
 ###################################
-## JS Hint
+## Missing files
 ###################################
 
-if [[ ! -f "${MAINDIR}.jshintrc" ]];then
-    echo '- Add missing jshintrc';
-    mv "${MAINDIR}files/base.jshintrc" "${MAINDIR}.jshintrc";
-fi;
+intestarter__create_static_files;
 
 ###################################
 ## CSS Common

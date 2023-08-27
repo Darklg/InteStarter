@@ -54,3 +54,18 @@ function intestarter_simple_sed(){
     sed -i.bak "s/${1}/${SED_REPREP}/g" "${3}";
     rm "${3}.bak";
 }
+
+###################################
+## Files
+###################################
+
+function intestarter__create_static_files(){
+    if [[ ! -f "${MAINDIR}.nvmrc" ]];then
+        echo '- Add .nvmrc';
+        node -v > "${MAINDIR}.nvmrc";
+    fi;
+    if [[ ! -f "${MAINDIR}.jshintrc" ]];then
+        echo '- Add jshintrc';
+        mv "${MAINDIR}files/base.jshintrc" "${MAINDIR}.jshintrc";
+    fi;
+}
