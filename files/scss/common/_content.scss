@@ -66,6 +66,10 @@ li {
         font-size: $font-size-mobile;
     }
 
+    &:last-child {
+        margin-bottom: 0;
+    }
+
     h2 {
         @extend %project--h2;
     }
