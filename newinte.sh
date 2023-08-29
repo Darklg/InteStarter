@@ -78,5 +78,5 @@ else
     gulp;
 fi;
 
-. "${EXECDIR}bin/clean.sh";
 . "${EXECDIR}bin/stop.sh";
+. "${EXECDIR}bin/clean.sh";
