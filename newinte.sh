@@ -11,12 +11,15 @@ SOURCEDIR="$( dirname "${BASH_SOURCE[0]}" )/";
 
 # Cloning repository or getting local version if available
 echo '# - RECUPERATION DE INTESTARTER';
+_INTESTARTER_EXEC_TYPE='';
 if [ ! -d "${SOURCEDIR}files" ]; then
     # Distant
     git clone --depth=1 https://github.com/Darklg/InteStarter.git
+    _INTESTARTER_EXEC_TYPE='distant';
 else
     # Local
     git clone "${SOURCEDIR}.git";
+    _INTESTARTER_EXEC_TYPE='local';
 fi;
 
 # Set main directory
@@ -37,10 +40,15 @@ rm -rf "${MAINDIR}InteStarter/.git/";
 rm -rf "${MAINDIR}InteStarter/.gitignore";
 rm -rf "${MAINDIR}InteStarter/README.md";
 
-# Retrieveing intestarter content
+# Retrieving intestarter content
 mv InteStarter/* .
 rm -rf "InteStarter/";
 EXECDIR="${PWD}/";
+
+# If local install : use sourcedir as exec directory
+if [[ "${_INTESTARTER_EXEC_TYPE}" == 'local' ]];then
+    EXECDIR="${SOURCEDIR}/";
+fi;
 
 #################################################################
 ## Basic steps
