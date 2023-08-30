@@ -65,7 +65,15 @@ function intestarter__create_static_files(){
         node -v > "${MAINDIR}.nvmrc";
     fi;
     if [[ ! -f "${MAINDIR}.jshintrc" ]];then
-        echo '- Add jshintrc';
+        echo "- Add .jshintrc";
         mv "${MAINDIR}files/base.jshintrc" "${MAINDIR}.jshintrc";
+    fi;
+    if [[ ! -f "${MAINDIR}.stylelintrc" ]];then
+        echo "- Add .stylelintrc";
+        mv "${MAINDIR}files/stylelint/stylelintrc.txt" "${MAINDIR}.stylelintrc";
+    fi;
+    if [[ ! -f "${MAINDIR}.stylelintignore" ]];then
+        echo "- Add .stylelintignore";
+        mv "${MAINDIR}files/stylelint/stylelintignore.txt" "${MAINDIR}.stylelintignore";
     fi;
 }
