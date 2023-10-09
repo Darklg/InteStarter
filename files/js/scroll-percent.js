@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
     /* Scroll percent */
     function setScrollPercent() {
         /* Update max top when scrolling to account for element changing height */

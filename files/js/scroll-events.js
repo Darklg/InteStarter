@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+    'use strict';
     var lastScroll = 0;
 
     function scroll_events() {

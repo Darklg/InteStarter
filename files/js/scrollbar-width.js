@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
     var set_scrollbar_width = function() {
         document.documentElement.style.setProperty('--scrollbar-width', (window.innerWidth - document.documentElement.clientWidth) + "px");
     };
