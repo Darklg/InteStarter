@@ -37,7 +37,7 @@
 -------------------------- */
 
 html {
-    background-color: $color-bg;
+    background-color: $color-bg-page;
 }
 
 #tinymce.mceContentBody {
@@ -49,5 +49,5 @@ html {
     font-size: $font-size;
     color: $color-main;
     letter-spacing: $letter-spacing-base;
-    background-color: $color-bg;
+    background-color: $color-bg-page;
 }

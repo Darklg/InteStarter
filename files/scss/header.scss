@@ -52,7 +52,7 @@ body.can-use-sticky-header {
 
     %has-sticky-header[data-prepare-sticky-header="1"] .cc-header-main {
         position: fixed;
-        background-color: #fff;
+        background-color: $color-bg-page;
         transform: translate3d(0,0 - $header-main-height-desktop--withmargin,0);
     }
 
