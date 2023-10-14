@@ -34,6 +34,24 @@
         background-color: $color-main;
         box-shadow: inset 0 0 0 1px $color-main;
     }
+
+    i[class*="icon_"] {
+        z-index: 1;
+        position: relative;
+        width: 1.5em;
+        height: 1em;
+        vertical-align: middle;
+    }
+
+    i[class*="icon_"]:before {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -0.5em;
+        margin-left: -0.1em;
+        font-size: 1.5em;
+    }
 }
 
 .project_id-button--secondary,
