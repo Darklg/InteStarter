@@ -15,6 +15,10 @@ intestarter_sed "s/p_id/${project_id}/" "${MAINDIR}package.json";
 intestarter_sed "s/p_name/${project_name}/" "${MAINDIR}package.json";
 intestarter_sed "s/p_hostname/${project_hostname}/" "${MAINDIR}package.json";
 
+
+# Add fsvents
+npm i fsevents@latest -f --save-optional
+
 # Install Gulp & default modules
 yarn add --dev \
     browser-sync \
