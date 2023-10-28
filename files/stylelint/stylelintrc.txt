@@ -23,5 +23,9 @@
         "selector-type-no-unknown": true,
         "string-no-newline": true,
         "unit-no-unknown": true,
-    }
+    },
+    "ignoreFiles": [
+       "assets/css/editor.css",
+       "assets/css/admin.css"
+   ]
 }
