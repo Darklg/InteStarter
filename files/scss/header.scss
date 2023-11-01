@@ -124,6 +124,7 @@ body.can-use-sticky-header {
         position: absolute;
         top: 50%;
         right: 0;
+        color: $color-main;
         transform: translateY(-50%);
     }
 
@@ -158,6 +159,7 @@ body.can-use-sticky-header {
     }
 
     @include resp($has_mobile_menu) {
+        background-color: $color-bg-page;
         top: $header-main-height-mobile--withmargin;
     }
 }
