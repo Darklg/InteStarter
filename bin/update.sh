@@ -53,8 +53,11 @@ intestarter_sed 's/"stylelint": "^/"stylelint": "/g' "package.json";
 intestarter_sed 's/"gulp-stylelint": "^/"gulp-stylelint": "/g' "package.json";
 
 echo '- Update NPM dependencies';
-npm update --save;
+npm update --save --legacy-peer-deps;
 
 echo '- Launch a new compilation';
 npx update-browserslist-db@latest;
 gulp;
+
+echo '- Info';
+npm outdated;
