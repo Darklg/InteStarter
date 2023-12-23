@@ -15,7 +15,7 @@ intestarter__create_static_files;
 if [[ -f "${MAINDIR}src/scss/csscommon/.git" ]];then
     echo "- Update CSSCommon submodule";
     cd "${MAINDIR}src/scss/csscommon/";
-    git pull origin master;
+    git pull origin master;git pull origin main;
 fi;
 
 ###################################
@@ -32,7 +32,7 @@ fi;
 if [[ -f "${MAINDIR}src/gulp/intestarter_gulpfile/.git" ]];then
     echo "- Update intestarter_gulpfile submodule";
     cd "${MAINDIR}src/gulp/intestarter_gulpfile/";
-    git pull origin main;
+    git pull origin master;git pull origin main;
 else
     if [ $(git rev-parse --is-inside-work-tree) ]; then
         echo "- Add intestarter_gulpfile submodule";
@@ -47,3 +47,14 @@ if [[ -f "${MAINDIR}gulpfile.js" ]];then
     rm  "${MAINDIR}gulpfile.js";
     mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
 fi;
+
+echo '- Fix some package versions';
+intestarter_sed 's/"stylelint": "^/"stylelint": "/g' "package.json";
+intestarter_sed 's/"gulp-stylelint": "^/"gulp-stylelint": "/g' "package.json";
+
+echo '- Update NPM dependencies';
+npm update --save;
+
+echo '- Launch a new compilation';
+npx update-browserslist-db@latest;
+gulp;
