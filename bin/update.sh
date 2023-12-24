@@ -48,12 +48,17 @@ if [[ -f "${MAINDIR}gulpfile.js" ]];then
     mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
 fi;
 
+echo '- Clean cache';
+rm "${MAINDIR}package-lock.json";
+rm -rf "${MAINDIR}node_modules";
+
 echo '- Fix some package versions';
 intestarter_sed 's/"stylelint": "^/"stylelint": "/g' "package.json";
 intestarter_sed 's/"gulp-stylelint": "^/"gulp-stylelint": "/g' "package.json";
 
 echo '- Update NPM dependencies';
 npm update --save --legacy-peer-deps;
+yarn;
 
 echo '- Launch a new compilation';
 npx update-browserslist-db@latest;
