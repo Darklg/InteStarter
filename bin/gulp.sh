@@ -22,11 +22,11 @@ npm i fsevents@latest -f --save-optional
 # Install Gulp & default modules
 yarn add --dev \
     browser-sync \
-    stylelint \
+    stylelint@15 \
     glob \
     gulp-stylelint \
     gulp \
-    gulp-autoprefixer \
+    gulp-autoprefixer@8 \
     gulp-concat \
     gulp-iconfont \
     gulp-iconfont-css \
@@ -39,7 +39,7 @@ yarn add --dev \
     gulp-replace \
     gulp-sass \
     gulp-sass-glob \
-    gulp-strip-css-comments \
+    gulp-strip-css-comments@2 \
     gulp-svgmin \
     gulp-trimlines
 
