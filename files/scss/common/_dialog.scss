@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Dialog
+---------------------------------------------------------- */
+
+body dialog {
+    & {
+        box-sizing: border-box;
+        width: $mobile-max;
+        padding: 2em;
+        max-width: 90vw;
+        font-size: $font-size;
+        background-color: $color-bg;
+    }
+
+    &::backdrop {
+        opacity: 0.3;
+        background: $color-main;
+    }
+}
