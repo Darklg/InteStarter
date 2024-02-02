@@ -6,4 +6,7 @@
         e.preventDefault();
         $jQbody.toggleClass('has--opened-main-menu');
     });
+    jQuery('.header-main__menu-inner').on('click', 'a[href*="#"]', function() {
+        $jQbody.removeClass('has--opened-main-menu');
+    });
 }());
