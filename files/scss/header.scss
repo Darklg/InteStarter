@@ -4,6 +4,9 @@
   Layout
 ---------------------------------------------------------- */
 
+/* Wrapper
+-------------------------- */
+
 .cc-header-main {
     & {
         padding-top: (($header-main-height-desktop--withmargin - $header-main-height-desktop) *0.5);
@@ -13,6 +16,19 @@
         padding-top: (($header-main-height-mobile--withmargin - $header-main-height-mobile) *0.5);
     }
 }
+
+@media ($has_mobile_menu) {
+    .cc-header-main {
+        transition: background 0.3s ease;
+    }
+
+    .has--opened-main-menu .cc-header-main {
+        background-color: $color-bg-page;
+    }
+}
+
+/* Content
+-------------------------- */
 
 .header-main {
     & {
@@ -25,6 +41,21 @@
     @include resp($has_mobile_menu) {
         height: $header-main-height-mobile;
         line-height: $header-main-height-mobile;
+    }
+}
+
+/* Anchors
+-------------------------- */
+
+.cc-block-anchor {
+    & {
+        z-index: 0;
+        position: relative;
+        transform: translateY(0 - $header-main-height-desktop--withmargin);
+    }
+
+    @include resp($has_mobile_menu) {
+        transform: translateY(0 - $header-main-height-mobile--withmargin);
     }
 }
 
@@ -159,8 +190,8 @@ body.can-use-sticky-header {
     }
 
     @include resp($has_mobile_menu) {
-        background-color: $color-bg-page;
         top: $header-main-height-mobile--withmargin;
+        background-color: $color-bg-page;
     }
 }
 
