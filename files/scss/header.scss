@@ -142,6 +142,7 @@ body.can-use-sticky-header {
         left: 0;
         height: 100%;
         transform: translateY(-50%);
+        object-fit: contain;
     }
 }
 
@@ -244,6 +245,7 @@ body.can-use-sticky-header {
 
     @include resp($has_desktop_menu) {
         margin-left: $desktop-padding;
+        line-height: $header-main-height-desktop;
     }
 }
 
