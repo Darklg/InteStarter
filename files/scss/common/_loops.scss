@@ -4,6 +4,30 @@
   Lists
 ---------------------------------------------------------- */
 
+/* List
+-------------------------- */
+
+.loops-list {
+    @extend %cssc-list-items;
+}
+
+.loops-list.loops-list {
+    width: 33.3%;
+}
+
+@media ($desktop_excluded) {
+    .loops-list.loops-list > * {
+        width: 50%;
+    }
+}
+
+@media ($mobile_only) {
+    .loops-list.loops-list > * {
+        display: block;
+        width: 100%;
+    }
+}
+
 /* Slider
 -------------------------- */
 
@@ -50,4 +74,48 @@
         width: 400px;
         max-width: 70vw;
     }
+}
+
+/* ----------------------------------------------------------
+  Loops
+---------------------------------------------------------- */
+
+.loop-basic {
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.loop-basic__image {
+    & {
+        @extend %cssc-cover-image-wrapper-component;
+        margin-bottom: 1em;
+        padding-top: 75%;
+        overflow: hidden;
+    }
+
+    img {
+        transition: transform 1s ease;
+        transform-origin: center center;
+    }
+
+    .loop-basic:hover & img {
+        transform: scale(1.1);
+    }
+}
+
+.loop-basic__metas {
+    margin-bottom: 0.75em;
+}
+
+.loop__link:before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: -400%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    margin: auto;
+    background-color: rgba($color-main,0);
 }

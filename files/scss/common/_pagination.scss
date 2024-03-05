@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Pagination
+---------------------------------------------------------- */
+
+.main-pagination__list {
+    & {
+        @extend %responsive-padding-tb-half;
+        text-align: center;
+    }
+
+    .page-numbers {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 0.5em;
+        min-width: 2.5em;
+        border: 1px solid $color-border;
+        text-align: center;
+        line-height: 2.5;
+        vertical-align: middle;
+    }
+
+    .page-numbers.dots {
+        border-color: transparent;
+    }
+
+    .page-numbers.current {
+        border-color: $color-hl;
+        color: #fff;
+        background-color: $color-hl;
+    }
+}
