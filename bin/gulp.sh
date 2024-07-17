@@ -25,7 +25,7 @@ yarn add --dev \
     stylelint@15 \
     glob \
     gulp-stylelint \
-    gulp@4 \
+    gulp@4.* \
     gulp-autoprefixer@8 \
     gulp-concat \
     gulp-iconfont \
