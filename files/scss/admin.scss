@@ -69,9 +69,11 @@
     @import "csscommon/components/layouts/containers";
 
     /* Vars */
-    font-family: $font-main;
-    font-size: $font-size;
-    letter-spacing: $letter-spacing-base;
+    & {
+        font-family: $font-main;
+        font-size: $font-size;
+        letter-spacing: $letter-spacing-base;
+    }
 
     /* Project */
     @import "project_id/icons";
