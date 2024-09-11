@@ -29,6 +29,8 @@ a {
     [data-inputmode="touch"] &:focus,
     [data-inputmode="touch"] &:active,
     & {
+        text-decoration-thickness: 0.1em;
+        text-underline-offset: 0.3em;
         color: inherit;
     }
 
@@ -43,6 +45,7 @@ a {
 }
 
 /* Fix default style css wp */
+
 body a {
     text-decoration: none;
 }
