@@ -28,6 +28,10 @@ input[type="password"] {
         @extend %project--fieldgroup;
     }
 
+    &:focus-within {
+        z-index: 2;
+    }
+
     %project--selectors {
         @extend %project--field;
     }
