@@ -11,7 +11,7 @@
     @extend %cssc-list-items;
 }
 
-.loops-list.loops-list {
+.loops-list.loops-list > * {
     width: 33.3%;
 }
 
