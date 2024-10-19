@@ -44,12 +44,29 @@ cd "${MAINDIR}";
 
 if [[ -f "${MAINDIR}gulpfile.js" ]];then
     echo "- Update gulpfile";
+
+    # Check if proxy is enabled
+    intestarter__has_proxy='1';
+    if [[ $(grep -c "    proxy" "${MAINDIR}gulpfile.js") -eq 0 ]];then
+        intestarter__has_proxy='0';
+    fi;
+
+    # Delete old gulpfile
     rm  "${MAINDIR}gulpfile.js";
+
+    # Copy new gulpfile
     mv "${MAINDIR}files/gulpfile.js" "${MAINDIR}gulpfile.js";
+
+    # Add proxy if needed
+    if [[ "${intestarter__has_proxy}" == '1' ]];then
+        intestarter_sed 's!// #proxy!proxy!g' "gulpfile.js";
+    fi;
 fi;
 
 echo '- Clean cache';
-rm "${MAINDIR}package-lock.json";
+if [[ -f "${MAINDIR}package-lock.json" ]];then
+    rm "${MAINDIR}package-lock.json";
+fi;
 rm -rf "${MAINDIR}node_modules";
 
 echo '- Fix some package versions';
