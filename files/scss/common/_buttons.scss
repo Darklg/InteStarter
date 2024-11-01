@@ -56,11 +56,24 @@
     }
 }
 
+/* Theme
+-------------------------- */
+
 .project_id-button--secondary,
 %project_id-button--secondary {
     & {
         color: $color-main;
         background-color: transparent;
         box-shadow: inset 0 0 0 1px currentColor;
+    }
+}
+
+/* Size
+-------------------------- */
+
+.project_id-button--small,
+%project_id-button--small {
+    & {
+        font-size: 10px;
     }
 }
