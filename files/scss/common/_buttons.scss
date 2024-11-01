@@ -9,6 +9,8 @@
     & {
         @extend %cssc-button;
         padding: 0 1em;
+        max-width: 100%;
+        overflow: hidden;
         text-transform: uppercase;
         font-size: $font-size;
         font-weight: bold;
