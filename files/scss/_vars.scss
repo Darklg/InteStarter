@@ -4,7 +4,8 @@
   Config
 ---------------------------------------------------------- */
 
-@import "csscommon/components/mixins/components/grid-dimensions";
+@use "csscommon/components/mixins/components/grid-dimensions" as *;
+@forward "csscommon/components/mixins/components/grid-dimensions";
 
 $column_width: 90;
 $gutter_width: 20;
@@ -28,10 +29,13 @@ $letter-spacing-title: 0.05em;
 /* Margins
 -------------------------- */
 
-$mobile-padding: 15px;
-$tablet-padding: 30px;
-$desktop-padding: 45px;
-$fieldset-margin: 2em;
+/* Default margins */
+@use "csscommon/components/vars/margins" as * with (
+    $mobile-padding: 15px,
+    $tablet-padding: 30px,
+    $desktop-padding: 45px
+);
+@forward "csscommon/components/vars/margins";
 
 /* Grid */
 $mobile-grid-padding: 15px;
@@ -43,8 +47,8 @@ $mobile-section-padding: 15px;
 $tablet-section-padding: 30px;
 $desktop-section-padding: 45px;
 
-/* Default margins */
-@import "csscommon/components/vars/margins";
+/* Fieldset */
+$fieldset-margin: 2em;
 
 /* Basic colors
 -------------------------- */
@@ -63,12 +67,16 @@ $color-green: #00CC00;
 /* Breakpoints
 -------------------------- */
 
-@import "csscommon/components/vars/breakpoints";
-@import "csscommon/components/vars/mediaqueries";
+@use "csscommon/components/vars/breakpoints" as * with (
+    $screen-small-height: 751px
+);
+@forward "csscommon/components/vars/breakpoints";
 
-/* Custom breakpoints */
-$has_mobile_menu: $desktop_excluded;
-$has_desktop_menu: $desktop_only;
+@use "csscommon/components/vars/mediaqueries" as * with (
+    $has_mobile_menu: "max-width:"+$tablet-max,
+    $has_desktop_menu: "min-width:"+$desktop-min
+);
+@forward "csscommon/components/vars/mediaqueries";
 
 /* Sizes
 -------------------------- */

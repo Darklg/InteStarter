@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@use 'sass:color';
+
 html {
     background-color: $color-bg-page;
 }
@@ -40,7 +42,7 @@ a {
     }
 
     &:active {
-        color: darken($color-hl,20);
+        color: color.adjust($color-hl, $lightness: -20%)
     }
 }
 
