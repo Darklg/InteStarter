@@ -83,3 +83,12 @@ gulp;
 
 echo '- Info';
 npm outdated;
+
+echo '- Extra checks';
+# Alert if sass files contains some words
+intestarter__warnings_in_sass_files=('darken(' 'lighten(');
+for intestarter__warning in "${intestarter__warnings_in_sass_files[@]}"; do
+    if [[ $(grep -r -l "${intestarter__warning}" "${MAINDIR}src/scss/") ]];then
+        echo "Warning: Sass files contains '${intestarter__warning}'";
+    fi;
+done;
