@@ -29,6 +29,9 @@ $letter-spacing-title: 0.05em;
 /* Margins
 -------------------------- */
 
+/* Project margins */
+$fieldset-margin: 2em;
+
 /* Default margins */
 @use "csscommon/components/vars/margins" as * with (
     $mobile-padding: 15px,
@@ -47,12 +50,15 @@ $mobile-section-padding: 15px;
 $tablet-section-padding: 30px;
 $desktop-section-padding: 45px;
 
-/* Fieldset */
-$fieldset-margin: 2em;
 
 /* Basic colors
 -------------------------- */
 
+/* Social colors */
+@use "csscommon/components/vars/colors" as *;
+@forward "csscommon/components/vars/colors";
+
+/* Default colors */
 $color-bg-page: #FFF;
 $color-main: #333;
 $color-hl: #369;
@@ -60,9 +66,6 @@ $color-border: #e0e0e0;
 $color-bg: #f0f0f0;
 $color-red: #CC0000;
 $color-green: #00CC00;
-
-/* Social colors */
-@import "csscommon/components/vars/colors";
 
 /* Breakpoints
 -------------------------- */
