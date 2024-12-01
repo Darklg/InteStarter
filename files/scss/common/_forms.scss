@@ -42,7 +42,7 @@
 %project--select {
     @extend .cssc-select;
     padding-right: 2em!important;
-    background-image: intestarter-gulp-inline-image('assets/images/down.png');
+    // background-image: intestarter-gulp-inline-image('assets/images/down.png');
     background-position: right 0 center;
     background-repeat: no-repeat;
 }
