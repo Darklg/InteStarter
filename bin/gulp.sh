@@ -28,7 +28,7 @@ yarn add --dev \
     gulp@4.* \
     gulp-autoprefixer@8 \
     gulp-concat \
-    gulp-iconfont \
+    gulp-iconfont@11 \
     gulp-iconfont-css \
     jshint \
     sass \
