@@ -63,8 +63,8 @@
   Sticky Header : change selector below to enable
 ---------------------------------------------------------- */
 
-body.can-use-sticky-header {
-    @extend %has-sticky-header!optional;
+body {
+    @extend %has-sticky-header !optional;
 }
 
 @media ($has_desktop_menu) {
@@ -83,8 +83,15 @@ body.can-use-sticky-header {
 
     %has-sticky-header[data-prepare-sticky-header="1"] .cc-header-main {
         position: fixed;
+        height: $header-main-height-desktop-sticky--withmargin;
+        line-height: $header-main-height-desktop-sticky--withmargin;
         background-color: $color-bg-page;
-        transform: translate3d(0,0 - $header-main-height-desktop--withmargin,0);
+        transform: translate3d(0,0 - $header-main-height-desktop-sticky--withmargin,0);
+    }
+
+    %has-sticky-header[data-prepare-sticky-header="1"] .header-main {
+        height: $header-main-height-desktop-sticky;
+        line-height: $header-main-height-desktop-sticky;
     }
 
     %has-sticky-header[data-before-sticky-header="1"] .cc-header-main {
@@ -126,8 +133,12 @@ body.can-use-sticky-header {
         line-height: 1;
     }
 
+    %has-sticky-header[data-prepare-sticky-header="1"] .header-main & {
+        font-size: $header-main-height-desktop-sticky;
+    }
+
     @include resp($has_mobile_menu) {
-        font-size: $header-main-height-mobile;
+        font-size: $header-main-height-mobile !important;
     }
 
     a {
@@ -245,7 +256,7 @@ body.can-use-sticky-header {
 
     @include resp($has_desktop_menu) {
         margin-left: $desktop-padding;
-        line-height: $header-main-height-desktop;
+        line-height: inherit;
     }
 }
 
