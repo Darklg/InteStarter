@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "project_name": "p_name",
   "project_hostname": "p_hostname",
+  "intestarter_gulpfile_style_silenceDeprecations": [
+    "legacy-js-api",
+    "import"
+  ],
   "project_colors": {
     "color-main": "#000",
     "color-hl": "#369"

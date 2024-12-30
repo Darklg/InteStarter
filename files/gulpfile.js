@@ -45,7 +45,7 @@ exports.iconfont = iconfont;
   Compile styles
 ---------------------------------------------------------- */
 
-style = require("./src/gulp/intestarter_gulpfile/tasks/style")(sass_files, css_folder, bs);
+style = require("./src/gulp/intestarter_gulpfile/tasks/style")(sass_files, css_folder, bs, p);
 exports.style = style;
 
 /* ----------------------------------------------------------
