@@ -95,6 +95,7 @@ body {
     }
 
     %has-sticky-header[data-before-sticky-header="1"] .cc-header-main {
+        padding-top: (($header-main-height-desktop-sticky--withmargin - $header-main-height-desktop-sticky) *0.5);
         transition: transform 0.3s ease;
     }
 
