@@ -1,13 +1,29 @@
 document.addEventListener("DOMContentLoaded", function() {
     'use strict';
-    var lastScroll = 0;
+    var lastScroll = 0,
+        newDir = 'down',
+        currentDir = 'down',
+        posScrollChange = 0,
+        offsetScrollChangeDir = 0,
+        offsetScrollChangeDirUp = 100,
+        offsetScrollChangeDirDown = 25;
 
     function scroll_events() {
         /* Get scrolltop */
         var _scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
-        /* Set scroll direction */
-        document.body.setAttribute('data-scrolldir', lastScroll > _scrollTop ? 'up' : 'down');
+        /* Get scroll direction */
+        newDir = _scrollTop > lastScroll ? 'down' : 'up';
+
+        /* Direction has changed : wait for a scroll amount > offset */
+        if (newDir != currentDir) {
+            currentDir = newDir;
+            posScrollChange = _scrollTop;
+        }
+        offsetScrollChangeDir = (newDir == 'up' ? offsetScrollChangeDirUp : offsetScrollChangeDirDown);
+        if (Math.abs(posScrollChange - _scrollTop) > offsetScrollChangeDir) {
+            document.body.setAttribute('data-scrolldir', newDir);
+        }
 
         /* Prepare : Add fixed behavior & hidden status  */
         document.body.setAttribute('data-prepare-sticky-header', _scrollTop >= 150 ? '1' : '0');
