@@ -97,22 +97,35 @@ li {
         list-style-type: none;
     }
 
+    ul ul,
+    ul {
+        list-style-type: none;
+    }
+
+    ul li,
     ol li {
         z-index: 0;
         position: relative;
         padding-left: 1em;
     }
 
+    ul li:before,
     ol li:before {
-        content: counter(cssc-content-section);
         counter-increment: cssc-content-section;
         z-index: 1;
         position: absolute;
-        top: 0;
+        top: 0.15em;
         left: 0;
+        font-size: 0.8em;
+        color: $color-hl;
     }
 
-    /* Video */
+    ul li:before {
+        content: '●';
+    }
+
+    ol li:before {
+    content /* Video */
 
     .cssc-content-video-wrapper {
         @extend %cssc-cover-embed-wrapper;
