@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@use 'sass:color';
+@use "sass:color";
 
 html {
     background-color: $color-bg-page;
@@ -42,7 +42,7 @@ a {
     }
 
     &:active {
-        color: color.adjust($color-hl, $lightness: -20%)
+        color: color.adjust($color-hl, $lightness: -20%);
     }
 }
 
@@ -61,5 +61,32 @@ picture {
     img {
         display: block;
         width: 100%;
+    }
+}
+
+/* ----------------------------------------------------------
+  Social
+---------------------------------------------------------- */
+
+.wputh-social-links {
+    li {
+        display: inline-block;
+    }
+
+    li + li {
+        margin-left: 1em;
+    }
+
+    a {
+        display: block;
+        z-index: 0;
+        position: relative;
+        text-align: center;
+    }
+
+    a:before {
+        @extend %absolute-cover;
+        content: '';
+        margin: -0.5em;
     }
 }
