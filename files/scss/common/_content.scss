@@ -15,7 +15,10 @@ ul {
     @include resp($mobile_only) {
         font-size: $font-size-mobile;
     }
+}
 
+dl,
+p {
     &:not(:last-child) {
         margin-bottom: $line-height-em;
     }
