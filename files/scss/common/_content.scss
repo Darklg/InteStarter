@@ -129,7 +129,10 @@ li {
     }
 
     ol li:before {
-    content /* Video */
+        content: counter(cssc-content-section);
+    }
+
+    /* Video */
 
     .cssc-content-video-wrapper {
         @extend %cssc-cover-embed-wrapper;
