@@ -17,3 +17,20 @@
         gap: $mobile-padding;
     }
 }
+
+/* ----------------------------------------------------------
+  Sticky top
+---------------------------------------------------------- */
+
+%sticky-top {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+@media ($has_desktop_menu) {
+    body[data-has-sticky-header="1"][data-scrolldir="up"] %sticky-top {
+        top: $header-main-height-desktop-sticky--withmargin;
+    }
+}
