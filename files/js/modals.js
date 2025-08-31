@@ -128,7 +128,7 @@ function modal_close($modal) {
     /* Close iframe */
     var $iframe = $modal.find('iframe');
     if ($iframe.length) {
-        $iframe.attr('src', $iframe.attr('src'));
+        $iframe.attr('src', $iframe.attr('src').replace('autoplay=1', 'autoplay=0'));
     }
 
     jQuery('body').attr('data-modal-open', 0);
