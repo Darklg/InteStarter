@@ -83,7 +83,34 @@
 .loop-basic {
     z-index: 1;
     position: relative;
+    box-sizing: border-box;
+    height: 100%;
     overflow: hidden;
+}
+
+.loop-image-wrapper {
+    & {
+        z-index: 1;
+        position: relative;
+    }
+
+    .loop__labels {
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 1em;
+    }
+
+    .item-label {
+        display: inline-block;
+        margin-right: 0.3em;
+        padding: 0 0.7em;
+        font-size: 0.8em;
+        line-height: 2;
+        background-color: #fff;
+    }
 }
 
 .loop-basic__image {
