@@ -90,3 +90,19 @@ picture {
         margin: -0.5em;
     }
 }
+
+/* ----------------------------------------------------------
+  Breadcrumbs
+---------------------------------------------------------- */
+
+.breadcrumbs {
+    li {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    li + li:before {
+        content: "›";
+        margin: 0 0.3em;
+    }
+}
