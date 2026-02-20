@@ -269,3 +269,20 @@ body {
     @extend %cssc-desktop-menu__submenu;
     @extend %cssc-mobile-menu-down__submenu;
 }
+
+/* Desktop
+-------------------------- */
+
+/* Handle focus within submenus if needed */
+@media ($has_desktop_menu) {
+    .main-menu > .menu-item > .sub-menu {
+        visibility: visible !important;
+        pointer-events: none;
+    }
+
+    .main-menu > .menu-item:hover > .sub-menu,
+    .main-menu>.menu-item>.sub-menu:focus-within {
+        opacity: 1;
+        pointer-events: initial;
+    }
+}
