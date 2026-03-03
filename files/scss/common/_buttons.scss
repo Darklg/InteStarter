@@ -15,12 +15,10 @@
         font-size: $font-size;
         font-weight: bold;
         line-height: 2.5;
-        letter-spacing: 0.1em;
+        vertical-align: middle;
         color: #fff;
         background-color: $color-hl;
         transition: all 0.3s ease;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
     }
 
     @include resp($mobile_only) {
