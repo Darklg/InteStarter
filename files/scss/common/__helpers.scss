@@ -19,6 +19,32 @@
 }
 
 /* ----------------------------------------------------------
+  Radius
+---------------------------------------------------------- */
+
+%responsive-radius {
+    & {
+        border-radius: $border-radius;
+    }
+
+    @include resp($mobile_only) {
+        border-radius: $border-radius-mobile;
+    }
+}
+
+/* ----------------------------------------------------------
+  Crop lines
+---------------------------------------------------------- */
+
+%crop-lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+/* ----------------------------------------------------------
   Sticky top
 ---------------------------------------------------------- */
 
@@ -33,4 +59,40 @@
     body[data-has-sticky-header="1"][data-scrolldir="up"] %sticky-top {
         top: $header-main-height-desktop-sticky--withmargin;
     }
+}
+
+/* ----------------------------------------------------------
+  Font
+---------------------------------------------------------- */
+
+.fw-b {
+    font-weight: bold;
+}
+
+/* ----------------------------------------------------------
+  Margin
+---------------------------------------------------------- */
+
+.mb-0 {
+    margin-bottom: 0!important;
+}
+
+.mt-0 {
+    margin-top: 0!important;
+}
+
+/* ----------------------------------------------------------
+  Padding
+---------------------------------------------------------- */
+
+.pb-100 {
+    padding-bottom: 100%!important;
+}
+
+.pb-75 {
+    padding-bottom: 75%!important;
+}
+
+.pb-50 {
+    padding-bottom: 50%!important;
 }
