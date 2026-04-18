@@ -41,21 +41,21 @@ li {
 
 .text--big.text--big {
     & {
-        font-size: $font-size*1.2;
+        font-size: $font-size--big;
     }
 
     @include resp($mobile_only) {
-        font-size: $font-size-mobile*1.2;
+        font-size: $font-size-mobile--big;
     }
 }
 
 .text--small.text--small {
     & {
-        font-size: $font-size*0.8;
+        font-size: $font-size--small;
     }
 
     @include resp($mobile_only) {
-        font-size: $font-size-mobile*0.8;
+        font-size: $font-size-mobile--small;
     }
 }
 
