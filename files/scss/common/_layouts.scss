@@ -3,11 +3,11 @@
 ---------------------------------------------------------- */
 
 .centered-container > * {
-    max-width: $content_width_wide;
+    max-width: $content_width;
 }
 
 .centered-container--thin > * {
-    max-width: $content_width;
+    max-width: $content_width_thin;
 }
 
 .centered-container--full > * {
