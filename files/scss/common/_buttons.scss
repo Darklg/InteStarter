@@ -60,7 +60,7 @@
 .project_id-button--secondary,
 %project_id-button--secondary {
     & {
-        color: $color-main;
+        color: currentColor;
         background-color: transparent;
         box-shadow: inset 0 0 0 1px currentColor;
     }
